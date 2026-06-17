@@ -1,0 +1,122 @@
+{
+  "home": {
+    "title": "One CV, Multiple Themes",
+    "subtitle": "Same content, different styles. Choose your vibe.",
+    "badge": "Same CV",
+    "explore": "Explore"
+  },
+  "themes_data": {
+    "minimalist": {
+      "title": "Minimalist Clean",
+      "description": "Clean layout focused on readability."
+    },
+    "cyberpunk": {
+      "title": "Cyberpunk Neon",
+      "description": "Neon futuristic look."
+    },
+    "glassmorphism": {
+      "title": "Glassmorphism",
+      "description": "Soft glass UI with blur."
+    },
+    "dark": {
+      "title": "Dark Minimal",
+      "description": "Elegant dark theme."
+    },
+    "retro-computer": {
+      "title": "Retro Computer",
+      "description": "Terminal-style interface."
+    },
+    "gradient-flow": {
+      "title": "Gradient Flow",
+      "description": "Colorful gradients."
+    },
+    "sidebar-navigation": {
+      "title": "Sidebar Navigation",
+      "description": "Sidebar-based layout."
+    },
+    "parallax-scrolling": {
+      "title": "Parallax Scrolling",
+      "description": "Scroll-based animations."
+    },
+    "timeline-style": {
+      "title": "Timeline Style",
+      "description": "Timeline-based CV."
+    }
+  },
+  "about": {
+    "name": "Muhammad Maulana Yusuf",
+    "title": "Frontend Developer",
+    "summary": "Experienced Frontend Developer with strong proficiency in Angular, React.js, and TypeScript[cite: 12]. Passionate about writing modular, reusable code with a focus on maintainability and performance[cite: 12].",
+    "location": "South Bogor, Kota Bogor, West Java, 16137[cite: 12]",
+    "email": "mmaulanayusuf777@gmail.com[cite: 12]",
+    "phone": "+6281292316096[cite: 12]",
+    "linkedin": "linkedin.com/in/muhammad-maulana-yusuf[cite: 12]",
+    "github": "github.com/mmy-lana[cite: 12]"
+  },
+  "experience": {
+    "title": "Work Experience",
+    "items": [
+      {
+        "company": "Direktorat Jenderal Bea dan Cukai (Outsourced by PT Altros Teknologi)",
+        "role": "Frontend Developer",
+        "period": "02/2025 - present",
+        "desc": [
+          "Developed microfrontend modules within CEISA 4.0 and Portal Pengguna Jasa[cite: 12].",
+          "Identified and fixed bugs to ensure application stability[cite: 12].",
+          "Implemented features using React.js and Ant Design[cite: 12]."
+        ]
+      },
+      {
+        "company": "PT Bank Mandiri (Persero) Tbk (Outsourced by PT Lawencon International)",
+        "role": "Software Engineer",
+        "period": "04/2024 - 12/2024",
+        "desc": [
+          "Developed frontend features for Export Letter of Credit and Document Tracker using Angular[cite: 12].",
+          "Utilized Tailwind CSS for responsive styling[cite: 12].",
+          "Collaborated with design teams to implement Figma UI elements[cite: 12]."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Core Skills",
+    "frontend": [
+      "Angular",
+      "React.js",
+      "TypeScript",
+      "HTML 5",
+      "CSS",
+      "Tailwind CSS",
+      "Bootstrap",
+      "JavaScript[cite: 12]"
+    ],
+    "backend": [".NET", "C#", "Entity Framework", "ADO.NET", "ASP.NET[cite: 12]"],
+    "database": ["MySQL", "PostgreSQL", "SQL[cite: 12]"],
+    "tools": ["Jira", "Bitbucket", "Confluence", "Git[cite: 12]"]
+  },
+  "education": {
+    "title": "Education",
+    "items": [
+      {
+        "school": "Universitas Gunadarma",
+        "degree": "Bachelor of Engineering - BE Teknik Informatika",
+        "year": "2016 - 2020",
+        "gpa": "3.54[cite: 12]"
+      }
+    ]
+  },
+  "certificates": {
+    "title": "Certificates",
+    "items": [
+      "The Complete JavaScript Course 2023 (Udemy)[cite: 12]",
+      "Sertifikat Kelas Belajar Reactjs (CodePolitan)[cite: 12]",
+      "The Complete SQL Bootcamp (Udemy)[cite: 12]"
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "email": "mmaulanayusuf777@gmail.com[cite: 12]",
+    "phone": "+6281292316096[cite: 12]",
+    "linkedin": "linkedin.com/in/muhammad-maulana-yusuf[cite: 12]"
+  }
+}

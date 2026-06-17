@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+/* 
+   THEME PRINCIPLE: 
+   We define a custom theme object that Tailwind utilities can use.
+   This allows you to use 'text-cv-primary' or 'bg-cv-bg' in any theme.
+*/
+@theme {
+  --color-cv-primary: var(--cv-primary);
+  --color-cv-bg: var(--cv-bg);
+  --color-cv-accent: var(--cv-accent);
+}
+
+/* 1. Default / Theme 1 */
+:root {
+  --cv-primary: #3b82f6;
+  --cv-bg: #0f172a;
+  --cv-accent: #60a5fa;
+}
+
+/* 2. Cyberpunk / Theme 2 */
+[data-theme='cyberpunk'] {
+  --cv-primary: #ff00ff;
+  --cv-bg: #2b0057;
+  --cv-accent: #00ffff;
+}
+
+/* 3. Minimalist / Theme 3 */
+[data-theme='minimalist'] {
+  --cv-primary: #111111;
+  --cv-bg: #ffffff;
+  --cv-accent: #666666;
+}
+
+/* ... Add 4 through 9 following this pattern ... */

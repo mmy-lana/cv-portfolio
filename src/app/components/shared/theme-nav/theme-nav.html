@@ -1,0 +1,59 @@
+<div
+  class="hidden md:flex fixed left-0 top-0 h-full w-56 flex-col justify-between p-6 z-50 border-r"
+  [style.background-color]="'var(--nav-bg)'"
+  [style.color]="'var(--nav-text)'"
+  [style.border-color]="'var(--nav-border)'"
+>
+  <div class="space-y-4">
+    @for (section of sections; track section.id) {
+      <!-- Inside the @for loop in theme-nav.html -->
+      <button
+        (click)="scrollTo(section.id)"
+        class="block text-left py-2 px-4 rounded transition-colors duration-200 hover:bg-white/10"
+        [class.bg-white]="activeSection === section.id"
+        [class.opacity-40]="activeSection !== section.id"
+        [class.text-red]="activeSection !== section.id"
+      >
+        {{ section.label | translate }}
+      </button>
+    }
+  </div>
+
+  <div class="space-y-3">
+    <button (click)="toggleLang()">
+      {{ lang.current === 'en' ? 'ID' : 'EN' }}
+    </button>
+
+    <button (click)="goBack()">Back</button>
+  </div>
+</div>
+
+<!-- MOBILE TOPBAR -->
+<div
+  class="md:hidden fixed top-0 left-0 w-full flex justify-between px-4 py-3 bg-slate-900 text-white z-50"
+>
+  <button (click)="goBack()">Back</button>
+  <button (click)="toggleLang()">{{ lang.current.toUpperCase() }}</button>
+  <button (click)="menuOpen = !menuOpen">☰</button>
+</div>
+
+@if (menuOpen) {
+  <div
+    class="fixed inset-0 bg-black/80 flex flex-col items-center justify-center text-white space-y-6 z-40"
+  >
+    @for (section of sections; track section.id) {
+      <button (click)="scrollTo(section.id); menuOpen = false" class="text-xl">
+        {{ section.label | translate }}
+      </button>
+    }
+  </div>
+}
+
+@if (showScrollTop) {
+  <button
+    (click)="scrollTo('about')"
+    class="fixed bottom-6 right-6 bg-white text-black px-3 py-2 rounded-full"
+  >
+    ↑
+  </button>
+}

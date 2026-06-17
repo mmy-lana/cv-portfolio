@@ -1,0 +1,99 @@
+<!-- SHARED NAVBAR -->
+<div class="theme-wrapper" style="--nav-text: #1a1a1a; --nav-border: #e5e7eb; --primary: #2563eb">
+  <app-theme-nav />
+
+  <div>
+    <!-- MAIN CONTENT -->
+    <div class="md:ml-56 px-6 py-16 space-y-24 bg-white text-black min-h-screen">
+      <!-- ABOUT -->
+      <section id="about" class="max-w-2xl mx-auto text-center space-y-3">
+        <h1 class="text-3xl font-bold">
+          {{ 'about.name' | translate }}
+        </h1>
+
+        <p class="text-lg opacity-70">
+          {{ 'about.title' | translate }}
+        </p>
+
+        <p class="opacity-60">
+          {{ 'about.summary' | translate }}
+        </p>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="max-w-3xl mx-auto space-y-6">
+        <h2 class="text-xl font-semibold border-b pb-2">
+          {{ 'experience.title' | translate }}
+        </h2>
+
+        @for (job of 'experience.items' | translate; track job.company) {
+          <div class="space-y-2">
+            <h3 class="font-semibold">
+              {{ job.role }}
+            </h3>
+
+            <p class="text-sm opacity-60">{{ job.company }} • {{ job.period }}</p>
+
+            <ul class="list-disc ml-5 text-sm opacity-80">
+              @for (line of job.desc; track line) {
+                <li>{{ line }}</li>
+              }
+            </ul>
+          </div>
+        }
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="max-w-3xl mx-auto space-y-4">
+        <h2 class="text-xl font-semibold border-b pb-2">
+          {{ 'skills.title' | translate }}
+        </h2>
+
+        <div class="space-y-2 text-sm">
+          <p><strong>Frontend:</strong> {{ ('skills.frontend' | translate).join(', ') }}</p>
+          <p><strong>Backend:</strong> {{ ('skills.backend' | translate).join(', ') }}</p>
+          <p><strong>Database:</strong> {{ ('skills.database' | translate).join(', ') }}</p>
+          <p><strong>Tools:</strong> {{ ('skills.tools' | translate).join(', ') }}</p>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education" class="max-w-3xl mx-auto space-y-4">
+        <h2 class="text-xl font-semibold border-b pb-2">
+          {{ 'education.title' | translate }}
+        </h2>
+
+        @for (edu of 'education.items' | translate; track edu.school) {
+          <div>
+            <p class="font-semibold">{{ edu.school }}</p>
+            <p class="text-sm opacity-60">{{ edu.degree }} • {{ edu.year }} • GPA {{ edu.gpa }}</p>
+          </div>
+        }
+      </section>
+
+      <!-- CERTIFICATES -->
+      <section id="certificates" class="max-w-3xl mx-auto space-y-4">
+        <h2 class="text-xl font-semibold border-b pb-2">
+          {{ 'certificates.title' | translate }}
+        </h2>
+
+        <ul class="list-disc ml-5 text-sm">
+          @for (cert of 'certificates.items' | translate; track cert) {
+            <li>{{ cert }}</li>
+          }
+        </ul>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="max-w-3xl mx-auto space-y-3 text-sm">
+        <h2 class="text-xl font-semibold border-b pb-2">
+          {{ 'contact.title' | translate }}
+        </h2>
+
+        <p>Email: {{ 'contact.email' | translate }}</p>
+        <p>Phone: {{ 'contact.phone' | translate }}</p>
+        <p>LinkedIn: {{ 'contact.linkedin' | translate }}</p>
+      </section>
+    </div>
+  </div>
+</div>
