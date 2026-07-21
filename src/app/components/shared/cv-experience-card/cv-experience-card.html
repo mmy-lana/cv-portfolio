@@ -1,0 +1,93 @@
+<div 
+  class="group relative overflow-hidden transition-all duration-300"
+  [class.p-6]="layoutVariant !== 'retro'"
+  [class.bg-white/5]="layoutVariant === 'clean' || layoutVariant === 'cyber'"
+  [class.border-l-4]="layoutVariant === 'clean'"
+  [class.border-cv-primary]="layoutVariant === 'clean'"
+  [class.rounded-xl]="layoutVariant === 'clean'"
+  [class.hover:shadow-lg]="layoutVariant === 'clean'"
+  [class.p-8]="layoutVariant === 'retro'"
+  [class.border-4]="layoutVariant === 'retro'"
+  [class.border-black]="layoutVariant === 'retro'"
+  [class.shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]]="layoutVariant === 'retro'"
+  [class.bg-zinc-900]="layoutVariant === 'retro'"
+  [class.hover:translate-x-[-2px]]="layoutVariant === 'retro'"
+  [class.hover:translate-y-[-2px]]="layoutVariant === 'retro'"
+  [class.hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]]="layoutVariant === 'retro'"
+  [class.border-2]="layoutVariant === 'cyber'"
+  [class.border-[#bc00ff]/30]="layoutVariant === 'cyber'"
+  [class.hover:border-[#00f0ff]]="layoutVariant === 'cyber'"
+  [class.shadow-[0_0_15px_rgba(188,0,255,0.05)]]="layoutVariant === 'cyber'"
+  [class.hover:shadow-[0_0_20px_rgba(0,240,255,0.15)]]="layoutVariant === 'cyber'"
+>
+  <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+    <div class="space-y-1.5">
+      <h3 
+        class="text-lg font-bold leading-tight"
+        [class.text-white]="layoutVariant !== 'retro'"
+        [class.text-amber-500]="layoutVariant === 'retro'"
+        [class.font-mono]="layoutVariant !== 'clean'"
+        [class.uppercase]="layoutVariant !== 'clean'"
+      >
+        {{ mainTitle }}
+      </h3>
+      
+      <p 
+        class="text-sm font-semibold flex flex-wrap items-center gap-2"
+        [class.text-cv-accent]="layoutVariant === 'clean'"
+        [class.text-[#00ff41]]="layoutVariant === 'cyber'"
+        [class.text-zinc-300]="layoutVariant === 'retro'"
+        [class.font-mono]="layoutVariant !== 'clean'"
+      >
+        <span>{{ subtitle }}</span>
+        @if (data.location) {
+          <span class="text-xs opacity-50 flex items-center">
+            <app-cv-icon name="location" size="w-3.5 h-3.5" class="mr-1" />
+            {{ data.location }}
+          </span>
+        }
+      </p>
+    </div>
+
+    <div class="flex flex-col items-start md:items-end gap-2">
+      <span 
+        class="inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-md"
+        [class.bg-white/10]="layoutVariant === 'clean'"
+        [class.text-slate-300]="layoutVariant === 'clean'"
+        [class.bg-[#bc00ff]/20]="layoutVariant === 'cyber'"
+        [class.text-[#00f0ff]]="layoutVariant === 'cyber'"
+        [class.font-mono]="layoutVariant === 'cyber'"
+        [class.border]="layoutVariant === 'retro'"
+        [class.border-amber-500/50]="layoutVariant === 'retro'"
+        [class.text-amber-500]="layoutVariant === 'retro'"
+        [class.font-mono]="layoutVariant === 'retro'"
+      >
+        <app-cv-icon name="calendar" size="w-3.5 h-3.5" class="mr-1.5" />
+        {{ timePeriod }}
+      </span>
+
+      @if (data.gpa) {
+        <app-cv-badge 
+          [labelKey]="'GPA: ' + data.gpa" 
+          [variant]="layoutVariant === 'cyber' ? 'neon' : (layoutVariant === 'retro' ? 'retro' : 'outline')" 
+          size="sm" 
+        />
+      }
+    </div>
+  </div>
+
+  @if (descriptions.length > 0) {
+    <div class="mt-4 border-t pt-4" [class.border-white/10]="layoutVariant !== 'retro'" [class.border-dashed]="layoutVariant === 'retro'" [class.border-amber-500/30]="layoutVariant === 'retro'">
+      <ul class="space-y-2.5 text-sm" [class.font-mono]="layoutVariant !== 'clean'" [class.text-[#00ff41]/90]="layoutVariant === 'cyber'">
+        @for (bullet of descriptions; track bullet) {
+          <li class="flex items-start gap-2 text-slate-300" [class.text-zinc-300]="layoutVariant === 'retro'" [class.text-[#00ff41]/90]="layoutVariant === 'cyber'">
+            <span class="text-cv-primary font-bold select-none mt-0.5" [class.text-[#00f0ff]]="layoutVariant === 'cyber'" [class.text-amber-500]="layoutVariant === 'retro'">
+              {{ layoutVariant === 'clean' ? '•' : '>' }}
+            </span>
+            <span class="leading-relaxed">{{ bullet }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  }
+</div>

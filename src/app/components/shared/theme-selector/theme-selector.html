@@ -1,0 +1,62 @@
+<div class="relative inline-block text-left z-50">
+  <app-cv-button
+    variant="glass"
+    size="md"
+    labelKey="home.explore"
+    (btnClick)="toggleDropdown()"
+    [ariaLabel]="'Switch Theme Panel'"
+  >
+    <app-cv-icon prefix name="arrow-right" size="w-4 h-4" class="mr-2 rotate-90" />
+    <span suffix class="ml-2">{{ themeService.themes.find(t => t.id === themeService.currentTheme())?.icon || '🎨' }}</span>
+  </app-cv-button>
+
+  @if (isOpen()) {
+    <div
+      class="absolute right-0 mt-2 w-72 rounded-2xl border border-white/10 bg-slate-900/95 p-4 shadow-2xl backdrop-blur-xl ring-1 ring-black ring-opacity-5 focus:outline-none transform origin-top-right transition-all duration-300 ease-out"
+      role="menu"
+      aria-orientation="vertical"
+      aria-labelledby="menu-button"
+    >
+      <div class="mb-3 px-2">
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-400">
+          {{ 'home.title' | translate }}
+        </p>
+        <p class="text-[11px] text-slate-500 mt-0.5">
+          {{ 'home.subtitle' | translate }}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-1 max-h-80 overflow-y-auto pr-1">
+        @for (theme of themeService.themes; track theme.id) {
+          <button
+            (click)="selectTheme(theme)"
+            class="group w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left text-sm font-medium transition-all duration-200"
+            [class.bg-white/10]="themeService.currentTheme() === theme.id"
+            [class.text-white]="themeService.currentTheme() === theme.id"
+            [class.text-slate-300]="themeService.currentTheme() !== theme.id"
+            [class.hover:bg-white/5]="themeService.currentTheme() !== theme.id"
+            role="menuitem"
+          >
+            <div class="flex items-center space-x-3">
+              <span class="text-xl transform group-hover:scale-115 transition-transform duration-200">
+                {{ theme.icon }}
+              </span>
+              <div>
+                <p class="font-semibold text-white group-hover:text-cv-accent transition-colors">
+                  {{ 'themes_data.' + theme.id + '.title' | translate }}
+                </p>
+                <p class="text-[11px] text-slate-400 group-hover:text-slate-300 truncate max-w-[180px]">
+                  {{ 'themes_data.' + theme.id + '.description' | translate }}
+                </p>
+              </div>
+            </div>
+            
+            @if (themeService.currentTheme() === theme.id) {
+              <span class="text-xs font-bold text-cv-accent animate-pulse">●</span>
+            }
+          </button>
+        }
+      </div>
+    </div>
+  }
+</div>
