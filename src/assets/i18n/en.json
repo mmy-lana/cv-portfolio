@@ -46,12 +46,12 @@
   "about": {
     "name": "Muhammad Maulana Yusuf",
     "title": "Frontend Developer",
-    "summary": "Experienced Frontend Developer with strong proficiency in Angular, React.js, and TypeScript[cite: 12]. Passionate about writing modular, reusable code with a focus on maintainability and performance[cite: 12].",
-    "location": "South Bogor, Kota Bogor, West Java, 16137[cite: 12]",
-    "email": "mmaulanayusuf777@gmail.com[cite: 12]",
-    "phone": "+6281292316096[cite: 12]",
-    "linkedin": "linkedin.com/in/muhammad-maulana-yusuf[cite: 12]",
-    "github": "github.com/mmy-lana[cite: 12]"
+    "summary": "Experienced Frontend Developer with a solid background in Informatics Engineering (GPA: 3.54). Proven track record of translating complex Figma designs into responsive enterprise applications. Experienced in building and maintaining web modules across financial systems (Bank Mandiri) and government service platforms (Bea Cukai) using Angular, React.js, and TypeScript.",
+    "location": "South Bogor, West Java",
+    "email": "mmaulanayusuf777@gmail.com",
+    "phone": "+6281292316096",
+    "linkedin": "linkedin.com/in/muhammad-maulana-yusuf",
+    "github": "github.com/mmy-lana"
   },
   "experience": {
     "title": "Work Experience",
@@ -59,64 +59,106 @@
       {
         "company": "Direktorat Jenderal Bea dan Cukai (Outsourced by PT Altros Teknologi)",
         "role": "Frontend Developer",
-        "period": "02/2025 - present",
+        "period": "February 2025 – Present",
+        "location": "Jakarta, Indonesia",
         "desc": [
-          "Developed microfrontend modules within CEISA 4.0 and Portal Pengguna Jasa[cite: 12].",
-          "Identified and fixed bugs to ensure application stability[cite: 12].",
-          "Implemented features using React.js and Ant Design[cite: 12]."
+          "Developed and maintained core microfrontend modules within the CEISA 4.0 and Portal Pengguna Jasa systems using React.js and Ant Design.",
+          "Collaborated closely with backend teams to integrate RESTful APIs, ensuring secure data handling and responsive layouts.",
+          "Identified, debugged, and resolved system-critical frontend bugs, enhancing portal stability for external users."
         ]
       },
       {
         "company": "PT Bank Mandiri (Persero) Tbk (Outsourced by PT Lawencon International)",
         "role": "Software Engineer",
-        "period": "04/2024 - 12/2024",
+        "period": "April 2024 – December 2024",
+        "location": "Jakarta, Indonesia",
         "desc": [
-          "Developed frontend features for Export Letter of Credit and Document Tracker using Angular[cite: 12].",
-          "Utilized Tailwind CSS for responsive styling[cite: 12].",
-          "Collaborated with design teams to implement Figma UI elements[cite: 12]."
+          "Developed core frontend modules for corporate banking services (Export Letter of Credit, Document Tracker, Auto-Debit, EIPP, and VA Collection) using Angular and TypeScript.",
+          "Built responsive, utility-first UI elements with Tailwind CSS based on Figma design specifications.",
+          "Participated in team code reviews, optimized component modularity, and maintained technical documentation in Confluence."
+        ]
+      },
+      {
+        "company": "PT Lawencon Internasional",
+        "role": "Frontend Developer",
+        "period": "February 2024 – March 2024",
+        "location": "Jakarta, Indonesia",
+        "desc": [
+          "Developed HRIS (Linov) frontend features for payroll, attendance, and employee management using Angular and PrimeNG.",
+          "Translated wireframes into responsive modular UIs, improving codebase cleanliness and maintainability."
+        ]
+      },
+      {
+        "company": "PT Dyandra Promosindo",
+        "role": "Project Officer",
+        "period": "June 2021 – November 2022",
+        "location": "Jakarta, Indonesia",
+        "desc": [
+          "Managed technical virtual infrastructure (VMIX/Zoom integration) and live stream logistics for national-scale webinars."
         ]
       }
     ]
   },
   "skills": {
-    "title": "Core Skills",
-    "frontend": [
-      "Angular",
-      "React.js",
-      "TypeScript",
-      "HTML 5",
-      "CSS",
-      "Tailwind CSS",
-      "Bootstrap",
-      "JavaScript[cite: 12]"
+    "title": "Skills",
+    "languages": [
+      "C#",
+      "CSS3",
+      "HTML5",
+      "JavaScript",
+      "SQL",
+      "TypeScript"
     ],
-    "backend": [".NET", "C#", "Entity Framework", "ADO.NET", "ASP.NET[cite: 12]"],
-    "database": ["MySQL", "PostgreSQL", "SQL[cite: 12]"],
-    "tools": ["Jira", "Bitbucket", "Confluence", "Git[cite: 12]"]
+    "frameworks": [
+      "Angular",
+      "Ant Design",
+      "Next.js",
+      "PrimeNG",
+      "React.js",
+      "Svelte",
+      "Tailwind CSS",
+      "Vue"
+    ],
+    "tools": [
+      "Bitbucket",
+      "Confluence",
+      "Git",
+      "GitHub",
+      "GitLab",
+      "Jira"
+    ]
   },
   "education": {
     "title": "Education",
     "items": [
       {
+        "school": "PT Lawencon Internasional",
+        "degree": "Bootcamp Full Stack Developer",
+        "year": "November 2023 – January 2024",
+        "location": "Jakarta, Indonesia",
+        "desc": "Intensive full-time software engineering program focusing on enterprise web development using .NET and Angular."
+      },
+      {
         "school": "Universitas Gunadarma",
         "degree": "Bachelor of Engineering - BE Teknik Informatika",
-        "year": "2016 - 2020",
-        "gpa": "3.54[cite: 12]"
+        "year": "July 2016 – November 2020",
+        "location": "Kota Depok, Indonesia",
+        "gpa": "3.54/4.00"
       }
     ]
   },
   "certificates": {
     "title": "Certificates",
     "items": [
-      "The Complete JavaScript Course 2023 (Udemy)[cite: 12]",
-      "Sertifikat Kelas Belajar Reactjs (CodePolitan)[cite: 12]",
-      "The Complete SQL Bootcamp (Udemy)[cite: 12]"
+      "The Complete JavaScript Course 2023 (Udemy)",
+      "Sertifikat Kelas Belajar Reactjs (CodePolitan)",
+      "The Complete SQL Bootcamp (Udemy)"
     ]
   },
   "contact": {
     "title": "Contact",
-    "email": "mmaulanayusuf777@gmail.com[cite: 12]",
-    "phone": "+6281292316096[cite: 12]",
-    "linkedin": "linkedin.com/in/muhammad-maulana-yusuf[cite: 12]"
+    "email": "mmaulanayusuf777@gmail.com",
+    "phone": "+6281292316096",
+    "linkedin": "linkedin.com/in/muhammad-maulana-yusuf"
   }
 }
