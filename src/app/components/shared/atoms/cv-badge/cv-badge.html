@@ -1,0 +1,8 @@
+<span 
+  [class]="badgeClasses"
+  [attr.role]="interactive ? 'button' : 'status'"
+  [attr.tabindex]="interactive ? 0 : null"
+  [attr.aria-label]="labelKey | translate"
+>
+  {{ labelKey | translate }}
+</span>
