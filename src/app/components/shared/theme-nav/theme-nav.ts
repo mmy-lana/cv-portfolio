@@ -2,12 +2,15 @@ import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { LanguageService } from '../../../services/language.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { ThemeSelector } from '../theme-selector/theme-selector';
+import { CvButton } from '../atoms/cv-button/cv-button';
+import { CvIcon } from '../atoms/cv-icon/cv-icon';
 
 @Component({
   selector: 'app-theme-nav',
   standalone: true,
   templateUrl: './theme-nav.html',
-  imports: [TranslateModule],
+  imports: [TranslateModule, ThemeSelector, CvButton, CvIcon],
 })
 export class ThemeNav {
   constructor(
@@ -28,20 +31,33 @@ export class ThemeNav {
   menuOpen = false;
   showScrollTop = false;
 
-  toggleLang() {
+  toggleLang(): void {
     this.lang.toggle();
   }
 
-  goBack() {
+  goBack(): void {
     this.router.navigate(['/']);
   }
 
-  scrollTo(id: string) {
+  scrollTo(id: string): void {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    this.activeSection = id;
   }
 
   @HostListener('window:scroll')
-  onScroll() {
+  onScroll(): void {
     this.showScrollTop = window.scrollY > 300;
+    
+    // Auto-update active section indicator on scroll coordinate match
+    for (const section of this.sections) {
+      const element = document.getElementById(section.id);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top >= 0 && rect.top <= 300) {
+          this.activeSection = section.id;
+          break;
+        }
+      }
+    }
   }
 }

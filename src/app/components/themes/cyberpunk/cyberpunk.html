@@ -1,13 +1,144 @@
-<div
-  class="theme-wrapper"
-  style="--nav-bg: #000000; --nav-text: #00ff41; --nav-border: #bc00ff; --primary: #00f0ff"
->
+<div class="theme-wrapper" style="--nav-bg: #0a0015; --nav-text: #00ff41; --nav-border: #bc00ff; --cv-primary: #bc00ff; --cv-accent: #00f0ff">
   <app-theme-nav />
 
-  <div class="md:ml-56 px-6 py-16 bg-black text-[#00ff41] min-h-screen font-mono">
-    <section id="about" class="border-l-4 border-[#bc00ff] pl-4">
-      <h1 class="text-4xl font-black uppercase italic">{{ 'about.name' | translate }}</h1>
-      <p class="text-[#00f0ff]">> {{ 'about.title' | translate }}</p>
+  <div class="md:ml-64 px-6 md:px-16 py-20 space-y-24 bg-black text-[#00ff41] min-h-screen font-mono relative overflow-hidden">
+    <!-- Grid overlay mimicking CRT phosphor screens -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,3px_100%] pointer-events-none z-10"></div>
+
+    <!-- ABOUT -->
+    <section id="about" class="max-w-4xl mx-auto space-y-6 border-2 border-[#00f0ff] p-8 bg-purple-950/20 shadow-[0_0_20px_rgba(0,240,255,0.1)] relative">
+      <div class="absolute top-0 right-0 bg-[#00f0ff] text-black text-[10px] font-bold px-2 py-0.5 uppercase tracking-widest">SYS_ACTIVE</div>
+      <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#bc00ff] to-pink-500 animate-pulse">
+        {{ 'about.name' | translate }}
+      </h1>
+      <p class="text-xl font-bold text-[#00f0ff] tracking-widest uppercase flex items-center gap-2">
+        <span>></span> {{ 'about.title' | translate }}
+      </p>
+      <p class="text-slate-300 leading-relaxed max-w-3xl">
+        {{ 'about.summary' | translate }}
+      </p>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="max-w-4xl mx-auto space-y-8">
+      <div class="border-b-2 border-[#bc00ff] pb-3 flex items-center justify-between">
+        <h2 class="text-2xl font-black uppercase tracking-widest text-[#bc00ff]">
+          [01] // WORK_HISTORY
+        </h2>
+        <span class="text-xs text-slate-500">MATCHES_FOUND: 4</span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6">
+        @for (job of ('experience.items' | translate); track job.company) {
+          <app-cv-experience-card [data]="job" layoutVariant="cyber" />
+        }
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="max-w-4xl mx-auto space-y-8">
+      <div class="border-b-2 border-[#bc00ff] pb-3">
+        <h2 class="text-2xl font-black uppercase tracking-widest text-[#bc00ff]">
+          [02] // MODULE_SKILLS
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="border-2 border-[#bc00ff]/40 p-6 bg-purple-950/10">
+          <h3 class="text-sm font-bold text-[#00f0ff] uppercase tracking-widest border-b border-[#bc00ff]/20 pb-2 mb-4">LANGUAGES</h3>
+          <div class="flex flex-wrap gap-2">
+            @for (lang of ('skills.languages' | translate); track lang) {
+              <app-cv-badge [labelKey]="lang" variant="neon" size="sm" />
+            }
+          </div>
+        </div>
+
+        <div class="border-2 border-[#bc00ff]/40 p-6 bg-purple-950/10">
+          <h3 class="text-sm font-bold text-[#00f0ff] uppercase tracking-widest border-b border-[#bc00ff]/20 pb-2 mb-4">FRAMEWORKS</h3>
+          <div class="flex flex-wrap gap-2">
+            @for (fw of ('skills.frameworks' | translate); track fw) {
+              <app-cv-badge [labelKey]="fw" variant="neon" size="sm" />
+            }
+          </div>
+        </div>
+
+        <div class="border-2 border-[#bc00ff]/40 p-6 bg-purple-950/10">
+          <h3 class="text-sm font-bold text-[#00f0ff] uppercase tracking-widest border-b border-[#bc00ff]/20 pb-2 mb-4">SYSTEM_TOOLS</h3>
+          <div class="flex flex-wrap gap-2">
+            @for (tool of ('skills.tools' | translate); track tool) {
+              <app-cv-badge [labelKey]="tool" variant="neon" size="sm" />
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="max-w-4xl mx-auto space-y-8">
+      <div class="border-b-2 border-[#bc00ff] pb-3">
+        <h2 class="text-2xl font-black uppercase tracking-widest text-[#bc00ff]">
+          [03] // EDUCATION_LOGS
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6">
+        @for (edu of ('education.items' | translate); track edu.school) {
+          <app-cv-experience-card [data]="edu" layoutVariant="cyber" />
+        }
+      </div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section id="certificates" class="max-w-4xl mx-auto space-y-8">
+      <div class="border-b-2 border-[#bc00ff] pb-3">
+        <h2 class="text-2xl font-black uppercase tracking-widest text-[#bc00ff]">
+          [04] // CREDENTIAL_KEYS
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        @for (cert of ('certificates.items' | translate); track cert) {
+          <div class="flex items-center space-x-3 p-5 border border-[#bc00ff]/30 bg-purple-950/10 hover:border-[#00f0ff] transition-all duration-300">
+            <span class="text-[#00f0ff] font-bold">></span>
+            <span class="text-sm text-slate-300 font-semibold">{{ cert }}</span>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="max-w-4xl mx-auto space-y-8 pb-16">
+      <div class="border-b-2 border-[#bc00ff] pb-3">
+        <h2 class="text-2xl font-black uppercase tracking-widest text-[#bc00ff]">
+          [05] // TRANSMIT_WAVE
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a [href]="'mailto:' + ('contact.email' | translate)" class="group flex items-center space-x-4 p-6 border border-[#bc00ff]/40 bg-purple-950/20 hover:border-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all">
+          <app-cv-icon name="email" class="text-[#00f0ff]" size="w-6 h-6" />
+          <div>
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">EMAIL</p>
+            <p class="text-sm font-bold text-[#00ff41] truncate">{{ 'contact.email' | translate }}</p>
+          </div>
+        </a>
+
+        <div class="flex items-center space-x-4 p-6 border border-[#bc00ff]/40 bg-purple-950/20">
+          <app-cv-icon name="phone" class="text-[#00f0ff]" size="w-6 h-6" />
+          <div>
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">COMMS_LINK</p>
+            <p class="text-sm font-bold text-[#00ff41]">{{ 'contact.phone' | translate }}</p>
+          </div>
+        </div>
+
+        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" class="group flex items-center space-x-4 p-6 border border-[#bc00ff]/40 bg-purple-950/20 hover:border-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all">
+          <app-cv-icon name="linkedin" class="text-[#00f0ff]" size="w-6 h-6" />
+          <div>
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">LINKEDIN</p>
+            <p class="text-sm font-bold text-[#00ff41]">CONNECT_SECURE</p>
+          </div>
+        </a>
+      </div>
     </section>
   </div>
 </div>

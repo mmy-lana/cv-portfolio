@@ -1,12 +1,22 @@
-// cyberpunk.ts
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeNav } from '../../shared/theme-nav/theme-nav';
+import { ThemeService } from '../../../services/theme.service';
+import { CvExperienceCard } from '../../shared/cv-experience-card/cv-experience-card';
+import { CvBadge } from '../../shared/atoms/cv-badge/cv-badge';
+import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
 
 @Component({
   selector: 'app-cyberpunk',
   standalone: true,
-  imports: [ThemeNav, TranslateModule], // Add TranslateModule here!
+  imports: [ThemeNav, TranslateModule, CvExperienceCard, CvBadge, CvIcon],
   templateUrl: './cyberpunk.html',
 })
-export class Cyberpunk { }
+export class Cyberpunk implements OnInit {
+  constructor(private themeService: ThemeService) {}
+
+  ngOnInit(): void {
+    // Assert visual parameters for neon and terminal UI styling
+    this.themeService.setTheme('cyberpunk');
+  }
+}

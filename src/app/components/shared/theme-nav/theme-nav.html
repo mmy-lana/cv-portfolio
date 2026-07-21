@@ -1,48 +1,95 @@
 <div
-  class="hidden md:flex fixed left-0 top-0 h-full w-56 flex-col justify-between p-6 z-50 border-r"
+  class="hidden md:flex fixed left-0 top-0 h-full w-64 flex-col justify-between p-6 z-40 border-r"
   [style.background-color]="'var(--nav-bg)'"
   [style.color]="'var(--nav-text)'"
   [style.border-color]="'var(--nav-border)'"
 >
-  <div class="space-y-4">
-    @for (section of sections; track section.id) {
-      <!-- Inside the @for loop in theme-nav.html -->
-      <button
-        (click)="scrollTo(section.id)"
-        class="block text-left py-2 px-4 rounded transition-colors duration-200 hover:bg-white/10"
-        [class.bg-white]="activeSection === section.id"
-        [class.opacity-40]="activeSection !== section.id"
-        [class.text-red]="activeSection !== section.id"
-      >
-        {{ section.label | translate }}
-      </button>
-    }
+  <div class="space-y-6">
+    <div class="flex items-center space-x-2 border-b pb-4" [style.border-color]="'var(--nav-border)'">
+      <app-cv-icon name="gpa" size="w-6 h-6" class="text-cv-primary" />
+      <span class="font-bold tracking-wider text-sm uppercase">PORTFOLIO</span>
+    </div>
+
+    <div class="space-y-1">
+      @for (section of sections; track section.id) {
+        <button
+          (click)="scrollTo(section.id)"
+          class="w-full flex items-center space-x-3 text-left py-2.5 px-4 rounded-xl text-sm font-semibold transition-all duration-200"
+          [class.bg-white/10]="activeSection === section.id"
+          [class.text-white]="activeSection === section.id"
+          [class.opacity-60]="activeSection !== section.id"
+          [class.hover:opacity-100]="activeSection !== section.id"
+          [class.hover:bg-white/5]="activeSection !== section.id"
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-cv-primary transition-all duration-300"
+                [class.scale-100]="activeSection === section.id"
+                [class.scale-0]="activeSection !== section.id">
+          </span>
+          <span>{{ section.label | translate }}</span>
+        </button>
+      }
+    </div>
   </div>
 
-  <div class="space-y-3">
-    <button (click)="toggleLang()">
-      {{ lang.current === 'en' ? 'ID' : 'EN' }}
-    </button>
+  <div class="space-y-4 border-t pt-6" [style.border-color]="'var(--nav-border)'">
+    <div class="flex items-center justify-between">
+      <app-cv-button 
+        variant="glass" 
+        size="sm" 
+        [labelKey]="lang.current === 'en' ? 'ID' : 'EN'" 
+        (btnClick)="toggleLang()" 
+      />
+      
+      <app-cv-button 
+        variant="secondary" 
+        size="sm" 
+        labelKey="Back" 
+        (btnClick)="goBack()"
+      />
+    </div>
 
-    <button (click)="goBack()">Back</button>
+    <div class="pt-2 flex justify-center">
+      <app-theme-selector />
+    </div>
   </div>
 </div>
 
 <!-- MOBILE TOPBAR -->
 <div
-  class="md:hidden fixed top-0 left-0 w-full flex justify-between px-4 py-3 bg-slate-900 text-white z-50"
+  class="md:hidden fixed top-0 left-0 w-full flex items-center justify-between px-4 py-3 bg-slate-900/90 text-white backdrop-blur-md z-40 border-b border-white/10"
 >
-  <button (click)="goBack()">Back</button>
-  <button (click)="toggleLang()">{{ lang.current.toUpperCase() }}</button>
-  <button (click)="menuOpen = !menuOpen">☰</button>
+  <div class="flex items-center space-x-2">
+    <app-cv-button variant="glass" size="sm" labelKey="Back" (btnClick)="goBack()" />
+    <app-cv-button variant="glass" size="sm" [labelKey]="lang.current.toUpperCase()" (btnClick)="toggleLang()" />
+  </div>
+  
+  <div class="flex items-center space-x-3">
+    <app-theme-selector />
+    <button 
+      (click)="menuOpen = !menuOpen" 
+      class="text-xl p-2 focus:outline-none"
+      [attr.aria-expanded]="menuOpen"
+    >
+      ☰
+    </button>
+  </div>
 </div>
 
 @if (menuOpen) {
   <div
-    class="fixed inset-0 bg-black/80 flex flex-col items-center justify-center text-white space-y-6 z-40"
+    class="fixed inset-0 bg-black/95 flex flex-col items-center justify-center text-white space-y-6 z-50 animate-fade-in"
   >
+    <button 
+      (click)="menuOpen = false" 
+      class="absolute top-6 right-6 text-2xl font-bold"
+    >
+      ✕
+    </button>
     @for (section of sections; track section.id) {
-      <button (click)="scrollTo(section.id); menuOpen = false" class="text-xl">
+      <button 
+        (click)="scrollTo(section.id); menuOpen = false" 
+        class="text-2xl font-bold tracking-wider hover:text-cv-primary transition-colors"
+      >
         {{ section.label | translate }}
       </button>
     }
@@ -52,7 +99,8 @@
 @if (showScrollTop) {
   <button
     (click)="scrollTo('about')"
-    class="fixed bottom-6 right-6 bg-white text-black px-3 py-2 rounded-full"
+    class="fixed bottom-6 right-6 bg-cv-primary text-cv-bg p-3 rounded-full shadow-lg hover:scale-110 active:scale-95 transition-all z-40 focus:outline-none"
+    aria-label="Scroll to top"
   >
     ↑
   </button>
