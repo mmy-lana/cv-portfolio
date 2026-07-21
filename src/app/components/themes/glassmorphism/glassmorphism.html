@@ -1,10 +1,151 @@
-<div class="min-h-screen flex items-center justify-center text-white bg-slate-900">
-  <div class="text-center">
-    <h1 class="text-3xl font-bold mb-2">
-      {{ 'Muhammad Maulana Yusuf' }}
-    </h1>
-    <p class="opacity-70">Frontend Developer</p>
-    <p>glassmorphism works!</p>
-    <button routerLink="/" class="mt-6 px-4 py-2 bg-white text-black rounded">Back</button>
+<div class="theme-wrapper relative min-h-screen overflow-hidden bg-slate-950" style="--nav-bg: rgba(15, 23, 42, 0.4); --nav-text: #f8fafc; --nav-border: rgba(255, 255, 255, 0.08); --cv-primary: #06b6d4; --cv-accent: #ec4899">
+  <!-- Glowing dynamic abstract mesh gradients in background -->
+  <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-cyan-500/20 blur-[120px] pointer-events-none"></div>
+  <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-pink-500/10 blur-[120px] pointer-events-none"></div>
+  <div class="absolute top-[30%] right-[15%] w-[30vw] h-[30vw] rounded-full bg-purple-500/15 blur-[100px] pointer-events-none"></div>
+
+  <app-theme-nav />
+
+  <div class="md:ml-64 px-6 md:px-16 py-20 space-y-24 text-white min-h-screen relative z-10">
+    <!-- ABOUT -->
+    <section id="about" class="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-center bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-xl shadow-2xl">
+      <div class="space-y-4 flex-1 text-center md:text-left">
+        <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight leading-none">
+          {{ 'about.name' | translate }}
+        </h1>
+        <p class="text-xl md:text-2xl font-bold text-cv-primary">
+          {{ 'about.title' | translate }}
+        </p>
+        <p class="text-slate-300 leading-relaxed text-base">
+          {{ 'about.summary' | translate }}
+        </p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="max-w-4xl mx-auto space-y-8">
+      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
+        <app-cv-icon name="arrow-right" class="text-cv-primary" size="w-5 h-5" />
+        <h2 class="text-2xl font-black tracking-tight uppercase">
+          {{ 'experience.title' | translate }}
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6">
+        @for (job of ('experience.items' | translate); track job.company) {
+          <app-cv-experience-card [data]="job" layoutVariant="clean" class="bg-white/5 border border-white/10 backdrop-blur-md shadow-lg" />
+        }
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="max-w-4xl mx-auto space-y-8">
+      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
+        <app-cv-icon name="arrow-right" class="text-cv-primary" size="w-5 h-5" />
+        <h2 class="text-2xl font-black tracking-tight uppercase">
+          {{ 'skills.title' | translate }}
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="space-y-3 p-6 bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl shadow-lg">
+          <h3 class="font-bold text-slate-300 text-sm uppercase tracking-wider">Languages</h3>
+          <div class="flex flex-wrap gap-2">
+            @for (lang of ('skills.languages' | translate); track lang) {
+              <app-cv-badge [labelKey]="lang" variant="glass" size="sm" />
+            }
+          </div>
+        </div>
+
+        <div class="space-y-3 p-6 bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl shadow-lg">
+          <h3 class="font-bold text-slate-300 text-sm uppercase tracking-wider">Frameworks & CSS</h3>
+          <div class="flex flex-wrap gap-2">
+            @for (fw of ('skills.frameworks' | translate); track fw) {
+              <app-cv-badge [labelKey]="fw" variant="glass" size="sm" class="!border-cv-primary/40 !text-cv-primary" />
+            }
+          </div>
+        </div>
+
+        <div class="space-y-3 p-6 bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl shadow-lg">
+          <h3 class="font-bold text-slate-300 text-sm uppercase tracking-wider">Tools</h3>
+          <div class="flex flex-wrap gap-2">
+            @for (tool of ('skills.tools' | translate); track tool) {
+              <app-cv-badge [labelKey]="tool" variant="glass" size="sm" />
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="max-w-4xl mx-auto space-y-8">
+      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
+        <app-cv-icon name="arrow-right" class="text-cv-primary" size="w-5 h-5" />
+        <h2 class="text-2xl font-black tracking-tight uppercase">
+          {{ 'education.title' | translate }}
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6">
+        @for (edu of ('education.items' | translate); track edu.school) {
+          <app-cv-experience-card [data]="edu" layoutVariant="clean" class="bg-white/5 border border-white/10 backdrop-blur-md shadow-lg" />
+        }
+      </div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section id="certificates" class="max-w-4xl mx-auto space-y-8">
+      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
+        <app-cv-icon name="arrow-right" class="text-cv-primary" size="w-5 h-5" />
+        <h2 class="text-2xl font-black tracking-tight uppercase">
+          {{ 'certificates.title' | translate }}
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        @for (cert of ('certificates.items' | translate); track cert) {
+          <div class="flex items-center space-x-3 p-5 bg-white/5 border border-white/10 backdrop-blur-md rounded-xl shadow-lg hover:border-cv-accent transition-all duration-300">
+            <app-cv-icon name="gpa" class="text-cv-primary" size="w-5 h-5" />
+            <span class="text-sm font-semibold text-slate-200">{{ cert }}</span>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="max-w-4xl mx-auto space-y-8 pb-16">
+      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
+        <app-cv-icon name="arrow-right" class="text-cv-primary" size="w-5 h-5" />
+        <h2 class="text-2xl font-black tracking-tight uppercase">
+          {{ 'contact.title' | translate }}
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a [href]="'mailto:' + ('contact.email' | translate)" class="flex items-center space-x-4 p-6 bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl hover:bg-white/10 hover:border-cv-primary transition-all">
+          <app-cv-icon name="email" class="text-cv-primary" size="w-6 h-6" />
+          <div>
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Email</p>
+            <p class="text-sm font-bold text-white truncate">{{ 'contact.email' | translate }}</p>
+          </div>
+        </a>
+
+        <div class="flex items-center space-x-4 p-6 bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl">
+          <app-cv-icon name="phone" class="text-cv-primary" size="w-6 h-6" />
+          <div>
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Phone</p>
+            <p class="text-sm font-bold text-white">{{ 'contact.phone' | translate }}</p>
+          </div>
+        </div>
+
+        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" class="flex items-center space-x-4 p-6 bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl hover:bg-white/10 hover:border-cv-accent transition-all">
+          <app-cv-icon name="linkedin" class="text-cv-primary" size="w-6 h-6" />
+          <div>
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">LinkedIn</p>
+            <p class="text-sm font-bold text-white">Connect</p>
+          </div>
+        </a>
+      </div>
+    </section>
   </div>
 </div>
