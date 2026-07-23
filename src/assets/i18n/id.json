@@ -1,106 +1,106 @@
 {
   "home": {
-    "title": "One CV, Multiple Themes",
-    "subtitle": "Same content, different styles. Choose your vibe.",
-    "badge": "Same CV",
-    "explore": "Explore"
+    "title": "Satu Daftar Riwayat Hidup (Curriculum Vitae), Beragam Tema",
+    "subtitle": "Kandungan informasi yang sama, gaya visual yang berbeda. Silakan pilih preferensi Anda.",
+    "badge": "Daftar Riwayat Hidup (Curriculum Vitae) Yang Sama",
+    "explore": "Jelajahi"
   },
   "themes_data": {
     "minimalist": {
-      "title": "Minimalist Clean",
-      "description": "Clean layout focused on readability."
+      "title": "Minimalis Bersih (Clean Minimalist)",
+      "description": "Tata letak ringkas yang berfokus pada keterbacaan (readability)."
     },
     "cyberpunk": {
-      "title": "Cyberpunk Neon",
-      "description": "Neon futuristic look."
+      "title": "Neon Sibernetik (Cyberpunk Neon)",
+      "description": "Tampilan futuristik bernuansa lampu neon."
     },
     "glassmorphism": {
-      "title": "Glassmorphism",
-      "description": "Soft glass UI with blur."
+      "title": "Efek Kaca Transparan (Glassmorphism)",
+      "description": "Antarmuka pengguna (User Interface) bertekstur kaca lembut dengan efek buram (blur)."
     },
     "dark": {
-      "title": "Dark Minimal",
-      "description": "Elegant dark theme."
+      "title": "Gelap Minimalis (Dark Minimal)",
+      "description": "Tema gelap yang elegan."
     },
     "retro-computer": {
-      "title": "Retro Computer",
-      "description": "Terminal-style interface."
+      "title": "Komputer Klasik (Retro Computer)",
+      "description": "Antarmuka bergaya terminal perintah (command line interface)."
     },
     "gradient-flow": {
-      "title": "Gradient Flow",
-      "description": "Colorful gradients."
+      "title": "Alur Gradasi (Gradient Flow)",
+      "description": "Perpaduan warna gradasi yang dinamis."
     },
     "sidebar-navigation": {
-      "title": "Sidebar Navigation",
-      "description": "Sidebar-based layout."
+      "title": "Navigasi Bilah Samping (Sidebar Navigation)",
+      "description": "Tata letak berorientasi pada bilah samping (sidebar)."
     },
     "parallax-scrolling": {
-      "title": "Parallax Scrolling",
-      "description": "Scroll-based animations."
+      "title": "Gulir Paralaks (Parallax Scrolling)",
+      "description": "Animasi visual berbasis interaksi pengguliran layar (scrolling)."
     },
     "timeline-style": {
-      "title": "Timeline Style",
-      "description": "Timeline-based CV."
+      "title": "Gaya Lini Masa (Timeline Style)",
+      "description": "Penyajian Daftar Riwayat Hidup (Curriculum Vitae) berbasis kronologi waktu."
     }
   },
   "about": {
     "name": "Muhammad Maulana Yusuf",
-    "title": "Frontend Developer",
-    "summary": "Experienced Frontend Developer with a solid background in Informatics Engineering (GPA: 3.54). Proven track record of translating complex Figma designs into responsive enterprise applications. Experienced in building and maintaining web modules across financial systems (Bank Mandiri) and government service platforms (Bea Cukai) using Angular, React.js, and TypeScript.",
-    "location": "South Bogor, West Java",
+    "title": "Pengembang Antarmuka Depan (Frontend Developer)",
+    "summary": "Pengembang Antarmuka Depan (Frontend Developer) berpengalaman dengan latar belakang pendidikan yang solid di bidang Teknik Informatika (Indeks Prestasi Kumulatif / IPK: 3,54). Memiliki rekam jejak teruji dalam mentransformasikan rancangan Figma yang kompleks menjadi aplikasi skala perusahaan (enterprise application) yang responsif. Berpengalaman dalam membangun serta memelihara modul-modul web pada sistem keuangan (Bank Mandiri) dan platform layanan pemerintah (Direktorat Jenderal Bea dan Cukai) menggunakan Angular, React.js, dan TypeScript.",
+    "location": "Bogor Selatan, Jawa Barat",
     "email": "mmaulanayusuf777@gmail.com",
     "phone": "+6281292316096",
     "linkedin": "linkedin.com/in/muhammad-maulana-yusuf",
     "github": "github.com/mmy-lana"
   },
   "experience": {
-    "title": "Work Experience",
+    "title": "Pengalaman Kerja",
     "items": [
       {
-        "company": "Direktorat Jenderal Bea dan Cukai (Outsourced by PT Altros Teknologi)",
-        "role": "Frontend Developer",
-        "period": "February 2025 – Present",
+        "company": "Direktorat Jenderal Bea dan Cukai (Tenaga Alih Daya dari PT Altros Teknologi)",
+        "role": "Pengembang Antarmuka Depan (Frontend Developer)",
+        "period": "Februari 2025 – Sekarang",
         "location": "Jakarta, Indonesia",
         "desc": [
-          "Developed and maintained core microfrontend modules within the CEISA 4.0 and Portal Pengguna Jasa systems using React.js and Ant Design.",
-          "Collaborated closely with backend teams to integrate RESTful APIs, ensuring secure data handling and responsive layouts.",
-          "Identified, debugged, and resolved system-critical frontend bugs, enhancing portal stability for external users."
+          "Mengembangkan dan memelihara modul inti mikro-antarmuka depan (microfrontend modules) pada sistem CEISA 4.0 serta Portal Pengguna Jasa menggunakan React.js dan Ant Design.",
+          "Bekerja sama secara erat dengan tim pengembang belakang (backend team) untuk mengintegrasikan antarmuka pemrograman aplikasi (RESTful API), guna memastikan pengelolaan data yang aman dan tata letak yang responsif.",
+          "Menganalisis, melakukan penelusuran kesalahan (debugging), dan menyelesaikan kendala teknis (bugs) tingkat krusial pada antarmuka depan, guna meningkatkan stabilitas portal bagi pengguna eksternal."
         ]
       },
       {
-        "company": "PT Bank Mandiri (Persero) Tbk (Outsourced by PT Lawencon International)",
-        "role": "Software Engineer",
-        "period": "April 2024 – December 2024",
+        "company": "PT Bank Mandiri (Persero) Tbk (Tenaga Alih Daya dari PT Lawencon International)",
+        "role": "Insinyur Perangkat Lunak (Software Engineer)",
+        "period": "April 2024 – Desember 2024",
         "location": "Jakarta, Indonesia",
         "desc": [
-          "Developed core frontend modules for corporate banking services (Export Letter of Credit, Document Tracker, Auto-Debit, EIPP, and VA Collection) using Angular and TypeScript.",
-          "Built responsive, utility-first UI elements with Tailwind CSS based on Figma design specifications.",
-          "Participated in team code reviews, optimized component modularity, and maintained technical documentation in Confluence."
+          "Mengembangkan modul antarmuka depan utama untuk layanan perbankan korporasi (Export Letter of Credit, Document Tracker, Auto-Debit, EIPP, dan VA Collection) menggunakan Angular dan TypeScript.",
+          "Membangun elemen antarmuka pengguna (User Interface) yang responsif dan mengutamakan kegunaan (utility-first) menggunakan Tailwind CSS berdasarkan spesifikasi desain Figma.",
+          "Berpartisipasi dalam peninjauan kode sumber (code review) tim, mengoptimalkan modularitas komponen, serta menyusun dan memelihara dokumentasi teknis pada platform Confluence."
         ]
       },
       {
         "company": "PT Lawencon Internasional",
-        "role": "Frontend Developer",
-        "period": "February 2024 – March 2024",
+        "role": "Pengembang Antarmuka Depan (Frontend Developer)",
+        "period": "Februari 2024 – Maret 2024",
         "location": "Jakarta, Indonesia",
         "desc": [
-          "Developed HRIS (Linov) frontend features for payroll, attendance, and employee management using Angular and PrimeNG.",
-          "Translated wireframes into responsive modular UIs, improving codebase cleanliness and maintainability."
+          "Mengembangkan fitur antarmuka depan pada Sistem Informasi Sumber Daya Manusia / HRIS (Linov) untuk modul penggajian (payroll), presensi (attendance), dan pengelolaan karyawan menggunakan Angular dan PrimeNG.",
+          "Menerjemahkan kerangka rancangan (wireframes) menjadi antarmuka pengguna modular yang responsif, guna meningkatkan kebersihan serta keterpeliharaan basis kode (codebase)."
         ]
       },
       {
         "company": "PT Dyandra Promosindo",
-        "role": "Project Officer",
-        "period": "June 2021 – November 2022",
+        "role": "Petugas Pelaksana Proyek (Project Officer)",
+        "period": "Juni 2021 – November 2022",
         "location": "Jakarta, Indonesia",
         "desc": [
-          "Managed technical virtual infrastructure (VMIX/Zoom integration) and live stream logistics for national-scale webinars."
+          "Mengelola infrastruktur teknis virtual (integrasi VMIX/Zoom) serta logistik penyiaran langsung (live streaming) untuk kegiatan seminar web (webinar) berskala nasional."
         ]
       }
     ]
   },
   "skills": {
-    "title": "Skills",
+    "title": "Keahlian",
     "languages": [
       "C#",
       "CSS3",
@@ -129,34 +129,34 @@
     ]
   },
   "education": {
-    "title": "Education",
+    "title": "Pendidikan",
     "items": [
       {
         "school": "PT Lawencon Internasional",
-        "degree": "Bootcamp Full Stack Developer",
-        "year": "November 2023 – January 2024",
+        "degree": "Pelatihan Intensif Pengembang Aplikasi Menyeluruh (Bootcamp Full Stack Developer)",
+        "year": "November 2023 – Januari 2024",
         "location": "Jakarta, Indonesia",
-        "desc": "Intensive full-time software engineering program focusing on enterprise web development using .NET and Angular."
+        "desc": "Program rekayasa perangkat lunak (software engineering) intensif purna-waktu yang berfokus pada pengembangan aplikasi web tingkat perusahaan (enterprise web development) berbasis .NET dan Angular."
       },
       {
         "school": "Universitas Gunadarma",
-        "degree": "Bachelor of Engineering - BE Teknik Informatika",
-        "year": "July 2016 – November 2020",
+        "degree": "Sarjana Komputer (Bachelor of Engineering) - Sarjana Teknik Informatika",
+        "year": "Juli 2016 – November 2020",
         "location": "Kota Depok, Indonesia",
-        "gpa": "3.54/4.00"
+        "gpa": "3,54/4,00"
       }
     ]
   },
   "certificates": {
-    "title": "Certificates",
+    "title": "Sertifikat",
     "items": [
-      "The Complete JavaScript Course 2023 (Udemy)",
+      "Kursus Lengkap JavaScript 2023 / The Complete JavaScript Course 2023 (Udemy)",
       "Sertifikat Kelas Belajar Reactjs (CodePolitan)",
-      "The Complete SQL Bootcamp (Udemy)"
+      "Pelatihan Intensif SQL Lengkap / The Complete SQL Bootcamp (Udemy)"
     ]
   },
   "contact": {
-    "title": "Contact",
+    "title": "Kontak",
     "email": "mmaulanayusuf777@gmail.com",
     "phone": "+6281292316096",
     "linkedin": "linkedin.com/in/muhammad-maulana-yusuf"
