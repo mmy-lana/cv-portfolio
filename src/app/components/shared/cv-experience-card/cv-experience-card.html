@@ -80,7 +80,7 @@
   @if (descriptions.length > 0) {
     <div class="mt-4 border-t pt-4" [class.border-slate-200]="layoutVariant === 'clean'" [class.border-white/10]="layoutVariant === 'cyber'" [class.border-dashed]="layoutVariant === 'retro'" [class.border-amber-500/30]="layoutVariant === 'retro'">
       <ul class="space-y-2.5 text-sm" [class.font-mono]="layoutVariant !== 'clean'">
-        @for (bullet of descriptions; track bullet) {
+        @for (bullet of descriptions; track $index) {
           <li class="flex items-start gap-2" [class.text-slate-700]="layoutVariant === 'clean'" [class.text-zinc-300]="layoutVariant === 'retro'" [class.text-[#00ff41]/90]="layoutVariant === 'cyber'">
             <span class="text-cv-primary font-bold select-none mt-0.5" [class.text-[#00f0ff]]="layoutVariant === 'cyber'" [class.text-amber-500]="layoutVariant === 'retro'">
               {{ layoutVariant === 'clean' ? '•' : '>' }}

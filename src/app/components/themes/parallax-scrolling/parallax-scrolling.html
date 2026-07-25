@@ -58,7 +58,7 @@
 
         @defer (on viewport) {
           <div class="grid grid-cols-1 gap-6 relative z-10">
-            @for (job of ('experience.items' | translate); track job.company) {
+            @for (job of ('experience.items' | translate); track $index) {
               <div
                 (mousemove)="onTiltMove($event)"
                 (mouseleave)="onTiltLeave($event)"
@@ -98,7 +98,7 @@
             <div (mousemove)="onTiltMove($event)" (mouseleave)="onTiltLeave($event)" class="parallax-tilt-card space-y-3 p-6 bg-slate-950/70 border border-white/10 backdrop-blur-md rounded-2xl">
               <h3 class="font-bold text-slate-300 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Languages</h3>
               <div class="flex flex-wrap gap-2">
-                @for (lang of ('skills.languages' | translate); track lang) {
+                @for (lang of ('skills.languages' | translate); track $index) {
                   <app-cv-badge [labelKey]="lang" variant="glass" size="sm" />
                 }
               </div>
@@ -107,7 +107,7 @@
             <div (mousemove)="onTiltMove($event)" (mouseleave)="onTiltLeave($event)" class="parallax-tilt-card space-y-3 p-6 bg-slate-950/70 border border-white/10 backdrop-blur-md rounded-2xl">
               <h3 class="font-bold text-slate-300 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Frameworks</h3>
               <div class="flex flex-wrap gap-2">
-                @for (fw of ('skills.frameworks' | translate); track fw) {
+                @for (fw of ('skills.frameworks' | translate); track $index) {
                   <app-cv-badge [labelKey]="fw" variant="solid" size="sm" />
                 }
               </div>
@@ -116,7 +116,7 @@
             <div (mousemove)="onTiltMove($event)" (mouseleave)="onTiltLeave($event)" class="parallax-tilt-card space-y-3 p-6 bg-slate-950/70 border border-white/10 backdrop-blur-md rounded-2xl">
               <h3 class="font-bold text-slate-300 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Tools</h3>
               <div class="flex flex-wrap gap-2">
-                @for (tool of ('skills.tools' | translate); track tool) {
+                @for (tool of ('skills.tools' | translate); track $index) {
                   <app-cv-badge [labelKey]="tool" variant="glass" size="sm" />
                 }
               </div>
@@ -148,7 +148,7 @@
 
         @defer (on viewport) {
           <div class="grid grid-cols-1 gap-6 relative z-10">
-            @for (edu of ('education.items' | translate); track edu.school) {
+            @for (edu of ('education.items' | translate); track $index) {
               <div (mousemove)="onTiltMove($event)" (mouseleave)="onTiltLeave($event)" class="parallax-tilt-card bg-slate-900/40 border border-white/10 rounded-2xl">
                 <app-cv-experience-card [data]="edu" layoutVariant="clean" />
               </div>
@@ -168,7 +168,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          @for (cert of ('certificates.items' | translate); track cert) {
+          @for (cert of ('certificates.items' | translate); track $index) {
             <div (mousemove)="onTiltMove($event)" (mouseleave)="onTiltLeave($event)" class="parallax-tilt-card flex items-center space-x-3 p-5 bg-slate-900/30 border border-white/10 hover:border-purple-400 transition-all duration-300 rounded-xl">
               <app-cv-icon name="gpa" class="text-purple-400" size="w-5 h-5" />
               <span class="text-sm font-semibold text-slate-300">{{ cert }}</span>

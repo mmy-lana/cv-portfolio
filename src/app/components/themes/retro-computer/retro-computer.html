@@ -28,7 +28,7 @@
 
       <!-- TERMINAL OUTPUT STREAM -->
       <div #terminalContainer class="flex-1 min-h-0 border-2 border-[#ffb000]/40 p-4 md:p-6 bg-[#0a0803] overflow-y-auto overflow-x-hidden space-y-6 text-sm leading-relaxed">
-        @for (entry of history(); track entry.timestamp + entry.command) {
+        @for (entry of history(); track $index) {
           <div class="space-y-3">
             @if (entry.type !== 'system') {
               <div class="flex items-center gap-2 text-amber-300 font-bold">

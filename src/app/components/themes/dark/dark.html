@@ -59,7 +59,7 @@
 
       @defer (on viewport) {
         <div class="grid grid-cols-1 gap-6">
-          @for (job of ('experience.items' | translate); track job.company) {
+          @for (job of ('experience.items' | translate); track $index) {
             <div (mousemove)="onMouseMove($event)" class="dark-glow-card border border-white/10 rounded-2xl">
               <app-cv-experience-card [data]="job" layoutVariant="clean" />
             </div>
@@ -87,7 +87,7 @@
           <div (mousemove)="onMouseMove($event)" class="dark-glow-card p-6 border border-white/10 rounded-2xl space-y-4">
             <h3 class="font-bold text-slate-400 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Languages</h3>
             <div class="flex flex-wrap gap-2">
-              @for (lang of ('skills.languages' | translate); track lang) {
+              @for (lang of ('skills.languages' | translate); track $index) {
                 <span class="px-3 py-1 text-xs font-semibold rounded-lg bg-[#181820] text-slate-200 border-t border-white/20 border-x border-b border-white/5 hover:border-indigo-400/60 transition-all cursor-default">
                   {{ lang }}
                 </span>
@@ -98,7 +98,7 @@
           <div (mousemove)="onMouseMove($event)" class="dark-glow-card p-6 border border-white/10 rounded-2xl space-y-4">
             <h3 class="font-bold text-slate-400 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Frameworks & CSS</h3>
             <div class="flex flex-wrap gap-2">
-              @for (fw of ('skills.frameworks' | translate); track fw) {
+              @for (fw of ('skills.frameworks' | translate); track $index) {
                 <span class="px-3 py-1 text-xs font-semibold rounded-lg bg-[#181820] text-indigo-300 border-t border-indigo-400/40 border-x border-b border-white/5 hover:border-indigo-400 transition-all cursor-default">
                   {{ fw }}
                 </span>
@@ -109,7 +109,7 @@
           <div (mousemove)="onMouseMove($event)" class="dark-glow-card p-6 border border-white/10 rounded-2xl space-y-4">
             <h3 class="font-bold text-slate-400 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Tools</h3>
             <div class="flex flex-wrap gap-2">
-              @for (tool of ('skills.tools' | translate); track tool) {
+              @for (tool of ('skills.tools' | translate); track $index) {
                 <span class="px-3 py-1 text-xs font-semibold rounded-lg bg-[#181820] text-slate-300 border-t border-white/20 border-x border-b border-white/5 hover:border-indigo-400/60 transition-all cursor-default">
                   {{ tool }}
                 </span>
@@ -137,7 +137,7 @@
 
       @defer (on viewport) {
         <div class="grid grid-cols-1 gap-6">
-          @for (edu of ('education.items' | translate); track edu.school) {
+          @for (edu of ('education.items' | translate); track $index) {
             <div (mousemove)="onMouseMove($event)" class="dark-glow-card border border-white/10 rounded-2xl">
               <app-cv-experience-card [data]="edu" layoutVariant="clean" />
             </div>
@@ -158,7 +158,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        @for (cert of ('certificates.items' | translate); track cert) {
+        @for (cert of ('certificates.items' | translate); track $index) {
           <div (mousemove)="onMouseMove($event)" class="dark-glow-card flex items-center space-x-3 p-5 border border-white/10 rounded-xl">
             <app-cv-icon name="gpa" class="text-indigo-400" size="w-5 h-5" />
             <span class="text-sm font-semibold text-slate-300">{{ cert }}</span>

@@ -53,7 +53,7 @@
 
       @defer (on viewport) {
         <div class="grid grid-cols-1 gap-6">
-          @for (job of ('experience.items' | translate); track job.company) {
+          @for (job of ('experience.items' | translate); track $index) {
             <app-cv-experience-card [data]="job" layoutVariant="cyber" />
           }
         </div>
@@ -78,7 +78,7 @@
           <div class="border-2 border-[#bc00ff]/40 p-6 bg-purple-950/10 hover:border-[#00f0ff] transition-colors">
             <h3 class="text-xs font-bold text-[#00f0ff] uppercase tracking-widest border-b border-[#bc00ff]/20 pb-2 mb-4">// LANGUAGES</h3>
             <div class="flex flex-wrap gap-2">
-              @for (lang of ('skills.languages' | translate); track lang) {
+              @for (lang of ('skills.languages' | translate); track $index) {
                 <span class="px-2.5 py-1 text-xs border border-[#00f0ff]/60 bg-black text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black transition-all duration-200 cursor-crosshair">
                   [ {{ lang }} ]
                 </span>
@@ -89,7 +89,7 @@
           <div class="border-2 border-[#bc00ff]/40 p-6 bg-purple-950/10 hover:border-[#00f0ff] transition-colors">
             <h3 class="text-xs font-bold text-[#00f0ff] uppercase tracking-widest border-b border-[#bc00ff]/20 pb-2 mb-4">// FRAMEWORKS</h3>
             <div class="flex flex-wrap gap-2">
-              @for (fw of ('skills.frameworks' | translate); track fw) {
+              @for (fw of ('skills.frameworks' | translate); track $index) {
                 <span class="px-2.5 py-1 text-xs border border-[#bc00ff]/60 bg-black text-[#00ff41] hover:bg-[#bc00ff] hover:text-white transition-all duration-200 cursor-crosshair">
                   [ {{ fw }} ]
                 </span>
@@ -100,7 +100,7 @@
           <div class="border-2 border-[#bc00ff]/40 p-6 bg-purple-950/10 hover:border-[#00f0ff] transition-colors">
             <h3 class="text-xs font-bold text-[#00f0ff] uppercase tracking-widest border-b border-[#bc00ff]/20 pb-2 mb-4">// SYSTEM_TOOLS</h3>
             <div class="flex flex-wrap gap-2">
-              @for (tool of ('skills.tools' | translate); track tool) {
+              @for (tool of ('skills.tools' | translate); track $index) {
                 <span class="px-2.5 py-1 text-xs border border-pink-500/60 bg-black text-pink-400 hover:bg-pink-500 hover:text-black transition-all duration-200 cursor-crosshair">
                   [ {{ tool }} ]
                 </span>
@@ -127,7 +127,7 @@
 
       @defer (on viewport) {
         <div class="grid grid-cols-1 gap-6">
-          @for (edu of ('education.items' | translate); track edu.school) {
+          @for (edu of ('education.items' | translate); track $index) {
             <app-cv-experience-card [data]="edu" layoutVariant="cyber" />
           }
         </div>
@@ -145,7 +145,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        @for (cert of ('certificates.items' | translate); track cert) {
+        @for (cert of ('certificates.items' | translate); track $index) {
           <div class="flex items-center space-x-3 p-5 border border-[#bc00ff]/30 bg-purple-950/10 hover:border-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all duration-200">
             <span class="text-[#00f0ff] font-bold">></span>
             <span class="text-xs text-slate-300 font-semibold uppercase">{{ cert }}</span>

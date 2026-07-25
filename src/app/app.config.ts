@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
 
     // Set the default language HERE to avoid the read-only/deprecation error
     provideTranslateService({
-      defaultLanguage: 'en',
+      fallbackLang: 'en',
       loader: provideTranslateHttpLoader({
         prefix: './assets/i18n/',
         suffix: '.json'

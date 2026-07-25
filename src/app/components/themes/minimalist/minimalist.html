@@ -67,7 +67,7 @@
 
       @defer (on viewport) {
         <div class="grid grid-cols-1 gap-6 print:gap-4">
-          @for (job of ('experience.items' | translate); track job.company) {
+          @for (job of ('experience.items' | translate); track $index) {
             <app-cv-experience-card 
               [data]="job" 
               layoutVariant="clean" 
@@ -162,7 +162,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 print:grid-cols-1 print:gap-2">
-        @for (cert of ('certificates.items' | translate); track cert) {
+        @for (cert of ('certificates.items' | translate); track $index) {
           <div class="flex items-center space-x-3 p-4 bg-slate-50/80 rounded-xl border border-slate-200/80 hover:border-cv-accent hover:shadow-sm transition-all duration-200 print:bg-transparent print:p-2 print:border-none">
             <app-cv-icon name="gpa" class="text-cv-primary print:hidden" size="w-5 h-5" />
             <span class="text-sm font-semibold text-slate-800 print:text-xs">{{ cert }}</span>

@@ -62,7 +62,7 @@
 
       @defer (on viewport) {
         <div class="grid grid-cols-1 gap-6">
-          @for (job of ('experience.items' | translate); track job.company) {
+          @for (job of ('experience.items' | translate); track $index) {
             <div (mousemove)="onMouseMove($event)" class="glass-card glass-spotlight rounded-2xl transition-all duration-300 hover:-translate-y-0.5">
               <app-cv-experience-card [data]="job" layoutVariant="clean" />
             </div>
@@ -90,7 +90,7 @@
           <div (mousemove)="onMouseMove($event)" class="space-y-4 p-6 glass-card glass-spotlight rounded-2xl">
             <h3 class="font-bold text-slate-300 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Languages</h3>
             <div class="flex flex-wrap gap-2">
-              @for (lang of ('skills.languages' | translate); track lang) {
+              @for (lang of ('skills.languages' | translate); track $index) {
                 <span class="px-3 py-1 text-xs font-semibold rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md hover:bg-white/20 hover:border-cyan-400/50 transition-all cursor-default">
                   {{ lang }}
                 </span>
@@ -101,7 +101,7 @@
           <div (mousemove)="onMouseMove($event)" class="space-y-4 p-6 glass-card glass-spotlight rounded-2xl">
             <h3 class="font-bold text-slate-300 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Frameworks & CSS</h3>
             <div class="flex flex-wrap gap-2">
-              @for (fw of ('skills.frameworks' | translate); track fw) {
+              @for (fw of ('skills.frameworks' | translate); track $index) {
                 <span class="px-3 py-1 text-xs font-semibold rounded-full bg-cyan-500/15 text-cyan-200 border border-cyan-400/30 backdrop-blur-md hover:bg-cyan-500/25 transition-all cursor-default">
                   {{ fw }}
                 </span>
@@ -112,7 +112,7 @@
           <div (mousemove)="onMouseMove($event)" class="space-y-4 p-6 glass-card glass-spotlight rounded-2xl">
             <h3 class="font-bold text-slate-300 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Tools</h3>
             <div class="flex flex-wrap gap-2">
-              @for (tool of ('skills.tools' | translate); track tool) {
+              @for (tool of ('skills.tools' | translate); track $index) {
                 <span class="px-3 py-1 text-xs font-semibold rounded-full bg-pink-500/15 text-pink-200 border border-pink-400/30 backdrop-blur-md hover:bg-pink-500/25 transition-all cursor-default">
                   {{ tool }}
                 </span>
@@ -140,7 +140,7 @@
 
       @defer (on viewport) {
         <div class="grid grid-cols-1 gap-6">
-          @for (edu of ('education.items' | translate); track edu.school) {
+          @for (edu of ('education.items' | translate); track $index) {
             <div (mousemove)="onMouseMove($event)" class="glass-card glass-spotlight rounded-2xl">
               <app-cv-experience-card [data]="edu" layoutVariant="clean" />
             </div>
@@ -161,7 +161,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        @for (cert of ('certificates.items' | translate); track cert) {
+        @for (cert of ('certificates.items' | translate); track $index) {
           <div (mousemove)="onMouseMove($event)" class="flex items-center space-x-3 p-5 glass-card glass-spotlight rounded-xl hover:border-cyan-400/50 transition-all duration-300">
             <app-cv-icon name="gpa" class="text-cyan-400" size="w-5 h-5" />
             <span class="text-sm font-semibold text-slate-200">{{ cert }}</span>

@@ -8,7 +8,7 @@ export class FaviconService {
   setFavicon(themeId: string): void {
     const faviconLink = this.document.getElementById('app-favicon') as HTMLLinkElement;
     if (faviconLink) {
-      faviconLink.href = `favicons/${themeId}.svg`;
+      faviconLink.href = `assets/favicons/${themeId}.svg`;
     }
   }
 }
