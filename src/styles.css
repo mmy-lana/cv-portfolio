@@ -239,3 +239,39 @@
 .animate-ambient-3 {
   animation: ambient-float-3 16s infinite ease-in-out;
 }
+
+/* Dark Minimal Illuminated Borders & Magnetic Effects */
+.dark-glow-card {
+  position: relative;
+  background: #111116;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.dark-glow-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    450px circle at var(--x, 50%) var(--y, 50%),
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.05) 40%,
+    transparent 80%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dark-glow-card:hover::before {
+  opacity: 1;
+}
+
+.magnetic-btn {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
