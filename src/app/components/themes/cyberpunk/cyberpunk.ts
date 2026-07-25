@@ -1,8 +1,11 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeNav } from '../../shared/theme-nav/theme-nav';
 import { ThemeService } from '../../../services/theme.service';
+import { FaviconService } from '../../../services/favicon.service';
+import { DownloadCvBtnComponent } from '../../shared/atoms/download-cv-btn/download-cv-btn';
 import { CvExperienceCard } from '../../shared/cv-experience-card/cv-experience-card';
+import { CvBadge } from '../../shared/atoms/cv-badge/cv-badge';
 import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
 import { CyberMatrixCanvas } from '../../shared/cyber-matrix-canvas/cyber-matrix-canvas';
 
@@ -12,18 +15,22 @@ import { CyberMatrixCanvas } from '../../shared/cyber-matrix-canvas/cyber-matrix
   imports: [
     ThemeNav,
     TranslateModule,
+    DownloadCvBtnComponent,
     CvExperienceCard,
+    CvBadge,
     CvIcon,
     CyberMatrixCanvas
   ],
   templateUrl: './cyberpunk.html',
 })
 export class Cyberpunk implements OnInit {
-  sysStatus = signal<'ONLINE' | 'STANDBY'>('ONLINE');
+  public themeService = inject(ThemeService);
+  private faviconService = inject(FaviconService);
 
-  constructor(private themeService: ThemeService) {}
+  sysStatus = signal<'ONLINE' | 'STANDBY'>('ONLINE');
 
   ngOnInit(): void {
     this.themeService.setTheme('cyberpunk');
+    this.faviconService.setFavicon('cyberpunk');
   }
 }

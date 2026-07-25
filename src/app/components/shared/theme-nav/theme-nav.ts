@@ -1,24 +1,34 @@
-import { Component, HostListener, output } from '@angular/core';
+import { Component, signal, inject, output } from '@angular/core';
 import { Router } from '@angular/router';
-import { LanguageService } from '../../../services/language.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { ThemeService } from '../../../services/theme.service';
+import { LanguageService } from '../../../services/language.service';
+import { LanguageToggleComponent } from '../atoms/language-toggle/language-toggle';
+import { ThemeModeToggleComponent } from '../atoms/theme-mode-toggle/theme-mode-toggle';
+import { DownloadCvBtnComponent } from '../atoms/download-cv-btn/download-cv-btn';
 import { ThemeSelector } from '../theme-selector/theme-selector';
-import { CvButton } from '../atoms/cv-button/cv-button';
 import { CvIcon } from '../atoms/cv-icon/cv-icon';
 
 @Component({
   selector: 'app-theme-nav',
   standalone: true,
   templateUrl: './theme-nav.html',
-  imports: [TranslateModule, ThemeSelector, CvButton, CvIcon],
+  imports: [
+    TranslateModule,
+    LanguageToggleComponent,
+    ThemeModeToggleComponent,
+    DownloadCvBtnComponent,
+    ThemeSelector,
+    CvIcon
+  ],
 })
 export class ThemeNav {
-  sectionSelect = output<string>();
+  public themeService = inject(ThemeService);
+  public lang = inject(LanguageService);
+  private router = inject(Router);
 
-  constructor(
-    private router: Router,
-    public lang: LanguageService
-  ) { }
+  sectionSelect = output<string>();
+  menuOpen = signal<boolean>(false);
 
   sections = [
     { id: 'about', label: 'about.name' },
@@ -29,15 +39,7 @@ export class ThemeNav {
     { id: 'contact', label: 'contact.title' }
   ];
 
-  activeSection = 'about';
-  menuOpen = false;
-  showScrollTop = false;
-
-  toggleLang(): void {
-    this.lang.toggle();
-  }
-
-  goBack(): void {
+  goHome(): void {
     this.router.navigate(['/']);
   }
 
@@ -47,23 +49,10 @@ export class ThemeNav {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-    this.activeSection = id;
+    this.menuOpen.set(false);
   }
 
-  @HostListener('window:scroll')
-  onScroll(): void {
-    this.showScrollTop = window.scrollY > 300;
-    
-    // Auto-update active section indicator on scroll coordinate match
-    for (const section of this.sections) {
-      const element = document.getElementById(section.id);
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        if (rect.top >= 0 && rect.top <= 300) {
-          this.activeSection = section.id;
-          break;
-        }
-      }
-    }
+  toggleMenu(): void {
+    this.menuOpen.update(v => !v);
   }
 }
