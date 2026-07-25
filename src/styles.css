@@ -372,3 +372,27 @@
 .parallax-tilt-card:hover {
   box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
 }
+
+/* Timeline Style Theme Animations & Node Ripples */
+.timeline-node-ripple {
+  position: relative;
+}
+
+.timeline-node-ripple::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 2px solid currentColor;
+  opacity: 0.6;
+  animation: timeline-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes timeline-pulse {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+.timeline-svg-line {
+  transition: stroke-dashoffset 0.1s linear;
+}

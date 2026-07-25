@@ -1,151 +1,255 @@
-<div class="theme-wrapper" style="--nav-bg: #fafafa; --nav-text: #171717; --nav-border: #e5e5e5; --cv-primary: #171717; --cv-accent: #059669">
-  <app-theme-nav />
+<div class="theme-wrapper" style="--nav-bg: #fafafa; --nav-text: #171717; --nav-border: #e5e5e5; --cv-primary: #10b981; --cv-accent: #059669">
+  <!-- Top Scroll Progress Line Bar -->
+  <div class="fixed top-0 left-0 h-1 bg-emerald-500 z-50 transition-all duration-75" [style.width.%]="scrollProgress()"></div>
 
-  <div class="md:ml-64 px-6 md:px-16 py-20 space-y-24 bg-white text-neutral-900 min-h-screen">
-    <!-- ABOUT -->
-    <section id="about" class="max-w-4xl mx-auto space-y-4 pb-12 border-b border-neutral-200 animate-fade-in-up">
-      <h1 class="text-4xl md:text-5xl font-black tracking-tight leading-none text-neutral-950">
-        {{ 'about.name' | translate }}
-      </h1>
-      <p class="text-xl md:text-2xl font-bold text-cv-accent">
-        {{ 'about.title' | translate }}
-      </p>
+  <app-theme-nav class="print:hidden z-30 relative" />
+
+  <div class="md:ml-64 px-6 md:px-16 py-16 space-y-20 bg-slate-50 text-neutral-900 min-h-screen relative overflow-hidden">
+    
+    <!-- HERO ABOUT HEADER -->
+    <section id="about" class="max-w-4xl mx-auto space-y-6 pb-12 border-b border-neutral-200 animate-fade-in-up">
+      <div class="space-y-2">
+        <span class="text-xs font-bold text-emerald-600 tracking-widest uppercase">CAREER MILESTONE JOURNEY</span>
+        <h1 class="text-4xl md:text-5xl font-black tracking-tight leading-none text-neutral-950">
+          {{ 'about.name' | translate }}
+        </h1>
+        <p class="text-xl md:text-2xl font-bold text-emerald-600">
+          {{ 'about.title' | translate }}
+        </p>
+      </div>
+
       <p class="text-neutral-600 leading-relaxed text-base max-w-3xl">
         {{ 'about.summary' | translate }}
       </p>
+
+      <div class="pt-2 flex flex-wrap items-center gap-4">
+        <a
+          href="assets/cv/CV_Muhammad_Maulana_Yusuf.pdf"
+          download="CV_Muhammad_Maulana_Yusuf.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm rounded-xl shadow-md transition-all duration-200"
+        >
+          <app-cv-icon name="download" size="w-4 h-4" />
+          <span>Download CV (PDF)</span>
+        </a>
+
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs text-neutral-600 font-semibold">
+          <a [href]="'mailto:' + ('about.email' | translate)" class="hover:text-emerald-600 transition-colors">
+            {{ 'about.email' | translate }}
+          </a>
+          <a [href]="'https://' + ('about.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600 transition-colors">
+            {{ 'about.linkedin' | translate }}
+          </a>
+        </div>
+      </div>
     </section>
 
-    <!-- EXPERIENCE TIMELINE -->
-    <section id="experience" class="max-w-4xl mx-auto space-y-8 animate-fade-in-up delay-100">
-      <div class="flex items-center space-x-3 border-b border-neutral-200 pb-4">
-        <app-cv-icon name="calendar" class="text-cv-accent" size="w-6 h-6" />
-        <h2 class="text-2xl font-black tracking-tight uppercase">
+    <!-- NARRATIVE VERTICAL CAREER TIMELINE -->
+    <section id="experience" class="max-w-4xl mx-auto space-y-12 relative">
+      <div class="flex items-center justify-between border-b border-neutral-200 pb-3">
+        <h2 class="text-2xl font-black tracking-tight uppercase text-neutral-950">
           {{ 'experience.title' | translate }}
         </h2>
+        
+        <button
+          (click)="toggleSort()"
+          class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg border border-emerald-500/40 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition-colors cursor-pointer"
+        >
+          <span>ORDER: {{ sortOrder() === 'recent' ? 'NEWEST FIRST' : 'OLDEST FIRST' }}</span>
+          <span>⇅</span>
+        </button>
       </div>
 
-      <div class="relative border-l-2 border-neutral-200 ml-4 md:ml-6 space-y-12">
-        @for (job of ('experience.items' | translate); track job.company) {
-          <div class="relative pl-8 md:pl-12">
-            <!-- Timeline Node Indicator -->
-            <div class="absolute left-[-9px] top-1.5 w-4 h-4 rounded-full bg-cv-accent border-4 border-white ring-2 ring-cv-accent/20"></div>
-            <app-cv-experience-card [data]="job" layoutVariant="clean" class="bg-neutral-50/50 border border-neutral-200/60 shadow-sm hover:shadow-md transition-all duration-300" />
+      <!-- Central Animated SVG Line & Nodes Wrapper -->
+      <div class="relative py-4">
+        <!-- SVG Central Drawing Line -->
+        <svg class="absolute top-0 bottom-0 left-6 md:left-1/2 -translate-x-1/2 w-1 h-full pointer-events-none z-0 overflow-visible" preserveAspectRatio="none">
+          <line x1="0" y1="0" x2="0" y2="100%" stroke="#e2e8f0" stroke-width="3" />
+          <line 
+            x1="0" y1="0" x2="0" y2="100%" 
+            stroke="#10b981" 
+            stroke-width="3" 
+            class="timeline-svg-line"
+            stroke-dasharray="2000"
+            [style.stroke-dashoffset]="2000 - (2000 * scrollProgress() / 100)"
+          />
+        </svg>
+
+        @defer (on viewport) {
+          <div class="space-y-12 relative z-10">
+            @for (job of getSortedExperience(); track job.company; let idx = $index) {
+              <div 
+                class="relative flex flex-col md:flex-row items-start"
+                [class.md:flex-row-reverse]="idx % 2 === 1"
+              >
+                <!-- Central Node Indicator Circle -->
+                <div class="absolute left-6 md:left-1/2 -translate-x-1/2 top-4 w-6 h-6 rounded-full bg-emerald-600 border-4 border-white shadow-md text-emerald-600 timeline-node-ripple z-20"></div>
+
+                <!-- Milestone Card Item Container -->
+                <div 
+                  class="ml-14 md:ml-0 md:w-1/2"
+                  [class.md:pr-12]="idx % 2 === 0"
+                  [class.md:pl-12]="idx % 2 === 1"
+                >
+                  <div class="p-6 bg-white border border-neutral-200 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-neutral-100 pb-2">
+                      <span class="text-xs font-bold text-emerald-600 font-mono">{{ job.period }}</span>
+                      <span class="text-[11px] text-neutral-400 font-medium">{{ job.location }}</span>
+                    </div>
+
+                    <div>
+                      <h3 class="text-lg font-black text-neutral-900 leading-snug">{{ job.role }}</h3>
+                      <p class="text-sm font-bold text-emerald-700">{{ job.company }}</p>
+                    </div>
+
+                    <!-- Expandable Description Content Trigger -->
+                    @if (job.desc) {
+                      <div class="pt-2">
+                        <button 
+                          (click)="toggleNode('exp_' + idx)"
+                          class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 hover:text-emerald-700 cursor-pointer"
+                        >
+                          <span>{{ isExpanded('exp_' + idx) ? 'Collapse Details' : 'View Details' }}</span>
+                          <span class="text-sm">{{ isExpanded('exp_' + idx) ? '▲' : '▼' }}</span>
+                        </button>
+
+                        @if (isExpanded('exp_' + idx)) {
+                          <ul class="mt-3 space-y-2 text-xs text-neutral-600 border-t border-neutral-100 pt-3 animate-fade-in-up">
+                            @for (bullet of job.desc; track bullet) {
+                              <li class="flex items-start gap-2">
+                                <span class="text-emerald-500 font-bold">•</span>
+                                <span class="leading-relaxed">{{ bullet }}</span>
+                              </li>
+                            }
+                          </ul>
+                        }
+                      </div>
+                    }
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        } @placeholder {
+          <div class="space-y-8 animate-pulse">
+            <div class="h-32 bg-white rounded-2xl border border-neutral-200"></div>
+            <div class="h-32 bg-white rounded-2xl border border-neutral-200"></div>
           </div>
         }
       </div>
     </section>
 
-    <!-- SKILLS -->
+    <!-- SKILLS SECTION -->
     <section id="skills" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center space-x-3 border-b border-neutral-200 pb-4">
-        <app-cv-icon name="arrow-right" class="text-cv-accent" size="w-5 h-5" />
-        <h2 class="text-2xl font-black tracking-tight uppercase">
+      <div class="flex items-center justify-between border-b border-neutral-200 pb-3">
+        <h2 class="text-2xl font-black tracking-tight uppercase text-neutral-950">
           {{ 'skills.title' | translate }}
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="space-y-3 p-6 bg-neutral-50 rounded-2xl border border-neutral-200">
-          <h3 class="font-bold text-neutral-800 text-sm uppercase tracking-wider">Languages</h3>
-          <div class="flex flex-wrap gap-2">
-            @for (lang of ('skills.languages' | translate); track lang) {
-              <app-cv-badge [labelKey]="lang" variant="outline" size="sm" />
-            }
+      @defer (on viewport) {
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 bg-white border border-neutral-200 rounded-2xl space-y-3 shadow-sm">
+            <h3 class="font-bold text-xs uppercase text-neutral-500 tracking-wider">Languages</h3>
+            <div class="flex flex-wrap gap-2">
+              @for (lang of ('skills.languages' | translate); track lang) {
+                <app-cv-badge [labelKey]="lang" variant="outline" size="sm" />
+              }
+            </div>
           </div>
-        </div>
 
-        <div class="space-y-3 p-6 bg-neutral-50 rounded-2xl border border-neutral-200">
-          <h3 class="font-bold text-neutral-800 text-sm uppercase tracking-wider">Frameworks</h3>
-          <div class="flex flex-wrap gap-2">
-            @for (fw of ('skills.frameworks' | translate); track fw) {
-              <app-cv-badge [labelKey]="fw" variant="solid" size="sm" />
-            }
+          <div class="p-6 bg-white border border-neutral-200 rounded-2xl space-y-3 shadow-sm">
+            <h3 class="font-bold text-xs uppercase text-neutral-500 tracking-wider">Frameworks & CSS</h3>
+            <div class="flex flex-wrap gap-2">
+              @for (fw of ('skills.frameworks' | translate); track fw) {
+                <app-cv-badge [labelKey]="fw" variant="solid" size="sm" class="!bg-emerald-600 !text-white" />
+              }
+            </div>
           </div>
-        </div>
 
-        <div class="space-y-3 p-6 bg-neutral-50 rounded-2xl border border-neutral-200">
-          <h3 class="font-bold text-neutral-800 text-sm uppercase tracking-wider">Tools</h3>
-          <div class="flex flex-wrap gap-2">
-            @for (tool of ('skills.tools' | translate); track tool) {
-              <app-cv-badge [labelKey]="tool" variant="glass" size="sm" class="!bg-neutral-200 !text-neutral-700" />
-            }
+          <div class="p-6 bg-white border border-neutral-200 rounded-2xl space-y-3 shadow-sm">
+            <h3 class="font-bold text-xs uppercase text-neutral-500 tracking-wider">Tools</h3>
+            <div class="flex flex-wrap gap-2">
+              @for (tool of ('skills.tools' | translate); track tool) {
+                <app-cv-badge [labelKey]="tool" variant="glass" size="sm" class="!bg-neutral-100 !text-neutral-700" />
+              }
+            </div>
           </div>
         </div>
-      </div>
+      } @placeholder {
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 animate-pulse">
+          <div class="h-32 bg-white rounded-2xl border border-neutral-200"></div>
+          <div class="h-32 bg-white rounded-2xl border border-neutral-200"></div>
+          <div class="h-32 bg-white rounded-2xl border border-neutral-200"></div>
+        </div>
+      }
     </section>
 
-    <!-- EDUCATION TIMELINE -->
+    <!-- EDUCATION SECTION -->
     <section id="education" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center space-x-3 border-b border-neutral-200 pb-4">
-        <app-cv-icon name="arrow-right" class="text-cv-accent" size="w-5 h-5" />
-        <h2 class="text-2xl font-black tracking-tight uppercase">
+      <div class="flex items-center justify-between border-b border-neutral-200 pb-3">
+        <h2 class="text-2xl font-black tracking-tight uppercase text-neutral-950">
           {{ 'education.title' | translate }}
         </h2>
       </div>
 
-      <div class="relative border-l-2 border-neutral-200 ml-4 md:ml-6 space-y-12">
-        @for (edu of ('education.items' | translate); track edu.school) {
-          <div class="relative pl-8 md:pl-12">
-            <!-- Timeline Node Indicator -->
-            <div class="absolute left-[-9px] top-1.5 w-4 h-4 rounded-full bg-neutral-900 border-4 border-white ring-2 ring-neutral-900/20"></div>
-            <app-cv-experience-card [data]="edu" layoutVariant="clean" class="bg-neutral-50/50 border border-neutral-200/60" />
-          </div>
-        }
-      </div>
+      @defer (on viewport) {
+        <div class="space-y-6">
+          @for (edu of ('education.items' | translate); track edu.school) {
+            <div class="p-6 bg-white border border-neutral-200 rounded-2xl shadow-sm">
+              <app-cv-experience-card [data]="edu" layoutVariant="clean" />
+            </div>
+          }
+        </div>
+      } @placeholder {
+        <div class="h-28 bg-white rounded-2xl border border-neutral-200 animate-pulse"></div>
+      }
     </section>
 
-    <!-- CERTIFICATES -->
+    <!-- CERTIFICATES & CONCLUSION -->
     <section id="certificates" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center space-x-3 border-b border-neutral-200 pb-4">
-        <app-cv-icon name="arrow-right" class="text-cv-accent" size="w-5 h-5" />
-        <h2 class="text-2xl font-black tracking-tight uppercase">
+      <div class="flex items-center justify-between border-b border-neutral-200 pb-3">
+        <h2 class="text-2xl font-black tracking-tight uppercase text-neutral-950">
           {{ 'certificates.title' | translate }}
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         @for (cert of ('certificates.items' | translate); track cert) {
-          <div class="flex items-center space-x-3 p-5 bg-neutral-50 rounded-xl border border-neutral-200 hover:border-cv-accent transition-all duration-300 shadow-sm">
-            <app-cv-icon name="gpa" class="text-cv-accent" size="w-5 h-5" />
-            <span class="text-sm font-semibold text-neutral-800">{{ cert }}</span>
+          <div class="p-5 bg-white border border-neutral-200 rounded-xl flex items-center space-x-3 shadow-sm">
+            <app-cv-icon name="gpa" class="text-emerald-600" size="w-5 h-5" />
+            <span class="text-xs font-bold text-neutral-800">{{ cert }}</span>
           </div>
         }
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- CONTACT & CONCLUSION CTA -->
     <section id="contact" class="max-w-4xl mx-auto space-y-8 pb-16">
-      <div class="flex items-center space-x-3 border-b border-neutral-200 pb-4">
-        <app-cv-icon name="arrow-right" class="text-cv-accent" size="w-5 h-5" />
-        <h2 class="text-2xl font-black tracking-tight uppercase">
-          {{ 'contact.title' | translate }}
-        </h2>
-      </div>
+      <div class="p-8 md:p-10 bg-emerald-950 text-white rounded-3xl text-center space-y-6 shadow-xl relative overflow-hidden">
+        <h2 class="text-3xl font-black tracking-tight">Ready to collaborate?</h2>
+        <p class="text-emerald-200 text-sm max-w-xl mx-auto">
+          Download my full resume or get in touch directly via email and LinkedIn.
+        </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a [href]="'mailto:' + ('contact.email' | translate)" class="flex items-center space-x-4 p-6 bg-neutral-50 rounded-2xl hover:bg-neutral-100 transition-colors border border-neutral-200 hover:border-cv-accent">
-          <app-cv-icon name="email" class="text-cv-accent" size="w-6 h-6" />
-          <div>
-            <p class="text-xs font-bold text-neutral-400 uppercase tracking-wider">Email</p>
-            <p class="text-sm font-bold text-neutral-800 truncate">{{ 'contact.email' | translate }}</p>
-          </div>
-        </a>
+        <div class="flex flex-wrap justify-center items-center gap-4 pt-2">
+          <a
+            href="assets/cv/CV_Muhammad_Maulana_Yusuf.pdf"
+            download="CV_Muhammad_Maulana_Yusuf.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-widest rounded-xl transition-all shadow-lg hover:scale-105"
+          >
+            <app-cv-icon name="download" size="w-4 h-4" />
+            <span>Download Official CV</span>
+          </a>
 
-        <div class="flex items-center space-x-4 p-6 bg-neutral-50 rounded-2xl border border-neutral-200">
-          <app-cv-icon name="phone" class="text-cv-accent" size="w-6 h-6" />
-          <div>
-            <p class="text-xs font-bold text-neutral-400 uppercase tracking-wider">Phone</p>
-            <p class="text-sm font-bold text-neutral-800">{{ 'contact.phone' | translate }}</p>
-          </div>
+          <a [href]="'mailto:' + ('contact.email' | translate)" class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-widest rounded-xl transition-all">
+            <app-cv-icon name="email" size="w-4 h-4" />
+            <span>Send Email</span>
+          </a>
         </div>
-
-        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" class="flex items-center space-x-4 p-6 bg-neutral-50 rounded-2xl hover:bg-neutral-100 transition-colors border border-neutral-200 hover:border-cv-accent">
-          <app-cv-icon name="linkedin" class="text-cv-accent" size="w-6 h-6" />
-          <div>
-            <p class="text-xs font-bold text-neutral-400 uppercase tracking-wider">LinkedIn</p>
-            <p class="text-sm font-bold text-neutral-800">Connect</p>
-          </div>
-        </a>
       </div>
     </section>
   </div>

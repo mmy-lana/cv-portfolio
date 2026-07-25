@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, signal, NgZone, inject } from '@angular/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ThemeNav } from '../../shared/theme-nav/theme-nav';
 import { ThemeService } from '../../../services/theme.service';
@@ -13,10 +13,59 @@ import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
   imports: [ThemeNav, TranslateModule, RouterModule, CvExperienceCard, CvBadge, CvIcon],
   templateUrl: './timeline-style.html'
 })
-export class TimelineStyle implements OnInit {
-  constructor(private themeService: ThemeService) {}
+export class TimelineStyle implements OnInit, AfterViewInit, OnDestroy {
+  scrollProgress = signal<number>(0);
+  expandedNodes = signal<Record<string, boolean>>({});
+  sortOrder = signal<'recent' | 'chronological'>('recent');
+
+  private ngZone = inject(NgZone);
+  private scrollListener?: () => void;
+
+  constructor(
+    private themeService: ThemeService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.themeService.setTheme('timeline-style');
+  }
+
+  toggleSort(): void {
+    this.sortOrder.update(order => order === 'recent' ? 'chronological' : 'recent');
+  }
+
+  getSortedExperience(): any[] {
+    const items = (this.translate.instant('experience.items') || []) as any[];
+    if (!Array.isArray(items)) return [];
+    return this.sortOrder() === 'chronological' ? [...items].reverse() : items;
+  }
+
+  ngAfterViewInit(): void {
+    this.ngZone.runOutsideAngular(() => {
+      this.scrollListener = () => {
+        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+        this.scrollProgress.set(scrolled);
+      };
+      window.addEventListener('scroll', this.scrollListener, { passive: true });
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.scrollListener) {
+      window.removeEventListener('scroll', this.scrollListener);
+    }
+  }
+
+  toggleNode(key: string): void {
+    this.expandedNodes.update(state => ({
+      ...state,
+      [key]: !state[key]
+    }));
+  }
+
+  isExpanded(key: string): boolean {
+    return !!this.expandedNodes()[key];
   }
 }
