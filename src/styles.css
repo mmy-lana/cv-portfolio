@@ -275,3 +275,40 @@
 .magnetic-btn {
   transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
 }
+
+/* Retro Computer CRT Scanlines & Blinking Cursor */
+.crt-screen {
+  background: #0d0b04;
+  color: #ffb000;
+  text-shadow: 0 0 5px rgba(255, 176, 0, 0.6);
+  font-family: 'Courier New', Courier, monospace;
+  position: relative;
+}
+
+.crt-scanlines::before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.35) 50%
+  ), repeating-linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.cursor-blink {
+  animation: cursor-flicker 1s infinite steps(1);
+}
+
+@keyframes cursor-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
