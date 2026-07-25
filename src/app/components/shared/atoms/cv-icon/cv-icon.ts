@@ -9,7 +9,8 @@ export type CvIconName =
   | 'calendar' 
   | 'gpa' 
   | 'back' 
-  | 'arrow-right';
+  | 'arrow-right'
+  | 'download';
 
 @Component({
   selector: 'app-cv-icon',

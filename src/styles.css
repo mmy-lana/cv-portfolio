@@ -73,4 +73,51 @@
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
 
-/* 1. Default / Theme 1 */
+/* Animated link underline */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -1px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Print Styles for ATS / PDF Export */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt;
+  }
+
+  app-theme-nav,
+  button,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  .theme-wrapper {
+    background: transparent !important;
+  }
+
+  main {
+    margin-left: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .print\:break-inside-avoid {
+    break-inside: avoid;
+  }
+}
