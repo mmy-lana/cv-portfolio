@@ -6,13 +6,19 @@
     (btnClick)="toggleDropdown()"
     [ariaLabel]="'Switch Theme Panel'"
   >
-    <app-cv-icon prefix name="arrow-right" size="w-4 h-4" class="mr-2 rotate-90 md:-rotate-90 md:group-hover:translate-y-[-2px] transition-transform" />
+    <app-cv-icon prefix name="arrow-right" size="w-4 h-4" class="mr-2 transition-transform" [class.rotate-90]="position === 'down'" [class.-rotate-90]="position === 'up'" />
     <span suffix class="ml-2">{{ themeService.themes.find(t => t.id === themeService.currentTheme())?.icon || '🎨' }}</span>
   </app-cv-button>
 
   @if (isOpen()) {
     <div
-      class="absolute right-0 top-full mt-2 md:bottom-full md:top-auto md:left-0 md:right-auto md:mb-3 md:mt-0 w-72 rounded-2xl border border-white/10 bg-slate-950/95 p-4 shadow-3xl backdrop-blur-xl ring-1 ring-black/20 focus:outline-none transform origin-top-right md:origin-bottom-left animate-fade-in-up duration-300"
+      class="absolute right-0 w-72 rounded-2xl border border-white/10 bg-slate-950/95 p-4 shadow-3xl backdrop-blur-xl ring-1 ring-black/20 focus:outline-none z-50 animate-fade-in-up duration-200"
+      [class.top-full]="position === 'down'"
+      [class.mt-2]="position === 'down'"
+      [class.origin-top-right]="position === 'down'"
+      [class.bottom-full]="position === 'up'"
+      [class.mb-2]="position === 'up'"
+      [class.origin-bottom-right]="position === 'up'"
       role="menu"
       aria-orientation="vertical"
       aria-labelledby="menu-button"

@@ -1,4 +1,4 @@
-import { Component, signal, HostListener, ElementRef } from '@angular/core';
+import { Component, signal, HostListener, ElementRef, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService, ThemeConfig } from '../../../services/theme.service';
@@ -12,6 +12,7 @@ import { CvIcon } from '../atoms/cv-icon/cv-icon';
   templateUrl: './theme-selector.html'
 })
 export class ThemeSelector {
+  @Input() position: 'down' | 'up' = 'down';
   isOpen = signal<boolean>(false);
 
   constructor(
