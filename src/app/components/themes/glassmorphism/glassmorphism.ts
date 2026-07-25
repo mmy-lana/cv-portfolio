@@ -4,13 +4,12 @@ import { RouterModule } from '@angular/router';
 import { ThemeNav } from '../../shared/theme-nav/theme-nav';
 import { ThemeService } from '../../../services/theme.service';
 import { CvExperienceCard } from '../../shared/cv-experience-card/cv-experience-card';
-import { CvBadge } from '../../shared/atoms/cv-badge/cv-badge';
 import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
 
 @Component({
   selector: 'app-glassmorphism',
   standalone: true,
-  imports: [ThemeNav, TranslateModule, RouterModule, CvExperienceCard, CvBadge, CvIcon],
+  imports: [ThemeNav, TranslateModule, RouterModule, CvExperienceCard, CvIcon],
   templateUrl: './glassmorphism.html'
 })
 export class Glassmorphism implements OnInit {
