@@ -1,11 +1,20 @@
-<div class="min-h-screen bg-[#070913] text-slate-200 p-6 md:p-16 relative overflow-hidden font-sans">
-  
+<div 
+  class="min-h-screen p-6 md:p-16 relative overflow-hidden font-sans transition-colors duration-300"
+  [class.bg-[#070913]]="themeService.isDarkMode()"
+  [class.text-slate-200]="themeService.isDarkMode()"
+  [class.bg-[#f8fafc]]="!themeService.isDarkMode()"
+  [class.text-slate-800]="!themeService.isDarkMode()"
+>
   <app-global-navbar />
 
   <!-- DASHBOARD GRID CONTENT -->
   <main class="max-w-6xl mx-auto pt-10">
     <div class="mb-8 flex items-center justify-between">
-      <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">
+      <p 
+        class="text-xs font-bold uppercase tracking-widest transition-colors"
+        [class.text-slate-400]="themeService.isDarkMode()"
+        [class.text-slate-500]="!themeService.isDarkMode()"
+      >
         Select a theme preset to preview layout architecture ({{ themes.length }} presets)
       </p>
     </div>
@@ -17,7 +26,13 @@
           (mouseenter)="onMouseEnter(theme.id)"
           (mouseleave)="onMouseLeave()"
           (mousemove)="onCardMouseMove($event)"
-          class="home-theme-card group p-8 rounded-2xl border border-slate-800/80 bg-slate-900/40 hover:bg-slate-900 text-left relative overflow-hidden cursor-pointer transition-all duration-300"
+          class="home-theme-card group p-8 rounded-2xl border text-left relative overflow-hidden cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
+          [class.border-slate-800/80]="themeService.isDarkMode()"
+          [class.bg-slate-900/40]="themeService.isDarkMode()"
+          [class.hover:bg-slate-900]="themeService.isDarkMode()"
+          [class.border-slate-200]="!themeService.isDarkMode()"
+          [class.bg-white]="!themeService.isDarkMode()"
+          [class.hover:bg-slate-50]="!themeService.isDarkMode()"
           [attr.data-theme-id]="theme.id"
         >
           <span class="absolute -right-4 -bottom-4 text-8xl opacity-5 group-hover:opacity-15 transition-opacity grayscale group-hover:grayscale-0 pointer-events-none select-none">
@@ -29,22 +44,44 @@
               <span class="text-3xl transform group-hover:scale-110 transition-transform duration-300 inline-block">
                 {{ theme.icon }}
               </span>
-              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800/50">
+              <span 
+                class="text-[10px] font-mono font-bold px-2 py-0.5 rounded border transition-colors"
+                [class.bg-blue-950]="themeService.isDarkMode()"
+                [class.text-blue-300]="themeService.isDarkMode()"
+                [class.border-blue-800/50]="themeService.isDarkMode()"
+                [class.bg-blue-50]="!themeService.isDarkMode()"
+                [class.text-blue-700]="!themeService.isDarkMode()"
+                [class.border-blue-200]="!themeService.isDarkMode()"
+              >
                 [ {{ themeService.isDarkMode() ? theme.darkPreset : theme.lightPreset }} ]
               </span>
             </div>
 
             <div>
-              <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+              <h3 
+                class="text-xl font-bold transition-colors"
+                [class.text-white]="themeService.isDarkMode()"
+                [class.group-hover:text-blue-400]="themeService.isDarkMode()"
+                [class.text-slate-900]="!themeService.isDarkMode()"
+                [class.group-hover:text-blue-600]="!themeService.isDarkMode()"
+              >
                 {{ 'themes_data.' + theme.id + '.title' | translate }}
               </h3>
 
-              <p class="text-slate-400 mt-2 text-xs leading-relaxed">
+              <p 
+                class="mt-2 text-xs leading-relaxed transition-colors"
+                [class.text-slate-400]="themeService.isDarkMode()"
+                [class.text-slate-600]="!themeService.isDarkMode()"
+              >
                 {{ 'themes_data.' + theme.id + '.description' | translate }}
               </p>
             </div>
 
-            <div class="pt-2 flex items-center text-xs font-bold text-blue-400 uppercase tracking-widest group-hover:translate-x-1 transition-transform">
+            <div 
+              class="pt-2 flex items-center text-xs font-bold uppercase tracking-widest group-hover:translate-x-1 transition-transform"
+              [class.text-blue-400]="themeService.isDarkMode()"
+              [class.text-blue-600]="!themeService.isDarkMode()"
+            >
               <span>EXPLORE THEME</span>
               <span class="ml-1.5">→</span>
             </div>
