@@ -23,7 +23,7 @@ export class ThemeNav {
   sections = [
     { id: 'about', label: 'about.name' },
     { id: 'experience', label: 'experience.title' },
-    { id: 'skills', label: 'skills.label' },
+    { id: 'skills', label: 'skills.title' },
     { id: 'education', label: 'education.title' },
     { id: 'certificates', label: 'certificates.title' },
     { id: 'contact', label: 'contact.title' }
