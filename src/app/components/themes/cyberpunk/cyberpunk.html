@@ -1,38 +1,68 @@
 <div class="theme-wrapper" style="--nav-bg: #0a0015; --nav-text: #00ff41; --nav-border: #bc00ff; --cv-primary: #bc00ff; --cv-accent: #00f0ff">
-  <app-theme-nav />
+  <app-cyber-matrix-canvas />
+  <app-theme-nav class="print:hidden z-30 relative" />
 
-  <div class="md:ml-64 px-6 md:px-16 py-20 space-y-24 bg-black text-[#00ff41] min-h-screen font-mono relative overflow-hidden">
-    <!-- Grid overlay mimicking CRT phosphor screens -->
-    <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,3px_100%] pointer-events-none z-10"></div>
+  <div class="md:ml-64 px-6 md:px-16 py-20 space-y-24 bg-black text-[#00ff41] min-h-screen font-mono relative overflow-hidden z-10">
+    <!-- CRT scanlines overlay -->
+    <div class="fixed inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.35)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,3px_100%] pointer-events-none z-20 opacity-80"></div>
 
     <!-- ABOUT -->
-    <section id="about" class="max-w-4xl mx-auto space-y-6 border-2 border-[#00f0ff] p-8 bg-purple-950/20 shadow-[0_0_20px_rgba(0,240,255,0.1)] relative animate-cyber-glitch">
-      <div class="absolute top-0 right-0 bg-[#00f0ff] text-black text-[10px] font-bold px-2 py-0.5 uppercase tracking-widest">SYS_ACTIVE</div>
-      <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] via-[#bc00ff] to-pink-500 animate-pulse">
+    <section id="about" class="max-w-4xl mx-auto space-y-6 border-2 border-[#00f0ff] p-8 bg-purple-950/20 cyber-corner-cut cyber-border-glow relative animate-cyber-glitch">
+      <div class="flex justify-between items-center border-b border-[#00f0ff]/30 pb-3">
+        <span class="text-xs font-bold text-[#00f0ff] tracking-widest uppercase">// PROTOCOL_V21.4</span>
+        <span class="bg-[#00f0ff] text-black text-[10px] font-bold px-2 py-0.5 uppercase tracking-widest animate-pulse">SYS_{{ sysStatus() }}</span>
+      </div>
+
+      <h1 
+        class="text-4xl md:text-5xl font-black uppercase tracking-tighter text-[#00f0ff] drop-shadow-[0_0_12px_rgba(0,240,255,0.8)] cyber-glitch-text"
+        [attr.data-text]="'about.name' | translate"
+      >
         {{ 'about.name' | translate }}
       </h1>
+
       <p class="text-xl font-bold text-[#00f0ff] tracking-widest uppercase flex items-center gap-2">
-        <span>></span> {{ 'about.title' | translate }}
+        <span class="animate-pulse">></span> {{ 'about.title' | translate }}
       </p>
-      <p class="text-slate-300 leading-relaxed max-w-3xl">
+
+      <p class="text-slate-300 leading-relaxed max-w-3xl text-sm">
         {{ 'about.summary' | translate }}
       </p>
+
+      <div class="pt-4 flex flex-wrap items-center gap-4 border-t border-[#bc00ff]/30">
+        <a
+          href="assets/cv/CV_Muhammad_Maulana_Yusuf.pdf"
+          download="CV_Muhammad_Maulana_Yusuf.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-black text-[#00ff41] border-2 border-[#00f0ff] shadow-[0_0_15px_#00f0ff] hover:bg-[#00f0ff] hover:text-black font-bold text-xs uppercase tracking-widest italic transition-all duration-200 group"
+        >
+          <app-cv-icon name="download" size="w-4 h-4" class="group-hover:scale-110 transition-transform" />
+          <span>SYSTEM_DOWNLOAD_CV.EXE</span>
+        </a>
+      </div>
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="experience" class="max-w-4xl mx-auto space-y-8 animate-fade-in-up delay-100">
+    <section id="experience" class="max-w-4xl mx-auto space-y-8">
       <div class="border-b-2 border-[#bc00ff] pb-3 flex items-center justify-between">
         <h2 class="text-2xl font-black uppercase tracking-widest text-[#bc00ff]">
-          [01] // WORK_HISTORY
+          [01] // WORK_HISTORY_LOGS
         </h2>
-        <span class="text-xs text-slate-500">MATCHES_FOUND: 4</span>
+        <span class="text-xs text-[#00f0ff]">STATUS: VERIFIED</span>
       </div>
 
-      <div class="grid grid-cols-1 gap-6">
-        @for (job of ('experience.items' | translate); track job.company) {
-          <app-cv-experience-card [data]="job" layoutVariant="cyber" />
-        }
-      </div>
+      @defer (on viewport) {
+        <div class="grid grid-cols-1 gap-6">
+          @for (job of ('experience.items' | translate); track job.company) {
+            <app-cv-experience-card [data]="job" layoutVariant="cyber" />
+          }
+        </div>
+      } @placeholder {
+        <div class="space-y-4 animate-pulse">
+          <div class="h-32 border-2 border-[#bc00ff]/30 bg-purple-950/10"></div>
+          <div class="h-32 border-2 border-[#bc00ff]/30 bg-purple-950/10"></div>
+        </div>
+      }
     </section>
 
     <!-- SKILLS -->
@@ -43,64 +73,82 @@
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="border-2 border-[#bc00ff]/40 p-6 bg-purple-950/10">
-          <h3 class="text-sm font-bold text-[#00f0ff] uppercase tracking-widest border-b border-[#bc00ff]/20 pb-2 mb-4">LANGUAGES</h3>
-          <div class="flex flex-wrap gap-2">
-            @for (lang of ('skills.languages' | translate); track lang) {
-              <app-cv-badge [labelKey]="lang" variant="neon" size="sm" />
-            }
+      @defer (on viewport) {
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="border-2 border-[#bc00ff]/40 p-6 bg-purple-950/10 hover:border-[#00f0ff] transition-colors">
+            <h3 class="text-xs font-bold text-[#00f0ff] uppercase tracking-widest border-b border-[#bc00ff]/20 pb-2 mb-4">// LANGUAGES</h3>
+            <div class="flex flex-wrap gap-2">
+              @for (lang of ('skills.languages' | translate); track lang) {
+                <span class="px-2.5 py-1 text-xs border border-[#00f0ff]/60 bg-black text-[#00f0ff] hover:bg-[#00f0ff] hover:text-black transition-all duration-200 cursor-crosshair">
+                  [ {{ lang }} ]
+                </span>
+              }
+            </div>
           </div>
-        </div>
 
-        <div class="border-2 border-[#bc00ff]/40 p-6 bg-purple-950/10">
-          <h3 class="text-sm font-bold text-[#00f0ff] uppercase tracking-widest border-b border-[#bc00ff]/20 pb-2 mb-4">FRAMEWORKS</h3>
-          <div class="flex flex-wrap gap-2">
-            @for (fw of ('skills.frameworks' | translate); track fw) {
-              <app-cv-badge [labelKey]="fw" variant="neon" size="sm" />
-            }
+          <div class="border-2 border-[#bc00ff]/40 p-6 bg-purple-950/10 hover:border-[#00f0ff] transition-colors">
+            <h3 class="text-xs font-bold text-[#00f0ff] uppercase tracking-widest border-b border-[#bc00ff]/20 pb-2 mb-4">// FRAMEWORKS</h3>
+            <div class="flex flex-wrap gap-2">
+              @for (fw of ('skills.frameworks' | translate); track fw) {
+                <span class="px-2.5 py-1 text-xs border border-[#bc00ff]/60 bg-black text-[#00ff41] hover:bg-[#bc00ff] hover:text-white transition-all duration-200 cursor-crosshair">
+                  [ {{ fw }} ]
+                </span>
+              }
+            </div>
           </div>
-        </div>
 
-        <div class="border-2 border-[#bc00ff]/40 p-6 bg-purple-950/10">
-          <h3 class="text-sm font-bold text-[#00f0ff] uppercase tracking-widest border-b border-[#bc00ff]/20 pb-2 mb-4">SYSTEM_TOOLS</h3>
-          <div class="flex flex-wrap gap-2">
-            @for (tool of ('skills.tools' | translate); track tool) {
-              <app-cv-badge [labelKey]="tool" variant="neon" size="sm" />
-            }
+          <div class="border-2 border-[#bc00ff]/40 p-6 bg-purple-950/10 hover:border-[#00f0ff] transition-colors">
+            <h3 class="text-xs font-bold text-[#00f0ff] uppercase tracking-widest border-b border-[#bc00ff]/20 pb-2 mb-4">// SYSTEM_TOOLS</h3>
+            <div class="flex flex-wrap gap-2">
+              @for (tool of ('skills.tools' | translate); track tool) {
+                <span class="px-2.5 py-1 text-xs border border-pink-500/60 bg-black text-pink-400 hover:bg-pink-500 hover:text-black transition-all duration-200 cursor-crosshair">
+                  [ {{ tool }} ]
+                </span>
+              }
+            </div>
           </div>
         </div>
-      </div>
+      } @placeholder {
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 animate-pulse">
+          <div class="h-36 border-2 border-[#bc00ff]/30 bg-purple-950/10"></div>
+          <div class="h-36 border-2 border-[#bc00ff]/30 bg-purple-950/10"></div>
+          <div class="h-36 border-2 border-[#bc00ff]/30 bg-purple-950/10"></div>
+        </div>
+      }
     </section>
 
     <!-- EDUCATION -->
     <section id="education" class="max-w-4xl mx-auto space-y-8">
       <div class="border-b-2 border-[#bc00ff] pb-3">
         <h2 class="text-2xl font-black uppercase tracking-widest text-[#bc00ff]">
-          [03] // EDUCATION_LOGS
+          [03] // ACADEMIC_ARCHIVES
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 gap-6">
-        @for (edu of ('education.items' | translate); track edu.school) {
-          <app-cv-experience-card [data]="edu" layoutVariant="cyber" />
-        }
-      </div>
+      @defer (on viewport) {
+        <div class="grid grid-cols-1 gap-6">
+          @for (edu of ('education.items' | translate); track edu.school) {
+            <app-cv-experience-card [data]="edu" layoutVariant="cyber" />
+          }
+        </div>
+      } @placeholder {
+        <div class="h-28 border-2 border-[#bc00ff]/30 bg-purple-950/10 animate-pulse"></div>
+      }
     </section>
 
     <!-- CERTIFICATES -->
     <section id="certificates" class="max-w-4xl mx-auto space-y-8">
       <div class="border-b-2 border-[#bc00ff] pb-3">
         <h2 class="text-2xl font-black uppercase tracking-widest text-[#bc00ff]">
-          [04] // CREDENTIAL_KEYS
+          [04] // SECURITY_CREDENTIALS
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         @for (cert of ('certificates.items' | translate); track cert) {
-          <div class="flex items-center space-x-3 p-5 border border-[#bc00ff]/30 bg-purple-950/10 hover:border-[#00f0ff] transition-all duration-300">
+          <div class="flex items-center space-x-3 p-5 border border-[#bc00ff]/30 bg-purple-950/10 hover:border-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all duration-200">
             <span class="text-[#00f0ff] font-bold">></span>
-            <span class="text-sm text-slate-300 font-semibold">{{ cert }}</span>
+            <span class="text-xs text-slate-300 font-semibold uppercase">{{ cert }}</span>
           </div>
         }
       </div>
@@ -117,25 +165,25 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <a [href]="'mailto:' + ('contact.email' | translate)" class="group flex items-center space-x-4 p-6 border border-[#bc00ff]/40 bg-purple-950/20 hover:border-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all">
           <app-cv-icon name="email" class="text-[#00f0ff]" size="w-6 h-6" />
-          <div>
+          <div class="overflow-hidden">
             <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">EMAIL</p>
-            <p class="text-sm font-bold text-[#00ff41] truncate">{{ 'contact.email' | translate }}</p>
+            <p class="text-xs font-bold text-[#00ff41] truncate">{{ 'contact.email' | translate }}</p>
           </div>
         </a>
 
-        <div class="flex items-center space-x-4 p-6 border border-[#bc00ff]/40 bg-purple-950/20">
+        <a [href]="'tel:' + ('contact.phone' | translate)" class="group flex items-center space-x-4 p-6 border border-[#bc00ff]/40 bg-purple-950/20 hover:border-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all">
           <app-cv-icon name="phone" class="text-[#00f0ff]" size="w-6 h-6" />
           <div>
             <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">COMMS_LINK</p>
-            <p class="text-sm font-bold text-[#00ff41]">{{ 'contact.phone' | translate }}</p>
+            <p class="text-xs font-bold text-[#00ff41]">{{ 'contact.phone' | translate }}</p>
           </div>
-        </div>
+        </a>
 
-        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" class="group flex items-center space-x-4 p-6 border border-[#bc00ff]/40 bg-purple-950/20 hover:border-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all">
+        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="group flex items-center space-x-4 p-6 border border-[#bc00ff]/40 bg-purple-950/20 hover:border-[#00f0ff] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all">
           <app-cv-icon name="linkedin" class="text-[#00f0ff]" size="w-6 h-6" />
           <div>
             <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">LINKEDIN</p>
-            <p class="text-sm font-bold text-[#00ff41]">CONNECT_SECURE</p>
+            <p class="text-xs font-bold text-[#00ff41]">CONNECT_SECURE</p>
           </div>
         </a>
       </div>
