@@ -2,35 +2,41 @@ import { Component, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FaviconService } from '../../services/favicon.service';
-import { LanguageService } from '../../services/language.service';
-import { ThemeSelector } from '../shared/theme-selector/theme-selector';
-import { CvIcon } from '../shared/atoms/cv-icon/cv-icon';
+import { ThemeService } from '../../services/theme.service';
+import { GlobalNavbarComponent } from '../shared/molecules/global-navbar/global-navbar';
+
+export interface ThemePreset {
+  id: string;
+  icon: string;
+  lightPreset: string;
+  darkPreset: string;
+}
 
 @Component({
   selector: 'app-home-gate',
   standalone: true,
-  imports: [TranslateModule, ThemeSelector, CvIcon],
+  imports: [TranslateModule, GlobalNavbarComponent],
   templateUrl: './home-gate.html'
 })
 export class HomeGate {
   hoveredTheme = signal<string | null>(null);
 
-  themes = [
-    { id: 'minimalist', icon: '📄', tags: ['Clean', 'Modern'] },
-    { id: 'cyberpunk', icon: '⚡', tags: ['Neon', 'Dark'] },
-    { id: 'glassmorphism', icon: '🪟', tags: ['Glass', 'Modern'] },
-    { id: 'dark', icon: '🌙', tags: ['Dark', 'Elegant'] },
-    { id: 'retro-computer', icon: '🖥️', tags: ['Retro', 'Terminal'] },
-    { id: 'gradient-flow', icon: '🎨', tags: ['Gradient'] },
-    { id: 'sidebar-navigation', icon: '📋', tags: ['Sidebar'] },
-    { id: 'parallax-scrolling', icon: '🖼️', tags: ['Parallax'] },
-    { id: 'timeline-style', icon: '⏱️', tags: ['Timeline'] }
+  themes: ThemePreset[] = [
+    { id: 'minimalist', icon: '📄', lightPreset: 'Paper Light', darkPreset: 'Onyx Dark' },
+    { id: 'cyberpunk', icon: '⚡', lightPreset: 'Matrix Day', darkPreset: 'Neon Night' },
+    { id: 'glassmorphism', icon: '🪟', lightPreset: 'Frosted Crystal', darkPreset: 'Obsidian Glass' },
+    { id: 'dark', icon: '🌙', lightPreset: 'Solar Minimal', darkPreset: 'Lunar Pitch' },
+    { id: 'retro-computer', icon: '🖥️', lightPreset: 'IBM Cream 1984', darkPreset: 'Hacker Terminal' },
+    { id: 'gradient-flow', icon: '🎨', lightPreset: 'Sunrise Mesh', darkPreset: 'Aurora Borealis' },
+    { id: 'sidebar-navigation', icon: '📋', lightPreset: 'Enterprise Light', darkPreset: 'Executive Dark' },
+    { id: 'parallax-scrolling', icon: '🖼️', lightPreset: 'Horizon Light', darkPreset: 'Deep Space' },
+    { id: 'timeline-style', icon: '⏱️', lightPreset: 'Blueprint White', darkPreset: 'Charcoal Journey' }
   ];
 
   constructor(
     private router: Router,
     private faviconService: FaviconService,
-    public lang: LanguageService
+    public themeService: ThemeService
   ) {}
 
   goToTheme(id: string): void {
@@ -55,16 +61,5 @@ export class HomeGate {
     const y = event.clientY - rect.top;
     target.style.setProperty('--card-x', `${x}px`);
     target.style.setProperty('--card-y', `${y}px`);
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -6;
-    const rotateY = ((x - centerX) / centerX) * 6;
-    target.style.setProperty('--tilt-x', `${rotateX}deg`);
-    target.style.setProperty('--tilt-y', `${rotateY}deg`);
-  }
-
-  toggleLanguage(): void {
-    this.lang.toggle();
   }
 }

@@ -28,9 +28,14 @@ export class ThemeService {
 
   // Angular signal to provide reactive theme updates across the application shell
   currentTheme = signal<string>('minimalist');
+  isDarkMode = signal<boolean>(true);
 
   constructor() {
     this.initializeTheme();
+  }
+
+  toggleGlobalDarkMode(): void {
+    this.isDarkMode.update(v => !v);
   }
 
   private faviconService = inject(FaviconService);
