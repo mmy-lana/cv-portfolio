@@ -7,7 +7,7 @@ import { ThemeService } from '../../../services/theme.service';
 
 export interface TerminalEntry {
   command: string;
-  type: 'help' | 'about' | 'experience' | 'skills' | 'education' | 'contact' | 'download-cv' | 'error' | 'clear' | 'system';
+  type: 'help' | 'about' | 'experience' | 'skills' | 'education' | 'certificates' | 'contact' | 'download-cv' | 'error' | 'clear' | 'system';
   timestamp: string;
 }
 
@@ -36,6 +36,7 @@ export class RetroComputer implements OnInit {
     'experience',
     'skills',
     'education',
+    'certificates',
     'contact',
     'download-cv',
     'clear'
@@ -59,7 +60,7 @@ export class RetroComputer implements OnInit {
     }
 
     const timestamp = new Date().toLocaleTimeString();
-    const validCommands = ['help', 'about', 'experience', 'skills', 'education', 'contact', 'download-cv'];
+    const validCommands = ['help', 'about', 'experience', 'skills', 'education', 'certificates', 'contact', 'download-cv'];
     const type: TerminalEntry['type'] = validCommands.includes(rawCmd)
       ? (rawCmd as TerminalEntry['type'])
       : 'error';

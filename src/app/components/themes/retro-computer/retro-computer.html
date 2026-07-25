@@ -1,5 +1,5 @@
 <div class="theme-wrapper relative min-h-screen md:h-screen crt-screen crt-scanlines overflow-hidden" style="--nav-bg: #0d0b04; --nav-text: #ffb000; --nav-border: #ffb000; --cv-primary: #ffb000; --cv-accent: #d97706">
-  <app-theme-nav class="print:hidden z-30 relative" />
+  <app-theme-nav (sectionSelect)="executeCommand($event)" class="print:hidden z-30 relative" />
 
   <div class="md:ml-64 px-4 md:px-12 py-6 h-full min-h-screen md:min-h-0 text-[#ffb000] font-mono relative z-10 flex flex-col" (click)="focusInput()">
     <div class="max-w-5xl mx-auto w-full flex-1 flex flex-col min-h-0 space-y-4">
@@ -120,6 +120,15 @@
                         <p class="font-bold text-amber-200">GPA: {{ edu.gpa }}</p>
                       }
                     </div>
+                  }
+                </div>
+              }
+
+              @case ('certificates') {
+                <div class="space-y-2 text-xs border-l-2 border-[#ffb000] pl-4 py-2 bg-[#141006]">
+                  <p class="font-bold text-amber-300 mb-1">// SECURITY_CREDENTIALS</p>
+                  @for (cert of ('certificates.items' | translate); track cert) {
+                    <p class="text-amber-100">* {{ cert }}</p>
                   }
                 </div>
               }

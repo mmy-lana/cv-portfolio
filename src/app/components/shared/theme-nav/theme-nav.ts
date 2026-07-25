@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, output } from '@angular/core';
 import { Router } from '@angular/router';
 import { LanguageService } from '../../../services/language.service';
 import { TranslateModule } from '@ngx-translate/core';
@@ -13,6 +13,8 @@ import { CvIcon } from '../atoms/cv-icon/cv-icon';
   imports: [TranslateModule, ThemeSelector, CvButton, CvIcon],
 })
 export class ThemeNav {
+  sectionSelect = output<string>();
+
   constructor(
     private router: Router,
     public lang: LanguageService
@@ -21,7 +23,7 @@ export class ThemeNav {
   sections = [
     { id: 'about', label: 'about.name' },
     { id: 'experience', label: 'experience.title' },
-    { id: 'skills', label: 'skills.title' },
+    { id: 'skills', label: 'skills.label' },
     { id: 'education', label: 'education.title' },
     { id: 'certificates', label: 'certificates.title' },
     { id: 'contact', label: 'contact.title' }
@@ -40,7 +42,11 @@ export class ThemeNav {
   }
 
   scrollTo(id: string): void {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    this.sectionSelect.emit(id);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
     this.activeSection = id;
   }
 
