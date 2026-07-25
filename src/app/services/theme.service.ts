@@ -1,4 +1,5 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
+import { FaviconService } from './favicon.service';
 
 export interface ThemeConfig {
   id: string;
@@ -32,6 +33,8 @@ export class ThemeService {
     this.initializeTheme();
   }
 
+  private faviconService = inject(FaviconService);
+
   setTheme(themeId: string): void {
     const targetTheme = this.themes.find(t => t.id === themeId);
     if (!targetTheme) return;
@@ -39,6 +42,7 @@ export class ThemeService {
     this.currentTheme.set(themeId);
     localStorage.setItem(this.STORAGE_KEY, themeId);
     this.applyThemeToDOM(targetTheme);
+    this.faviconService.setFavicon(themeId);
   }
 
   private initializeTheme(): void {

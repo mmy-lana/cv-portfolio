@@ -1,50 +1,94 @@
-<div class="min-h-screen bg-[#0f172a] text-slate-200 p-8 md:p-20">
-  <header class="max-w-5xl mx-auto mb-16">
-    <h1 class="text-5xl font-black text-white tracking-tight">
-      {{ 'about.name' | translate }}
-    </h1>
-    <p class="text-xl text-blue-400 mt-2 font-medium">
-      {{ 'about.title' | translate }}
-    </p>
-    <p class="text-slate-500 mt-4 max-w-xl">
-      {{ 'home.subtitle' | translate }}
-    </p>
+<div class="min-h-screen bg-[#070913] text-slate-200 p-6 md:p-16 relative overflow-hidden font-sans">
+  
+  <!-- GLOBAL TOOLBAR HEADER -->
+  <header class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 pb-12 border-b border-slate-800/80">
+    <div class="space-y-1">
+      <div class="flex items-center space-x-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
+        <span class="text-xs font-bold tracking-widest uppercase text-blue-400">CV THEME SHOWCASE</span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-black text-white tracking-tight">
+        {{ 'about.name' | translate }}
+      </h1>
+      <p class="text-base md:text-lg text-slate-400 font-medium">
+        {{ 'about.title' | translate }}
+      </p>
+    </div>
+
+    <!-- RIGHT ACTION CONTROLS -->
+    <div class="flex flex-wrap items-center gap-3">
+      <button 
+        (click)="toggleLanguage()" 
+        class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300 hover:text-white hover:border-slate-700 transition-colors cursor-pointer"
+      >
+        LANG: {{ lang.current.toUpperCase() }}
+      </button>
+
+      <app-theme-selector />
+
+      <a
+        href="assets/cv/CV_Muhammad_Maulana_Yusuf.pdf"
+        download="CV_Muhammad_Maulana_Yusuf.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl shadow-lg transition-all cursor-pointer"
+      >
+        <app-cv-icon name="download" size="w-4 h-4" />
+        <span>Download CV</span>
+      </a>
+    </div>
   </header>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-    @for (theme of themes; track theme.id) {
-      <button
-        (click)="goToTheme(theme.id)"
-        class="cursor-pointer group p-8 rounded-2xl border border-slate-800 bg-slate-900/50 hover:bg-slate-800 hover:border-blue-500/50 transition-all text-left relative overflow-hidden"
-      >
-        <span
-          class="absolute -right-4 -bottom-4 text-8xl opacity-5 group-hover:opacity-10 transition-opacity grayscale group-hover:grayscale-0"
+  <!-- DASHBOARD GRID CONTENT -->
+  <main class="max-w-6xl mx-auto pt-12">
+    <div class="mb-8 flex items-center justify-between">
+      <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">
+        Select a theme preset to preview layout architecture ({{ themes.length }} styles available)
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (theme of themes; track theme.id) {
+        <div
+          (click)="goToTheme(theme.id)"
+          (mouseenter)="onMouseEnter(theme.id)"
+          (mouseleave)="onMouseLeave()"
+          (mousemove)="onCardMouseMove($event)"
+          class="home-theme-card group p-8 rounded-2xl border border-slate-800/80 bg-slate-900/40 hover:bg-slate-900 text-left relative overflow-hidden cursor-pointer transition-all duration-300"
+          [attr.data-theme-id]="theme.id"
         >
-          {{ theme.icon }}
-        </span>
-
-        <div class="relative z-10">
-          <div
-            class="text-3xl mb-4 transform group-hover:scale-110 transition-transform duration-300"
-          >
+          <!-- Background watermark icon -->
+          <span class="absolute -right-4 -bottom-4 text-8xl opacity-5 group-hover:opacity-15 transition-opacity grayscale group-hover:grayscale-0 pointer-events-none select-none">
             {{ theme.icon }}
-          </div>
+          </span>
 
-          <h3 class="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-            {{ 'themes_data.' + theme.id + '.title' | translate }}
-          </h3>
+          <div class="relative z-10 space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-3xl transform group-hover:scale-115 transition-transform duration-300 inline-block">
+                {{ theme.icon }}
+              </span>
+              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-800/80 text-slate-400 border border-slate-700/50">
+                PREVIEW
+              </span>
+            </div>
 
-          <p class="text-slate-400 mt-2 text-sm leading-relaxed max-w-[80%]">
-            {{ 'themes_data.' + theme.id + '.description' | translate }}
-          </p>
+            <div>
+              <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                {{ 'themes_data.' + theme.id + '.title' | translate }}
+              </h3>
 
-          <div
-            class="mt-6 flex items-center text-xs font-bold text-blue-500 uppercase tracking-widest opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all"
-          >
-            View Demo →
+              <p class="text-slate-400 mt-2 text-xs leading-relaxed">
+                {{ 'themes_data.' + theme.id + '.description' | translate }}
+              </p>
+            </div>
+
+            <div class="pt-2 flex items-center text-xs font-bold text-blue-400 uppercase tracking-widest group-hover:translate-x-1 transition-transform">
+              <span>EXPLORE THEME</span>
+              <span class="ml-1.5">→</span>
+            </div>
           </div>
         </div>
-      </button>
-    }
-  </div>
+      }
+    </div>
+  </main>
 </div>
