@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ThemeNav } from '../../shared/theme-nav/theme-nav';
@@ -14,9 +14,21 @@ import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
   templateUrl: './glassmorphism.html'
 })
 export class Glassmorphism implements OnInit {
+  activeSection = signal<string>('about');
+
   constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
     this.themeService.setTheme('glassmorphism');
+  }
+
+  onMouseMove(event: MouseEvent): void {
+    const target = event.currentTarget as HTMLElement;
+    if (!target) return;
+    const rect = target.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    target.style.setProperty('--mouse-x', `${x}px`);
+    target.style.setProperty('--mouse-y', `${y}px`);
   }
 }

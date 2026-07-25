@@ -1,111 +1,169 @@
-<div class="theme-wrapper relative min-h-screen overflow-hidden bg-slate-950" style="--nav-bg: rgba(15, 23, 42, 0.4); --nav-text: #f8fafc; --nav-border: rgba(255, 255, 255, 0.08); --cv-primary: #06b6d4; --cv-accent: #ec4899">
-  <!-- Glowing dynamic abstract mesh gradients in background -->
-  <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-cyan-500/20 blur-[120px] pointer-events-none"></div>
-  <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-pink-500/10 blur-[120px] pointer-events-none"></div>
-  <div class="absolute top-[30%] right-[15%] w-[30vw] h-[30vw] rounded-full bg-purple-500/15 blur-[100px] pointer-events-none"></div>
+<div class="theme-wrapper relative min-h-screen overflow-hidden bg-slate-950" style="--nav-bg: rgba(15, 23, 42, 0.45); --nav-text: #f8fafc; --nav-border: rgba(255, 255, 255, 0.12); --cv-primary: #06b6d4; --cv-accent: #ec4899">
+  <!-- Floating Ambient Gradient Spheres -->
+  <div class="fixed top-[-10%] left-[-10%] w-[55vw] h-[55vw] rounded-full bg-cyan-500/20 blur-[130px] pointer-events-none animate-ambient-1 z-0"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-pink-500/15 blur-[140px] pointer-events-none animate-ambient-2 z-0"></div>
+  <div class="fixed top-[35%] right-[10%] w-[35vw] h-[35vw] rounded-full bg-purple-600/15 blur-[110px] pointer-events-none animate-ambient-3 z-0"></div>
 
-  <app-theme-nav />
+  <app-theme-nav class="print:hidden z-30 relative" />
 
   <div class="md:ml-64 px-6 md:px-16 py-20 space-y-24 text-white min-h-screen relative z-10">
     <!-- ABOUT -->
-    <section id="about" class="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-center bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-xl shadow-2xl animate-fade-in-up">
-      <div class="space-y-4 flex-1 text-center md:text-left">
-        <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight leading-none">
+    <section 
+      id="about" 
+      (mousemove)="onMouseMove($event)"
+      class="max-w-4xl mx-auto space-y-6 glass-card glass-spotlight p-8 md:p-10 rounded-3xl animate-fade-in-up"
+    >
+      <div class="space-y-3">
+        <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight leading-none drop-shadow-sm">
           {{ 'about.name' | translate }}
         </h1>
-        <p class="text-xl md:text-2xl font-bold text-cv-primary">
+        <p class="text-xl md:text-2xl font-bold text-cyan-400">
           {{ 'about.title' | translate }}
         </p>
-        <p class="text-slate-300 leading-relaxed text-base">
-          {{ 'about.summary' | translate }}
-        </p>
+      </div>
+
+      <p class="text-slate-200 leading-relaxed text-base max-w-3xl">
+        {{ 'about.summary' | translate }}
+      </p>
+
+      <div class="pt-2 flex flex-wrap items-center gap-4 border-t border-white/10">
+        <a
+          href="assets/cv/CV_Muhammad_Maulana_Yusuf.pdf"
+          download="CV_Muhammad_Maulana_Yusuf.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/30 rounded-2xl font-bold text-sm text-white backdrop-blur-md shadow-lg hover:-translate-y-0.5 hover:shadow-cyan-500/20 transition-all duration-200"
+        >
+          <app-cv-icon name="download" size="w-4 h-4" />
+          <span>Download CV (PDF)</span>
+        </a>
+
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-300 font-medium">
+          <a [href]="'mailto:' + ('about.email' | translate)" class="flex items-center gap-1.5 hover:text-cyan-400 transition-colors link-underline">
+            <app-cv-icon name="email" class="text-cyan-400" size="w-4 h-4" />
+            {{ 'about.email' | translate }}
+          </a>
+          <a [href]="'https://' + ('about.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-cyan-400 transition-colors link-underline">
+            <app-cv-icon name="linkedin" class="text-cyan-400" size="w-4 h-4" />
+            {{ 'about.linkedin' | translate }}
+          </a>
+        </div>
       </div>
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="experience" class="max-w-4xl mx-auto space-y-8 animate-fade-in-up delay-100">
+    <section id="experience" class="max-w-4xl mx-auto space-y-8">
       <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
-        <app-cv-icon name="arrow-right" class="text-cv-primary" size="w-5 h-5" />
-        <h2 class="text-2xl font-black tracking-tight uppercase">
+        <app-cv-icon name="arrow-right" class="text-cyan-400" size="w-5 h-5" />
+        <h2 class="text-2xl font-black tracking-tight uppercase text-white">
           {{ 'experience.title' | translate }}
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 gap-6">
-        @for (job of ('experience.items' | translate); track job.company) {
-          <app-cv-experience-card [data]="job" layoutVariant="clean" class="bg-white/5 border border-white/10 backdrop-blur-md shadow-lg" />
-        }
-      </div>
+      @defer (on viewport) {
+        <div class="grid grid-cols-1 gap-6">
+          @for (job of ('experience.items' | translate); track job.company) {
+            <div (mousemove)="onMouseMove($event)" class="glass-card glass-spotlight rounded-2xl transition-all duration-300 hover:-translate-y-0.5">
+              <app-cv-experience-card [data]="job" layoutVariant="clean" />
+            </div>
+          }
+        </div>
+      } @placeholder {
+        <div class="space-y-4 animate-pulse">
+          <div class="h-32 glass-card rounded-2xl"></div>
+          <div class="h-32 glass-card rounded-2xl"></div>
+        </div>
+      }
     </section>
 
     <!-- SKILLS -->
     <section id="skills" class="max-w-4xl mx-auto space-y-8">
       <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
-        <app-cv-icon name="arrow-right" class="text-cv-primary" size="w-5 h-5" />
-        <h2 class="text-2xl font-black tracking-tight uppercase">
+        <app-cv-icon name="arrow-right" class="text-cyan-400" size="w-5 h-5" />
+        <h2 class="text-2xl font-black tracking-tight uppercase text-white">
           {{ 'skills.title' | translate }}
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="space-y-3 p-6 bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl shadow-lg">
-          <h3 class="font-bold text-slate-300 text-sm uppercase tracking-wider">Languages</h3>
-          <div class="flex flex-wrap gap-2">
-            @for (lang of ('skills.languages' | translate); track lang) {
-              <app-cv-badge [labelKey]="lang" variant="glass" size="sm" />
-            }
+      @defer (on viewport) {
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div (mousemove)="onMouseMove($event)" class="space-y-4 p-6 glass-card glass-spotlight rounded-2xl">
+            <h3 class="font-bold text-slate-300 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Languages</h3>
+            <div class="flex flex-wrap gap-2">
+              @for (lang of ('skills.languages' | translate); track lang) {
+                <span class="px-3 py-1 text-xs font-semibold rounded-full bg-white/10 text-white border border-white/20 backdrop-blur-md hover:bg-white/20 hover:border-cyan-400/50 transition-all cursor-default">
+                  {{ lang }}
+                </span>
+              }
+            </div>
           </div>
-        </div>
 
-        <div class="space-y-3 p-6 bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl shadow-lg">
-          <h3 class="font-bold text-slate-300 text-sm uppercase tracking-wider">Frameworks & CSS</h3>
-          <div class="flex flex-wrap gap-2">
-            @for (fw of ('skills.frameworks' | translate); track fw) {
-              <app-cv-badge [labelKey]="fw" variant="glass" size="sm" class="!border-cv-primary/40 !text-cv-primary" />
-            }
+          <div (mousemove)="onMouseMove($event)" class="space-y-4 p-6 glass-card glass-spotlight rounded-2xl">
+            <h3 class="font-bold text-slate-300 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Frameworks & CSS</h3>
+            <div class="flex flex-wrap gap-2">
+              @for (fw of ('skills.frameworks' | translate); track fw) {
+                <span class="px-3 py-1 text-xs font-semibold rounded-full bg-cyan-500/15 text-cyan-200 border border-cyan-400/30 backdrop-blur-md hover:bg-cyan-500/25 transition-all cursor-default">
+                  {{ fw }}
+                </span>
+              }
+            </div>
           </div>
-        </div>
 
-        <div class="space-y-3 p-6 bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl shadow-lg">
-          <h3 class="font-bold text-slate-300 text-sm uppercase tracking-wider">Tools</h3>
-          <div class="flex flex-wrap gap-2">
-            @for (tool of ('skills.tools' | translate); track tool) {
-              <app-cv-badge [labelKey]="tool" variant="glass" size="sm" />
-            }
+          <div (mousemove)="onMouseMove($event)" class="space-y-4 p-6 glass-card glass-spotlight rounded-2xl">
+            <h3 class="font-bold text-slate-300 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Tools</h3>
+            <div class="flex flex-wrap gap-2">
+              @for (tool of ('skills.tools' | translate); track tool) {
+                <span class="px-3 py-1 text-xs font-semibold rounded-full bg-pink-500/15 text-pink-200 border border-pink-400/30 backdrop-blur-md hover:bg-pink-500/25 transition-all cursor-default">
+                  {{ tool }}
+                </span>
+              }
+            </div>
           </div>
         </div>
-      </div>
+      } @placeholder {
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-pulse">
+          <div class="h-36 glass-card rounded-2xl"></div>
+          <div class="h-36 glass-card rounded-2xl"></div>
+          <div class="h-36 glass-card rounded-2xl"></div>
+        </div>
+      }
     </section>
 
     <!-- EDUCATION -->
     <section id="education" class="max-w-4xl mx-auto space-y-8">
       <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
-        <app-cv-icon name="arrow-right" class="text-cv-primary" size="w-5 h-5" />
-        <h2 class="text-2xl font-black tracking-tight uppercase">
+        <app-cv-icon name="arrow-right" class="text-cyan-400" size="w-5 h-5" />
+        <h2 class="text-2xl font-black tracking-tight uppercase text-white">
           {{ 'education.title' | translate }}
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 gap-6">
-        @for (edu of ('education.items' | translate); track edu.school) {
-          <app-cv-experience-card [data]="edu" layoutVariant="clean" class="bg-white/5 border border-white/10 backdrop-blur-md shadow-lg" />
-        }
-      </div>
+      @defer (on viewport) {
+        <div class="grid grid-cols-1 gap-6">
+          @for (edu of ('education.items' | translate); track edu.school) {
+            <div (mousemove)="onMouseMove($event)" class="glass-card glass-spotlight rounded-2xl">
+              <app-cv-experience-card [data]="edu" layoutVariant="clean" />
+            </div>
+          }
+        </div>
+      } @placeholder {
+        <div class="h-28 glass-card rounded-2xl animate-pulse"></div>
+      }
     </section>
 
     <!-- CERTIFICATES -->
     <section id="certificates" class="max-w-4xl mx-auto space-y-8">
       <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
-        <app-cv-icon name="arrow-right" class="text-cv-primary" size="w-5 h-5" />
-        <h2 class="text-2xl font-black tracking-tight uppercase">
+        <app-cv-icon name="arrow-right" class="text-cyan-400" size="w-5 h-5" />
+        <h2 class="text-2xl font-black tracking-tight uppercase text-white">
           {{ 'certificates.title' | translate }}
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         @for (cert of ('certificates.items' | translate); track cert) {
-          <div class="flex items-center space-x-3 p-5 bg-white/5 border border-white/10 backdrop-blur-md rounded-xl shadow-lg hover:border-cv-accent transition-all duration-300">
-            <app-cv-icon name="gpa" class="text-cv-primary" size="w-5 h-5" />
+          <div (mousemove)="onMouseMove($event)" class="flex items-center space-x-3 p-5 glass-card glass-spotlight rounded-xl hover:border-cyan-400/50 transition-all duration-300">
+            <app-cv-icon name="gpa" class="text-cyan-400" size="w-5 h-5" />
             <span class="text-sm font-semibold text-slate-200">{{ cert }}</span>
           </div>
         }
@@ -115,31 +173,31 @@
     <!-- CONTACT -->
     <section id="contact" class="max-w-4xl mx-auto space-y-8 pb-16">
       <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
-        <app-cv-icon name="arrow-right" class="text-cv-primary" size="w-5 h-5" />
-        <h2 class="text-2xl font-black tracking-tight uppercase">
+        <app-cv-icon name="arrow-right" class="text-cyan-400" size="w-5 h-5" />
+        <h2 class="text-2xl font-black tracking-tight uppercase text-white">
           {{ 'contact.title' | translate }}
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a [href]="'mailto:' + ('contact.email' | translate)" class="flex items-center space-x-4 p-6 bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl hover:bg-white/10 hover:border-cv-primary transition-all">
-          <app-cv-icon name="email" class="text-cv-primary" size="w-6 h-6" />
-          <div>
+        <a [href]="'mailto:' + ('contact.email' | translate)" (mousemove)="onMouseMove($event)" class="flex items-center space-x-4 p-6 glass-card glass-spotlight rounded-2xl hover:border-cyan-400/50 transition-all">
+          <app-cv-icon name="email" class="text-cyan-400" size="w-6 h-6" />
+          <div class="overflow-hidden">
             <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Email</p>
             <p class="text-sm font-bold text-white truncate">{{ 'contact.email' | translate }}</p>
           </div>
         </a>
 
-        <div class="flex items-center space-x-4 p-6 bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl">
-          <app-cv-icon name="phone" class="text-cv-primary" size="w-6 h-6" />
+        <a [href]="'tel:' + ('contact.phone' | translate)" (mousemove)="onMouseMove($event)" class="flex items-center space-x-4 p-6 glass-card glass-spotlight rounded-2xl hover:border-cyan-400/50 transition-all">
+          <app-cv-icon name="phone" class="text-cyan-400" size="w-6 h-6" />
           <div>
             <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Phone</p>
             <p class="text-sm font-bold text-white">{{ 'contact.phone' | translate }}</p>
           </div>
-        </div>
+        </a>
 
-        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" class="flex items-center space-x-4 p-6 bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl hover:bg-white/10 hover:border-cv-accent transition-all">
-          <app-cv-icon name="linkedin" class="text-cv-primary" size="w-6 h-6" />
+        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" rel="noopener noreferrer" (mousemove)="onMouseMove($event)" class="flex items-center space-x-4 p-6 glass-card glass-spotlight rounded-2xl hover:border-cyan-400/50 transition-all">
+          <app-cv-icon name="linkedin" class="text-cyan-400" size="w-6 h-6" />
           <div>
             <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">LinkedIn</p>
             <p class="text-sm font-bold text-white">Connect</p>
