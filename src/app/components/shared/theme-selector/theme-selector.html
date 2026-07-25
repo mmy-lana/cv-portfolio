@@ -10,15 +10,19 @@
     <span suffix class="ml-2">{{ themeService.themes.find(t => t.id === themeService.currentTheme())?.icon || '🎨' }}</span>
   </app-cv-button>
 
-  @if (isOpen()) {
+@if (isOpen()) {
     <div
-      class="absolute right-0 w-72 rounded-2xl border border-white/10 bg-slate-950/95 p-4 shadow-3xl backdrop-blur-xl ring-1 ring-black/20 focus:outline-none z-50 animate-fade-in-up duration-200"
+      class="absolute w-72 rounded-2xl border border-white/10 bg-slate-950/95 p-4 shadow-2xl backdrop-blur-xl ring-1 ring-black/20 focus:outline-none z-50 animate-fade-in-up duration-200"
       [class.top-full]="position === 'down'"
       [class.mt-2]="position === 'down'"
-      [class.origin-top-right]="position === 'down'"
       [class.bottom-full]="position === 'up'"
       [class.mb-2]="position === 'up'"
-      [class.origin-bottom-right]="position === 'up'"
+      [class.right-0]="align === 'right'"
+      [class.origin-top-right]="position === 'down' && align === 'right'"
+      [class.origin-bottom-right]="position === 'up' && align === 'right'"
+      [class.left-0]="align === 'left'"
+      [class.origin-top-left]="position === 'down' && align === 'left'"
+      [class.origin-bottom-left]="position === 'up' && align === 'left'"
       role="menu"
       aria-orientation="vertical"
       aria-labelledby="menu-button"

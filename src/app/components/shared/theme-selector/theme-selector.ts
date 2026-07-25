@@ -13,6 +13,7 @@ import { CvIcon } from '../atoms/cv-icon/cv-icon';
 })
 export class ThemeSelector {
   @Input() position: 'down' | 'up' = 'down';
+  @Input() align: 'left' | 'right' = 'right';
   isOpen = signal<boolean>(false);
 
   constructor(
