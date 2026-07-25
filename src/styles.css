@@ -361,3 +361,14 @@
   border-color: #cbd5e1;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
+
+/* Parallax Scrolling Theme 3D Tilt Utilities */
+.parallax-tilt-card {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.parallax-tilt-card:hover {
+  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
+}
