@@ -1,146 +1,232 @@
-<div class="theme-wrapper" style="--nav-bg: #0f172a; --nav-text: #f8fafc; --nav-border: #334155; --cv-primary: #0f172a; --cv-accent: #2563eb">
-  <app-theme-nav />
+<div class="theme-wrapper flex min-h-screen bg-slate-50 text-slate-900 font-sans" style="--nav-bg: #0f172a; --nav-text: #f8fafc; --nav-border: #334155; --cv-primary: #0f172a; --cv-accent: #2563eb">
+  
+  <app-dashboard-sidebar
+    [activeSection]="activeSection()"
+    [isCollapsed]="isCollapsed()"
+    [isMobileOpen]="isMobileOpen()"
+    (sectionSelect)="selectSection($event)"
+    (toggleCollapse)="toggleSidebar()"
+    (toggleMobile)="toggleMobileMenu()"
+    (downloadCv)="downloadCV()"
+  />
 
-  <div class="md:ml-64 px-6 md:px-16 py-20 space-y-24 bg-[#f8fafc] text-[#0f172a] min-h-screen">
-    <!-- ABOUT -->
-    <section id="about" class="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-center bg-white border border-slate-200 p-8 rounded-2xl shadow-sm animate-fade-in-up">
-      <div class="space-y-4 flex-1 text-center md:text-left">
-        <h1 class="text-4xl md:text-5xl font-black text-slate-950 tracking-tight leading-none">
-          {{ 'about.name' | translate }}
-        </h1>
-        <p class="text-xl md:text-2xl font-bold text-cv-accent">
-          {{ 'about.title' | translate }}
-        </p>
-        <p class="text-slate-600 leading-relaxed text-base">
-          {{ 'about.summary' | translate }}
-        </p>
+  <!-- MAIN DASHBOARD WORKSPACE PANE -->
+  <main 
+    class="flex-1 py-12 md:py-8 px-6 md:px-12 space-y-12 transition-all duration-300"
+    [class.md:ml-64]="!isCollapsed()"
+    [class.md:ml-20]="isCollapsed()"
+  >
+    <!-- TOP BREADCRUMB BAR -->
+    <div class="hidden md:flex items-center justify-between pb-4 border-b border-slate-200 text-xs text-slate-500 font-medium">
+      <div class="flex items-center space-x-2">
+        <span>Workspace</span>
+        <span>/</span>
+        <span class="font-bold text-slate-800 uppercase">{{ activeSection() }}</span>
+      </div>
+      <div class="flex items-center space-x-2 bg-slate-200/60 px-2.5 py-1 rounded-md text-[11px] text-slate-600 font-mono">
+        <span>Press 1-6 to switch tabs | Cmd+D to Download</span>
+      </div>
+    </div>
+
+    <!-- ABOUT CARD -->
+    <section id="about" class="max-w-4xl mx-auto dashboard-card p-8 md:p-10 rounded-2xl space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-4">
+        <div>
+          <h1 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
+            {{ 'about.name' | translate }}
+          </h1>
+          <p class="text-base md:text-lg font-bold text-blue-600 mt-1">
+            {{ 'about.title' | translate }}
+          </p>
+        </div>
+        <span class="px-3 py-1 text-xs font-bold rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+          ● ACTIVE_CANDIDATE
+        </span>
+      </div>
+
+      <p class="text-slate-600 leading-relaxed text-sm max-w-3xl">
+        {{ 'about.summary' | translate }}
+      </p>
+
+      <div class="pt-2 flex flex-wrap items-center gap-4">
+        <button
+          (click)="downloadCV()"
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl shadow-sm transition-all"
+        >
+          <app-cv-icon name="download" size="w-4 h-4" />
+          <span>Download CV (PDF)</span>
+        </button>
+
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-600 font-semibold">
+          <a [href]="'mailto:' + ('about.email' | translate)" class="hover:text-blue-600 transition-colors">
+            Email: {{ 'about.email' | translate }}
+          </a>
+          <a [href]="'https://' + ('about.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition-colors">
+            LinkedIn: {{ 'about.linkedin' | translate }}
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="max-w-4xl mx-auto space-y-8 animate-fade-in-up delay-100">
-      <div class="flex items-center space-x-3 border-b border-slate-200 pb-4">
-        <app-cv-icon name="arrow-right" class="text-cv-accent" size="w-5 h-5" />
-        <h2 class="text-2xl font-black text-slate-950 tracking-tight uppercase">
+    <!-- EXPERIENCE WORKSPACE CARDS -->
+    <section id="experience" class="max-w-4xl mx-auto space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">
           {{ 'experience.title' | translate }}
         </h2>
+        <span class="text-xs text-slate-400 font-mono">Module 01</span>
       </div>
 
-      <div class="grid grid-cols-1 gap-6">
-        @for (job of ('experience.items' | translate); track job.company) {
-          <app-cv-experience-card [data]="job" layoutVariant="clean" class="bg-white border border-slate-200 shadow-sm" />
-        }
-      </div>
+      @defer (on viewport) {
+        <div class="space-y-4">
+          @for (job of ('experience.items' | translate); track job.company; let first = $first) {
+            <div class="dashboard-card p-6 rounded-2xl relative space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2">
+                <span class="px-2.5 py-0.5 text-[10px] font-bold rounded-md" [class]="first ? 'bg-blue-100 text-blue-800' : 'bg-slate-100 text-slate-600'">
+                  {{ first ? '[ Present / Active ]' : '[ Completed ]' }}
+                </span>
+                <span class="text-xs font-semibold text-slate-400">{{ job.period }}</span>
+              </div>
+              <app-cv-experience-card [data]="job" layoutVariant="clean" />
+            </div>
+          }
+        </div>
+      } @placeholder {
+        <div class="space-y-4 animate-pulse">
+          <div class="h-32 dashboard-card rounded-2xl"></div>
+          <div class="h-32 dashboard-card rounded-2xl"></div>
+        </div>
+      }
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center space-x-3 border-b border-slate-200 pb-4">
-        <app-cv-icon name="arrow-right" class="text-cv-accent" size="w-5 h-5" />
-        <h2 class="text-2xl font-black text-slate-950 tracking-tight uppercase">
+    <!-- SKILLS WORKSPACE -->
+    <section id="skills" class="max-w-4xl mx-auto space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">
           {{ 'skills.title' | translate }}
         </h2>
+        <span class="text-xs text-slate-400 font-mono">Module 02</span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="space-y-3 p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
-          <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">Languages</h3>
-          <div class="flex flex-wrap gap-2">
-            @for (lang of ('skills.languages' | translate); track lang) {
-              <app-cv-badge [labelKey]="lang" variant="outline" size="sm" />
-            }
+      @defer (on viewport) {
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="dashboard-card p-6 rounded-2xl space-y-3">
+            <h3 class="font-bold text-xs uppercase text-slate-500 tracking-wider">Languages</h3>
+            <div class="flex flex-wrap gap-2">
+              @for (lang of ('skills.languages' | translate); track lang) {
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 border border-slate-200">
+                  {{ lang }}
+                </span>
+              }
+            </div>
           </div>
-        </div>
 
-        <div class="space-y-3 p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
-          <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">Frameworks & CSS</h3>
-          <div class="flex flex-wrap gap-2">
-            @for (fw of ('skills.frameworks' | translate); track fw) {
-              <app-cv-badge [labelKey]="fw" variant="solid" size="sm" />
-            }
+          <div class="dashboard-card p-6 rounded-2xl space-y-3">
+            <h3 class="font-bold text-xs uppercase text-slate-500 tracking-wider">Frameworks & CSS</h3>
+            <div class="flex flex-wrap gap-2">
+              @for (fw of ('skills.frameworks' | translate); track fw) {
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-blue-50 text-blue-700 border border-blue-200">
+                  {{ fw }}
+                </span>
+              }
+            </div>
           </div>
-        </div>
 
-        <div class="space-y-3 p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
-          <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">Tools</h3>
-          <div class="flex flex-wrap gap-2">
-            @for (tool of ('skills.tools' | translate); track tool) {
-              <app-cv-badge [labelKey]="tool" variant="glass" size="sm" class="!bg-slate-100 !text-slate-600" />
-            }
+          <div class="dashboard-card p-6 rounded-2xl space-y-3">
+            <h3 class="font-bold text-xs uppercase text-slate-500 tracking-wider">Tools</h3>
+            <div class="flex flex-wrap gap-2">
+              @for (tool of ('skills.tools' | translate); track tool) {
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 border border-slate-200">
+                  {{ tool }}
+                </span>
+              }
+            </div>
           </div>
         </div>
-      </div>
+      } @placeholder {
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 animate-pulse">
+          <div class="h-32 dashboard-card rounded-2xl"></div>
+          <div class="h-32 dashboard-card rounded-2xl"></div>
+          <div class="h-32 dashboard-card rounded-2xl"></div>
+        </div>
+      }
     </section>
 
-    <!-- EDUCATION -->
-    <section id="education" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center space-x-3 border-b border-slate-200 pb-4">
-        <app-cv-icon name="arrow-right" class="text-cv-accent" size="w-5 h-5" />
-        <h2 class="text-2xl font-black text-slate-950 tracking-tight uppercase">
+    <!-- EDUCATION WORKSPACE -->
+    <section id="education" class="max-w-4xl mx-auto space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">
           {{ 'education.title' | translate }}
         </h2>
+        <span class="text-xs text-slate-400 font-mono">Module 03</span>
       </div>
 
-      <div class="grid grid-cols-1 gap-6">
-        @for (edu of ('education.items' | translate); track edu.school) {
-          <app-cv-experience-card [data]="edu" layoutVariant="clean" class="bg-white border border-slate-200 shadow-sm" />
-        }
-      </div>
+      @defer (on viewport) {
+        <div class="space-y-4">
+          @for (edu of ('education.items' | translate); track edu.school) {
+            <div class="dashboard-card p-6 rounded-2xl">
+              <app-cv-experience-card [data]="edu" layoutVariant="clean" />
+            </div>
+          }
+        </div>
+      } @placeholder {
+        <div class="h-28 dashboard-card rounded-2xl animate-pulse"></div>
+      }
     </section>
 
-    <!-- CERTIFICATES -->
-    <section id="certificates" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center space-x-3 border-b border-slate-200 pb-4">
-        <app-cv-icon name="arrow-right" class="text-cv-accent" size="w-5 h-5" />
-        <h2 class="text-2xl font-black text-slate-950 tracking-tight uppercase">
+    <!-- CERTIFICATES WORKSPACE -->
+    <section id="certificates" class="max-w-4xl mx-auto space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">
           {{ 'certificates.title' | translate }}
         </h2>
+        <span class="text-xs text-slate-400 font-mono">Module 04</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         @for (cert of ('certificates.items' | translate); track cert) {
-          <div class="flex items-center space-x-3 p-5 bg-white border border-slate-200 rounded-xl shadow-sm hover:border-cv-accent transition-all duration-300">
-            <app-cv-icon name="gpa" class="text-cv-accent" size="w-5 h-5" />
-            <span class="text-sm font-semibold text-slate-700">{{ cert }}</span>
+          <div class="dashboard-card p-5 rounded-xl flex items-center space-x-3">
+            <app-cv-icon name="gpa" class="text-blue-600" size="w-5 h-5" />
+            <span class="text-xs font-bold text-slate-700">{{ cert }}</span>
           </div>
         }
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="max-w-4xl mx-auto space-y-8 pb-16">
-      <div class="flex items-center space-x-3 border-b border-slate-200 pb-4">
-        <app-cv-icon name="arrow-right" class="text-cv-accent" size="w-5 h-5" />
-        <h2 class="text-2xl font-black text-slate-950 tracking-tight uppercase">
+    <!-- CONTACT WORKSPACE -->
+    <section id="contact" class="max-w-4xl mx-auto space-y-6 pb-16">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+        <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">
           {{ 'contact.title' | translate }}
         </h2>
+        <span class="text-xs text-slate-400 font-mono">Module 05</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a [href]="'mailto:' + ('contact.email' | translate)" class="flex items-center space-x-4 p-6 bg-white border border-slate-200 rounded-2xl hover:bg-slate-50 transition-colors">
-          <app-cv-icon name="email" class="text-cv-accent" size="w-6 h-6" />
-          <div>
-            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Email</p>
-            <p class="text-sm font-bold text-slate-700 truncate">{{ 'contact.email' | translate }}</p>
+        <a [href]="'mailto:' + ('contact.email' | translate)" class="dashboard-card p-6 rounded-2xl flex items-center space-x-4 hover:border-blue-500 transition-colors">
+          <app-cv-icon name="email" class="text-blue-600" size="w-6 h-6" />
+          <div class="overflow-hidden">
+            <p class="text-[10px] font-bold text-slate-400 uppercase">Email</p>
+            <p class="text-xs font-bold text-slate-800 truncate">{{ 'contact.email' | translate }}</p>
           </div>
         </a>
 
-        <div class="flex items-center space-x-4 p-6 bg-white border border-slate-200 rounded-2xl">
-          <app-cv-icon name="phone" class="text-cv-accent" size="w-6 h-6" />
+        <a [href]="'tel:' + ('contact.phone' | translate)" class="dashboard-card p-6 rounded-2xl flex items-center space-x-4 hover:border-blue-500 transition-colors">
+          <app-cv-icon name="phone" class="text-blue-600" size="w-6 h-6" />
           <div>
-            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Phone</p>
-            <p class="text-sm font-bold text-slate-700">{{ 'contact.phone' | translate }}</p>
+            <p class="text-[10px] font-bold text-slate-400 uppercase">Phone</p>
+            <p class="text-xs font-bold text-slate-800">{{ 'contact.phone' | translate }}</p>
           </div>
-        </div>
+        </a>
 
-        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" class="flex items-center space-x-4 p-6 bg-white border border-slate-200 rounded-2xl hover:bg-slate-50 transition-colors">
-          <app-cv-icon name="linkedin" class="text-cv-accent" size="w-6 h-6" />
+        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="dashboard-card p-6 rounded-2xl flex items-center space-x-4 hover:border-blue-500 transition-colors">
+          <app-cv-icon name="linkedin" class="text-blue-600" size="w-6 h-6" />
           <div>
-            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">LinkedIn</p>
-            <p class="text-sm font-bold text-slate-700">Connect</p>
+            <p class="text-[10px] font-bold text-slate-400 uppercase">LinkedIn</p>
+            <p class="text-xs font-bold text-slate-800">Connect</p>
           </div>
         </a>
       </div>
     </section>
-  </div>
+  </main>
 </div>

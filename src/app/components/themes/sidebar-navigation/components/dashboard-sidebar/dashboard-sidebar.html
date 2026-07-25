@@ -1,0 +1,138 @@
+<!-- DESKTOP SIDEBAR PANEL -->
+<aside 
+  class="hidden md:flex fixed top-0 left-0 h-full bg-slate-900 text-slate-200 flex-col justify-between p-4 z-40 border-r border-slate-800 transition-all duration-300"
+  [class.w-64]="!isCollapsed()"
+  [class.w-20]="isCollapsed()"
+>
+  <div class="space-y-6">
+    <!-- DASHBOARD AVATAR HEADER -->
+    <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+      <div class="flex items-center space-x-3 overflow-hidden">
+        <div class="w-10 h-10 rounded-xl bg-blue-600 text-white font-black flex items-center justify-center text-sm shrink-0 shadow-md">
+          MY
+        </div>
+        @if (!isCollapsed()) {
+          <div class="overflow-hidden">
+            <p class="font-bold text-sm text-white truncate leading-tight">{{ 'about.name' | translate }}</p>
+            <p class="text-[11px] text-blue-400 font-medium truncate">{{ 'about.title' | translate }}</p>
+          </div>
+        }
+      </div>
+      
+      <button (click)="onToggleCollapse()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer">
+        {{ isCollapsed() ? '→' : '←' }}
+      </button>
+    </div>
+
+    <!-- DASHBOARD NAVIGATION LINKS -->
+    <nav class="space-y-1">
+      @for (item of navItems; track item.id) {
+        <button
+          (click)="onSelect(item.id)"
+          class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 dashboard-sidebar-item cursor-pointer"
+          [class.bg-blue-600]="activeSection() === item.id"
+          [class.text-white]="activeSection() === item.id"
+          [class.text-slate-400]="activeSection() !== item.id"
+          [class.hover:bg-slate-800]="activeSection() !== item.id"
+          [class.hover:text-slate-200]="activeSection() !== item.id"
+        >
+          <div class="flex items-center space-x-3">
+            <app-cv-icon [name]="item.icon" size="w-4 h-4" />
+            @if (!isCollapsed()) {
+              <span class="truncate">{{ item.labelKey | translate }}</span>
+            }
+          </div>
+          @if (!isCollapsed()) {
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 font-mono">
+              {{ item.shortcut }}
+            </span>
+          }
+        </button>
+      }
+    </nav>
+  </div>
+
+  <!-- SIDEBAR FOOTER & STICKY DOWNLOAD -->
+  <div class="space-y-3 pt-4 border-t border-slate-800">
+    <a
+      href="assets/cv/CV_Muhammad_Maulana_Yusuf.pdf"
+      download="CV_Muhammad_Maulana_Yusuf.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      (click)="onDownloadCv()"
+      class="w-full inline-flex items-center justify-center gap-2 px-3 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl shadow-md transition-all duration-200"
+    >
+      <app-cv-icon name="download" size="w-4 h-4" />
+      @if (!isCollapsed()) {
+        <span>Download CV</span>
+      }
+    </a>
+
+    @if (!isCollapsed()) {
+      <div class="space-y-2 pt-1">
+        <div class="flex items-center justify-between text-xs font-bold text-slate-400 px-1">
+          <button (click)="goBack()" class="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer py-1">
+            <app-cv-icon name="back" size="w-3.5 h-3.5" />
+            <span>Back</span>
+          </button>
+          <button (click)="toggleLanguage()" class="hover:text-white transition-colors cursor-pointer py-1">
+            LANG: {{ lang.current.toUpperCase() }}
+          </button>
+        </div>
+
+        <div class="flex justify-center pt-1">
+          <app-theme-selector />
+        </div>
+      </div>
+    } @else {
+      <div class="flex flex-col items-center gap-2 pt-2">
+        <button (click)="goBack()" title="Back to Home" class="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors cursor-pointer">
+          <app-cv-icon name="back" size="w-4 h-4" />
+        </button>
+      </div>
+    }
+  </div>
+</aside>
+
+<!-- MOBILE TOPBAR -->
+<div class="md:hidden fixed top-0 left-0 w-full flex items-center justify-between px-4 py-3 bg-slate-900 text-white z-40 border-b border-slate-800">
+  <div class="flex items-center space-x-2">
+    <button (click)="goBack()" class="flex items-center gap-1 text-xs font-bold text-slate-300 hover:text-white bg-slate-800 px-2 py-1 rounded-lg cursor-pointer">
+      <app-cv-icon name="back" size="w-3.5 h-3.5" />
+      <span>Back</span>
+    </button>
+    <span class="font-bold text-sm truncate">{{ 'about.name' | translate }}</span>
+  </div>
+  <button (click)="onToggleMobile()" class="p-2 text-xl cursor-pointer">☰</button>
+</div>
+
+@if (isMobileOpen()) {
+  <div class="md:hidden fixed inset-0 bg-slate-950/95 z-50 p-6 flex flex-col justify-between">
+    <div class="space-y-6">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800 text-white">
+        <span class="font-bold">WORKSPACE NAV</span>
+        <button (click)="onToggleMobile()" class="text-xl cursor-pointer">✕</button>
+      </div>
+      <div class="space-y-2">
+        @for (item of navItems; track item.id) {
+          <button
+            (click)="onSelect(item.id)"
+            class="w-full text-left py-3 px-4 rounded-xl font-bold text-slate-200 bg-slate-900 border border-slate-800 cursor-pointer"
+          >
+            {{ item.labelKey | translate }}
+          </button>
+        }
+      </div>
+    </div>
+    <a
+      href="assets/cv/CV_Muhammad_Maulana_Yusuf.pdf"
+      download="CV_Muhammad_Maulana_Yusuf.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      (click)="onDownloadCv()"
+      class="w-full text-center py-3 bg-blue-600 text-white font-bold rounded-xl"
+    >
+      Download CV (PDF)
+    </a>
+  </div>
+}

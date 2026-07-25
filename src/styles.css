@@ -343,3 +343,21 @@
   box-shadow: 0 0 15px rgba(244, 63, 94, 0.5);
   transform: scale(1.05);
 }
+
+/* Sidebar Navigation Theme Styles */
+.dashboard-sidebar-item {
+  position: relative;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dashboard-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
