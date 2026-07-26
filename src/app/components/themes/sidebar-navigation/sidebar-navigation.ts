@@ -49,29 +49,25 @@ export class SidebarNavigation implements OnInit, AfterViewInit, OnDestroy {
     this.ngZone.runOutsideAngular(() => {
       const sections: DashboardSection[] = ['about', 'experience', 'skills', 'education', 'certificates', 'contact'];
 
-      const options: IntersectionObserverInit = {
-        root: null,
-        rootMargin: '-20% 0px -60% 0px',
-        threshold: 0
+      const onScroll = () => {
+        const scrollPosition = window.scrollY + 180;
+
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const id = sections[i];
+          const el = document.getElementById(id);
+          if (el && el.offsetTop <= scrollPosition) {
+            if (this.activeSection() !== id) {
+              this.ngZone.run(() => {
+                this.activeSection.set(id);
+              });
+            }
+            break;
+          }
+        }
       };
 
-      this.observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id as DashboardSection;
-            this.ngZone.run(() => {
-              this.activeSection.set(id);
-            });
-          }
-        });
-      }, options);
-
-      sections.forEach((id) => {
-        const el = document.getElementById(id);
-        if (el) {
-          this.observer?.observe(el);
-        }
-      });
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
     });
   }
 
