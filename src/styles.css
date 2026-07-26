@@ -298,11 +298,11 @@ html:not(.dark) .dark-glow-card::before {
   transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
 }
 
-/* Retro Computer CRT Scanlines & Blinking Cursor */
+/* Retro Computer CRT Scanlines, 3D Outset Borders & Blinking Cursor */
 .crt-screen {
-  background: #0d0b04;
-  color: #ffb000;
-  text-shadow: 0 0 5px rgba(255, 176, 0, 0.6);
+  background: #0a0a0a;
+  color: #00ff66;
+  text-shadow: 0 0 5px rgba(0, 255, 102, 0.6);
   font-family: 'Courier New', Courier, monospace;
   position: relative;
 }
@@ -324,6 +324,23 @@ html:not(.dark) .dark-glow-card::before {
   background-size: 100% 3px, 6px 100%;
   pointer-events: none;
   z-index: 20;
+}
+
+.border-outset-ibm {
+  border-style: outset;
+  border-width: 4px;
+  border-color: #d6d1c4 #9c978b #9c978b #d6d1c4;
+}
+
+.border-outset-btn {
+  border-style: outset;
+  border-width: 2px;
+  border-color: #ffffff #808080 #808080 #ffffff;
+}
+
+.border-outset-btn:active {
+  border-style: inset;
+  border-color: #808080 #ffffff #ffffff #808080;
 }
 
 .cursor-blink {

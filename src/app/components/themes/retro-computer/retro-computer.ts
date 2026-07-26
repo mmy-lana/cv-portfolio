@@ -1,9 +1,11 @@
-import { Component, OnInit, signal, viewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, inject, signal, viewChild, ElementRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ThemeNav } from '../../shared/theme-nav/theme-nav';
 import { ThemeService } from '../../../services/theme.service';
+import { FaviconService } from '../../../services/favicon.service';
+import { DownloadCvBtnComponent } from '../../shared/atoms/download-cv-btn/download-cv-btn';
 
 export interface TerminalEntry {
   command: string;
@@ -14,10 +16,19 @@ export interface TerminalEntry {
 @Component({
   selector: 'app-retro-computer',
   standalone: true,
-  imports: [ThemeNav, TranslateModule, RouterModule, FormsModule],
+  imports: [
+    ThemeNav,
+    TranslateModule,
+    RouterModule,
+    FormsModule,
+    DownloadCvBtnComponent
+  ],
   templateUrl: './retro-computer.html'
 })
 export class RetroComputer implements OnInit {
+  public themeService = inject(ThemeService);
+  private faviconService = inject(FaviconService);
+
   terminalContainer = viewChild<ElementRef<HTMLDivElement>>('terminalContainer');
   commandInput = viewChild<ElementRef<HTMLInputElement>>('commandInput');
 
@@ -42,17 +53,18 @@ export class RetroComputer implements OnInit {
     'clear'
   ];
 
-  constructor(private themeService: ThemeService) {}
-
   ngOnInit(): void {
     this.themeService.setTheme('retro-computer');
+    this.faviconService.setFavicon('retro-computer');
   }
 
   executeCommand(cmd?: string): void {
-    const rawCmd = (cmd ?? this.inputQuery()).trim().toLowerCase();
+    let rawCmd = (cmd ?? this.inputQuery()).trim().toLowerCase();
     if (!rawCmd) return;
 
     this.inputQuery.set('');
+
+    rawCmd = rawCmd.replace(/^(cat|ls|run|get)\s+/, '');
 
     if (rawCmd === 'clear') {
       this.history.set([]);
@@ -60,8 +72,10 @@ export class RetroComputer implements OnInit {
     }
 
     const timestamp = new Date().toLocaleTimeString();
-    const validCommands = ['help', 'about', 'experience', 'skills', 'education', 'certificates', 'contact', 'download-cv'];
-    const type: TerminalEntry['type'] = validCommands.includes(rawCmd)
+    const validCommands: TerminalEntry['type'][] = [
+      'help', 'about', 'experience', 'skills', 'education', 'certificates', 'contact', 'download-cv'
+    ];
+    const type: TerminalEntry['type'] = validCommands.includes(rawCmd as any)
       ? (rawCmd as TerminalEntry['type'])
       : 'error';
 

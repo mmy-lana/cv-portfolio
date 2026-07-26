@@ -1,70 +1,125 @@
-<div class="theme-wrapper relative min-h-screen md:h-screen crt-screen crt-scanlines overflow-hidden" style="--nav-bg: #0d0b04; --nav-text: #ffb000; --nav-border: #ffb000; --cv-primary: #ffb000; --cv-accent: #d97706">
-  <app-theme-nav (sectionSelect)="executeCommand($event)" class="print:hidden z-30 relative" />
+<div 
+  class="theme-wrapper relative h-screen h-[100dvh] flex flex-col overflow-hidden transition-colors duration-300 font-mono"
+  [class.bg-[#f5f2eb]]="!themeService.isDarkMode()"
+  [class.text-[#2c221e]]="!themeService.isDarkMode()"
+  [class.bg-[#0a0a0a]]="themeService.isDarkMode()"
+  [class.text-[#00ff66]]="themeService.isDarkMode()"
+  [class.crt-screen]="themeService.isDarkMode()"
+  [class.crt-scanlines]="themeService.isDarkMode()"
+  style="--nav-bg: #1a1a1a; --nav-text: #00ff66; --nav-border: #222; --cv-primary: #00ff66; --cv-accent: #00cc52"
+>
+  <app-theme-nav (sectionSelect)="executeCommand($event)" class="print:hidden z-30 relative shrink-0" />
 
-  <div class="md:ml-64 px-4 md:px-12 py-6 h-full min-h-screen md:min-h-0 text-[#ffb000] font-mono relative z-10 flex flex-col" (click)="focusInput()">
-    <div class="max-w-5xl mx-auto w-full flex-1 flex flex-col min-h-0 space-y-4">
-      
-      <!-- TERMINAL HUD HEADER -->
-      <div class="shrink-0 border-2 border-[#ffb000] p-4 bg-[#141006] flex flex-wrap items-center justify-between gap-2 shadow-[4px_4px_0px_#ffb000]">
-        <div>
-          <p class="text-xs font-bold uppercase tracking-widest">> VT100 TERMINAL EMULATOR v21.0</p>
-          <p class="text-[10px] text-[#ffb000]/70">USER: GUEST_RECRUITER // BAUD_RATE: 9600</p>
+  <main class="flex-1 min-h-0 w-full max-w-5xl mx-auto px-4 md:px-8 py-4 md:py-6 flex flex-col relative z-10" (click)="focusInput()">
+    <!-- RETRO DESKTOP WINDOW FRAME -->
+    <div 
+      class="w-full flex-1 min-h-0 flex flex-col rounded-none shadow-2xl transition-all duration-300 overflow-hidden border-4"
+      [class.border-outset-ibm]="!themeService.isDarkMode()"
+      [class.bg-[#eae5d9]]="!themeService.isDarkMode()"
+      [class.border-[#00ff66]/40]="themeService.isDarkMode()"
+      [class.bg-[#111111]]="themeService.isDarkMode()"
+      [class.shadow-[0_0_25px_rgba(0,255,102,0.15)]]="themeService.isDarkMode()"
+    >
+      <!-- WINDOW TITLE BAR HUD HEADER -->
+      <div 
+        class="shrink-0 px-4 py-2 flex flex-wrap items-center justify-between gap-2 select-none"
+        [class.bg-[#003399]]="!themeService.isDarkMode()"
+        [class.text-white]="!themeService.isDarkMode()"
+        [class.bg-[#1a1a1a]]="themeService.isDarkMode()"
+        [class.border-b-2]="themeService.isDarkMode()"
+        [class.border-[#00ff66]/40]="themeService.isDarkMode()"
+        [class.text-[#00ff66]]="themeService.isDarkMode()"
+      >
+        <div class="flex items-center space-x-2">
+          <span class="inline-block w-3 h-3 rounded-none bg-red-500 border border-black/40"></span>
+          <span class="inline-block w-3 h-3 rounded-none bg-yellow-500 border border-black/40"></span>
+          <span class="inline-block w-3 h-3 rounded-none bg-green-500 border border-black/40"></span>
+          <span class="text-xs font-bold uppercase tracking-widest ml-2">
+            {{ themeService.isDarkMode() ? 'HACKER TERMINAL v21.0 // VT100' : 'IBM PC DOS v3.30 — [C:\\PORTFOLIO\\CV.EXE]' }}
+          </span>
         </div>
-        <span class="text-xs font-bold px-2 py-0.5 bg-[#ffb000] text-black animate-pulse">ONLINE</span>
+        <div class="flex items-center space-x-3 text-[11px] font-bold">
+          <span>PRESET: {{ themeService.isDarkMode() ? 'HACKER TERMINAL' : 'IBM CREAM 1984' }}</span>
+          <span class="px-2 py-0.5 uppercase tracking-widest animate-pulse" [class.bg-white]="!themeService.isDarkMode()" [class.text-[#003399]]="!themeService.isDarkMode()" [class.bg-[#00ff66]]="themeService.isDarkMode()" [class.text-black]="themeService.isDarkMode()">ONLINE</span>
+        </div>
       </div>
 
       <!-- QUICK COMMAND PILLS -->
-      <div class="shrink-0 flex flex-wrap gap-2 text-xs font-bold">
-        <span class="text-[#ffb000]/60 self-center">QUICK_RUN:</span>
+      <div 
+        class="shrink-0 p-3 flex flex-wrap gap-2 text-xs font-bold border-b"
+        [class.bg-[#e2ddcf]]="!themeService.isDarkMode()"
+        [class.border-[#d6d1c4]]="!themeService.isDarkMode()"
+        [class.bg-[#161616]]="themeService.isDarkMode()"
+        [class.border-[#00ff66]/20]="themeService.isDarkMode()"
+      >
+        <span [class.text-[#2c221e]/70]="!themeService.isDarkMode()" [class.text-[#00ff66]/70]="themeService.isDarkMode()" class="self-center text-[11px]">
+          SUGGESTIONS:
+        </span>
         @for (cmd of quickCommands; track cmd) {
           <button
             (click)="executeCommand(cmd)"
-            class="px-2.5 py-1 border border-[#ffb000]/50 bg-[#141006] text-[#ffb000] hover:bg-[#ffb000] hover:text-black transition-all duration-150 cursor-pointer"
+            class="px-2.5 py-1 text-xs font-bold border-2 transition-all duration-150 cursor-pointer select-none"
+            [class.bg-[#f5f2eb]]="!themeService.isDarkMode()"
+            [class.text-[#2c221e]]="!themeService.isDarkMode()"
+            [class.border-outset-btn]="!themeService.isDarkMode()"
+            [class.hover:bg-[#003399]]="!themeService.isDarkMode()"
+            [class.hover:text-white]="!themeService.isDarkMode()"
+            [class.bg-[#0a0a0a]]="themeService.isDarkMode()"
+            [class.text-[#00ff66]]="themeService.isDarkMode()"
+            [class.border-[#00ff66]/50]="themeService.isDarkMode()"
+            [class.hover:bg-[#00ff66]]="themeService.isDarkMode()"
+            [class.hover:text-black]="themeService.isDarkMode()"
           >
-            [ {{ cmd }} ]
+            [ {{ cmd === 'download-cv' ? 'download-cv' : 'cat ' + cmd }} ]
           </button>
         }
       </div>
 
       <!-- TERMINAL OUTPUT STREAM -->
-      <div #terminalContainer class="flex-1 min-h-0 border-2 border-[#ffb000]/40 p-4 md:p-6 bg-[#0a0803] overflow-y-auto overflow-x-hidden space-y-6 text-sm leading-relaxed">
+      <div 
+        #terminalContainer 
+        class="flex-1 min-h-0 p-4 md:p-6 overflow-y-auto overflow-x-hidden space-y-6 text-sm leading-relaxed"
+        [class.bg-[#fbf9f5]]="!themeService.isDarkMode()"
+        [class.text-[#2c221e]]="!themeService.isDarkMode()"
+        [class.bg-[#080808]]="themeService.isDarkMode()"
+        [class.text-[#00ff66]]="themeService.isDarkMode()"
+      >
         @for (entry of history(); track $index) {
           <div class="space-y-3">
             @if (entry.type !== 'system') {
-              <div class="flex items-center gap-2 text-amber-300 font-bold">
-                <span class="text-[#ffb000]">></span>
-                <span>guest&#64;mmy-portfolio:~$ {{ entry.command }}</span>
-                <span class="text-[10px] opacity-40 ml-auto">{{ entry.timestamp }}</span>
+              <div class="flex items-center gap-2 font-bold" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()">
+                <span>> C:\GUEST> {{ entry.command }}</span>
+                <span class="text-[10px] opacity-40 ml-auto font-mono">{{ entry.timestamp }}</span>
               </div>
             }
 
-            <!-- OUTPUT TYPE HANDLERS -->
             @switch (entry.type) {
               @case ('system') {
-                <div class="text-xs space-y-1 text-amber-200 border-b border-dashed border-[#ffb000]/30 pb-4">
-                  <p class="font-bold">SYSTEM BOOT SUCCESSFUL [PORTFOLIO OS v21.0]</p>
-                  <p>Type <span class="bg-[#ffb000] text-black px-1 font-bold">help</span> or click quick pills above to inspect CV data.</p>
+                <div class="text-xs space-y-1 pb-4 border-b border-dashed" [class.border-[#2c221e]/30]="!themeService.isDarkMode()" [class.border-[#00ff66]/30]="themeService.isDarkMode()">
+                  <p class="font-bold uppercase tracking-wider">SYSTEM BOOT SUCCESSFUL [IBM PC DOS v3.30 / PORTFOLIO OS]</p>
+                  <p>Type <span class="px-1.5 py-0.5 font-bold" [class.bg-[#003399]]="!themeService.isDarkMode()" [class.text-white]="!themeService.isDarkMode()" [class.bg-[#00ff66]]="themeService.isDarkMode()" [class.text-black]="themeService.isDarkMode()">help</span> or tap quick suggestion pills above to inspect CV data.</p>
                 </div>
               }
 
               @case ('help') {
-                <div class="space-y-1 text-xs border-l-2 border-[#ffb000] pl-3 py-1">
-                  <p class="font-bold uppercase tracking-wider mb-2">AVAILABLE CLI COMMANDS:</p>
-                  <p><span class="text-amber-200 font-bold inline-block w-32">about</span> - Display biography and summary</p>
-                  <p><span class="text-amber-200 font-bold inline-block w-32">experience</span> - Renders work history log</p>
-                  <p><span class="text-amber-200 font-bold inline-block w-32">skills</span> - Renders programming utilities matrix</p>
-                  <p><span class="text-amber-200 font-bold inline-block w-32">education</span> - Displays academic credentials</p>
-                  <p><span class="text-amber-200 font-bold inline-block w-32">contact</span> - Outputs communication links</p>
-                  <p><span class="text-amber-200 font-bold inline-block w-32">download-cv</span> - Downloads official CV PDF file</p>
-                  <p><span class="text-amber-200 font-bold inline-block w-32">clear</span> - Clears current buffer screen</p>
+                <div class="space-y-1 text-xs border-l-2 pl-3 py-1" [class.border-[#003399]]="!themeService.isDarkMode()" [class.border-[#00ff66]]="themeService.isDarkMode()">
+                  <p class="font-bold uppercase tracking-wider mb-2">AVAILABLE COMMANDS:</p>
+                  <p><span class="font-bold inline-block w-32" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()">about</span> — Display candidate biography</p>
+                  <p><span class="font-bold inline-block w-32" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()">experience</span> — Render work history log</p>
+                  <p><span class="font-bold inline-block w-32" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()">skills</span> — Display technical skills in ASCII grid</p>
+                  <p><span class="font-bold inline-block w-32" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()">education</span> — Output academic credentials</p>
+                  <p><span class="font-bold inline-block w-32" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()">certificates</span> — List professional certifications</p>
+                  <p><span class="font-bold inline-block w-32" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()">contact</span> — Display communication channels</p>
+                  <p><span class="font-bold inline-block w-32" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()">download-cv</span> — Trigger CV PDF file download</p>
+                  <p><span class="font-bold inline-block w-32" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()">clear</span> — Clear terminal output buffer</p>
                 </div>
               }
 
               @case ('about') {
-                <div class="space-y-2 border-l-2 border-[#ffb000] pl-4 py-2 bg-[#141006]">
-                  <p class="text-lg font-black uppercase text-white">{{ 'about.name' | translate }}</p>
-                  <p class="font-bold text-amber-300">* {{ 'about.title' | translate }} *</p>
-                  <p class="text-xs text-amber-100/90 leading-relaxed">{{ 'about.summary' | translate }}</p>
+                <div class="space-y-2 border-l-2 pl-4 py-2" [class.border-[#003399]]="!themeService.isDarkMode()" [class.bg-[#f5f2eb]]="!themeService.isDarkMode()" [class.border-[#00ff66]]="themeService.isDarkMode()" [class.bg-[#121212]]="themeService.isDarkMode()">
+                  <p class="text-base font-black uppercase" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()">{{ 'about.name' | translate }}</p>
+                  <p class="font-bold text-xs" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()">* {{ 'about.title' | translate }} *</p>
+                  <p class="text-xs leading-relaxed opacity-90">{{ 'about.summary' | translate }}</p>
                   <p class="text-xs font-bold">LOCATION: {{ 'about.location' | translate }}</p>
                 </div>
               }
@@ -72,12 +127,12 @@
               @case ('experience') {
                 <div class="space-y-4">
                   @for (job of ('experience.items' | translate); track job.company) {
-                    <div class="border border-[#ffb000]/40 p-4 bg-[#141006] space-y-1 text-xs">
-                      <p class="font-bold text-amber-300 text-sm"># {{ job.role }} &#64; {{ job.company }}</p>
+                    <div class="border p-4 space-y-1 text-xs" [class.border-[#003399]/30]="!themeService.isDarkMode()" [class.bg-[#f5f2eb]]="!themeService.isDarkMode()" [class.border-[#00ff66]/30]="themeService.isDarkMode()" [class.bg-[#121212]]="themeService.isDarkMode()">
+                      <p class="font-bold text-sm" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()"># {{ job.role }} &#64; {{ job.company }}</p>
                       <p class="opacity-75">PERIOD: {{ job.period }} | LOCATION: {{ job.location }}</p>
                       @if (job.desc) {
                         <div class="pt-2 space-y-1">
-                          @for (bullet of (job.desc); track bullet) {
+                          @for (bullet of job.desc; track bullet) {
                             <p class="pl-2 break-words">- {{ bullet }}</p>
                           }
                         </div>
@@ -89,22 +144,22 @@
 
               @case ('skills') {
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                  <div class="border border-[#ffb000]/40 p-4 bg-[#141006]">
-                    <p class="font-bold border-b border-[#ffb000]/30 pb-1 mb-2">// LANGUAGES</p>
+                  <div class="border p-4" [class.border-[#003399]/30]="!themeService.isDarkMode()" [class.bg-[#f5f2eb]]="!themeService.isDarkMode()" [class.border-[#00ff66]/30]="themeService.isDarkMode()" [class.bg-[#121212]]="themeService.isDarkMode()">
+                    <p class="font-bold border-b pb-1 mb-2" [class.border-[#003399]/30]="!themeService.isDarkMode()" [class.border-[#00ff66]/30]="themeService.isDarkMode()">+-- [ LANGUAGES ] --+</p>
                     @for (lang of ('skills.languages' | translate); track lang) {
-                      <p>> {{ lang }}</p>
+                      <p>|  > {{ lang }}</p>
                     }
                   </div>
-                  <div class="border border-[#ffb000]/40 p-4 bg-[#141006]">
-                    <p class="font-bold border-b border-[#ffb000]/30 pb-1 mb-2">// FRAMEWORKS</p>
+                  <div class="border p-4" [class.border-[#003399]/30]="!themeService.isDarkMode()" [class.bg-[#f5f2eb]]="!themeService.isDarkMode()" [class.border-[#00ff66]/30]="themeService.isDarkMode()" [class.bg-[#121212]]="themeService.isDarkMode()">
+                    <p class="font-bold border-b pb-1 mb-2" [class.border-[#003399]/30]="!themeService.isDarkMode()" [class.border-[#00ff66]/30]="themeService.isDarkMode()">+-- [ FRAMEWORKS ] --+</p>
                     @for (fw of ('skills.frameworks' | translate); track fw) {
-                      <p>> {{ fw }}</p>
+                      <p>|  > {{ fw }}</p>
                     }
                   </div>
-                  <div class="border border-[#ffb000]/40 p-4 bg-[#141006]">
-                    <p class="font-bold border-b border-[#ffb000]/30 pb-1 mb-2">// TOOLS</p>
+                  <div class="border p-4" [class.border-[#003399]/30]="!themeService.isDarkMode()" [class.bg-[#f5f2eb]]="!themeService.isDarkMode()" [class.border-[#00ff66]/30]="themeService.isDarkMode()" [class.bg-[#121212]]="themeService.isDarkMode()">
+                    <p class="font-bold border-b pb-1 mb-2" [class.border-[#003399]/30]="!themeService.isDarkMode()" [class.border-[#00ff66]/30]="themeService.isDarkMode()">+-- [ TOOLS ] --+</p>
                     @for (tool of ('skills.tools' | translate); track tool) {
-                      <p>> {{ tool }}</p>
+                      <p>|  > {{ tool }}</p>
                     }
                   </div>
                 </div>
@@ -113,11 +168,11 @@
               @case ('education') {
                 <div class="space-y-3 text-xs">
                   @for (edu of ('education.items' | translate); track edu.school) {
-                    <div class="border border-[#ffb000]/40 p-4 bg-[#141006] space-y-1">
-                      <p class="font-bold text-amber-300 text-sm">> {{ edu.degree }}</p>
+                    <div class="border p-4 space-y-1" [class.border-[#003399]/30]="!themeService.isDarkMode()" [class.bg-[#f5f2eb]]="!themeService.isDarkMode()" [class.border-[#00ff66]/30]="themeService.isDarkMode()" [class.bg-[#121212]]="themeService.isDarkMode()">
+                      <p class="font-bold text-sm" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()">> {{ edu.degree }}</p>
                       <p>{{ edu.school }} ({{ edu.year }})</p>
                       @if (edu.gpa) {
-                        <p class="font-bold text-amber-200">GPA: {{ edu.gpa }}</p>
+                        <p class="font-bold">GPA: {{ edu.gpa }}</p>
                       }
                     </div>
                   }
@@ -125,31 +180,32 @@
               }
 
               @case ('certificates') {
-                <div class="space-y-2 text-xs border-l-2 border-[#ffb000] pl-4 py-2 bg-[#141006]">
-                  <p class="font-bold text-amber-300 mb-1">// SECURITY_CREDENTIALS</p>
+                <div class="space-y-2 text-xs border-l-2 pl-4 py-2" [class.border-[#003399]]="!themeService.isDarkMode()" [class.bg-[#f5f2eb]]="!themeService.isDarkMode()" [class.border-[#00ff66]]="themeService.isDarkMode()" [class.bg-[#121212]]="themeService.isDarkMode()">
+                  <p class="font-bold mb-1">// CERTIFICATIONS</p>
                   @for (cert of ('certificates.items' | translate); track cert) {
-                    <p class="text-amber-100">* {{ cert }}</p>
+                    <p>* {{ cert }}</p>
                   }
                 </div>
               }
 
               @case ('contact') {
-                <div class="space-y-2 text-xs border-l-2 border-[#ffb000] pl-4 py-2">
-                  <p>EMAIL: <a [href]="'mailto:' + ('about.email' | translate)" class="underline font-bold hover:bg-[#ffb000] hover:text-black">{{ 'about.email' | translate }}</a></p>
-                  <p>PHONE: <a [href]="'tel:' + ('about.phone' | translate)" class="underline font-bold hover:bg-[#ffb000] hover:text-black">{{ 'about.phone' | translate }}</a></p>
-                  <p>LINKEDIN: <a [href]="'https://' + ('about.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="underline font-bold hover:bg-[#ffb000] hover:text-black">{{ 'about.linkedin' | translate }}</a></p>
+                <div class="space-y-2 text-xs border-l-2 pl-4 py-2" [class.border-[#003399]]="!themeService.isDarkMode()" [class.border-[#00ff66]]="themeService.isDarkMode()">
+                  <p>EMAIL: <a [href]="'mailto:' + ('about.email' | translate)" class="underline font-bold hover:bg-[#003399] hover:text-white dark:hover:bg-[#00ff66] dark:hover:text-black px-1">{{ 'about.email' | translate }}</a></p>
+                  <p>PHONE: <a [href]="'tel:' + ('about.phone' | translate)" class="underline font-bold hover:bg-[#003399] hover:text-white dark:hover:bg-[#00ff66] dark:hover:text-black px-1">{{ 'about.phone' | translate }}</a></p>
+                  <p>LINKEDIN: <a [href]="'https://' + ('about.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="underline font-bold hover:bg-[#003399] hover:text-white dark:hover:bg-[#00ff66] dark:hover:text-black px-1">{{ 'about.linkedin' | translate }}</a></p>
+                  <p>GITHUB: <a [href]="'https://' + ('about.github' | translate)" target="_blank" rel="noopener noreferrer" class="underline font-bold hover:bg-[#003399] hover:text-white dark:hover:bg-[#00ff66] dark:hover:text-black px-1">{{ 'about.github' | translate }}</a></p>
                 </div>
               }
 
               @case ('download-cv') {
-                <div class="p-3 bg-[#141006] border border-[#ffb000] text-xs font-bold text-amber-300">
+                <div class="p-3 border text-xs font-bold" [class.bg-[#f5f2eb]]="!themeService.isDarkMode()" [class.border-[#003399]]="!themeService.isDarkMode()" [class.text-[#003399]]="!themeService.isDarkMode()" [class.bg-[#121212]]="themeService.isDarkMode()" [class.border-[#00ff66]]="themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()">
                   <p>[EXECUTE] Initiating download stream for CV_Muhammad_Maulana_Yusuf.pdf...</p>
                 </div>
               }
 
               @case ('error') {
-                <p class="text-red-400 text-xs">
-                  ERR: Command '{{ entry.command }}' not recognized. Type 'help' for available commands.
+                <p class="text-red-500 text-xs">
+                  ERR: Command '{{ entry.command }}' not recognized. Type 'help' or click quick pills above for commands.
                 </p>
               }
             }
@@ -158,20 +214,22 @@
 
         <!-- CLI ACTIVE INPUT PROMPT LINE -->
         <form (submit)="$event.preventDefault(); executeCommand()" class="flex items-center gap-2 pt-2">
-          <span class="text-[#ffb000] font-bold">guest&#64;mmy-portfolio:~$</span>
+          <span class="font-bold text-xs" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()">C:\GUEST></span>
           <input
             #commandInput
             type="text"
             [ngModel]="inputQuery()"
             (ngModelChange)="inputQuery.set($event)"
             name="cliInput"
-            class="flex-1 bg-transparent border-none outline-none text-[#ffb000] font-mono text-sm caret-transparent"
+            class="flex-1 bg-transparent border-none outline-none font-mono text-sm caret-transparent"
+            [class.text-[#2c221e]]="!themeService.isDarkMode()"
+            [class.text-[#00ff66]]="themeService.isDarkMode()"
             autocomplete="off"
             autofocus
           />
-          <span class="w-2.5 h-5 bg-[#ffb000] cursor-blink inline-block -ml-2"></span>
+          <span class="w-2.5 h-4 cursor-blink inline-block -ml-2" [class.bg-[#003399]]="!themeService.isDarkMode()" [class.bg-[#00ff66]]="themeService.isDarkMode()"></span>
         </form>
       </div>
     </div>
-  </div>
+  </main>
 </div>
