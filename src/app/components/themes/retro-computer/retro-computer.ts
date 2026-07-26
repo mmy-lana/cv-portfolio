@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { ThemeNav } from '../../shared/theme-nav/theme-nav';
 import { ThemeService } from '../../../services/theme.service';
 import { FaviconService } from '../../../services/favicon.service';
-import { DownloadCvBtnComponent } from '../../shared/atoms/download-cv-btn/download-cv-btn';
 
 export interface TerminalEntry {
   command: string;
@@ -21,7 +20,6 @@ export interface TerminalEntry {
     TranslateModule,
     RouterModule,
     FormsModule,
-    DownloadCvBtnComponent
   ],
   templateUrl: './retro-computer.html'
 })
