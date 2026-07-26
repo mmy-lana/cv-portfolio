@@ -1,47 +1,74 @@
-<div class="theme-wrapper" style="--nav-bg: #08080a; --nav-text: #f8fafc; --nav-border: #181820; --cv-primary: #6366f1; --cv-accent: #818cf8">
+<div 
+  class="theme-wrapper transition-colors duration-300 min-h-screen font-sans"
+  [class.bg-[#fafafa]]="!themeService.isDarkMode()"
+  [class.text-[#09090b]]="!themeService.isDarkMode()"
+  [class.bg-[#050507]]="themeService.isDarkMode()"
+  [class.text-[#fafafa]]="themeService.isDarkMode()"
+  style="--nav-bg: #0f0f13; --nav-text: #fafafa; --nav-border: #27272a; --cv-primary: #6366f1; --cv-accent: #818cf8"
+>
   <app-theme-nav class="print:hidden z-30 relative" />
 
-  <div class="md:ml-64 px-6 md:px-16 py-20 space-y-24 bg-[#08080a] text-[#e2e8f0] min-h-screen">
+  <div class="px-6 md:px-16 py-20 space-y-24 min-h-screen">
     <!-- ABOUT -->
     <section 
       id="about" 
       (mousemove)="onMouseMove($event)"
-      class="max-w-4xl mx-auto space-y-6 dark-glow-card p-8 md:p-10 border border-white/10 rounded-2xl animate-fade-in-up"
+      class="max-w-4xl mx-auto space-y-6 dark-glow-card p-8 md:p-10 rounded-2xl animate-fade-in-up"
     >
       <div class="space-y-3">
-        <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight leading-none">
+        <span 
+          class="text-xs font-bold tracking-widest uppercase font-mono"
+          [class.text-indigo-600]="!themeService.isDarkMode()"
+          [class.text-indigo-400]="themeService.isDarkMode()"
+        >
+          [ PRESET: {{ themeService.isDarkMode() ? 'LUNAR PITCH' : 'SOLAR MINIMAL' }} ]
+        </span>
+
+        <h1 
+          class="text-4xl md:text-5xl font-black tracking-tight leading-none"
+          [class.text-[#09090b]]="!themeService.isDarkMode()"
+          [class.text-[#fafafa]]="themeService.isDarkMode()"
+        >
           {{ 'about.name' | translate }}
         </h1>
-        <p class="text-xl md:text-2xl font-bold text-indigo-400">
+
+        <p 
+          class="text-xl md:text-2xl font-bold"
+          [class.text-indigo-600]="!themeService.isDarkMode()"
+          [class.text-indigo-400]="themeService.isDarkMode()"
+        >
           {{ 'about.title' | translate }}
         </p>
       </div>
 
-      <p class="text-slate-400 leading-relaxed text-base max-w-3xl">
+      <p 
+        class="leading-relaxed text-base max-w-3xl"
+        [class.text-[#52525b]]="!themeService.isDarkMode()"
+        [class.text-[#a1a1aa]]="themeService.isDarkMode()"
+      >
         {{ 'about.summary' | translate }}
       </p>
 
-      <div class="pt-4 flex flex-wrap items-center gap-4 border-t border-white/10">
-        <a
-          href="assets/cv/CV_Muhammad_Maulana_Yusuf.pdf"
-          download="CV_Muhammad_Maulana_Yusuf.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          (mousemove)="onMagneticMove($event)"
-          (mouseleave)="onMagneticLeave($event)"
-          class="magnetic-btn inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-bold text-sm rounded-xl shadow-lg hover:shadow-indigo-500/20 transition-all duration-200"
+      <div class="pt-4 flex flex-wrap items-center gap-4 border-t" [class.border-zinc-200]="!themeService.isDarkMode()" [class.border-zinc-800]="themeService.isDarkMode()">
+        <div 
+          (mousemove)="onMagneticMove($event)" 
+          (mouseleave)="onMagneticLeave($event)" 
+          class="magnetic-btn inline-block"
         >
-          <app-cv-icon name="download" size="w-4 h-4" />
-          <span>Download CV (PDF)</span>
-        </a>
+          <app-download-cv-btn variant="primary" size="lg" />
+        </div>
 
-        <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-400 font-medium">
-          <a [href]="'mailto:' + ('about.email' | translate)" class="flex items-center gap-1.5 hover:text-white transition-colors link-underline">
-            <app-cv-icon name="email" class="text-indigo-400" size="w-4 h-4" />
+        <div 
+          class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium"
+          [class.text-[#52525b]]="!themeService.isDarkMode()"
+          [class.text-[#a1a1aa]]="themeService.isDarkMode()"
+        >
+          <a [href]="'mailto:' + ('about.email' | translate)" class="flex items-center gap-1.5 hover:text-indigo-500 transition-colors link-underline">
+            <app-cv-icon name="email" class="text-indigo-500" size="w-4 h-4" />
             {{ 'about.email' | translate }}
           </a>
-          <a [href]="'https://' + ('about.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-white transition-colors link-underline">
-            <app-cv-icon name="linkedin" class="text-indigo-400" size="w-4 h-4" />
+          <a [href]="'https://' + ('about.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-indigo-500 transition-colors link-underline">
+            <app-cv-icon name="linkedin" class="text-indigo-500" size="w-4 h-4" />
             {{ 'about.linkedin' | translate }}
           </a>
         </div>
@@ -50,9 +77,13 @@
 
     <!-- EXPERIENCE -->
     <section id="experience" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
-        <app-cv-icon name="arrow-right" class="text-indigo-400" size="w-5 h-5" />
-        <h2 class="text-2xl font-black text-white tracking-tight uppercase">
+      <div class="flex items-center space-x-3 border-b pb-4" [class.border-zinc-200]="!themeService.isDarkMode()" [class.border-zinc-800]="themeService.isDarkMode()">
+        <app-cv-icon name="arrow-right" class="text-indigo-500" size="w-5 h-5" />
+        <h2 
+          class="text-2xl font-black tracking-tight uppercase"
+          [class.text-[#09090b]]="!themeService.isDarkMode()"
+          [class.text-[#fafafa]]="themeService.isDarkMode()"
+        >
           {{ 'experience.title' | translate }}
         </h2>
       </div>
@@ -60,57 +91,121 @@
       @defer (on viewport) {
         <div class="grid grid-cols-1 gap-6">
           @for (job of ('experience.items' | translate); track $index) {
-            <div (mousemove)="onMouseMove($event)" class="dark-glow-card border border-white/10 rounded-2xl">
+            <div (mousemove)="onMouseMove($event)" class="dark-glow-card">
               <app-cv-experience-card [data]="job" layoutVariant="clean" />
             </div>
           }
         </div>
       } @placeholder {
         <div class="space-y-4 animate-pulse">
-          <div class="h-32 bg-[#121217] rounded-2xl border border-white/5"></div>
-          <div class="h-32 bg-[#121217] rounded-2xl border border-white/5"></div>
+          <div class="h-32 rounded-2xl" [class.bg-zinc-200]="!themeService.isDarkMode()" [class.bg-zinc-900]="themeService.isDarkMode()"></div>
+          <div class="h-32 rounded-2xl" [class.bg-zinc-200]="!themeService.isDarkMode()" [class.bg-zinc-900]="themeService.isDarkMode()"></div>
         </div>
       }
     </section>
 
     <!-- SKILLS -->
     <section id="skills" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
-        <app-cv-icon name="arrow-right" class="text-indigo-400" size="w-5 h-5" />
-        <h2 class="text-2xl font-black text-white tracking-tight uppercase">
+      <div class="flex items-center space-x-3 border-b pb-4" [class.border-zinc-200]="!themeService.isDarkMode()" [class.border-zinc-800]="themeService.isDarkMode()">
+        <app-cv-icon name="arrow-right" class="text-indigo-500" size="w-5 h-5" />
+        <h2 
+          class="text-2xl font-black tracking-tight uppercase"
+          [class.text-[#09090b]]="!themeService.isDarkMode()"
+          [class.text-[#fafafa]]="themeService.isDarkMode()"
+        >
           {{ 'skills.title' | translate }}
         </h2>
       </div>
 
       @defer (on viewport) {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div (mousemove)="onMouseMove($event)" class="dark-glow-card p-6 border border-white/10 rounded-2xl space-y-4">
-            <h3 class="font-bold text-slate-400 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Languages</h3>
+          <div (mousemove)="onMouseMove($event)" class="dark-glow-card p-6 space-y-4">
+            <h3 
+              class="font-bold text-xs uppercase tracking-wider border-b pb-2"
+              [class.text-[#52525b]]="!themeService.isDarkMode()"
+              [class.border-zinc-200]="!themeService.isDarkMode()"
+              [class.text-[#a1a1aa]]="themeService.isDarkMode()"
+              [class.border-zinc-800]="themeService.isDarkMode()"
+            >Languages</h3>
             <div class="flex flex-wrap gap-2">
               @for (lang of ('skills.languages' | translate); track $index) {
-                <span class="px-3 py-1 text-xs font-semibold rounded-lg bg-[#181820] text-slate-200 border-t border-white/20 border-x border-b border-white/5 hover:border-indigo-400/60 transition-all cursor-default">
+                <span 
+                  class="px-3 py-1 text-xs font-semibold rounded-lg border-t border-x border-b transition-all duration-200 hover:scale-105 cursor-default select-none"
+                  [class.bg-zinc-100]="!themeService.isDarkMode()"
+                  [class.text-zinc-800]="!themeService.isDarkMode()"
+                  [class.border-t-zinc-300]="!themeService.isDarkMode()"
+                  [class.border-x-zinc-200]="!themeService.isDarkMode()"
+                  [class.border-b-zinc-200]="!themeService.isDarkMode()"
+                  [class.hover:border-indigo-500]="!themeService.isDarkMode()"
+                  [class.bg-[#181820]]="themeService.isDarkMode()"
+                  [class.text-zinc-200]="themeService.isDarkMode()"
+                  [class.border-t-white/20]="themeService.isDarkMode()"
+                  [class.border-x-white/5]="themeService.isDarkMode()"
+                  [class.border-b-white/5]="themeService.isDarkMode()"
+                  [class.hover:border-indigo-400]="themeService.isDarkMode()"
+                >
                   {{ lang }}
                 </span>
               }
             </div>
           </div>
 
-          <div (mousemove)="onMouseMove($event)" class="dark-glow-card p-6 border border-white/10 rounded-2xl space-y-4">
-            <h3 class="font-bold text-slate-400 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Frameworks & CSS</h3>
+          <div (mousemove)="onMouseMove($event)" class="dark-glow-card p-6 space-y-4">
+            <h3 
+              class="font-bold text-xs uppercase tracking-wider border-b pb-2"
+              [class.text-[#52525b]]="!themeService.isDarkMode()"
+              [class.border-zinc-200]="!themeService.isDarkMode()"
+              [class.text-[#a1a1aa]]="themeService.isDarkMode()"
+              [class.border-zinc-800]="themeService.isDarkMode()"
+            >Frameworks & CSS</h3>
             <div class="flex flex-wrap gap-2">
               @for (fw of ('skills.frameworks' | translate); track $index) {
-                <span class="px-3 py-1 text-xs font-semibold rounded-lg bg-[#181820] text-indigo-300 border-t border-indigo-400/40 border-x border-b border-white/5 hover:border-indigo-400 transition-all cursor-default">
+                <span 
+                  class="px-3 py-1 text-xs font-semibold rounded-lg border-t border-x border-b transition-all duration-200 hover:scale-105 cursor-default select-none"
+                  [class.bg-indigo-50]="!themeService.isDarkMode()"
+                  [class.text-indigo-700]="!themeService.isDarkMode()"
+                  [class.border-t-indigo-300]="!themeService.isDarkMode()"
+                  [class.border-x-indigo-200]="!themeService.isDarkMode()"
+                  [class.border-b-indigo-200]="!themeService.isDarkMode()"
+                  [class.hover:border-indigo-500]="!themeService.isDarkMode()"
+                  [class.bg-[#181820]]="themeService.isDarkMode()"
+                  [class.text-indigo-300]="themeService.isDarkMode()"
+                  [class.border-t-indigo-400/40]="themeService.isDarkMode()"
+                  [class.border-x-white/5]="themeService.isDarkMode()"
+                  [class.border-b-white/5]="themeService.isDarkMode()"
+                  [class.hover:border-indigo-400]="themeService.isDarkMode()"
+                >
                   {{ fw }}
                 </span>
               }
             </div>
           </div>
 
-          <div (mousemove)="onMouseMove($event)" class="dark-glow-card p-6 border border-white/10 rounded-2xl space-y-4">
-            <h3 class="font-bold text-slate-400 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Tools</h3>
+          <div (mousemove)="onMouseMove($event)" class="dark-glow-card p-6 space-y-4">
+            <h3 
+              class="font-bold text-xs uppercase tracking-wider border-b pb-2"
+              [class.text-[#52525b]]="!themeService.isDarkMode()"
+              [class.border-zinc-200]="!themeService.isDarkMode()"
+              [class.text-[#a1a1aa]]="themeService.isDarkMode()"
+              [class.border-zinc-800]="themeService.isDarkMode()"
+            >Tools</h3>
             <div class="flex flex-wrap gap-2">
               @for (tool of ('skills.tools' | translate); track $index) {
-                <span class="px-3 py-1 text-xs font-semibold rounded-lg bg-[#181820] text-slate-300 border-t border-white/20 border-x border-b border-white/5 hover:border-indigo-400/60 transition-all cursor-default">
+                <span 
+                  class="px-3 py-1 text-xs font-semibold rounded-lg border-t border-x border-b transition-all duration-200 hover:scale-105 cursor-default select-none"
+                  [class.bg-zinc-100]="!themeService.isDarkMode()"
+                  [class.text-zinc-800]="!themeService.isDarkMode()"
+                  [class.border-t-zinc-300]="!themeService.isDarkMode()"
+                  [class.border-x-zinc-200]="!themeService.isDarkMode()"
+                  [class.border-b-zinc-200]="!themeService.isDarkMode()"
+                  [class.hover:border-indigo-500]="!themeService.isDarkMode()"
+                  [class.bg-[#181820]]="themeService.isDarkMode()"
+                  [class.text-zinc-200]="themeService.isDarkMode()"
+                  [class.border-t-white/20]="themeService.isDarkMode()"
+                  [class.border-x-white/5]="themeService.isDarkMode()"
+                  [class.border-b-white/5]="themeService.isDarkMode()"
+                  [class.hover:border-indigo-400]="themeService.isDarkMode()"
+                >
                   {{ tool }}
                 </span>
               }
@@ -119,18 +214,22 @@
         </div>
       } @placeholder {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-pulse">
-          <div class="h-36 bg-[#121217] rounded-2xl border border-white/5"></div>
-          <div class="h-36 bg-[#121217] rounded-2xl border border-white/5"></div>
-          <div class="h-36 bg-[#121217] rounded-2xl border border-white/5"></div>
+          <div class="h-36 rounded-2xl" [class.bg-zinc-200]="!themeService.isDarkMode()" [class.bg-zinc-900]="themeService.isDarkMode()"></div>
+          <div class="h-36 rounded-2xl" [class.bg-zinc-200]="!themeService.isDarkMode()" [class.bg-zinc-900]="themeService.isDarkMode()"></div>
+          <div class="h-36 rounded-2xl" [class.bg-zinc-200]="!themeService.isDarkMode()" [class.bg-zinc-900]="themeService.isDarkMode()"></div>
         </div>
       }
     </section>
 
     <!-- EDUCATION -->
     <section id="education" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
-        <app-cv-icon name="arrow-right" class="text-indigo-400" size="w-5 h-5" />
-        <h2 class="text-2xl font-black text-white tracking-tight uppercase">
+      <div class="flex items-center space-x-3 border-b pb-4" [class.border-zinc-200]="!themeService.isDarkMode()" [class.border-zinc-800]="themeService.isDarkMode()">
+        <app-cv-icon name="arrow-right" class="text-indigo-500" size="w-5 h-5" />
+        <h2 
+          class="text-2xl font-black tracking-tight uppercase"
+          [class.text-[#09090b]]="!themeService.isDarkMode()"
+          [class.text-[#fafafa]]="themeService.isDarkMode()"
+        >
           {{ 'education.title' | translate }}
         </h2>
       </div>
@@ -138,30 +237,38 @@
       @defer (on viewport) {
         <div class="grid grid-cols-1 gap-6">
           @for (edu of ('education.items' | translate); track $index) {
-            <div (mousemove)="onMouseMove($event)" class="dark-glow-card border border-white/10 rounded-2xl">
+            <div (mousemove)="onMouseMove($event)" class="dark-glow-card">
               <app-cv-experience-card [data]="edu" layoutVariant="clean" />
             </div>
           }
         </div>
       } @placeholder {
-        <div class="h-28 bg-[#121217] rounded-2xl border border-white/5 animate-pulse"></div>
+        <div class="h-28 rounded-2xl animate-pulse" [class.bg-zinc-200]="!themeService.isDarkMode()" [class.bg-zinc-900]="themeService.isDarkMode()"></div>
       }
     </section>
 
     <!-- CERTIFICATES -->
     <section id="certificates" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
-        <app-cv-icon name="arrow-right" class="text-indigo-400" size="w-5 h-5" />
-        <h2 class="text-2xl font-black text-white tracking-tight uppercase">
+      <div class="flex items-center space-x-3 border-b pb-4" [class.border-zinc-200]="!themeService.isDarkMode()" [class.border-zinc-800]="themeService.isDarkMode()">
+        <app-cv-icon name="arrow-right" class="text-indigo-500" size="w-5 h-5" />
+        <h2 
+          class="text-2xl font-black tracking-tight uppercase"
+          [class.text-[#09090b]]="!themeService.isDarkMode()"
+          [class.text-[#fafafa]]="themeService.isDarkMode()"
+        >
           {{ 'certificates.title' | translate }}
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         @for (cert of ('certificates.items' | translate); track $index) {
-          <div (mousemove)="onMouseMove($event)" class="dark-glow-card flex items-center space-x-3 p-5 border border-white/10 rounded-xl">
-            <app-cv-icon name="gpa" class="text-indigo-400" size="w-5 h-5" />
-            <span class="text-sm font-semibold text-slate-300">{{ cert }}</span>
+          <div (mousemove)="onMouseMove($event)" class="dark-glow-card flex items-center space-x-3 p-5">
+            <app-cv-icon name="gpa" class="text-indigo-500" size="w-5 h-5" />
+            <span 
+              class="text-sm font-semibold"
+              [class.text-[#09090b]]="!themeService.isDarkMode()"
+              [class.text-[#fafafa]]="themeService.isDarkMode()"
+            >{{ cert }}</span>
           </div>
         }
       </div>
@@ -169,35 +276,83 @@
 
     <!-- CONTACT -->
     <section id="contact" class="max-w-4xl mx-auto space-y-8 pb-16">
-      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
-        <app-cv-icon name="arrow-right" class="text-indigo-400" size="w-5 h-5" />
-        <h2 class="text-2xl font-black text-white tracking-tight uppercase">
+      <div class="flex items-center space-x-3 border-b pb-4" [class.border-zinc-200]="!themeService.isDarkMode()" [class.border-zinc-800]="themeService.isDarkMode()">
+        <app-cv-icon name="arrow-right" class="text-indigo-500" size="w-5 h-5" />
+        <h2 
+          class="text-2xl font-black tracking-tight uppercase"
+          [class.text-[#09090b]]="!themeService.isDarkMode()"
+          [class.text-[#fafafa]]="themeService.isDarkMode()"
+        >
           {{ 'contact.title' | translate }}
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a [href]="'mailto:' + ('contact.email' | translate)" (mousemove)="onMouseMove($event)" (mouseenter)="onMagneticMove($event)" (mouseleave)="onMagneticLeave($event)" class="magnetic-btn dark-glow-card flex items-center space-x-4 p-6 border border-white/10 rounded-2xl">
-          <app-cv-icon name="email" class="text-indigo-400" size="w-6 h-6" />
+        <a 
+          [href]="'mailto:' + ('contact.email' | translate)" 
+          (mousemove)="onMouseMove($event)" 
+          (mouseenter)="onMagneticMove($event)" 
+          (mouseleave)="onMagneticLeave($event)" 
+          class="magnetic-btn dark-glow-card flex items-center space-x-4 p-6"
+        >
+          <app-cv-icon name="email" class="text-indigo-500" size="w-6 h-6" />
           <div class="overflow-hidden">
-            <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Email</p>
-            <p class="text-sm font-bold text-white truncate">{{ 'contact.email' | translate }}</p>
+            <p 
+              class="text-xs font-bold uppercase tracking-wider"
+              [class.text-[#52525b]]="!themeService.isDarkMode()"
+              [class.text-[#a1a1aa]]="themeService.isDarkMode()"
+            >Email</p>
+            <p 
+              class="text-sm font-bold truncate"
+              [class.text-[#09090b]]="!themeService.isDarkMode()"
+              [class.text-[#fafafa]]="themeService.isDarkMode()"
+            >{{ 'contact.email' | translate }}</p>
           </div>
         </a>
 
-        <a [href]="'tel:' + ('contact.phone' | translate)" (mousemove)="onMouseMove($event)" (mouseenter)="onMagneticMove($event)" (mouseleave)="onMagneticLeave($event)" class="magnetic-btn dark-glow-card flex items-center space-x-4 p-6 border border-white/10 rounded-2xl">
-          <app-cv-icon name="phone" class="text-indigo-400" size="w-6 h-6" />
+        <a 
+          [href]="'tel:' + ('contact.phone' | translate)" 
+          (mousemove)="onMouseMove($event)" 
+          (mouseenter)="onMagneticMove($event)" 
+          (mouseleave)="onMagneticLeave($event)" 
+          class="magnetic-btn dark-glow-card flex items-center space-x-4 p-6"
+        >
+          <app-cv-icon name="phone" class="text-indigo-500" size="w-6 h-6" />
           <div>
-            <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">Phone</p>
-            <p class="text-sm font-bold text-white">{{ 'contact.phone' | translate }}</p>
+            <p 
+              class="text-xs font-bold uppercase tracking-wider"
+              [class.text-[#52525b]]="!themeService.isDarkMode()"
+              [class.text-[#a1a1aa]]="themeService.isDarkMode()"
+            >Phone</p>
+            <p 
+              class="text-sm font-bold"
+              [class.text-[#09090b]]="!themeService.isDarkMode()"
+              [class.text-[#fafafa]]="themeService.isDarkMode()"
+            >{{ 'contact.phone' | translate }}</p>
           </div>
         </a>
 
-        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" rel="noopener noreferrer" (mousemove)="onMouseMove($event)" (mouseenter)="onMagneticMove($event)" (mouseleave)="onMagneticLeave($event)" class="magnetic-btn dark-glow-card flex items-center space-x-4 p-6 border border-white/10 rounded-2xl">
-          <app-cv-icon name="linkedin" class="text-indigo-400" size="w-6 h-6" />
+        <a 
+          [href]="'https://' + ('contact.linkedin' | translate)" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          (mousemove)="onMouseMove($event)" 
+          (mouseenter)="onMagneticMove($event)" 
+          (mouseleave)="onMagneticLeave($event)" 
+          class="magnetic-btn dark-glow-card flex items-center space-x-4 p-6"
+        >
+          <app-cv-icon name="linkedin" class="text-indigo-500" size="w-6 h-6" />
           <div>
-            <p class="text-xs font-bold text-slate-500 uppercase tracking-wider">LinkedIn</p>
-            <p class="text-sm font-bold text-white">Connect</p>
+            <p 
+              class="text-xs font-bold uppercase tracking-wider"
+              [class.text-[#52525b]]="!themeService.isDarkMode()"
+              [class.text-[#a1a1aa]]="themeService.isDarkMode()"
+            >LinkedIn</p>
+            <p 
+              class="text-sm font-bold"
+              [class.text-[#09090b]]="!themeService.isDarkMode()"
+              [class.text-[#fafafa]]="themeService.isDarkMode()"
+            >Connect</p>
           </div>
         </a>
       </div>

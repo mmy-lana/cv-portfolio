@@ -243,9 +243,19 @@
 /* Dark Minimal Illuminated Borders & Magnetic Effects */
 .dark-glow-card {
   position: relative;
-  background: #111116;
   border-radius: 1rem;
   overflow: hidden;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+html.dark .dark-glow-card {
+  background: #0f0f13;
+  border: 1px solid #27272a;
+}
+
+html:not(.dark) .dark-glow-card {
+  background: #ffffff;
+  border: 1px solid #e4e4e7;
 }
 
 .dark-glow-card::before {
@@ -254,18 +264,30 @@
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: radial-gradient(
-    450px circle at var(--x, 50%) var(--y, 50%),
-    rgba(255, 255, 255, 0.35),
-    rgba(255, 255, 255, 0.05) 40%,
-    transparent 80%
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+html.dark .dark-glow-card::before {
+  background: radial-gradient(
+    450px circle at var(--x, 50%) var(--y, 50%),
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.08) 40%,
+    transparent 80%
+  );
+}
+
+html:not(.dark) .dark-glow-card::before {
+  background: radial-gradient(
+    450px circle at var(--x, 50%) var(--y, 50%),
+    rgba(99, 102, 241, 0.35),
+    rgba(99, 102, 241, 0.08) 40%,
+    transparent 80%
+  );
 }
 
 .dark-glow-card:hover::before {
