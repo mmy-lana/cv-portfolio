@@ -1,4 +1,4 @@
-import { Component, signal, inject, output } from '@angular/core';
+import { Component, signal, inject, output, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from '../../../services/theme.service';
@@ -29,6 +29,16 @@ export class ThemeNav {
 
   sectionSelect = output<string>();
   menuOpen = signal<boolean>(false);
+  showScrollTop = signal<boolean>(false);
+
+  @HostListener('window:scroll')
+  onScroll(): void {
+    this.showScrollTop.set(window.scrollY > 300);
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   sections = [
     { id: 'about', label: 'about.name' },

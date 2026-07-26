@@ -7,7 +7,8 @@ import { ThemeService } from '../../../../services/theme.service';
   template: `
     <button
       (click)="themeService.toggleGlobalDarkMode()"
-      class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300 hover:text-white transition-all cursor-pointer flex items-center gap-1.5"
+      class="h-9 px-3.5 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 border-slate-800 bg-slate-900 text-slate-300 hover:text-white hover:border-slate-700 select-none"
+      aria-label="Toggle Theme Mode"
     >
       <span>{{ themeService.isDarkMode() ? '🌙 Dark' : '☀️ Light' }}</span>
     </button>

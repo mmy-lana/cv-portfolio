@@ -1,65 +1,47 @@
 <!-- STICKY TOP TOOLBAR -->
-<header 
-  class="sticky top-0 z-40 w-full backdrop-blur-md border-b transition-colors duration-200"
-  [class.bg-slate-950/80]="themeService.isDarkMode()"
-  [class.border-slate-800]="themeService.isDarkMode()"
-  [class.text-white]="themeService.isDarkMode()"
-  [class.bg-white/80]="!themeService.isDarkMode()"
-  [class.border-slate-200]="!themeService.isDarkMode()"
-  [class.text-slate-900]="!themeService.isDarkMode()"
->
+<header class="sticky top-0 z-40 w-full backdrop-blur-md border-b transition-colors duration-200"
+  [class.bg-slate-950/80]="themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()"
+  [class.text-white]="themeService.isDarkMode()" [class.bg-white/80]="!themeService.isDarkMode()"
+  [class.border-slate-200]="!themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-    
+
     <!-- LEFT: BACK TO THEMES & SECTION LINKS -->
     <div class="flex items-center space-x-4">
-      <button 
-        (click)="goHome()" 
-        class="flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer min-h-[44px]"
-        [class.border-slate-800]="themeService.isDarkMode()"
-        [class.bg-slate-900]="themeService.isDarkMode()"
-        [class.hover:bg-slate-800]="themeService.isDarkMode()"
-        [class.text-slate-200]="themeService.isDarkMode()"
-        [class.border-slate-200]="!themeService.isDarkMode()"
-        [class.bg-slate-100]="!themeService.isDarkMode()"
-        [class.hover:bg-slate-200]="!themeService.isDarkMode()"
-        [class.text-slate-800]="!themeService.isDarkMode()"
-      >
-        <app-cv-icon name="back" size="w-4 h-4" />
-        <span class="hidden sm:inline">← All Themes</span>
+      <button (click)="goHome()"
+        class="h-9 px-3.5 rounded-xl border text-xs font-bold flex items-center gap-2 transition-all cursor-pointer select-none"
+        [class.border-slate-800]="themeService.isDarkMode()" [class.bg-slate-900]="themeService.isDarkMode()"
+        [class.hover:bg-slate-800]="themeService.isDarkMode()" [class.text-slate-200]="themeService.isDarkMode()"
+        [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-slate-100]="!themeService.isDarkMode()"
+        [class.hover:bg-slate-200]="!themeService.isDarkMode()" [class.text-slate-800]="!themeService.isDarkMode()">
+        <app-cv-icon name="back" size="w-3.5 h-3.5" />
+        <span>All Themes</span>
       </button>
 
       <!-- DESKTOP SECTION LINKS -->
       <nav class="hidden lg:flex items-center space-x-1 text-xs font-bold">
         @for (sec of sections; track sec.id) {
-          <button 
-            (click)="scrollTo(sec.id)" 
-            class="px-2.5 py-1.5 rounded-lg opacity-75 hover:opacity-100 transition-opacity cursor-pointer"
-          >
-            {{ sec.label | translate }}
-          </button>
+        <button (click)="scrollTo(sec.id)"
+          class="px-2.5 py-1.5 rounded-lg opacity-75 hover:opacity-100 transition-opacity cursor-pointer">
+          {{ sec.label | translate }}
+        </button>
         }
       </nav>
     </div>
 
-    <!-- RIGHT: CONTROLS & DOWNLOAD CV -->
-    <div class="hidden md:flex items-center space-x-3">
+    <!-- RIGHT: CONTROLS -->
+    <div class="hidden md:flex items-center space-x-2.5">
       <app-theme-selector position="down" align="right" />
       <app-theme-mode-toggle />
       <app-language-toggle />
-      <app-download-cv-btn variant="primary" size="md" />
     </div>
 
     <!-- MOBILE HAMBURGER MENU -->
     <div class="md:hidden flex items-center space-x-2">
       <app-theme-mode-toggle />
-      <button 
-        (click)="toggleMenu()" 
+      <button (click)="toggleMenu()"
         class="p-2 rounded-xl border text-lg min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
-        [class.border-slate-800]="themeService.isDarkMode()"
-        [class.bg-slate-900]="themeService.isDarkMode()"
-        [class.border-slate-200]="!themeService.isDarkMode()"
-        [class.bg-slate-100]="!themeService.isDarkMode()"
-      >
+        [class.border-slate-800]="themeService.isDarkMode()" [class.bg-slate-900]="themeService.isDarkMode()"
+        [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-slate-100]="!themeService.isDarkMode()">
         {{ menuOpen() ? '✕' : '☰' }}
       </button>
     </div>
@@ -68,45 +50,46 @@
 
 <!-- MOBILE SLIDE-OUT DRAWER -->
 @if (menuOpen()) {
-  <div 
-    class="md:hidden fixed inset-0 top-16 z-50 p-6 space-y-6 flex flex-col justify-between backdrop-blur-xl transition-all animate-fade-in-up"
-    [class.bg-slate-950/95]="themeService.isDarkMode()"
-    [class.text-white]="themeService.isDarkMode()"
-    [class.bg-white/95]="!themeService.isDarkMode()"
-    [class.text-slate-900]="!themeService.isDarkMode()"
-  >
-    <div class="space-y-4">
-      <div class="text-xs font-bold uppercase tracking-wider text-slate-400 border-b pb-2" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
-        SECTION JUMPS
-      </div>
-      <div class="grid grid-cols-1 gap-2">
-        @for (sec of sections; track sec.id) {
-          <button 
-            (click)="scrollTo(sec.id)" 
-            class="w-full text-left p-3 rounded-xl font-bold text-sm border transition-colors cursor-pointer min-h-[44px]"
-            [class.border-slate-800]="themeService.isDarkMode()"
-            [class.bg-slate-900/60]="themeService.isDarkMode()"
-            [class.border-slate-200]="!themeService.isDarkMode()"
-            [class.bg-slate-50]="!themeService.isDarkMode()"
-          >
-            {{ sec.label | translate }}
-          </button>
-        }
-      </div>
+<div
+  class="md:hidden fixed inset-0 top-16 z-50 p-6 space-y-6 flex flex-col justify-between backdrop-blur-xl transition-all animate-fade-in-up"
+  [class.bg-slate-950/95]="themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()"
+  [class.bg-white/95]="!themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
+  <div class="space-y-4">
+    <div class="text-xs font-bold uppercase tracking-wider text-slate-400 border-b pb-2"
+      [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
+      SECTION JUMPS
     </div>
-
-    <div class="space-y-3 pt-4 border-t" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
-      <div class="flex items-center justify-between">
-        <span class="text-xs font-bold text-slate-400">LANGUAGE</span>
-        <app-language-toggle />
-      </div>
-      <div class="flex items-center justify-between">
-        <span class="text-xs font-bold text-slate-400">THEME PRESET</span>
-        <app-theme-selector position="down" align="right" />
-      </div>
-      <div class="pt-2">
-        <app-download-cv-btn variant="primary" size="lg" class="w-full" />
-      </div>
+    <div class="grid grid-cols-1 gap-2">
+      @for (sec of sections; track sec.id) {
+      <button (click)="scrollTo(sec.id)"
+        class="w-full text-left p-3 rounded-xl font-bold text-sm border transition-colors cursor-pointer min-h-[44px]"
+        [class.border-slate-800]="themeService.isDarkMode()" [class.bg-slate-900/60]="themeService.isDarkMode()"
+        [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-slate-50]="!themeService.isDarkMode()">
+        {{ sec.label | translate }}
+      </button>
+      }
     </div>
   </div>
+
+  <div class="space-y-3 pt-4 border-t" [class.border-slate-800]="themeService.isDarkMode()"
+    [class.border-slate-200]="!themeService.isDarkMode()">
+    <div class="flex items-center justify-between">
+      <span class="text-xs font-bold text-slate-400">LANGUAGE</span>
+      <app-language-toggle />
+    </div>
+    <div class="flex items-center justify-between">
+      <span class="text-xs font-bold text-slate-400">THEME PRESET</span>
+      <app-theme-selector position="down" align="right" />
+    </div>
+  </div>
+</div>
+}
+
+<!-- FLOATING SCROLL TO TOP BUTTON -->
+@if (showScrollTop()) {
+<button (click)="scrollToTop()"
+  class="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-black shadow-2xl flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 z-50 cursor-pointer"
+  aria-label="Scroll to top">
+  ↑
+</button>
 }

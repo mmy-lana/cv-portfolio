@@ -7,11 +7,11 @@ import { LanguageService } from '../../../../services/language.service';
   template: `
     <button
       (click)="lang.toggle()"
-      class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300 hover:text-white hover:border-slate-700 transition-all cursor-pointer flex items-center gap-1.5"
+      class="h-9 px-3.5 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 border-slate-800 bg-slate-900 text-slate-300 hover:text-white hover:border-slate-700 select-none"
       aria-label="Toggle Language"
     >
       <span class="text-slate-500 text-[10px]">LANG:</span>
-      <span class="text-blue-400">{{ lang.current.toUpperCase() }}</span>
+      <span class="text-blue-400 font-mono">{{ lang.current.toUpperCase() }}</span>
     </button>
   `
 })
