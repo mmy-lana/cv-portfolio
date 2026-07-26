@@ -3,6 +3,8 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ThemeNav } from '../../shared/theme-nav/theme-nav';
 import { ThemeService } from '../../../services/theme.service';
+import { FaviconService } from '../../../services/favicon.service';
+import { DownloadCvBtnComponent } from '../../shared/atoms/download-cv-btn/download-cv-btn';
 import { CvExperienceCard } from '../../shared/cv-experience-card/cv-experience-card';
 import { CvBadge } from '../../shared/atoms/cv-badge/cv-badge';
 import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
@@ -10,34 +12,32 @@ import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
 @Component({
   selector: 'app-timeline-style',
   standalone: true,
-  imports: [ThemeNav, TranslateModule, RouterModule, CvExperienceCard, CvBadge, CvIcon],
+  imports: [
+    ThemeNav,
+    TranslateModule,
+    RouterModule,
+    DownloadCvBtnComponent,
+    CvExperienceCard,
+    CvBadge,
+    CvIcon
+  ],
   templateUrl: './timeline-style.html'
 })
 export class TimelineStyle implements OnInit, AfterViewInit, OnDestroy {
+  public themeService = inject(ThemeService);
+  private faviconService = inject(FaviconService);
+  private ngZone = inject(NgZone);
+  private translate = inject(TranslateService);
+
   scrollProgress = signal<number>(0);
   expandedNodes = signal<Record<string, boolean>>({});
   sortOrder = signal<'recent' | 'chronological'>('recent');
 
-  private ngZone = inject(NgZone);
   private scrollListener?: () => void;
-
-  constructor(
-    private themeService: ThemeService,
-    private translate: TranslateService
-  ) {}
 
   ngOnInit(): void {
     this.themeService.setTheme('timeline-style');
-  }
-
-  toggleSort(): void {
-    this.sortOrder.update(order => order === 'recent' ? 'chronological' : 'recent');
-  }
-
-  getSortedExperience(): any[] {
-    const items = (this.translate.instant('experience.items') || []) as any[];
-    if (!Array.isArray(items)) return [];
-    return this.sortOrder() === 'chronological' ? [...items].reverse() : items;
+    this.faviconService.setFavicon('timeline-style');
   }
 
   ngAfterViewInit(): void {
@@ -56,6 +56,16 @@ export class TimelineStyle implements OnInit, AfterViewInit, OnDestroy {
     if (this.scrollListener) {
       window.removeEventListener('scroll', this.scrollListener);
     }
+  }
+
+  toggleSort(): void {
+    this.sortOrder.update(order => order === 'recent' ? 'chronological' : 'recent');
+  }
+
+  getSortedExperience(): any[] {
+    const items = (this.translate.instant('experience.items') || []) as any[];
+    if (!Array.isArray(items)) return [];
+    return this.sortOrder() === 'chronological' ? [...items].reverse() : items;
   }
 
   toggleNode(key: string): void {

@@ -3,6 +3,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ThemeNav } from '../../shared/theme-nav/theme-nav';
 import { ThemeService } from '../../../services/theme.service';
+import { FaviconService } from '../../../services/favicon.service';
+import { DownloadCvBtnComponent } from '../../shared/atoms/download-cv-btn/download-cv-btn';
 import { CvExperienceCard } from '../../shared/cv-experience-card/cv-experience-card';
 import { CvBadge } from '../../shared/atoms/cv-badge/cv-badge';
 import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
@@ -10,18 +12,28 @@ import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
 @Component({
   selector: 'app-parallax-scrolling',
   standalone: true,
-  imports: [ThemeNav, TranslateModule, RouterModule, CvExperienceCard, CvBadge, CvIcon],
+  imports: [
+    ThemeNav,
+    TranslateModule,
+    RouterModule,
+    DownloadCvBtnComponent,
+    CvExperienceCard,
+    CvBadge,
+    CvIcon
+  ],
   templateUrl: './parallax-scrolling.html'
 })
 export class ParallaxScrolling implements OnInit, AfterViewInit, OnDestroy {
-  scrollProgress = signal<number>(0);
+  public themeService = inject(ThemeService);
+  private faviconService = inject(FaviconService);
   private ngZone = inject(NgZone);
-  private scrollListener?: () => void;
 
-  constructor(private themeService: ThemeService) {}
+  scrollProgress = signal<number>(0);
+  private scrollListener?: () => void;
 
   ngOnInit(): void {
     this.themeService.setTheme('parallax-scrolling');
+    this.faviconService.setFavicon('parallax-scrolling');
   }
 
   ngAfterViewInit(): void {
@@ -69,9 +81,22 @@ export class ParallaxScrolling implements OnInit, AfterViewInit, OnDestroy {
         });
       });
 
+      gsap.utils.toArray<HTMLElement>('.parallax-fast-float').forEach((el) => {
+        gsap.to(el, {
+          yPercent: -50,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: el.parentElement,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1.5
+          }
+        });
+      });
+
       gsap.utils.toArray<HTMLElement>('.parallax-card-reveal').forEach((el) => {
         gsap.fromTo(el, 
-          { y: 50, opacity: 0 },
+          { y: 80, opacity: 0 },
           {
             y: 0,
             opacity: 1,
@@ -86,7 +111,7 @@ export class ParallaxScrolling implements OnInit, AfterViewInit, OnDestroy {
         );
       });
     } catch {
-      // Fallback if GSAP is not installed
+      // Fallback gracefully if GSAP dynamic import fails
     }
   }
 

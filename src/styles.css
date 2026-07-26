@@ -449,8 +449,12 @@ html:not(.dark) .dashboard-card:hover {
   will-change: transform;
 }
 
-.parallax-tilt-card:hover {
-  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
+html.dark .parallax-tilt-card:hover {
+  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.25);
+}
+
+html:not(.dark) .parallax-tilt-card:hover {
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
 
 /* Timeline Style Theme Animations & Node Ripples */
