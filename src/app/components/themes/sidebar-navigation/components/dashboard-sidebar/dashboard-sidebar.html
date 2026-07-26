@@ -1,25 +1,31 @@
 <!-- DESKTOP SIDEBAR PANEL -->
 <aside 
-  class="hidden md:flex fixed top-0 left-0 h-full bg-slate-900 text-slate-200 flex-col justify-between p-4 z-40 border-r border-slate-800 transition-all duration-300"
+  class="hidden md:flex fixed top-0 left-0 h-full flex-col justify-between p-4 z-40 border-r transition-all duration-300"
   [class.w-64]="!isCollapsed()"
   [class.w-20]="isCollapsed()"
+  [class.bg-[#020617]]="themeService.isDarkMode()"
+  [class.border-[#1e293b]]="themeService.isDarkMode()"
+  [class.text-[#f8fafc]]="themeService.isDarkMode()"
+  [class.bg-[#f1f5f9]]="!themeService.isDarkMode()"
+  [class.border-[#e2e8f0]]="!themeService.isDarkMode()"
+  [class.text-[#0f172a]]="!themeService.isDarkMode()"
 >
   <div class="space-y-6">
     <!-- DASHBOARD AVATAR HEADER -->
-    <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+    <div class="flex items-center justify-between pb-4 border-b" [class.border-[#1e293b]]="themeService.isDarkMode()" [class.border-[#e2e8f0]]="!themeService.isDarkMode()">
       <div class="flex items-center space-x-3 overflow-hidden">
         <div class="w-10 h-10 rounded-xl bg-blue-600 text-white font-black flex items-center justify-center text-sm shrink-0 shadow-md">
           MY
         </div>
         @if (!isCollapsed()) {
           <div class="overflow-hidden">
-            <p class="font-bold text-sm text-white truncate leading-tight">{{ 'about.name' | translate }}</p>
-            <p class="text-[11px] text-blue-400 font-medium truncate">{{ 'about.title' | translate }}</p>
+            <p class="font-bold text-sm truncate leading-tight">{{ 'about.name' | translate }}</p>
+            <p class="text-[11px] font-semibold truncate" [class.text-sky-400]="themeService.isDarkMode()" [class.text-blue-600]="!themeService.isDarkMode()">{{ 'about.title' | translate }}</p>
           </div>
         }
       </div>
       
-      <button (click)="onToggleCollapse()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer">
+      <button (click)="onToggleCollapse()" class="p-1.5 rounded-lg transition-colors cursor-pointer shrink-0" [class.hover:bg-slate-800]="themeService.isDarkMode()" [class.text-slate-400]="themeService.isDarkMode()" [class.hover:bg-slate-200]="!themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()">
         {{ isCollapsed() ? '→' : '←' }}
       </button>
     </div>
@@ -29,21 +35,24 @@
       @for (item of navItems; track item.id) {
         <button
           (click)="onSelect(item.id)"
-          class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 dashboard-sidebar-item cursor-pointer"
+          class="w-full flex items-center px-3 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 dashboard-sidebar-item cursor-pointer"
+          [class.justify-between]="!isCollapsed()"
+          [class.justify-center]="isCollapsed()"
           [class.bg-blue-600]="activeSection() === item.id"
           [class.text-white]="activeSection() === item.id"
-          [class.text-slate-400]="activeSection() !== item.id"
-          [class.hover:bg-slate-800]="activeSection() !== item.id"
-          [class.hover:text-slate-200]="activeSection() !== item.id"
+          [class.text-slate-400]="activeSection() !== item.id && themeService.isDarkMode()"
+          [class.hover:bg-slate-800/80]="activeSection() !== item.id && themeService.isDarkMode()"
+          [class.text-slate-600]="activeSection() !== item.id && !themeService.isDarkMode()"
+          [class.hover:bg-slate-200/80]="activeSection() !== item.id && !themeService.isDarkMode()"
         >
-          <div class="flex items-center space-x-3">
+          <div class="flex items-center space-x-3 overflow-hidden">
             <app-cv-icon [name]="item.icon" size="w-4 h-4" />
             @if (!isCollapsed()) {
               <span class="truncate">{{ item.labelKey | translate }}</span>
             }
           </div>
           @if (!isCollapsed()) {
-            <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 font-mono">
+            <span class="text-[10px] px-1.5 py-0.5 rounded font-mono" [class.bg-slate-800]="themeService.isDarkMode()" [class.text-slate-400]="themeService.isDarkMode()" [class.bg-slate-200]="!themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()">
               {{ item.shortcut }}
             </span>
           }
@@ -52,32 +61,32 @@
     </nav>
   </div>
 
-  <!-- SIDEBAR FOOTER & STICKY DOWNLOAD -->
-  <div class="space-y-3 pt-4 border-t border-slate-800">
-    <a
-      href="assets/cv/CV_Muhammad_Maulana_Yusuf.pdf"
-      download="CV_Muhammad_Maulana_Yusuf.pdf"
-      target="_blank"
-      rel="noopener noreferrer"
-      (click)="onDownloadCv()"
-      class="w-full inline-flex items-center justify-center gap-2 px-3 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl shadow-md transition-all duration-200"
-    >
-      <app-cv-icon name="download" size="w-4 h-4" />
-      @if (!isCollapsed()) {
-        <span>Download CV</span>
-      }
-    </a>
-
+  <!-- SIDEBAR FOOTER & STICKY CONTROLS -->
+  <div class="space-y-3 pt-4 border-t" [class.border-[#1e293b]]="themeService.isDarkMode()" [class.border-[#e2e8f0]]="!themeService.isDarkMode()">
     @if (!isCollapsed()) {
+      <a
+        href="assets/cv/CV_Muhammad_Maulana_Yusuf.pdf"
+        download="CV_Muhammad_Maulana_Yusuf.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        (click)="onDownloadCv()"
+        class="w-full inline-flex items-center justify-center gap-2 px-3 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl shadow-md transition-all duration-200"
+      >
+        <app-cv-icon name="download" size="w-4 h-4" />
+        <span>Download CV</span>
+      </a>
+
       <div class="space-y-2 pt-1">
-        <div class="flex items-center justify-between text-xs font-bold text-slate-400 px-1">
-          <button (click)="goBack()" class="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer py-1">
+        <div class="flex items-center justify-between gap-1 text-xs font-bold px-1">
+          <button (click)="goBack()" class="flex items-center gap-1 hover:opacity-100 transition-opacity cursor-pointer py-1" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()">
             <app-cv-icon name="back" size="w-3.5 h-3.5" />
-            <span>Back</span>
+            <span>Themes</span>
           </button>
-          <button (click)="toggleLanguage()" class="hover:text-white transition-colors cursor-pointer py-1">
-            LANG: {{ lang.current.toUpperCase() }}
-          </button>
+          
+          <div class="flex items-center gap-1.5">
+            <app-theme-mode-toggle />
+            <app-language-toggle />
+          </div>
         </div>
 
         <div class="flex justify-center pt-1">
@@ -85,8 +94,23 @@
         </div>
       </div>
     } @else {
-      <div class="flex flex-col items-center gap-2 pt-2">
-        <button (click)="goBack()" title="Back to Home" class="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors cursor-pointer">
+      <!-- COLLAPSED MODE FOOTER (w-20) -->
+      <div class="flex flex-col items-center gap-3">
+        <a
+          href="assets/cv/CV_Muhammad_Maulana_Yusuf.pdf"
+          download="CV_Muhammad_Maulana_Yusuf.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          (click)="onDownloadCv()"
+          title="Download CV"
+          class="w-10 h-10 inline-flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white rounded-xl shadow-md transition-all duration-200"
+        >
+          <app-cv-icon name="download" size="w-4 h-4" />
+        </a>
+
+        <app-theme-mode-toggle />
+
+        <button (click)="goBack()" title="Back to Themes" class="p-2 rounded-lg transition-colors cursor-pointer" [class.hover:bg-slate-800]="themeService.isDarkMode()" [class.text-slate-400]="themeService.isDarkMode()" [class.hover:bg-slate-200]="!themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()">
           <app-cv-icon name="back" size="w-4 h-4" />
         </button>
       </div>
@@ -95,44 +119,77 @@
 </aside>
 
 <!-- MOBILE TOPBAR -->
-<div class="md:hidden fixed top-0 left-0 w-full flex items-center justify-between px-4 py-3 bg-slate-900 text-white z-40 border-b border-slate-800">
-  <div class="flex items-center space-x-2">
-    <button (click)="goBack()" class="flex items-center gap-1 text-xs font-bold text-slate-300 hover:text-white bg-slate-800 px-2 py-1 rounded-lg cursor-pointer">
+<div class="md:hidden fixed top-0 left-0 w-full flex items-center justify-between px-4 py-3 z-40 border-b shadow-sm" [class.bg-[#020617]]="themeService.isDarkMode()" [class.border-[#1e293b]]="themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()" [class.bg-[#f1f5f9]]="!themeService.isDarkMode()" [class.border-[#e2e8f0]]="!themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
+  <div class="flex items-center space-x-2 overflow-hidden">
+    <button (click)="goBack()" class="flex items-center gap-1 text-xs font-bold px-2 py-1 rounded-lg cursor-pointer shrink-0" [class.bg-slate-800]="themeService.isDarkMode()" [class.text-slate-300]="themeService.isDarkMode()" [class.bg-slate-200]="!themeService.isDarkMode()" [class.text-slate-700]="!themeService.isDarkMode()">
       <app-cv-icon name="back" size="w-3.5 h-3.5" />
-      <span>Back</span>
+      <span>Themes</span>
     </button>
     <span class="font-bold text-sm truncate">{{ 'about.name' | translate }}</span>
   </div>
-  <button (click)="onToggleMobile()" class="p-2 text-xl cursor-pointer">☰</button>
+  <button (click)="onToggleMobile()" class="p-2 text-xl cursor-pointer shrink-0">☰</button>
 </div>
 
+<!-- MOBILE DRAWER -->
 @if (isMobileOpen()) {
-  <div class="md:hidden fixed inset-0 bg-slate-950/95 z-50 p-6 flex flex-col justify-between">
+  <div class="md:hidden fixed inset-0 z-50 p-6 flex flex-col justify-between overflow-y-auto backdrop-blur-xl" [class.bg-[#020617]/95]="themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()" [class.bg-white/95]="!themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
     <div class="space-y-6">
-      <div class="flex items-center justify-between pb-4 border-b border-slate-800 text-white">
-        <span class="font-bold">WORKSPACE NAV</span>
-        <button (click)="onToggleMobile()" class="text-xl cursor-pointer">✕</button>
+      <div class="flex items-center justify-between pb-4 border-b" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-lg bg-blue-600 text-white font-black flex items-center justify-center text-xs">MY</div>
+          <span class="font-bold text-xs uppercase tracking-wider">WORKSPACE NAV</span>
+        </div>
+        <button (click)="onToggleMobile()" class="p-2 text-xl cursor-pointer">✕</button>
       </div>
+
       <div class="space-y-2">
         @for (item of navItems; track item.id) {
           <button
             (click)="onSelect(item.id)"
-            class="w-full text-left py-3 px-4 rounded-xl font-bold text-slate-200 bg-slate-900 border border-slate-800 cursor-pointer"
+            class="w-full text-left py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider border cursor-pointer flex items-center justify-between"
+            [class.bg-blue-600]="activeSection() === item.id"
+            [class.text-white]="activeSection() === item.id"
+            [class.border-transparent]="activeSection() === item.id"
+            [class.border-slate-800]="activeSection() !== item.id && themeService.isDarkMode()"
+            [class.bg-slate-900]="activeSection() !== item.id && themeService.isDarkMode()"
+            [class.border-slate-200]="activeSection() !== item.id && !themeService.isDarkMode()"
+            [class.bg-slate-50]="activeSection() !== item.id && !themeService.isDarkMode()"
           >
-            {{ item.labelKey | translate }}
+            <div class="flex items-center space-x-3">
+              <app-cv-icon [name]="item.icon" size="w-4 h-4" />
+              <span>{{ item.labelKey | translate }}</span>
+            </div>
+            <span class="text-[10px] opacity-60 font-mono">{{ item.shortcut }}</span>
           </button>
         }
       </div>
     </div>
-    <a
-      href="assets/cv/CV_Muhammad_Maulana_Yusuf.pdf"
-      download="CV_Muhammad_Maulana_Yusuf.pdf"
-      target="_blank"
-      rel="noopener noreferrer"
-      (click)="onDownloadCv()"
-      class="w-full text-center py-3 bg-blue-600 text-white font-bold rounded-xl"
-    >
-      Download CV (PDF)
-    </a>
+
+    <div class="space-y-4 pt-6 border-t mt-6" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
+      <div class="flex items-center justify-between gap-2">
+        <span class="text-xs font-bold text-slate-400">THEME PRESET</span>
+        <app-theme-selector position="up" align="right" />
+      </div>
+      
+      <div class="flex items-center justify-between gap-2">
+        <span class="text-xs font-bold text-slate-400">SETTINGS</span>
+        <div class="flex items-center gap-2">
+          <app-theme-mode-toggle />
+          <app-language-toggle />
+        </div>
+      </div>
+
+      <a
+        href="assets/cv/CV_Muhammad_Maulana_Yusuf.pdf"
+        download="CV_Muhammad_Maulana_Yusuf.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        (click)="onDownloadCv()"
+        class="w-full inline-flex items-center justify-center gap-2 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all cursor-pointer"
+      >
+        <app-cv-icon name="download" size="w-4 h-4" />
+        <span>Download CV (PDF)</span>
+      </a>
+    </div>
   </div>
 }

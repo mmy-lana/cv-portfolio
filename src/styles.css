@@ -417,14 +417,28 @@ html:not(.dark) .gradient-skill-pill {
 }
 
 .dashboard-card {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+html.dark .dashboard-card {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid #334155;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+html:not(.dark) .dashboard-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.dashboard-card:hover {
-  border-color: #cbd5e1;
+html.dark .dashboard-card:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.15);
+}
+
+html:not(.dark) .dashboard-card:hover {
+  border-color: #94a3b8;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 

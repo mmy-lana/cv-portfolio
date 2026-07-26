@@ -1,7 +1,9 @@
-import { Component, OnInit, signal, HostListener } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, inject, signal, HostListener, NgZone } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../../services/theme.service';
+import { FaviconService } from '../../../services/favicon.service';
+import { DownloadCvBtnComponent } from '../../shared/atoms/download-cv-btn/download-cv-btn';
 import { CvExperienceCard } from '../../shared/cv-experience-card/cv-experience-card';
 import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
 import { DashboardSidebar, DashboardSection } from './components/dashboard-sidebar/dashboard-sidebar';
@@ -9,18 +11,68 @@ import { DashboardSidebar, DashboardSection } from './components/dashboard-sideb
 @Component({
   selector: 'app-sidebar-navigation',
   standalone: true,
-  imports: [TranslateModule, RouterModule, CvExperienceCard, CvIcon, DashboardSidebar],
+  imports: [
+    TranslateModule,
+    RouterModule,
+    DownloadCvBtnComponent,
+    CvExperienceCard,
+    CvIcon,
+    DashboardSidebar
+  ],
   templateUrl: './sidebar-navigation.html'
 })
-export class SidebarNavigation implements OnInit {
+export class SidebarNavigation implements OnInit, AfterViewInit, OnDestroy {
+  public themeService = inject(ThemeService);
+  private faviconService = inject(FaviconService);
+  private ngZone = inject(NgZone);
+
   activeSection = signal<DashboardSection>('about');
   isCollapsed = signal<boolean>(false);
   isMobileOpen = signal<boolean>(false);
 
-  constructor(public themeService: ThemeService) {}
+  private observer?: IntersectionObserver;
 
   ngOnInit(): void {
     this.themeService.setTheme('sidebar-navigation');
+    this.faviconService.setFavicon('sidebar-navigation');
+  }
+
+  ngAfterViewInit(): void {
+    this.initScrollSpy();
+  }
+
+  ngOnDestroy(): void {
+    this.observer?.disconnect();
+  }
+
+  private initScrollSpy(): void {
+    this.ngZone.runOutsideAngular(() => {
+      const sections: DashboardSection[] = ['about', 'experience', 'skills', 'education', 'certificates', 'contact'];
+
+      const options: IntersectionObserverInit = {
+        root: null,
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+      };
+
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id as DashboardSection;
+            this.ngZone.run(() => {
+              this.activeSection.set(id);
+            });
+          }
+        });
+      }, options);
+
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          this.observer?.observe(el);
+        }
+      });
+    });
   }
 
   toggleSidebar(): void {

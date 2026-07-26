@@ -1,8 +1,11 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, output, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../../../../../services/language.service';
+import { ThemeService } from '../../../../../services/theme.service';
 import { ThemeSelector } from '../../../../shared/theme-selector/theme-selector';
+import { LanguageToggleComponent } from '../../../../shared/atoms/language-toggle/language-toggle';
+import { ThemeModeToggleComponent } from '../../../../shared/atoms/theme-mode-toggle/theme-mode-toggle';
 import { CvIcon } from '../../../../shared/atoms/cv-icon/cv-icon';
 
 export type DashboardSection = 'about' | 'experience' | 'skills' | 'education' | 'certificates' | 'contact';
@@ -17,7 +20,13 @@ export interface NavItem {
 @Component({
   selector: 'app-dashboard-sidebar',
   standalone: true,
-  imports: [TranslateModule, ThemeSelector, CvIcon],
+  imports: [
+    TranslateModule,
+    ThemeSelector,
+    LanguageToggleComponent,
+    ThemeModeToggleComponent,
+    CvIcon
+  ],
   templateUrl: './dashboard-sidebar.html'
 })
 export class DashboardSidebar {
@@ -30,6 +39,10 @@ export class DashboardSidebar {
   toggleMobile = output<void>();
   downloadCv = output<void>();
 
+  public themeService = inject(ThemeService);
+  public lang = inject(LanguageService);
+  private router = inject(Router);
+
   navItems: NavItem[] = [
     { id: 'about', labelKey: 'about.name', icon: 'gpa', shortcut: '1' },
     { id: 'experience', labelKey: 'experience.title', icon: 'calendar', shortcut: '2' },
@@ -38,11 +51,6 @@ export class DashboardSidebar {
     { id: 'certificates', labelKey: 'certificates.title', icon: 'gpa', shortcut: '5' },
     { id: 'contact', labelKey: 'contact.title', icon: 'email', shortcut: '6' }
   ];
-
-  constructor(
-    public lang: LanguageService,
-    private router: Router
-  ) {}
 
   goBack(): void {
     this.router.navigate(['/']);
@@ -62,9 +70,5 @@ export class DashboardSidebar {
 
   onDownloadCv(): void {
     this.downloadCv.emit();
-  }
-
-  toggleLanguage(): void {
-    this.lang.toggle();
   }
 }

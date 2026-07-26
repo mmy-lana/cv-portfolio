@@ -1,4 +1,11 @@
-<div class="theme-wrapper flex min-h-screen bg-slate-50 text-slate-900 font-sans" style="--nav-bg: #0f172a; --nav-text: #f8fafc; --nav-border: #334155; --cv-primary: #0f172a; --cv-accent: #2563eb">
+<div 
+  class="theme-wrapper flex min-h-screen font-sans transition-colors duration-300"
+  [class.bg-[#0f172a]]="themeService.isDarkMode()"
+  [class.text-[#f8fafc]]="themeService.isDarkMode()"
+  [class.bg-[#f8fafc]]="!themeService.isDarkMode()"
+  [class.text-[#0f172a]]="!themeService.isDarkMode()"
+  style="--nav-bg: #0f172a; --nav-text: #f8fafc; --nav-border: #334155; --cv-primary: #0f172a; --cv-accent: #2563eb"
+>
   
   <app-dashboard-sidebar
     [activeSection]="activeSection()"
@@ -12,56 +19,63 @@
 
   <!-- MAIN DASHBOARD WORKSPACE PANE -->
   <main 
-    class="flex-1 py-12 md:py-8 px-6 md:px-12 space-y-12 transition-all duration-300"
+    class="flex-1 pt-20 pb-12 md:pt-0 md:pb-8 px-4 md:px-12 space-y-12 transition-all duration-300 min-h-screen"
     [class.md:ml-64]="!isCollapsed()"
     [class.md:ml-20]="isCollapsed()"
   >
-    <!-- TOP BREADCRUMB BAR -->
-    <div class="hidden md:flex items-center justify-between pb-4 border-b border-slate-200 text-xs text-slate-500 font-medium">
+    <!-- STICKY TOP BREADCRUMB BAR -->
+    <div 
+      class="sticky top-0 z-30 flex items-center justify-between py-3 px-4 -mx-4 md:-mx-12 mb-8 border-b backdrop-blur-md transition-colors duration-200 text-xs font-medium"
+      [class.bg-[#0f172a]/90]="themeService.isDarkMode()"
+      [class.border-[#1e293b]]="themeService.isDarkMode()"
+      [class.text-slate-400]="themeService.isDarkMode()"
+      [class.bg-[#f8fafc]/90]="!themeService.isDarkMode()"
+      [class.border-slate-200]="!themeService.isDarkMode()"
+      [class.text-slate-500]="!themeService.isDarkMode()"
+    >
       <div class="flex items-center space-x-2">
         <span>Workspace</span>
         <span>/</span>
-        <span class="font-bold text-slate-800 uppercase">{{ activeSection() }}</span>
+        <span class="font-bold uppercase tracking-wider" [class.text-sky-400]="themeService.isDarkMode()" [class.text-blue-600]="!themeService.isDarkMode()">{{ activeSection() }}</span>
       </div>
-      <div class="flex items-center space-x-2 bg-slate-200/60 px-2.5 py-1 rounded-md text-[11px] text-slate-600 font-mono">
+      
+      <div class="hidden sm:flex items-center space-x-2 px-2.5 py-1 rounded-md text-[11px] font-mono" [class.bg-slate-900/80]="themeService.isDarkMode()" [class.text-slate-400]="themeService.isDarkMode()" [class.bg-slate-200/60]="!themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()">
         <span>Press 1-6 to switch tabs | Cmd+D to Download</span>
       </div>
     </div>
 
     <!-- ABOUT CARD -->
     <section id="about" class="max-w-4xl mx-auto dashboard-card p-8 md:p-10 rounded-2xl space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-4">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b pb-4" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-100]="!themeService.isDarkMode()">
         <div>
-          <h1 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
+          <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded border uppercase" [class.bg-sky-950]="themeService.isDarkMode()" [class.text-sky-300]="themeService.isDarkMode()" [class.border-sky-800/50]="themeService.isDarkMode()" [class.bg-blue-50]="!themeService.isDarkMode()" [class.text-blue-700]="!themeService.isDarkMode()" [class.border-blue-200]="!themeService.isDarkMode()">
+            [ PRESET: {{ themeService.isDarkMode() ? 'EXECUTIVE DARK' : 'ENTERPRISE LIGHT' }} ]
+          </span>
+
+          <h1 class="text-3xl md:text-4xl font-black tracking-tight mt-2" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
             {{ 'about.name' | translate }}
           </h1>
-          <p class="text-base md:text-lg font-bold text-blue-600 mt-1">
+          <p class="text-base md:text-lg font-bold mt-1" [class.text-sky-400]="themeService.isDarkMode()" [class.text-blue-600]="!themeService.isDarkMode()">
             {{ 'about.title' | translate }}
           </p>
         </div>
-        <span class="px-3 py-1 text-xs font-bold rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+        <span class="px-3 py-1 text-xs font-bold rounded-full border" [class.bg-emerald-950/80]="themeService.isDarkMode()" [class.text-emerald-300]="themeService.isDarkMode()" [class.border-emerald-700]="themeService.isDarkMode()" [class.bg-emerald-100]="!themeService.isDarkMode()" [class.text-emerald-800]="!themeService.isDarkMode()" [class.border-emerald-300]="!themeService.isDarkMode()">
           ● ACTIVE_CANDIDATE
         </span>
       </div>
 
-      <p class="text-slate-600 leading-relaxed text-sm max-w-3xl">
+      <p class="leading-relaxed text-sm max-w-3xl" [class.text-slate-300]="themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()">
         {{ 'about.summary' | translate }}
       </p>
 
       <div class="pt-2 flex flex-wrap items-center gap-4">
-        <button
-          (click)="downloadCV()"
-          class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl shadow-sm transition-all"
-        >
-          <app-cv-icon name="download" size="w-4 h-4" />
-          <span>Download CV (PDF)</span>
-        </button>
+        <app-download-cv-btn variant="primary" size="md" />
 
-        <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs text-slate-600 font-semibold">
-          <a [href]="'mailto:' + ('about.email' | translate)" class="hover:text-blue-600 transition-colors">
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs font-semibold" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()">
+          <a [href]="'mailto:' + ('about.email' | translate)" class="hover:text-blue-500 transition-colors">
             Email: {{ 'about.email' | translate }}
           </a>
-          <a [href]="'https://' + ('about.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition-colors">
+          <a [href]="'https://' + ('about.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="hover:text-blue-500 transition-colors">
             LinkedIn: {{ 'about.linkedin' | translate }}
           </a>
         </div>
@@ -70,22 +84,22 @@
 
     <!-- EXPERIENCE WORKSPACE CARDS -->
     <section id="experience" class="max-w-4xl mx-auto space-y-6">
-      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
-        <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">
+      <div class="flex items-center justify-between border-b pb-3" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
+        <h2 class="text-xl font-black uppercase tracking-tight" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
           {{ 'experience.title' | translate }}
         </h2>
-        <span class="text-xs text-slate-400 font-mono">Module 01</span>
+        <span class="text-xs font-mono" [class.text-slate-500]="themeService.isDarkMode()" [class.text-slate-400]="!themeService.isDarkMode()">Module 01</span>
       </div>
 
       @defer (on viewport) {
         <div class="space-y-4">
           @for (job of ('experience.items' | translate); track $index; let first = $first) {
             <div class="dashboard-card p-6 rounded-2xl relative space-y-3">
-              <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2">
-                <span class="px-2.5 py-0.5 text-[10px] font-bold rounded-md" [class]="first ? 'bg-blue-100 text-blue-800' : 'bg-slate-100 text-slate-600'">
+              <div class="flex flex-wrap items-center justify-between gap-2 border-b pb-2" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-100]="!themeService.isDarkMode()">
+                <span class="px-2.5 py-0.5 text-[10px] font-bold rounded-md" [class]="first ? (themeService.isDarkMode() ? 'bg-sky-950 text-sky-300 border border-sky-800' : 'bg-blue-100 text-blue-800') : (themeService.isDarkMode() ? 'bg-slate-800 text-slate-400' : 'bg-slate-100 text-slate-600')">
                   {{ first ? '[ Present / Active ]' : '[ Completed ]' }}
                 </span>
-                <span class="text-xs font-semibold text-slate-400">{{ job.period }}</span>
+                <span class="text-xs font-semibold" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">{{ job.period }}</span>
               </div>
               <app-cv-experience-card [data]="job" layoutVariant="clean" />
             </div>
@@ -101,20 +115,20 @@
 
     <!-- SKILLS WORKSPACE -->
     <section id="skills" class="max-w-4xl mx-auto space-y-6">
-      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
-        <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">
+      <div class="flex items-center justify-between border-b pb-3" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
+        <h2 class="text-xl font-black uppercase tracking-tight" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
           {{ 'skills.title' | translate }}
         </h2>
-        <span class="text-xs text-slate-400 font-mono">Module 02</span>
+        <span class="text-xs font-mono" [class.text-slate-500]="themeService.isDarkMode()" [class.text-slate-400]="!themeService.isDarkMode()">Module 02</span>
       </div>
 
       @defer (on viewport) {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="dashboard-card p-6 rounded-2xl space-y-3">
-            <h3 class="font-bold text-xs uppercase text-slate-500 tracking-wider">Languages</h3>
+            <h3 class="font-bold text-xs uppercase tracking-wider" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">Languages</h3>
             <div class="flex flex-wrap gap-2">
               @for (lang of ('skills.languages' | translate); track $index) {
-                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 border border-slate-200">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg border" [class.bg-slate-800]="themeService.isDarkMode()" [class.text-slate-200]="themeService.isDarkMode()" [class.border-slate-700]="themeService.isDarkMode()" [class.bg-slate-100]="!themeService.isDarkMode()" [class.text-slate-700]="!themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
                   {{ lang }}
                 </span>
               }
@@ -122,10 +136,10 @@
           </div>
 
           <div class="dashboard-card p-6 rounded-2xl space-y-3">
-            <h3 class="font-bold text-xs uppercase text-slate-500 tracking-wider">Frameworks & CSS</h3>
+            <h3 class="font-bold text-xs uppercase tracking-wider" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">Frameworks & CSS</h3>
             <div class="flex flex-wrap gap-2">
               @for (fw of ('skills.frameworks' | translate); track $index) {
-                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-blue-50 text-blue-700 border border-blue-200">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg border" [class.bg-sky-950]="themeService.isDarkMode()" [class.text-sky-300]="themeService.isDarkMode()" [class.border-sky-800]="themeService.isDarkMode()" [class.bg-blue-50]="!themeService.isDarkMode()" [class.text-blue-700]="!themeService.isDarkMode()" [class.border-blue-200]="!themeService.isDarkMode()">
                   {{ fw }}
                 </span>
               }
@@ -133,10 +147,10 @@
           </div>
 
           <div class="dashboard-card p-6 rounded-2xl space-y-3">
-            <h3 class="font-bold text-xs uppercase text-slate-500 tracking-wider">Tools</h3>
+            <h3 class="font-bold text-xs uppercase tracking-wider" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">Tools</h3>
             <div class="flex flex-wrap gap-2">
               @for (tool of ('skills.tools' | translate); track $index) {
-                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 border border-slate-200">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-lg border" [class.bg-slate-800]="themeService.isDarkMode()" [class.text-slate-200]="themeService.isDarkMode()" [class.border-slate-700]="themeService.isDarkMode()" [class.bg-slate-100]="!themeService.isDarkMode()" [class.text-slate-700]="!themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
                   {{ tool }}
                 </span>
               }
@@ -154,11 +168,11 @@
 
     <!-- EDUCATION WORKSPACE -->
     <section id="education" class="max-w-4xl mx-auto space-y-6">
-      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
-        <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">
+      <div class="flex items-center justify-between border-b pb-3" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
+        <h2 class="text-xl font-black uppercase tracking-tight" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
           {{ 'education.title' | translate }}
         </h2>
-        <span class="text-xs text-slate-400 font-mono">Module 03</span>
+        <span class="text-xs font-mono" [class.text-slate-500]="themeService.isDarkMode()" [class.text-slate-400]="!themeService.isDarkMode()">Module 03</span>
       </div>
 
       @defer (on viewport) {
@@ -176,18 +190,18 @@
 
     <!-- CERTIFICATES WORKSPACE -->
     <section id="certificates" class="max-w-4xl mx-auto space-y-6">
-      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
-        <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">
+      <div class="flex items-center justify-between border-b pb-3" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
+        <h2 class="text-xl font-black uppercase tracking-tight" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
           {{ 'certificates.title' | translate }}
         </h2>
-        <span class="text-xs text-slate-400 font-mono">Module 04</span>
+        <span class="text-xs font-mono" [class.text-slate-500]="themeService.isDarkMode()" [class.text-slate-400]="!themeService.isDarkMode()">Module 04</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         @for (cert of ('certificates.items' | translate); track $index) {
           <div class="dashboard-card p-5 rounded-xl flex items-center space-x-3">
-            <app-cv-icon name="gpa" class="text-blue-600" size="w-5 h-5" />
-            <span class="text-xs font-bold text-slate-700">{{ cert }}</span>
+            <app-cv-icon name="gpa" class="text-blue-500" size="w-5 h-5" />
+            <span class="text-xs font-bold" [class.text-slate-200]="themeService.isDarkMode()" [class.text-slate-700]="!themeService.isDarkMode()">{{ cert }}</span>
           </div>
         }
       </div>
@@ -195,35 +209,35 @@
 
     <!-- CONTACT WORKSPACE -->
     <section id="contact" class="max-w-4xl mx-auto space-y-6 pb-16">
-      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
-        <h2 class="text-xl font-black text-slate-900 uppercase tracking-tight">
+      <div class="flex items-center justify-between border-b pb-3" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
+        <h2 class="text-xl font-black uppercase tracking-tight" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
           {{ 'contact.title' | translate }}
         </h2>
-        <span class="text-xs text-slate-400 font-mono">Module 05</span>
+        <span class="text-xs font-mono" [class.text-slate-500]="themeService.isDarkMode()" [class.text-slate-400]="!themeService.isDarkMode()">Module 05</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a [href]="'mailto:' + ('contact.email' | translate)" class="dashboard-card p-6 rounded-2xl flex items-center space-x-4 hover:border-blue-500 transition-colors">
-          <app-cv-icon name="email" class="text-blue-600" size="w-6 h-6" />
+        <a [href]="'mailto:' + ('contact.email' | translate)" class="dashboard-card p-6 rounded-2xl flex items-center space-x-4">
+          <app-cv-icon name="email" class="text-blue-500" size="w-6 h-6" />
           <div class="overflow-hidden">
-            <p class="text-[10px] font-bold text-slate-400 uppercase">Email</p>
-            <p class="text-xs font-bold text-slate-800 truncate">{{ 'contact.email' | translate }}</p>
+            <p class="text-[10px] font-bold uppercase" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">Email</p>
+            <p class="text-xs font-bold truncate" [class.text-white]="themeService.isDarkMode()" [class.text-slate-800]="!themeService.isDarkMode()">{{ 'contact.email' | translate }}</p>
           </div>
         </a>
 
-        <a [href]="'tel:' + ('contact.phone' | translate)" class="dashboard-card p-6 rounded-2xl flex items-center space-x-4 hover:border-blue-500 transition-colors">
-          <app-cv-icon name="phone" class="text-blue-600" size="w-6 h-6" />
+        <a [href]="'tel:' + ('contact.phone' | translate)" class="dashboard-card p-6 rounded-2xl flex items-center space-x-4">
+          <app-cv-icon name="phone" class="text-blue-500" size="w-6 h-6" />
           <div>
-            <p class="text-[10px] font-bold text-slate-400 uppercase">Phone</p>
-            <p class="text-xs font-bold text-slate-800">{{ 'contact.phone' | translate }}</p>
+            <p class="text-[10px] font-bold uppercase" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">Phone</p>
+            <p class="text-xs font-bold" [class.text-white]="themeService.isDarkMode()" [class.text-slate-800]="!themeService.isDarkMode()">{{ 'contact.phone' | translate }}</p>
           </div>
         </a>
 
-        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="dashboard-card p-6 rounded-2xl flex items-center space-x-4 hover:border-blue-500 transition-colors">
-          <app-cv-icon name="linkedin" class="text-blue-600" size="w-6 h-6" />
+        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="dashboard-card p-6 rounded-2xl flex items-center space-x-4">
+          <app-cv-icon name="linkedin" class="text-blue-500" size="w-6 h-6" />
           <div>
-            <p class="text-[10px] font-bold text-slate-400 uppercase">LinkedIn</p>
-            <p class="text-xs font-bold text-slate-800">Connect</p>
+            <p class="text-[10px] font-bold uppercase" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">LinkedIn</p>
+            <p class="text-xs font-bold" [class.text-white]="themeService.isDarkMode()" [class.text-slate-800]="!themeService.isDarkMode()">Connect</p>
           </div>
         </a>
       </div>
