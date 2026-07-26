@@ -1,42 +1,63 @@
-<div class="theme-wrapper relative min-h-screen overflow-hidden bg-slate-950" style="--nav-bg: #0c0a22; --nav-text: #fdf2f8; --nav-border: #1e1b4b; --cv-primary: #f43f5e; --cv-accent: #a855f7">
-  <app-gradient-mesh-canvas />
+<div 
+  class="theme-wrapper relative min-h-screen overflow-hidden transition-colors duration-300 font-sans"
+  [class.text-slate-900]="!themeService.isDarkMode()"
+  [class.text-white]="themeService.isDarkMode()"
+  style="--nav-bg: #0c0a22; --nav-text: #fdf2f8; --nav-border: #1e1b4b; --cv-primary: #f43f5e; --cv-accent: #a855f7"
+>
+  <app-gradient-mesh-canvas [isDark]="themeService.isDarkMode()" />
   <app-theme-nav class="print:hidden z-30 relative" />
 
-  <div class="md:ml-64 px-6 md:px-16 py-20 space-y-24 text-white min-h-screen relative z-10">
+  <div class="px-6 md:px-16 py-20 space-y-24 min-h-screen relative z-10">
     <!-- ABOUT -->
     <section id="about" class="max-w-4xl mx-auto space-y-6 gradient-flow-card p-8 md:p-10 rounded-3xl animate-fade-in-up">
       <div class="space-y-3">
-        <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight leading-none drop-shadow-md">
+        <span 
+          class="text-xs font-bold tracking-widest uppercase font-mono"
+          [class.text-rose-600]="!themeService.isDarkMode()"
+          [class.text-rose-400]="themeService.isDarkMode()"
+        >
+          [ PRESET: {{ themeService.isDarkMode() ? 'AURORA BOREALIS' : 'SUNRISE MESH' }} ]
+        </span>
+
+        <h1 
+          class="text-4xl md:text-5xl font-black tracking-tight leading-none drop-shadow-md"
+          [class.text-slate-900]="!themeService.isDarkMode()"
+          [class.text-white]="themeService.isDarkMode()"
+        >
           {{ 'about.name' | translate }}
         </h1>
-        <p class="text-xl md:text-2xl font-bold text-rose-400">
+
+        <p 
+          class="text-xl md:text-2xl font-bold"
+          [class.text-rose-600]="!themeService.isDarkMode()"
+          [class.text-rose-400]="themeService.isDarkMode()"
+        >
           {{ 'about.title' | translate }}
         </p>
       </div>
 
-      <p class="text-slate-200 leading-relaxed text-base max-w-3xl drop-shadow-xs">
+      <p 
+        class="leading-relaxed text-base max-w-3xl"
+        [class.text-slate-700]="!themeService.isDarkMode()"
+        [class.text-slate-200]="themeService.isDarkMode()"
+      >
         {{ 'about.summary' | translate }}
       </p>
 
-      <div class="pt-4 flex flex-wrap items-center gap-4 border-t border-white/10">
-        <a
-          href="assets/cv/CV_Muhammad_Maulana_Yusuf.pdf"
-          download="CV_Muhammad_Maulana_Yusuf.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-rose-500 to-purple-600 font-bold text-sm text-white rounded-2xl shadow-xl hover:shadow-rose-500/30 hover:scale-[1.02] transition-all duration-200"
-        >
-          <app-cv-icon name="download" size="w-4 h-4" />
-          <span>Download CV (PDF)</span>
-        </a>
+      <div class="pt-4 flex flex-wrap items-center gap-4 border-t" [class.border-slate-900/10]="!themeService.isDarkMode()" [class.border-white/10]="themeService.isDarkMode()">
+        <app-download-cv-btn variant="primary" size="lg" />
 
-        <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-300 font-medium">
-          <a [href]="'mailto:' + ('about.email' | translate)" class="flex items-center gap-1.5 hover:text-rose-400 transition-colors link-underline">
-            <app-cv-icon name="email" class="text-rose-400" size="w-4 h-4" />
+        <div 
+          class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium"
+          [class.text-slate-700]="!themeService.isDarkMode()"
+          [class.text-slate-300]="themeService.isDarkMode()"
+        >
+          <a [href]="'mailto:' + ('about.email' | translate)" class="flex items-center gap-1.5 hover:text-rose-500 transition-colors link-underline">
+            <app-cv-icon name="email" class="text-rose-500" size="w-4 h-4" />
             {{ 'about.email' | translate }}
           </a>
-          <a [href]="'https://' + ('about.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-purple-400 transition-colors link-underline">
-            <app-cv-icon name="linkedin" class="text-purple-400" size="w-4 h-4" />
+          <a [href]="'https://' + ('about.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 hover:text-purple-500 transition-colors link-underline">
+            <app-cv-icon name="linkedin" class="text-purple-500" size="w-4 h-4" />
             {{ 'about.linkedin' | translate }}
           </a>
         </div>
@@ -45,9 +66,13 @@
 
     <!-- EXPERIENCE -->
     <section id="experience" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
+      <div class="flex items-center space-x-3 border-b pb-4" [class.border-slate-900/10]="!themeService.isDarkMode()" [class.border-white/10]="themeService.isDarkMode()">
         <div class="w-2.5 h-6 rounded bg-gradient-to-b from-rose-500 to-purple-500"></div>
-        <h2 class="text-2xl font-black tracking-tight uppercase drop-shadow-xs">
+        <h2 
+          class="text-2xl font-black tracking-tight uppercase"
+          [class.text-slate-900]="!themeService.isDarkMode()"
+          [class.text-white]="themeService.isDarkMode()"
+        >
           {{ 'experience.title' | translate }}
         </h2>
       </div>
@@ -70,9 +95,13 @@
 
     <!-- SKILLS -->
     <section id="skills" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
+      <div class="flex items-center space-x-3 border-b pb-4" [class.border-slate-900/10]="!themeService.isDarkMode()" [class.border-white/10]="themeService.isDarkMode()">
         <div class="w-2.5 h-6 rounded bg-gradient-to-b from-rose-500 to-purple-500"></div>
-        <h2 class="text-2xl font-black tracking-tight uppercase drop-shadow-xs">
+        <h2 
+          class="text-2xl font-black tracking-tight uppercase"
+          [class.text-slate-900]="!themeService.isDarkMode()"
+          [class.text-white]="themeService.isDarkMode()"
+        >
           {{ 'skills.title' | translate }}
         </h2>
       </div>
@@ -80,10 +109,16 @@
       @defer (on viewport) {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="space-y-4 p-6 gradient-flow-card rounded-2xl">
-            <h3 class="font-bold text-slate-300 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Languages</h3>
+            <h3 
+              class="font-bold text-xs uppercase tracking-wider border-b pb-2"
+              [class.text-slate-800]="!themeService.isDarkMode()"
+              [class.border-slate-900/10]="!themeService.isDarkMode()"
+              [class.text-slate-200]="themeService.isDarkMode()"
+              [class.border-white/10]="themeService.isDarkMode()"
+            >Languages</h3>
             <div class="flex flex-wrap gap-2">
               @for (lang of ('skills.languages' | translate); track $index) {
-                <span class="gradient-skill-pill px-3 py-1 text-xs font-semibold rounded-full text-slate-200 cursor-default">
+                <span class="gradient-skill-pill px-3 py-1 text-xs font-semibold rounded-full cursor-default">
                   {{ lang }}
                 </span>
               }
@@ -91,10 +126,16 @@
           </div>
 
           <div class="space-y-4 p-6 gradient-flow-card rounded-2xl">
-            <h3 class="font-bold text-slate-300 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Frameworks & CSS</h3>
+            <h3 
+              class="font-bold text-xs uppercase tracking-wider border-b pb-2"
+              [class.text-slate-800]="!themeService.isDarkMode()"
+              [class.border-slate-900/10]="!themeService.isDarkMode()"
+              [class.text-slate-200]="themeService.isDarkMode()"
+              [class.border-white/10]="themeService.isDarkMode()"
+            >Frameworks & CSS</h3>
             <div class="flex flex-wrap gap-2">
               @for (fw of ('skills.frameworks' | translate); track $index) {
-                <span class="gradient-skill-pill px-3 py-1 text-xs font-semibold rounded-full text-purple-200 cursor-default">
+                <span class="gradient-skill-pill px-3 py-1 text-xs font-semibold rounded-full cursor-default">
                   {{ fw }}
                 </span>
               }
@@ -102,10 +143,16 @@
           </div>
 
           <div class="space-y-4 p-6 gradient-flow-card rounded-2xl">
-            <h3 class="font-bold text-slate-300 text-xs uppercase tracking-wider border-b border-white/10 pb-2">Tools</h3>
+            <h3 
+              class="font-bold text-xs uppercase tracking-wider border-b pb-2"
+              [class.text-slate-800]="!themeService.isDarkMode()"
+              [class.border-slate-900/10]="!themeService.isDarkMode()"
+              [class.text-slate-200]="themeService.isDarkMode()"
+              [class.border-white/10]="themeService.isDarkMode()"
+            >Tools</h3>
             <div class="flex flex-wrap gap-2">
               @for (tool of ('skills.tools' | translate); track $index) {
-                <span class="gradient-skill-pill px-3 py-1 text-xs font-semibold rounded-full text-blue-200 cursor-default">
+                <span class="gradient-skill-pill px-3 py-1 text-xs font-semibold rounded-full cursor-default">
                   {{ tool }}
                 </span>
               }
@@ -123,9 +170,13 @@
 
     <!-- EDUCATION -->
     <section id="education" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
+      <div class="flex items-center space-x-3 border-b pb-4" [class.border-slate-900/10]="!themeService.isDarkMode()" [class.border-white/10]="themeService.isDarkMode()">
         <div class="w-2.5 h-6 rounded bg-gradient-to-b from-rose-500 to-purple-500"></div>
-        <h2 class="text-2xl font-black tracking-tight uppercase drop-shadow-xs">
+        <h2 
+          class="text-2xl font-black tracking-tight uppercase"
+          [class.text-slate-900]="!themeService.isDarkMode()"
+          [class.text-white]="themeService.isDarkMode()"
+        >
           {{ 'education.title' | translate }}
         </h2>
       </div>
@@ -145,9 +196,13 @@
 
     <!-- CERTIFICATES -->
     <section id="certificates" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
+      <div class="flex items-center space-x-3 border-b pb-4" [class.border-slate-900/10]="!themeService.isDarkMode()" [class.border-white/10]="themeService.isDarkMode()">
         <div class="w-2.5 h-6 rounded bg-gradient-to-b from-rose-500 to-purple-500"></div>
-        <h2 class="text-2xl font-black tracking-tight uppercase drop-shadow-xs">
+        <h2 
+          class="text-2xl font-black tracking-tight uppercase"
+          [class.text-slate-900]="!themeService.isDarkMode()"
+          [class.text-white]="themeService.isDarkMode()"
+        >
           {{ 'certificates.title' | translate }}
         </h2>
       </div>
@@ -155,8 +210,12 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         @for (cert of ('certificates.items' | translate); track $index) {
           <div class="flex items-center space-x-3 p-5 gradient-flow-card rounded-xl">
-            <app-cv-icon name="gpa" class="text-rose-400" size="w-5 h-5" />
-            <span class="text-sm font-semibold text-slate-200">{{ cert }}</span>
+            <app-cv-icon name="gpa" class="text-rose-500" size="w-5 h-5" />
+            <span 
+              class="text-sm font-semibold"
+              [class.text-slate-800]="!themeService.isDarkMode()"
+              [class.text-slate-200]="themeService.isDarkMode()"
+            >{{ cert }}</span>
           </div>
         }
       </div>
@@ -164,35 +223,74 @@
 
     <!-- CONTACT -->
     <section id="contact" class="max-w-4xl mx-auto space-y-8 pb-16">
-      <div class="flex items-center space-x-3 border-b border-white/10 pb-4">
+      <div class="flex items-center space-x-3 border-b pb-4" [class.border-slate-900/10]="!themeService.isDarkMode()" [class.border-white/10]="themeService.isDarkMode()">
         <div class="w-2.5 h-6 rounded bg-gradient-to-b from-rose-500 to-purple-500"></div>
-        <h2 class="text-2xl font-black tracking-tight uppercase drop-shadow-xs">
+        <h2 
+          class="text-2xl font-black tracking-tight uppercase"
+          [class.text-slate-900]="!themeService.isDarkMode()"
+          [class.text-white]="themeService.isDarkMode()"
+        >
           {{ 'contact.title' | translate }}
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a [href]="'mailto:' + ('contact.email' | translate)" class="flex items-center space-x-4 p-6 gradient-flow-card rounded-2xl">
-          <app-cv-icon name="email" class="text-rose-400" size="w-6 h-6" />
+        <a 
+          [href]="'mailto:' + ('contact.email' | translate)" 
+          class="flex items-center space-x-4 p-6 gradient-flow-card rounded-2xl"
+        >
+          <app-cv-icon name="email" class="text-rose-500" size="w-6 h-6" />
           <div class="overflow-hidden">
-            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Email</p>
-            <p class="text-sm font-bold text-white truncate">{{ 'contact.email' | translate }}</p>
+            <p 
+              class="text-xs font-bold uppercase tracking-wider"
+              [class.text-slate-600]="!themeService.isDarkMode()"
+              [class.text-slate-400]="themeService.isDarkMode()"
+            >Email</p>
+            <p 
+              class="text-sm font-bold truncate"
+              [class.text-slate-900]="!themeService.isDarkMode()"
+              [class.text-white]="themeService.isDarkMode()"
+            >{{ 'contact.email' | translate }}</p>
           </div>
         </a>
 
-        <a [href]="'tel:' + ('contact.phone' | translate)" class="flex items-center space-x-4 p-6 gradient-flow-card rounded-2xl">
-          <app-cv-icon name="phone" class="text-purple-400" size="w-6 h-6" />
+        <a 
+          [href]="'tel:' + ('contact.phone' | translate)" 
+          class="flex items-center space-x-4 p-6 gradient-flow-card rounded-2xl"
+        >
+          <app-cv-icon name="phone" class="text-purple-500" size="w-6 h-6" />
           <div>
-            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Phone</p>
-            <p class="text-sm font-bold text-white">{{ 'contact.phone' | translate }}</p>
+            <p 
+              class="text-xs font-bold uppercase tracking-wider"
+              [class.text-slate-600]="!themeService.isDarkMode()"
+              [class.text-slate-400]="themeService.isDarkMode()"
+            >Phone</p>
+            <p 
+              class="text-sm font-bold"
+              [class.text-slate-900]="!themeService.isDarkMode()"
+              [class.text-white]="themeService.isDarkMode()"
+            >{{ 'contact.phone' | translate }}</p>
           </div>
         </a>
 
-        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-4 p-6 gradient-flow-card rounded-2xl">
-          <app-cv-icon name="linkedin" class="text-blue-400" size="w-6 h-6" />
+        <a 
+          [href]="'https://' + ('contact.linkedin' | translate)" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="flex items-center space-x-4 p-6 gradient-flow-card rounded-2xl"
+        >
+          <app-cv-icon name="linkedin" class="text-blue-500" size="w-6 h-6" />
           <div>
-            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">LinkedIn</p>
-            <p class="text-sm font-bold text-white">Connect</p>
+            <p 
+              class="text-xs font-bold uppercase tracking-wider"
+              [class.text-slate-600]="!themeService.isDarkMode()"
+              [class.text-slate-400]="themeService.isDarkMode()"
+            >LinkedIn</p>
+            <p 
+              class="text-sm font-bold"
+              [class.text-slate-900]="!themeService.isDarkMode()"
+              [class.text-white]="themeService.isDarkMode()"
+            >Connect</p>
           </div>
         </a>
       </div>

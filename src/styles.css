@@ -354,32 +354,59 @@ html:not(.dark) .dark-glow-card::before {
 
 /* Gradient Flow Theme Card & Badge Utilities */
 .gradient-flow-card {
-  background: rgba(15, 12, 32, 0.65);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+html.dark .gradient-flow-card {
+  background: rgba(15, 23, 42, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+html:not(.dark) .gradient-flow-card {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
 }
 
 .gradient-flow-card:hover {
   transform: translateY(-4px) scale(1.01);
+}
+
+html.dark .gradient-flow-card:hover {
   border-color: rgba(244, 63, 94, 0.5);
-  box-shadow: 0 20px 50px rgba(244, 63, 94, 0.2);
+  box-shadow: 0 20px 50px rgba(244, 63, 94, 0.25);
+}
+
+html:not(.dark) .gradient-flow-card:hover {
+  border-color: rgba(244, 63, 94, 0.4);
+  box-shadow: 0 20px 40px rgba(244, 63, 94, 0.15);
 }
 
 .gradient-skill-pill {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   transition: all 0.25s ease;
 }
 
+html.dark .gradient-skill-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+}
+
+html:not(.dark) .gradient-skill-pill {
+  background: rgba(15, 23, 42, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  color: #0f172a;
+}
+
 .gradient-skill-pill:hover {
   background: linear-gradient(135deg, #f43f5e, #a855f7);
-  border-color: transparent;
-  color: #ffffff;
-  box-shadow: 0 0 15px rgba(244, 63, 94, 0.5);
+  border-color: transparent !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 15px rgba(244, 63, 94, 0.4);
   transform: scale(1.05);
 }
 

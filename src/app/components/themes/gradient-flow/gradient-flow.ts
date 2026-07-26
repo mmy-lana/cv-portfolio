@@ -1,8 +1,10 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ThemeNav } from '../../shared/theme-nav/theme-nav';
 import { ThemeService } from '../../../services/theme.service';
+import { FaviconService } from '../../../services/favicon.service';
+import { DownloadCvBtnComponent } from '../../shared/atoms/download-cv-btn/download-cv-btn';
 import { CvExperienceCard } from '../../shared/cv-experience-card/cv-experience-card';
 import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
 import { GradientMeshCanvas } from '../../shared/gradient-mesh-canvas/gradient-mesh-canvas';
@@ -14,6 +16,7 @@ import { GradientMeshCanvas } from '../../shared/gradient-mesh-canvas/gradient-m
     ThemeNav,
     TranslateModule,
     RouterModule,
+    DownloadCvBtnComponent,
     CvExperienceCard,
     CvIcon,
     GradientMeshCanvas
@@ -21,11 +24,13 @@ import { GradientMeshCanvas } from '../../shared/gradient-mesh-canvas/gradient-m
   templateUrl: './gradient-flow.html'
 })
 export class GradientFlow implements OnInit {
-  activeSection = signal<string>('about');
+  public themeService = inject(ThemeService);
+  private faviconService = inject(FaviconService);
 
-  constructor(private themeService: ThemeService) {}
+  activeSection = signal<string>('about');
 
   ngOnInit(): void {
     this.themeService.setTheme('gradient-flow');
+    this.faviconService.setFavicon('gradient-flow');
   }
 }

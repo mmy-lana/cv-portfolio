@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, OnDestroy, viewChild, NgZone, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, OnDestroy, viewChild, NgZone, inject, input } from '@angular/core';
 
 @Component({
   selector: 'app-gradient-mesh-canvas',
@@ -11,6 +11,8 @@ import { Component, ElementRef, OnInit, OnDestroy, viewChild, NgZone, inject } f
   `]
 })
 export class GradientMeshCanvas implements OnInit, OnDestroy {
+  isDark = input<boolean>(true);
+
   private canvasRef = viewChild.required<ElementRef<HTMLCanvasElement>>('meshCanvas');
   private ngZone = inject(NgZone);
   private animId: number | null = null;
@@ -65,6 +67,7 @@ export class GradientMeshCanvas implements OnInit, OnDestroy {
       uniform vec2 u_resolution;
       uniform float u_time;
       uniform vec2 u_mouse;
+      uniform float u_is_dark;
 
       void main() {
         vec2 st = gl_FragCoord.xy / u_resolution.xy;
@@ -77,10 +80,22 @@ export class GradientMeshCanvas implements OnInit, OnDestroy {
         float wave2 = cos(st.y * 3.5 - u_time * 0.6 + wave1 * 1.5);
         float wave3 = sin((st.x + st.y) * 2.0 + u_time * 0.5 + dist * 3.0);
 
-        vec3 color1 = vec3(0.06, 0.04, 0.15); // Deep Indigo
-        vec3 color2 = vec3(0.48, 0.22, 0.93); // Electric Purple
-        vec3 color3 = vec3(0.95, 0.25, 0.37); // Coral
-        vec3 color4 = vec3(0.02, 0.71, 0.83); // Cyan
+        // Aurora Borealis (Dark)
+        vec3 dark1 = vec3(0.039, 0.039, 0.137); // Deep Space Blue
+        vec3 dark2 = vec3(0.541, 0.169, 0.886); // Electric Purple
+        vec3 dark3 = vec3(0.545, 0.0, 0.545);   // Dark Magenta
+        vec3 dark4 = vec3(0.0, 1.0, 1.0);       // Neon Cyan
+
+        // Sunrise Mesh (Light)
+        vec3 light1 = vec3(1.0, 0.494, 0.373);  // Coral
+        vec3 light2 = vec3(0.996, 0.706, 0.482); // Peach
+        vec3 light3 = vec3(1.0, 0.820, 0.580);  // Golden Yellow
+        vec3 light4 = vec3(0.439, 0.882, 0.961); // Sky Cyan
+
+        vec3 color1 = mix(light1, dark1, u_is_dark);
+        vec3 color2 = mix(light2, dark2, u_is_dark);
+        vec3 color3 = mix(light3, dark3, u_is_dark);
+        vec3 color4 = mix(light4, dark4, u_is_dark);
 
         float mix1 = clamp((wave1 + 1.0) * 0.5, 0.0, 1.0);
         float mix2 = clamp((wave2 + 1.0) * 0.5, 0.0, 1.0);
@@ -125,6 +140,7 @@ export class GradientMeshCanvas implements OnInit, OnDestroy {
     const resLoc = gl.getUniformLocation(program, 'u_resolution');
     const timeLoc = gl.getUniformLocation(program, 'u_time');
     const mouseLoc = gl.getUniformLocation(program, 'u_mouse');
+    const darkLoc = gl.getUniformLocation(program, 'u_is_dark');
 
     gl.viewport(0, 0, width, height);
 
@@ -139,6 +155,7 @@ export class GradientMeshCanvas implements OnInit, OnDestroy {
       gl.uniform2f(resLoc, width, height);
       gl.uniform1f(timeLoc, currentTime);
       gl.uniform2f(mouseLoc, mouseX, mouseY);
+      gl.uniform1f(darkLoc, this.isDark() ? 1.0 : 0.0);
 
       gl.drawArrays(gl.TRIANGLES, 0, 6);
 
