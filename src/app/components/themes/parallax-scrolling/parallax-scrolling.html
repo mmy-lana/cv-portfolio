@@ -216,10 +216,10 @@
           </h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <a 
             [href]="'mailto:' + ('contact.email' | translate)" 
-            class="flex items-center space-x-4 p-6 border rounded-2xl transition-all"
+            class="flex items-center space-x-2.5 p-4 md:p-5 border rounded-2xl transition-all"
             [class.bg-[#111827]/60]="themeService.isDarkMode()"
             [class.border-white/10]="themeService.isDarkMode()"
             [class.hover:border-purple-400]="themeService.isDarkMode()"
@@ -227,10 +227,10 @@
             [class.border-slate-200]="!themeService.isDarkMode()"
             [class.hover:border-purple-500]="!themeService.isDarkMode()"
           >
-            <app-cv-icon name="email" class="text-purple-400" size="w-6 h-6" />
-            <div class="overflow-hidden">
+            <app-cv-icon name="email" class="text-purple-400 shrink-0" size="w-5 h-5" />
+            <div class="overflow-hidden min-w-0">
               <p class="text-xs font-bold uppercase tracking-wider" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">Email</p>
-              <p class="text-sm font-bold truncate" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">{{ 'contact.email' | translate }}</p>
+              <p class="text-[10px] sm:text-xs lg:text-[11px] xl:text-xs font-bold tracking-tight whitespace-nowrap" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">{{ 'contact.email' | translate }}</p>
             </div>
           </a>
 

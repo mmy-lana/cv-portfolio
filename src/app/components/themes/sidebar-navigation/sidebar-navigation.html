@@ -217,11 +217,11 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a [href]="'mailto:' + ('contact.email' | translate)" class="dashboard-card p-6 rounded-2xl flex items-center space-x-4">
-          <app-cv-icon name="email" class="text-blue-500" size="w-6 h-6" />
-          <div class="overflow-hidden">
+        <a [href]="'mailto:' + ('contact.email' | translate)" class="dashboard-card p-4 md:p-5 rounded-2xl flex items-center space-x-2.5">
+          <app-cv-icon name="email" class="text-blue-500 shrink-0" size="w-5 h-5" />
+          <div class="overflow-hidden min-w-0">
             <p class="text-[10px] font-bold uppercase" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">Email</p>
-            <p class="text-xs font-bold truncate" [class.text-white]="themeService.isDarkMode()" [class.text-slate-800]="!themeService.isDarkMode()">{{ 'contact.email' | translate }}</p>
+            <p class="text-[10px] sm:text-xs lg:text-[11px] xl:text-xs font-bold tracking-tight whitespace-nowrap" [class.text-white]="themeService.isDarkMode()" [class.text-slate-800]="!themeService.isDarkMode()">{{ 'contact.email' | translate }}</p>
           </div>
         </a>
 

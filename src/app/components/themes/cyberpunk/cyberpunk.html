@@ -177,11 +177,11 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a [href]="'mailto:' + ('contact.email' | translate)" class="group flex items-center space-x-4 p-6 border transition-all" [class.border-[#008b8b]/40]="!themeService.isDarkMode()" [class.bg-white]="!themeService.isDarkMode()" [class.border-[#bc00ff]/40]="themeService.isDarkMode()" [class.bg-purple-950/20]="themeService.isDarkMode()">
-          <app-cv-icon name="email" [class]="themeService.isDarkMode() ? 'text-[#00f0ff]' : 'text-[#008b8b]'" size="w-6 h-6" />
-          <div class="overflow-hidden">
+        <a [href]="'mailto:' + ('contact.email' | translate)" class="group flex items-center space-x-2.5 p-4 md:p-5 border transition-all" [class.border-[#008b8b]/40]="!themeService.isDarkMode()" [class.bg-white]="!themeService.isDarkMode()" [class.border-[#bc00ff]/40]="themeService.isDarkMode()" [class.bg-purple-950/20]="themeService.isDarkMode()">
+          <app-cv-icon name="email" [class]="themeService.isDarkMode() ? 'text-[#00f0ff] shrink-0' : 'text-[#008b8b] shrink-0'" size="w-5 h-5" />
+          <div class="overflow-hidden min-w-0">
             <p class="text-xs font-bold uppercase tracking-wider" [class.text-slate-400]="!themeService.isDarkMode()" [class.text-slate-500]="themeService.isDarkMode()">EMAIL</p>
-            <p class="text-xs font-bold truncate" [class.text-[#008b8b]]="!themeService.isDarkMode()" [class.text-[#00ff41]]="themeService.isDarkMode()">{{ 'contact.email' | translate }}</p>
+            <p class="text-[10px] sm:text-xs lg:text-[11px] xl:text-xs font-bold tracking-tight whitespace-nowrap" [class.text-[#008b8b]]="!themeService.isDarkMode()" [class.text-[#00ff41]]="themeService.isDarkMode()">{{ 'contact.email' | translate }}</p>
           </div>
         </a>
 

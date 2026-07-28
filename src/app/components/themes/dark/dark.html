@@ -293,17 +293,17 @@
           (mousemove)="onMouseMove($event)" 
           (mouseenter)="onMagneticMove($event)" 
           (mouseleave)="onMagneticLeave($event)" 
-          class="magnetic-btn dark-glow-card flex items-center space-x-4 p-6"
+          class="magnetic-btn dark-glow-card flex items-center space-x-2.5 p-4 md:p-5"
         >
-          <app-cv-icon name="email" class="text-indigo-500" size="w-6 h-6" />
-          <div class="overflow-hidden">
+          <app-cv-icon name="email" class="text-indigo-500 shrink-0" size="w-5 h-5" />
+          <div class="overflow-hidden min-w-0">
             <p 
               class="text-xs font-bold uppercase tracking-wider"
               [class.text-[#52525b]]="!themeService.isDarkMode()"
               [class.text-[#a1a1aa]]="themeService.isDarkMode()"
             >Email</p>
             <p 
-              class="text-sm font-bold truncate"
+              class="text-[10px] sm:text-xs lg:text-[11px] xl:text-xs font-bold tracking-tight whitespace-nowrap"
               [class.text-[#09090b]]="!themeService.isDarkMode()"
               [class.text-[#fafafa]]="themeService.isDarkMode()"
             >{{ 'contact.email' | translate }}</p>

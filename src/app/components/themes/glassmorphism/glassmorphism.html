@@ -304,19 +304,19 @@
         <a 
           [href]="'mailto:' + ('contact.email' | translate)" 
           (mousemove)="onMouseMove($event)" 
-          class="flex items-center space-x-4 p-6 glass-card glass-spotlight rounded-2xl transition-all"
+          class="flex items-center space-x-2.5 p-4 md:p-5 glass-card glass-spotlight rounded-2xl transition-all"
           [class.bg-white/70]="!themeService.isDarkMode()"
           [class.border-white/80]="!themeService.isDarkMode()"
         >
-          <app-cv-icon name="email" class="text-cyan-600 dark:text-cyan-400" size="w-6 h-6" />
-          <div class="overflow-hidden">
+          <app-cv-icon name="email" class="text-cyan-600 dark:text-cyan-400 shrink-0" size="w-5 h-5" />
+          <div class="overflow-hidden min-w-0">
             <p 
               class="text-xs font-bold uppercase tracking-wider"
               [class.text-slate-600]="!themeService.isDarkMode()"
               [class.text-slate-400]="themeService.isDarkMode()"
             >Email</p>
             <p 
-              class="text-sm font-bold truncate"
+              class="text-[10px] sm:text-xs lg:text-[11px] xl:text-xs font-bold tracking-tight whitespace-nowrap"
               [class.text-slate-900]="!themeService.isDarkMode()"
               [class.text-white]="themeService.isDarkMode()"
             >{{ 'contact.email' | translate }}</p>
