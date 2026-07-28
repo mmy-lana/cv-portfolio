@@ -36,6 +36,7 @@
         <button
           (click)="onSelect(item.id)"
           class="w-full flex items-center px-3 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 dashboard-sidebar-item cursor-pointer"
+          [class.active-tab-pill]="activeSection() === item.id"
           [class.justify-between]="!isCollapsed()"
           [class.justify-center]="isCollapsed()"
           [class.bg-blue-600]="activeSection() === item.id"
