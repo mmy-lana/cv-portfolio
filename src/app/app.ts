@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { inject } from '@vercel/analytics';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +10,8 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.html',
 })
 export class AppComponent {
-  // Your root component is now a clean shell
+  constructor() {
+    inject();
+    injectSpeedInsights();
+  }
 }
