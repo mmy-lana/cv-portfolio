@@ -22,6 +22,8 @@ test.describe('Accessibility & Readability Audit across All 9 Themes', () => {
 
       const accessibilityScanResults = await new AxeBuilder({ page })
         .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+        .exclude('.parallax-bg-text')    // Exclude decorative background watermarks
+        .exclude('.parallax-fast-float') // Exclude decorative floating code tags
         .analyze();
 
       expect(accessibilityScanResults.violations).toEqual([]);
