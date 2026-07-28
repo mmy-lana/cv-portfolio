@@ -30,7 +30,7 @@ export class DownloadCvBtnComponent {
       lg: 'px-6 py-3 text-sm'
     };
     const variants = {
-      primary: 'bg-blue-600 hover:bg-blue-500 text-white shadow-md hover:shadow-blue-500/25',
+      primary: 'bg-blue-700 hover:bg-blue-600 text-white shadow-md hover:shadow-blue-600/25',
       outline: 'bg-transparent border border-blue-500/40 text-blue-400 hover:bg-blue-500/10 hover:border-blue-400',
       ghost: 'bg-white/10 hover:bg-white/20 text-white backdrop-blur-md'
     };
