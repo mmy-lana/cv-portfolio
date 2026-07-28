@@ -1,17 +1,55 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
-# Compiled output
+# ==========================================
+# 1. Angular & Compiled Output
+# ==========================================
 /dist
 /tmp
 /out-tsc
 /bazel-out
+.angular/
+/.angular/cache
+.sass-cache/
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+/connect.lock
 
-# Node
+# ==========================================
+# 2. Node & Dependencies
+# ==========================================
 /node_modules
 npm-debug.log
 yarn-error.log
+yarn-debug.log*
 
-# IDEs and editors
+# ==========================================
+# 3. Playwright Test Artifacts (NEW)
+# ==========================================
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+__screenshots__/
+
+# ==========================================
+# 4. Lighthouse CI Local Output (NEW)
+# ==========================================
+.lighthouseci/
+
+# ==========================================
+# 5. Environment Secrets (NEW)
+# ==========================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ==========================================
+# 6. IDEs and Editors
+# ==========================================
 .idea/
 .project
 .classpath
@@ -19,26 +57,21 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+.history/*
 
 # Visual Studio Code
+.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/mcp.json
-.history/*
 
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
-__screenshots__/
-
-# System files
+# ==========================================
+# 7. System Files & Custom Tools
+# ==========================================
 .DS_Store
 Thumbs.db
+.continue
+repomix-output.xml
