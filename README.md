@@ -1,11 +1,13 @@
 # ⚡ One CV, 9 Themes — Interactive Developer Portfolio
 
+[![Portfolio Quality CI](https://github.com/mmy-lana/cv-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/mmy-lana/cv-portfolio/actions)
 ![Angular](https://img.shields.io/badge/Angular-v21.2-dd0031?style=for-the-badge&logo=angular)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38bdf8?style=for-the-badge&logo=tailwind-css)
 ![TypeScript](https://img.shields.io/badge/TypeScript-v5.9-3178c6?style=for-the-badge&logo=typescript)
+![WCAG 2.1 AA](https://img.shields.io/badge/WCAG_2.1_AA-Passed-success?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-> **Live Demo:** [https://mmylana.my.id](https://mmylana.my.id) *(Live link placeholder)*
+> **Live Demo:** [https://www.mmylana.my.id](https://www.mmylana.my.id)
 
 An enterprise-grade, multi-themed developer portfolio built with **Modern Angular v21**, **Zoneless Signals**, **Tailwind CSS v4**, **WebGL Shaders**, and **Atomic Component Architecture**. Single CV content engine rendered across **9 distinct UI/UX theme presets** (18 sub-modes total).
 
@@ -34,6 +36,7 @@ An enterprise-grade, multi-themed developer portfolio built with **Modern Angula
 - **Interactive CLI Terminal:** Fully functional retro command parser (`cat experience`, `cat skills`, `help`, `clear`, `download-cv`).
 - **Internationalization (i18n):** Instant translation switching between English (`EN`) and Bahasa Indonesia (`ID`) powered by `@ngx-translate`.
 - **Accessibility (WCAG 2.1 AA) & SEO:** Complete keyboard navigation (`Tab` / `focus-visible` rings), `prefers-reduced-motion` settings support, Open-Graph social cards, `sitemap.xml`, and `schema.org/Person` JSON-LD structured data.
+- **Automated Testing Pipelines:** Comprehensive Playwright E2E accessibility suite (`@axe-core/playwright`) and Lighthouse CI performance monitoring integrated with GitHub Actions.
 
 ---
 
@@ -42,6 +45,7 @@ An enterprise-grade, multi-themed developer portfolio built with **Modern Angula
 - **Framework:** [Angular v21](https://angular.dev) (Standalone, Signals, Functional Resolvers)
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com) (CSS Variables, Modern `@theme`)
 - **Graphics & Motion:** WebGL GLSL Shaders, HTML5 Canvas 2D, GSAP ScrollTrigger
+- **Testing & QA:** [Playwright E2E](https://playwright.dev), `@axe-core/playwright` (WCAG 2.1 AA), [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci)
 - **Localization:** `@ngx-translate/core` & `@ngx-translate/http-loader`
 - **Language:** TypeScript 5.9
 
@@ -61,9 +65,10 @@ An enterprise-grade, multi-themed developer portfolio built with **Modern Angula
    cd cv-portfolio
    ```
 
-2. **Install dependencies:**
+2. **Install dependencies & Playwright browser:**
    ```bash
    npm install
+   npx playwright install chromium
    ```
 
 3. **Start local dev server:**
@@ -72,7 +77,16 @@ An enterprise-grade, multi-themed developer portfolio built with **Modern Angula
    ```
    Navigate to `http://localhost:4200/`.
 
-4. **Production Build:**
+4. **Run Automated Audits & E2E Tests:**
+   ```bash
+   # Run Playwright WCAG 2.1 AA Accessibility & Contrast Suite across all 9 themes
+   npm run test:e2e
+
+   # Run Lighthouse CI Performance & Core Web Vitals Audit
+   npm run test:lighthouse
+   ```
+
+5. **Production Build:**
    ```bash
    npm run build
    ```
@@ -82,7 +96,7 @@ An enterprise-grade, multi-themed developer portfolio built with **Modern Angula
 ## 📄 Author & License
 
 Developed by **Muhammad Maulana Yusuf**  
-- **Website:** [https://mmylana.my.id](https://mmylana.my.id)  
+- **Website:** [https://www.mmylana.my.id](https://www.mmylana.my.id)  
 - **GitHub:** [@mmy-lana](https://github.com/mmy-lana)  
 - **LinkedIn:** [muhammad-maulana-yusuf](https://linkedin.com/in/muhammad-maulana-yusuf)
 
