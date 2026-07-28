@@ -6,7 +6,6 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.css' // Note: This file is currently empty
 })
 export class AppComponent {
   // Your root component is now a clean shell

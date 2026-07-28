@@ -4,7 +4,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ThemeNav } from '../../shared/theme-nav/theme-nav';
 import { ThemeService } from '../../../services/theme.service';
-import { FaviconService } from '../../../services/favicon.service';
 
 export interface TerminalEntry {
   command: string;
@@ -25,8 +24,6 @@ export interface TerminalEntry {
 })
 export class RetroComputer implements OnInit {
   public themeService = inject(ThemeService);
-  private faviconService = inject(FaviconService);
-
   terminalContainer = viewChild<ElementRef<HTMLDivElement>>('terminalContainer');
   commandInput = viewChild<ElementRef<HTMLInputElement>>('commandInput');
 
@@ -53,7 +50,6 @@ export class RetroComputer implements OnInit {
 
   ngOnInit(): void {
     this.themeService.setTheme('retro-computer');
-    this.faviconService.setFavicon('retro-computer');
   }
 
   executeCommand(cmd?: string): void {

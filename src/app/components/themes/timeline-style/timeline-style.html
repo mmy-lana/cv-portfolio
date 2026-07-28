@@ -91,7 +91,7 @@
 
         @defer (on viewport) {
           <div class="space-y-12 relative z-10">
-            @for (job of getSortedExperience(); track job.company; let idx = $index) {
+            @for (job of sortedExperience(); track job.company; let idx = $index) {
               <div 
                 class="relative flex flex-col md:flex-row items-start"
                 [class.md:flex-row-reverse]="idx % 2 === 1"

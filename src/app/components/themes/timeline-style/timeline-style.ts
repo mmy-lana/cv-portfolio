@@ -1,9 +1,8 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, signal, NgZone, inject } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, signal, computed, NgZone, inject } from '@angular/core';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ThemeNav } from '../../shared/theme-nav/theme-nav';
 import { ThemeService } from '../../../services/theme.service';
-import { FaviconService } from '../../../services/favicon.service';
 import { DownloadCvBtnComponent } from '../../shared/atoms/download-cv-btn/download-cv-btn';
 import { CvExperienceCard } from '../../shared/cv-experience-card/cv-experience-card';
 import { CvBadge } from '../../shared/atoms/cv-badge/cv-badge';
@@ -32,6 +31,12 @@ export class TimelineStyle implements AfterViewInit, OnDestroy {
   expandedNodes = signal<Record<string, boolean>>({});
   sortOrder = signal<'recent' | 'chronological'>('recent');
 
+  sortedExperience = computed(() => {
+    const items = (this.translate.instant('experience.items') || []) as any[];
+    if (!Array.isArray(items)) return [];
+    return this.sortOrder() === 'chronological' ? [...items].reverse() : items;
+  });
+
   private scrollListener?: () => void;
 
   ngAfterViewInit(): void {
@@ -54,12 +59,6 @@ export class TimelineStyle implements AfterViewInit, OnDestroy {
 
   toggleSort(): void {
     this.sortOrder.update(order => order === 'recent' ? 'chronological' : 'recent');
-  }
-
-  getSortedExperience(): any[] {
-    const items = (this.translate.instant('experience.items') || []) as any[];
-    if (!Array.isArray(items)) return [];
-    return this.sortOrder() === 'chronological' ? [...items].reverse() : items;
   }
 
   toggleNode(key: string): void {
