@@ -21,14 +21,8 @@ import { CyberMatrixCanvas } from '../../shared/cyber-matrix-canvas/cyber-matrix
   ],
   templateUrl: './cyberpunk.html',
 })
-export class Cyberpunk implements OnInit {
+export class Cyberpunk {
   public themeService = inject(ThemeService);
-  private faviconService = inject(FaviconService);
 
   sysStatus = signal<'ONLINE' | 'STANDBY'>('ONLINE');
-
-  ngOnInit(): void {
-    this.themeService.setTheme('cyberpunk');
-    this.faviconService.setFavicon('cyberpunk');
-  }
 }

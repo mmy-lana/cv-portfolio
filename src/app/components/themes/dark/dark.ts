@@ -21,16 +21,10 @@ import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
   ],
   templateUrl: './dark.html'
 })
-export class Dark implements OnInit {
+export class Dark {
   public themeService = inject(ThemeService);
-  private faviconService = inject(FaviconService);
 
   activeSection = signal<string>('about');
-
-  ngOnInit(): void {
-    this.themeService.setTheme('dark');
-    this.faviconService.setFavicon('dark');
-  }
 
   onMouseMove(event: MouseEvent): void {
     const target = event.currentTarget as HTMLElement;

@@ -23,12 +23,6 @@ import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
   ],
   templateUrl: './minimalist.html',
 })
-export class Minimalist implements OnInit {
+export class Minimalist {
   public themeService = inject(ThemeService);
-  private faviconService = inject(FaviconService);
-
-  ngOnInit(): void {
-    this.themeService.setTheme('minimalist');
-    this.faviconService.setFavicon('minimalist');
-  }
 }

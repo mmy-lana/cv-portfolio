@@ -21,9 +21,8 @@ import { DashboardSidebar, DashboardSection } from './components/dashboard-sideb
   ],
   templateUrl: './sidebar-navigation.html'
 })
-export class SidebarNavigation implements OnInit, AfterViewInit, OnDestroy {
+export class SidebarNavigation implements AfterViewInit, OnDestroy {
   public themeService = inject(ThemeService);
-  private faviconService = inject(FaviconService);
   private ngZone = inject(NgZone);
 
   activeSection = signal<DashboardSection>('about');
@@ -31,11 +30,6 @@ export class SidebarNavigation implements OnInit, AfterViewInit, OnDestroy {
   isMobileOpen = signal<boolean>(false);
 
   private observer?: IntersectionObserver;
-
-  ngOnInit(): void {
-    this.themeService.setTheme('sidebar-navigation');
-    this.faviconService.setFavicon('sidebar-navigation');
-  }
 
   ngAfterViewInit(): void {
     this.initScrollSpy();

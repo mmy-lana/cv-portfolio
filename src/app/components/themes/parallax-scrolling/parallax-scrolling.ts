@@ -23,18 +23,12 @@ import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
   ],
   templateUrl: './parallax-scrolling.html'
 })
-export class ParallaxScrolling implements OnInit, AfterViewInit, OnDestroy {
+export class ParallaxScrolling implements AfterViewInit, OnDestroy {
   public themeService = inject(ThemeService);
-  private faviconService = inject(FaviconService);
   private ngZone = inject(NgZone);
 
   scrollProgress = signal<number>(0);
   private scrollListener?: () => void;
-
-  ngOnInit(): void {
-    this.themeService.setTheme('parallax-scrolling');
-    this.faviconService.setFavicon('parallax-scrolling');
-  }
 
   ngAfterViewInit(): void {
     this.ngZone.runOutsideAngular(() => {

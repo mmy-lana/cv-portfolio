@@ -23,9 +23,8 @@ import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
   ],
   templateUrl: './timeline-style.html'
 })
-export class TimelineStyle implements OnInit, AfterViewInit, OnDestroy {
+export class TimelineStyle implements AfterViewInit, OnDestroy {
   public themeService = inject(ThemeService);
-  private faviconService = inject(FaviconService);
   private ngZone = inject(NgZone);
   private translate = inject(TranslateService);
 
@@ -34,11 +33,6 @@ export class TimelineStyle implements OnInit, AfterViewInit, OnDestroy {
   sortOrder = signal<'recent' | 'chronological'>('recent');
 
   private scrollListener?: () => void;
-
-  ngOnInit(): void {
-    this.themeService.setTheme('timeline-style');
-    this.faviconService.setFavicon('timeline-style');
-  }
 
   ngAfterViewInit(): void {
     this.ngZone.runOutsideAngular(() => {

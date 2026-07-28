@@ -23,14 +23,8 @@ import { GradientMeshCanvas } from '../../shared/gradient-mesh-canvas/gradient-m
   ],
   templateUrl: './gradient-flow.html'
 })
-export class GradientFlow implements OnInit {
+export class GradientFlow {
   public themeService = inject(ThemeService);
-  private faviconService = inject(FaviconService);
 
   activeSection = signal<string>('about');
-
-  ngOnInit(): void {
-    this.themeService.setTheme('gradient-flow');
-    this.faviconService.setFavicon('gradient-flow');
-  }
 }
