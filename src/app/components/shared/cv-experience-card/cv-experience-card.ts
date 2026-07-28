@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { ThemeService } from '../../../services/theme.service';
 import { CvBadge } from '../atoms/cv-badge/cv-badge';
 import { CvIcon } from '../atoms/cv-icon/cv-icon';
 
@@ -22,6 +23,8 @@ export interface CVItem {
   templateUrl: './cv-experience-card.html'
 })
 export class CvExperienceCard {
+  public themeService = inject(ThemeService);
+
   @Input({ required: true }) data!: CVItem;
   @Input() layoutVariant: 'clean' | 'retro' | 'cyber' = 'clean';
 

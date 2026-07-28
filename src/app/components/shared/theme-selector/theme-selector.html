@@ -1,14 +1,21 @@
 <div class="relative inline-block text-left z-50">
-  <app-cv-button
-    variant="glass"
-    size="md"
-    labelKey="home.explore"
-    (btnClick)="toggleDropdown()"
-    [ariaLabel]="'Switch Theme Panel'"
+  <button
+    (click)="toggleDropdown()"
+    class="h-9 px-3.5 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center gap-2 select-none"
+    [class.bg-slate-900]="themeService.isDarkMode()"
+    [class.border-slate-800]="themeService.isDarkMode()"
+    [class.text-white]="themeService.isDarkMode()"
+    [class.hover:bg-slate-800]="themeService.isDarkMode()"
+    [class.bg-slate-100]="!themeService.isDarkMode()"
+    [class.border-slate-200]="!themeService.isDarkMode()"
+    [class.text-slate-800]="!themeService.isDarkMode()"
+    [class.hover:bg-slate-200]="!themeService.isDarkMode()"
+    aria-label="Switch Theme Panel"
   >
-    <app-cv-icon prefix name="arrow-right" size="w-4 h-4" class="mr-2 transition-transform" [class.rotate-90]="position === 'down'" [class.-rotate-90]="position === 'up'" />
-    <span suffix class="ml-2">{{ themeService.themes.find(t => t.id === themeService.currentTheme())?.icon || '🎨' }}</span>
-  </app-cv-button>
+    <app-cv-icon name="arrow-right" size="w-3.5 h-3.5" class="transition-transform" [class.rotate-90]="position === 'down'" [class.-rotate-90]="position === 'up'" />
+    <span>{{ 'home.explore' | translate }}</span>
+    <span>{{ themeService.themes.find(t => t.id === themeService.currentTheme())?.icon || '🎨' }}</span>
+  </button>
 
 @if (isOpen()) {
     <div

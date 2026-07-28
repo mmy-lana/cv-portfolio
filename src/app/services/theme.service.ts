@@ -11,9 +11,9 @@ export interface ThemeConfig {
   providedIn: 'root'
 })
 export class ThemeService {
-  private readonly STORAGE_KEY = 'preferred-theme';
+  private readonly THEME_KEY = 'preferred-theme';
+  private readonly MODE_KEY = 'preferred-mode';
   
-  // Supported CV Themes matching en.json keys and layouts
   readonly themes: ThemeConfig[] = [
     { id: 'minimalist', icon: '📄', isDark: false },
     { id: 'cyberpunk', icon: '⚡', isDark: true },
@@ -26,51 +26,62 @@ export class ThemeService {
     { id: 'timeline-style', icon: '⏱️', isDark: false }
   ];
 
-  // Angular signal to provide reactive theme updates across the application shell
   currentTheme = signal<string>('minimalist');
   isDarkMode = signal<boolean>(true);
+
+  private faviconService = inject(FaviconService);
 
   constructor() {
     this.initializeTheme();
   }
 
   toggleGlobalDarkMode(): void {
-    this.isDarkMode.update(v => !v);
+    this.isDarkMode.update(v => {
+      const nextMode = !v;
+      localStorage.setItem(this.MODE_KEY, nextMode ? 'dark' : 'light');
+      this.applyModeToDOM(nextMode);
+      return nextMode;
+    });
   }
-
-  private faviconService = inject(FaviconService);
 
   setTheme(themeId: string): void {
     const targetTheme = this.themes.find(t => t.id === themeId);
     if (!targetTheme) return;
 
     this.currentTheme.set(themeId);
-    localStorage.setItem(this.STORAGE_KEY, themeId);
-    this.applyThemeToDOM(targetTheme);
+    localStorage.setItem(this.THEME_KEY, themeId);
+
+    // Respect user's explicit light/dark choice across route switches
+    const savedMode = localStorage.getItem(this.MODE_KEY);
+    const isDark = savedMode ? savedMode === 'dark' : targetTheme.isDark;
+
+    this.isDarkMode.set(isDark);
+    this.applyThemeToDOM(themeId, isDark);
     this.faviconService.setFavicon(themeId);
   }
 
   private initializeTheme(): void {
-    const savedTheme = localStorage.getItem(this.STORAGE_KEY);
+    const savedTheme = localStorage.getItem(this.THEME_KEY);
     const isValid = savedTheme && this.themes.some(t => t.id === savedTheme);
     const initialThemeId = isValid ? savedTheme! : 'minimalist';
     
-    const initialTheme = this.themes.find(t => t.id === initialThemeId)!;
-    this.currentTheme.set(initialThemeId);
-    this.applyThemeToDOM(initialTheme);
+    this.setTheme(initialThemeId);
   }
 
-  private applyThemeToDOM(theme: ThemeConfig): void {
+  private applyThemeToDOM(themeId: string, isDark: boolean): void {
     const root = document.documentElement;
-    
-    // Set both the data-theme attribute for CSS attribute selectors and tailwind utilities
-    root.setAttribute('data-theme', theme.id);
-    
-    // Synchronize global html class list for robust standard dark-mode adjustments
-    if (theme.isDark) {
+    root.setAttribute('data-theme', themeId);
+    this.applyModeToDOM(isDark);
+  }
+
+  private applyModeToDOM(isDark: boolean): void {
+    const root = document.documentElement;
+    if (isDark) {
       root.classList.add('dark');
+      root.style.colorScheme = 'dark';
     } else {
       root.classList.remove('dark');
+      root.style.colorScheme = 'light';
     }
   }
 }

@@ -2,13 +2,12 @@ import { Component, signal, HostListener, ElementRef, Input } from '@angular/cor
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService, ThemeConfig } from '../../../services/theme.service';
-import { CvButton } from '../atoms/cv-button/cv-button';
 import { CvIcon } from '../atoms/cv-icon/cv-icon';
 
 @Component({
   selector: 'app-theme-selector',
   standalone: true,
-  imports: [TranslateModule, CvButton, CvIcon],
+  imports: [TranslateModule, CvIcon],
   templateUrl: './theme-selector.html'
 })
 export class ThemeSelector {

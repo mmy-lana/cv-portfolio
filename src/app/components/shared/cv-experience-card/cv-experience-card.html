@@ -1,16 +1,12 @@
 <div 
   class="group relative overflow-hidden transition-all duration-300"
   [class.p-6]="layoutVariant !== 'retro'"
-  [class.bg-slate-50]="layoutVariant === 'clean'"
-  [class.border]="layoutVariant === 'clean'"
-  [class.border-slate-200]="layoutVariant === 'clean'"
-  [class.bg-purple-950/20]="layoutVariant === 'cyber'"
+  [class.bg-transparent]="layoutVariant === 'clean'"
+  [class.border-0]="layoutVariant === 'clean'"
+  [class.bg-[#0b0518]/80]="layoutVariant === 'cyber'"
   [class.border-2]="layoutVariant === 'cyber'"
   [class.border-[#bc00ff]/40]="layoutVariant === 'cyber'"
-  [class.border-l-4]="layoutVariant === 'clean'"
-  [class.border-l-cv-primary]="layoutVariant === 'clean'"
   [class.rounded-xl]="layoutVariant === 'clean'"
-  [class.hover:shadow-md]="layoutVariant === 'clean'"
   [class.p-8]="layoutVariant === 'retro'"
   [class.border-4]="layoutVariant === 'retro'"
   [class.border-black]="layoutVariant === 'retro'"
@@ -24,7 +20,8 @@
     <div class="space-y-1.5">
       <h3 
         class="text-lg font-bold leading-tight"
-        [class.text-slate-900]="layoutVariant === 'clean'"
+        [class.text-slate-900]="layoutVariant === 'clean' && !themeService.isDarkMode()"
+        [class.text-slate-100]="layoutVariant === 'clean' && themeService.isDarkMode()"
         [class.text-white]="layoutVariant === 'cyber'"
         [class.text-amber-500]="layoutVariant === 'retro'"
         [class.font-mono]="layoutVariant !== 'clean'"
@@ -35,14 +32,19 @@
       
       <p 
         class="text-sm font-semibold flex flex-wrap items-center gap-2"
-        [class.text-cv-primary]="layoutVariant === 'clean'"
+        [class.text-blue-600]="layoutVariant === 'clean' && !themeService.isDarkMode()"
+        [class.text-blue-400]="layoutVariant === 'clean' && themeService.isDarkMode()"
         [class.text-[#00ff41]]="layoutVariant === 'cyber'"
         [class.text-zinc-300]="layoutVariant === 'retro'"
         [class.font-mono]="layoutVariant !== 'clean'"
       >
         <span>{{ subtitle }}</span>
         @if (data.location) {
-          <span class="text-xs opacity-75 flex items-center">
+          <span 
+            class="text-xs font-normal opacity-90 flex items-center" 
+            [class.text-slate-600]="layoutVariant === 'clean' && !themeService.isDarkMode()" 
+            [class.text-slate-300]="layoutVariant === 'clean' && themeService.isDarkMode()"
+          >
             <app-cv-icon name="location" size="w-3.5 h-3.5" class="mr-1" />
             {{ data.location }}
           </span>
@@ -53,8 +55,10 @@
     <div class="flex flex-col items-start md:items-end gap-2">
       <span 
         class="inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-md"
-        [class.bg-slate-200/70]="layoutVariant === 'clean'"
-        [class.text-slate-800]="layoutVariant === 'clean'"
+        [class.bg-slate-200/80]="layoutVariant === 'clean' && !themeService.isDarkMode()"
+        [class.text-slate-800]="layoutVariant === 'clean' && !themeService.isDarkMode()"
+        [class.bg-slate-800]="layoutVariant === 'clean' && themeService.isDarkMode()"
+        [class.text-slate-200]="layoutVariant === 'clean' && themeService.isDarkMode()"
         [class.bg-[#bc00ff]/20]="layoutVariant === 'cyber'"
         [class.text-[#00f0ff]]="layoutVariant === 'cyber'"
         [class.font-mono]="layoutVariant === 'cyber'"
@@ -78,11 +82,30 @@
   </div>
 
   @if (descriptions.length > 0) {
-    <div class="mt-4 border-t pt-4" [class.border-slate-200]="layoutVariant === 'clean'" [class.border-white/10]="layoutVariant === 'cyber'" [class.border-dashed]="layoutVariant === 'retro'" [class.border-amber-500/30]="layoutVariant === 'retro'">
+    <div 
+      class="mt-4 border-t pt-4" 
+      [class.border-slate-200]="layoutVariant === 'clean' && !themeService.isDarkMode()" 
+      [class.border-slate-800]="layoutVariant === 'clean' && themeService.isDarkMode()" 
+      [class.border-white/10]="layoutVariant === 'cyber'" 
+      [class.border-dashed]="layoutVariant === 'retro'" 
+      [class.border-amber-500/30]="layoutVariant === 'retro'"
+    >
       <ul class="space-y-2.5 text-sm" [class.font-mono]="layoutVariant !== 'clean'">
         @for (bullet of descriptions; track $index) {
-          <li class="flex items-start gap-2" [class.text-slate-700]="layoutVariant === 'clean'" [class.text-zinc-300]="layoutVariant === 'retro'" [class.text-[#00ff41]/90]="layoutVariant === 'cyber'">
-            <span class="text-cv-primary font-bold select-none mt-0.5" [class.text-[#00f0ff]]="layoutVariant === 'cyber'" [class.text-amber-500]="layoutVariant === 'retro'">
+          <li 
+            class="flex items-start gap-2" 
+            [class.text-slate-800]="layoutVariant === 'clean' && !themeService.isDarkMode()" 
+            [class.text-slate-200]="layoutVariant === 'clean' && themeService.isDarkMode()" 
+            [class.text-zinc-300]="layoutVariant === 'retro'" 
+            [class.text-[#00ff41]/90]="layoutVariant === 'cyber'"
+          >
+            <span 
+              class="font-bold select-none mt-0.5" 
+              [class.text-blue-600]="layoutVariant === 'clean' && !themeService.isDarkMode()" 
+              [class.text-blue-400]="layoutVariant === 'clean' && themeService.isDarkMode()" 
+              [class.text-[#00f0ff]]="layoutVariant === 'cyber'" 
+              [class.text-amber-500]="layoutVariant === 'retro'"
+            >
               {{ layoutVariant === 'clean' ? '•' : '>' }}
             </span>
             <span class="leading-relaxed">{{ bullet }}</span>
