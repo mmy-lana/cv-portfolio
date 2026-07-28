@@ -1,25 +1,29 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ThemeNav } from '../../shared/theme-nav/theme-nav';
 import { ThemeService } from '../../../services/theme.service';
+import { DownloadCvBtnComponent } from '../../shared/atoms/download-cv-btn/download-cv-btn';
 import { CvExperienceCard } from '../../shared/cv-experience-card/cv-experience-card';
 import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
 
 @Component({
   selector: 'app-glassmorphism',
   standalone: true,
-  imports: [ThemeNav, TranslateModule, RouterModule, CvExperienceCard, CvIcon],
+  imports: [
+    ThemeNav,
+    TranslateModule,
+    RouterModule,
+    DownloadCvBtnComponent,
+    CvExperienceCard,
+    CvIcon
+  ],
   templateUrl: './glassmorphism.html'
 })
-export class Glassmorphism implements OnInit {
+export class Glassmorphism {
+  public themeService = inject(ThemeService);
+
   activeSection = signal<string>('about');
-
-  constructor(private themeService: ThemeService) {}
-
-  ngOnInit(): void {
-    this.themeService.setTheme('glassmorphism');
-  }
 
   onMouseMove(event: MouseEvent): void {
     const target = event.currentTarget as HTMLElement;

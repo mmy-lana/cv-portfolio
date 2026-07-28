@@ -19,7 +19,7 @@
   <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
     <div class="space-y-1.5">
       <h3 
-        class="text-lg font-bold leading-tight"
+        class="text-lg font-bold leading-tight transition-colors"
         [class.text-slate-900]="layoutVariant === 'clean' && !themeService.isDarkMode()"
         [class.text-slate-100]="layoutVariant === 'clean' && themeService.isDarkMode()"
         [class.text-white]="layoutVariant === 'cyber'"
@@ -31,7 +31,7 @@
       </h3>
       
       <p 
-        class="text-sm font-semibold flex flex-wrap items-center gap-2"
+        class="text-sm font-semibold flex flex-wrap items-center gap-2 transition-colors"
         [class.text-blue-600]="layoutVariant === 'clean' && !themeService.isDarkMode()"
         [class.text-blue-400]="layoutVariant === 'clean' && themeService.isDarkMode()"
         [class.text-[#00ff41]]="layoutVariant === 'cyber'"
@@ -41,7 +41,7 @@
         <span>{{ subtitle }}</span>
         @if (data.location) {
           <span 
-            class="text-xs font-normal opacity-90 flex items-center" 
+            class="text-xs font-normal opacity-90 flex items-center transition-colors" 
             [class.text-slate-600]="layoutVariant === 'clean' && !themeService.isDarkMode()" 
             [class.text-slate-300]="layoutVariant === 'clean' && themeService.isDarkMode()"
           >
@@ -54,7 +54,7 @@
 
     <div class="flex flex-col items-start md:items-end gap-2">
       <span 
-        class="inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-md"
+        class="inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-md transition-colors"
         [class.bg-slate-200/80]="layoutVariant === 'clean' && !themeService.isDarkMode()"
         [class.text-slate-800]="layoutVariant === 'clean' && !themeService.isDarkMode()"
         [class.bg-slate-800]="layoutVariant === 'clean' && themeService.isDarkMode()"
@@ -93,7 +93,7 @@
       <ul class="space-y-2.5 text-sm" [class.font-mono]="layoutVariant !== 'clean'">
         @for (bullet of descriptions; track $index) {
           <li 
-            class="flex items-start gap-2" 
+            class="flex items-start gap-2 transition-colors" 
             [class.text-slate-800]="layoutVariant === 'clean' && !themeService.isDarkMode()" 
             [class.text-slate-200]="layoutVariant === 'clean' && themeService.isDarkMode()" 
             [class.text-zinc-300]="layoutVariant === 'retro'" 

@@ -129,7 +129,7 @@
             <h3 class="font-bold text-xs uppercase tracking-wider" [class.text-slate-800]="!themeService.isDarkMode()" [class.text-zinc-300]="themeService.isDarkMode()">Tools</h3>
             <div class="flex flex-wrap gap-2">
               @for (tool of ('skills.tools' | translate); track $index) {
-                <app-cv-badge [labelKey]="tool" variant="glass" size="sm" class="!bg-slate-200 !text-slate-700 dark:!bg-zinc-800 dark:!text-zinc-200" />
+                <app-cv-badge [labelKey]="tool" variant="glass" size="sm" />
               }
             </div>
           </div>

@@ -1,11 +1,11 @@
-<header class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-slate-800/80">
+<header class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 pb-8 border-b" [class.border-slate-800/80]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
   <div class="flex items-center space-x-3 cursor-pointer" (click)="goHome()">
     <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 font-black text-white flex items-center justify-center text-xs shadow-md">
       MY
     </div>
     <div>
-      <span class="font-black text-white tracking-tight text-base block leading-none">mmylana</span>
-      <span class="text-[10px] text-slate-400 font-medium">Muhammad Maulana Yusuf</span>
+      <span class="font-black tracking-tight text-base block leading-none transition-colors" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">mmylana</span>
+      <span class="text-[10px] font-medium transition-colors" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()">Muhammad Maulana Yusuf</span>
     </div>
   </div>
 
@@ -13,7 +13,15 @@
     @if (showHomeButton()) {
       <button 
         (click)="goHome()" 
-        class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300 hover:text-white transition-colors cursor-pointer"
+        class="px-3 py-1.5 rounded-xl border text-xs font-bold transition-colors cursor-pointer"
+        [class.bg-slate-900]="themeService.isDarkMode()"
+        [class.border-slate-800]="themeService.isDarkMode()"
+        [class.text-slate-300]="themeService.isDarkMode()"
+        [class.hover:text-white]="themeService.isDarkMode()"
+        [class.bg-slate-100]="!themeService.isDarkMode()"
+        [class.border-slate-200]="!themeService.isDarkMode()"
+        [class.text-slate-700]="!themeService.isDarkMode()"
+        [class.hover:text-slate-900]="!themeService.isDarkMode()"
       >
         ← All Themes
       </button>
