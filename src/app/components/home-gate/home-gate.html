@@ -26,22 +26,26 @@
           (mouseenter)="onMouseEnter(theme.id)"
           (mouseleave)="onMouseLeave()"
           (mousemove)="onCardMouseMove($event)"
-          class="home-theme-card group p-8 rounded-2xl border text-left relative overflow-hidden cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+          class="home-theme-card group p-8 rounded-2xl border text-left relative overflow-hidden cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md block outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:scale-[1.02]"
+          [class.focus-visible:ring-offset-[#070913]]="themeService.isDarkMode()"
+          [class.focus-visible:ring-offset-[#f8fafc]]="!themeService.isDarkMode()"
           [class.border-slate-800/80]="themeService.isDarkMode()"
           [class.bg-slate-900/40]="themeService.isDarkMode()"
           [class.hover:bg-slate-900]="themeService.isDarkMode()"
+          [class.focus-visible:bg-slate-900]="themeService.isDarkMode()"
           [class.border-slate-200]="!themeService.isDarkMode()"
           [class.bg-white]="!themeService.isDarkMode()"
           [class.hover:bg-slate-50]="!themeService.isDarkMode()"
+          [class.focus-visible:bg-slate-50]="!themeService.isDarkMode()"
           [attr.data-theme-id]="theme.id"
         >
-          <span class="absolute -right-4 -bottom-4 text-8xl opacity-5 group-hover:opacity-15 transition-opacity grayscale group-hover:grayscale-0 pointer-events-none select-none">
+          <span class="absolute -right-4 -bottom-4 text-8xl opacity-5 group-hover:opacity-15 group-focus-visible:opacity-15 transition-opacity grayscale group-hover:grayscale-0 group-focus-visible:grayscale-0 pointer-events-none select-none">
             {{ theme.icon }}
           </span>
 
           <div class="relative z-10 space-y-4">
             <div class="flex items-center justify-between">
-              <span class="text-3xl transform group-hover:scale-110 transition-transform duration-300 inline-block">
+              <span class="text-3xl transform group-hover:scale-110 group-focus-visible:scale-110 transition-transform duration-300 inline-block">
                 {{ theme.icon }}
               </span>
               <span 
@@ -62,8 +66,10 @@
                 class="text-xl font-bold transition-colors"
                 [class.text-white]="themeService.isDarkMode()"
                 [class.group-hover:text-blue-400]="themeService.isDarkMode()"
+                [class.group-focus-visible:text-blue-400]="themeService.isDarkMode()"
                 [class.text-slate-900]="!themeService.isDarkMode()"
                 [class.group-hover:text-blue-600]="!themeService.isDarkMode()"
+                [class.group-focus-visible:text-blue-600]="!themeService.isDarkMode()"
               >
                 {{ 'themes_data.' + theme.id + '.title' | translate }}
               </h3>
@@ -78,7 +84,7 @@
             </div>
 
             <div 
-              class="pt-2 flex items-center text-xs font-bold uppercase tracking-widest group-hover:translate-x-1 transition-transform"
+              class="pt-2 flex items-center text-xs font-bold uppercase tracking-widest group-hover:translate-x-1 group-focus-visible:translate-x-1 transition-transform"
               [class.text-blue-400]="themeService.isDarkMode()"
               [class.text-blue-600]="!themeService.isDarkMode()"
             >
