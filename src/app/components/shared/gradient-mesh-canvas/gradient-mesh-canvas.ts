@@ -16,6 +16,8 @@ export class GradientMeshCanvas implements OnInit, OnDestroy {
   private canvasRef = viewChild.required<ElementRef<HTMLCanvasElement>>('meshCanvas');
   private ngZone = inject(NgZone);
   private animId: number | null = null;
+  private mouseHandler = (_e: MouseEvent) => {};
+  private resizeHandler = () => {};
 
   ngOnInit(): void {
     this.ngZone.runOutsideAngular(() => {
@@ -27,6 +29,8 @@ export class GradientMeshCanvas implements OnInit, OnDestroy {
     if (this.animId !== null) {
       cancelAnimationFrame(this.animId);
     }
+    window.removeEventListener('mousemove', this.mouseHandler);
+    window.removeEventListener('resize', this.resizeHandler);
   }
 
   private initWebGL(): void {
@@ -42,18 +46,18 @@ export class GradientMeshCanvas implements OnInit, OnDestroy {
     let targetMouseX = 0.5;
     let targetMouseY = 0.5;
 
-    const mouseHandler = (e: MouseEvent) => {
+    this.mouseHandler = (e: MouseEvent) => {
       targetMouseX = e.clientX / window.innerWidth;
       targetMouseY = 1.0 - e.clientY / window.innerHeight;
     };
-    window.addEventListener('mousemove', mouseHandler);
+    window.addEventListener('mousemove', this.mouseHandler);
 
-    const resizeHandler = () => {
+    this.resizeHandler = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
       gl.viewport(0, 0, width, height);
     };
-    window.addEventListener('resize', resizeHandler);
+    window.addEventListener('resize', this.resizeHandler);
 
     const vertShaderSource = `
       attribute vec2 position;

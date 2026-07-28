@@ -21,12 +21,12 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       @for (theme of themes; track theme.id) {
-        <div
-          (click)="goToTheme(theme.id)"
+        <a
+          [routerLink]="['/', theme.id]"
           (mouseenter)="onMouseEnter(theme.id)"
           (mouseleave)="onMouseLeave()"
           (mousemove)="onCardMouseMove($event)"
-          class="home-theme-card group p-8 rounded-2xl border text-left relative overflow-hidden cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
+          class="home-theme-card group p-8 rounded-2xl border text-left relative overflow-hidden cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
           [class.border-slate-800/80]="themeService.isDarkMode()"
           [class.bg-slate-900/40]="themeService.isDarkMode()"
           [class.hover:bg-slate-900]="themeService.isDarkMode()"
@@ -86,7 +86,7 @@
               <span class="ml-1.5">→</span>
             </div>
           </div>
-        </div>
+        </a>
       }
     </div>
   </main>

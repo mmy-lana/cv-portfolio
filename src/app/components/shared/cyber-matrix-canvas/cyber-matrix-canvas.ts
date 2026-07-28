@@ -14,6 +14,7 @@ export class CyberMatrixCanvas implements OnInit, OnDestroy {
   private canvasRef = viewChild.required<ElementRef<HTMLCanvasElement>>('matrixCanvas');
   private ngZone = inject(NgZone);
   private animationFrameId: number | null = null;
+  private resizeHandler = () => {};
 
   ngOnInit(): void {
     this.ngZone.runOutsideAngular(() => {
@@ -25,6 +26,7 @@ export class CyberMatrixCanvas implements OnInit, OnDestroy {
     if (this.animationFrameId !== null) {
       cancelAnimationFrame(this.animationFrameId);
     }
+    window.removeEventListener('resize', this.resizeHandler);
   }
 
   private initMatrixAnimation(): void {
@@ -35,11 +37,11 @@ export class CyberMatrixCanvas implements OnInit, OnDestroy {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    const resizeHandler = () => {
+    this.resizeHandler = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
-    window.addEventListener('resize', resizeHandler);
+    window.addEventListener('resize', this.resizeHandler);
 
     const chars = '0123456789ABCDEFµΞΨΩ$#@%&*<>/\\';
     const fontSize = 14;

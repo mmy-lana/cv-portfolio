@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FaviconService } from '../../services/favicon.service';
 import { ThemeService } from '../../services/theme.service';
@@ -15,7 +15,7 @@ export interface ThemePreset {
 @Component({
   selector: 'app-home-gate',
   standalone: true,
-  imports: [TranslateModule, GlobalNavbarComponent],
+  imports: [TranslateModule, RouterModule, GlobalNavbarComponent],
   templateUrl: './home-gate.html'
 })
 export class HomeGate {
