@@ -1,1 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#0f172a"/><text x="16" y="22" font-size="16" font-weight="900" fill="#ffffff" font-family="sans-serif" text-anchor="middle">M</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="redGradFavicon" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF4A57" />
+      <stop offset="100%" stop-color="#A30018" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Background - Rounded Square for Favicon / Icon Use -->
+  <rect width="512" height="512" rx="96" fill="#090909" />
+
+  <!-- Monogram Geometry - Monoline Stroke-Based -->
+  <g fill="none" stroke-width="44" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10">
+    <!-- White Section -->
+    <path d="M 100 424 L 100 88 L 132 88 L 256 212 L 380 88 L 412 88" stroke="#F5F5F5" />
+
+    <!-- Red Gradient Section: Right Outer Vertical -->
+    <path d="M 412 88 L 412 424" stroke="url(#redGradFavicon)" />
+    
+    <!-- Red Gradient Section: Lower Left Branch -->
+    <path d="M 100 212 L 206 318 L 206 424" stroke="url(#redGradFavicon)" />
+    
+    <!-- Red Gradient Section: Lower Right Branch -->
+    <path d="M 412 212 L 306 318 L 306 424" stroke="url(#redGradFavicon)" />
+  </g>
+</svg>
