@@ -5,6 +5,7 @@ import { LanguageToggleComponent } from '../../atoms/language-toggle/language-to
 import { ThemeModeToggleComponent } from '../../atoms/theme-mode-toggle/theme-mode-toggle';
 import { DownloadCvBtnComponent } from '../../atoms/download-cv-btn/download-cv-btn';
 import { DevDossierModalComponent } from '../dev-dossier-modal/dev-dossier-modal';
+import { CvLogoComponent } from '../../atoms/cv-logo/cv-logo';
 
 @Component({
   selector: 'app-global-navbar',
@@ -14,7 +15,8 @@ import { DevDossierModalComponent } from '../dev-dossier-modal/dev-dossier-modal
     LanguageToggleComponent,
     ThemeModeToggleComponent,
     DownloadCvBtnComponent,
-    DevDossierModalComponent
+    DevDossierModalComponent,
+    CvLogoComponent
   ],
   templateUrl: './global-navbar.html'
 })

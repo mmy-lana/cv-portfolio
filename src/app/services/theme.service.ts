@@ -1,9 +1,11 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { FaviconService } from './favicon.service';
 
+import { CvIconName } from '../components/shared/atoms/cv-icon/cv-icon';
+
 export interface ThemeConfig {
   id: string;
-  icon: string;
+  iconName: CvIconName;
   isDark: boolean;
 }
 
@@ -15,15 +17,15 @@ export class ThemeService {
   private readonly MODE_KEY = 'preferred-mode';
   
   readonly themes: ThemeConfig[] = [
-    { id: 'minimalist', icon: '📄', isDark: false },
-    { id: 'cyberpunk', icon: '⚡', isDark: true },
-    { id: 'glassmorphism', icon: '🪟', isDark: true },
-    { id: 'dark', icon: '🌙', isDark: true },
-    { id: 'retro-computer', icon: '🖥️', isDark: true },
-    { id: 'gradient-flow', icon: '🎨', isDark: true },
-    { id: 'sidebar-navigation', icon: '📋', isDark: false },
-    { id: 'parallax-scrolling', icon: '🖼️', isDark: true },
-    { id: 'timeline-style', icon: '⏱️', isDark: false }
+    { id: 'minimalist', iconName: 'file-text', isDark: false },
+    { id: 'cyberpunk', iconName: 'zap', isDark: true },
+    { id: 'glassmorphism', iconName: 'layers', isDark: true },
+    { id: 'dark', iconName: 'moon', isDark: true },
+    { id: 'retro-computer', iconName: 'terminal', isDark: true },
+    { id: 'gradient-flow', iconName: 'palette', isDark: true },
+    { id: 'sidebar-navigation', iconName: 'sidebar', isDark: false },
+    { id: 'parallax-scrolling', iconName: 'image', isDark: true },
+    { id: 'timeline-style', iconName: 'clock', isDark: false }
   ];
 
   currentTheme = signal<string>('minimalist');

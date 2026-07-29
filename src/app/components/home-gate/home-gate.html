@@ -26,12 +26,12 @@
           (mouseenter)="onMouseEnter(theme.id)"
           (mouseleave)="onMouseLeave()"
           (mousemove)="onCardMouseMove($event)"
-          class="home-theme-card group p-8 rounded-2xl border text-left relative overflow-hidden cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md block outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:scale-[1.02]"
+          class="home-theme-card group p-8 rounded-2xl border text-left relative overflow-hidden cursor-pointer transition-all duration-300 shadow-sm hover:shadow-xl block outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:scale-[1.02]"
           [class.focus-visible:ring-offset-[#070913]]="themeService.isDarkMode()"
           [class.focus-visible:ring-offset-[#f8fafc]]="!themeService.isDarkMode()"
           [class.border-slate-800/80]="themeService.isDarkMode()"
           [class.bg-slate-900/40]="themeService.isDarkMode()"
-          [class.hover:bg-slate-900]="themeService.isDarkMode()"
+          [class.hover:bg-slate-900/80]="themeService.isDarkMode()"
           [class.focus-visible:bg-slate-900]="themeService.isDarkMode()"
           [class.border-slate-200]="!themeService.isDarkMode()"
           [class.bg-white]="!themeService.isDarkMode()"
@@ -39,26 +39,33 @@
           [class.focus-visible:bg-slate-50]="!themeService.isDarkMode()"
           [attr.data-theme-id]="theme.id"
         >
-          <span class="absolute -right-4 -bottom-4 text-8xl opacity-5 group-hover:opacity-15 group-focus-visible:opacity-15 transition-opacity grayscale group-hover:grayscale-0 group-focus-visible:grayscale-0 pointer-events-none select-none">
-            {{ theme.icon }}
-          </span>
+          <!-- WATERMARK BACKGROUND ICON -->
+          <div 
+            class="absolute -right-6 -bottom-6 opacity-5 group-hover:opacity-15 group-hover:scale-115 group-hover:-rotate-6 transition-all duration-500 pointer-events-none select-none"
+            [class.text-white]="themeService.isDarkMode()"
+            [class.text-slate-900]="!themeService.isDarkMode()"
+          >
+            <app-cv-icon [name]="theme.iconName" size="w-32 h-32" />
+          </div>
 
-          <div class="relative z-10 space-y-4">
+          <div class="relative z-10 space-y-5">
+            <!-- TOP ICON BADGE + FLOATING PRESET TAG -->
             <div class="flex items-center justify-between">
-              <span class="text-3xl transform group-hover:scale-110 group-focus-visible:scale-110 transition-transform duration-300 inline-block">
-                {{ theme.icon }}
-              </span>
-              <span 
-                class="text-[10px] font-mono font-bold px-2 py-0.5 rounded border transition-colors"
-                [class.bg-blue-950]="themeService.isDarkMode()"
-                [class.text-blue-300]="themeService.isDarkMode()"
-                [class.border-blue-800/50]="themeService.isDarkMode()"
-                [class.bg-blue-50]="!themeService.isDarkMode()"
-                [class.text-blue-700]="!themeService.isDarkMode()"
-                [class.border-blue-200]="!themeService.isDarkMode()"
+              <div 
+                class="w-11 h-11 rounded-2xl flex items-center justify-center border transition-all duration-300 ease-out group-hover:-translate-y-1.5 group-hover:scale-110 shadow-sm group-hover:shadow-lg"
+                [class.bg-slate-800/80]="themeService.isDarkMode()"
+                [class.border-slate-700/80]="themeService.isDarkMode()"
+                [class.text-cyan-400]="themeService.isDarkMode()"
+                [class.bg-slate-100]="!themeService.isDarkMode()"
+                [class.border-slate-200]="!themeService.isDarkMode()"
+                [class.text-blue-600]="!themeService.isDarkMode()"
               >
-                [ {{ themeService.isDarkMode() ? theme.darkPreset : theme.lightPreset }} ]
-              </span>
+                <app-cv-icon [name]="theme.iconName" size="w-5 h-5" />
+              </div>
+
+              <div class="transform transition-all duration-300 ease-out group-hover:-translate-y-1">
+                <app-cv-preset-badge [themeId]="theme.id" [showPrefix]="false" />
+              </div>
             </div>
 
             <div>

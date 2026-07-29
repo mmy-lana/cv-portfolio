@@ -2,7 +2,7 @@ import { Component, signal, HostListener, ElementRef, Input } from '@angular/cor
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService, ThemeConfig } from '../../../services/theme.service';
-import { CvIcon } from '../atoms/cv-icon/cv-icon';
+import { CvIcon, CvIconName } from '../atoms/cv-icon/cv-icon';
 
 @Component({
   selector: 'app-theme-selector',
@@ -20,6 +20,21 @@ export class ThemeSelector {
     private router: Router,
     private elementRef: ElementRef
   ) {}
+
+  getThemeIcon(themeId: string): CvIconName {
+    const iconMap: Record<string, CvIconName> = {
+      minimalist: 'file-text',
+      cyberpunk: 'zap',
+      glassmorphism: 'layers',
+      dark: 'moon',
+      'retro-computer': 'terminal',
+      'gradient-flow': 'palette',
+      'sidebar-navigation': 'sidebar',
+      'parallax-scrolling': 'image',
+      'timeline-style': 'clock'
+    };
+    return iconMap[themeId] || 'file-text';
+  }
 
   toggleDropdown(): void {
     this.isOpen.update(val => !val);

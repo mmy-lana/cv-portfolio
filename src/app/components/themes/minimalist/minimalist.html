@@ -11,13 +11,7 @@
     <!-- ABOUT -->
     <section id="about" class="space-y-6 pb-12 border-b animate-fade-in-up" [class.border-slate-200]="!themeService.isDarkMode()" [class.border-zinc-800]="themeService.isDarkMode()">
       <div class="space-y-2">
-        <span 
-          class="text-xs font-bold tracking-widest uppercase font-mono"
-          [class.text-blue-600]="!themeService.isDarkMode()"
-          [class.text-blue-400]="themeService.isDarkMode()"
-        >
-          [ PRESET: {{ themeService.isDarkMode() ? 'ONYX DARK' : 'PAPER LIGHT' }} ]
-        </span>
+        <app-cv-preset-badge themeId="minimalist" />
         
         <h1 
           class="text-4xl md:text-5xl font-black tracking-tight leading-none"

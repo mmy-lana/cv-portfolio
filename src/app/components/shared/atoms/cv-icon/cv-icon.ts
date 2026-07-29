@@ -10,7 +10,16 @@ export type CvIconName =
   | 'gpa' 
   | 'back' 
   | 'arrow-right'
-  | 'download';
+  | 'download'
+  | 'file-text'
+  | 'zap'
+  | 'layers'
+  | 'moon'
+  | 'terminal'
+  | 'palette'
+  | 'sidebar'
+  | 'image'
+  | 'clock';
 
 @Component({
   selector: 'app-cv-icon',

@@ -16,13 +16,7 @@
       class="max-w-4xl mx-auto space-y-6 dark-glow-card p-8 md:p-10 rounded-2xl animate-fade-in-up"
     >
       <div class="space-y-3">
-        <span 
-          class="text-xs font-bold tracking-widest uppercase font-mono"
-          [class.text-indigo-600]="!themeService.isDarkMode()"
-          [class.text-indigo-400]="themeService.isDarkMode()"
-        >
-          [ PRESET: {{ themeService.isDarkMode() ? 'LUNAR PITCH' : 'SOLAR MINIMAL' }} ]
-        </span>
+        <app-cv-preset-badge themeId="dark" />
 
         <h1 
           class="text-4xl md:text-5xl font-black tracking-tight leading-none"

@@ -39,7 +39,7 @@
           </span>
         </div>
         <div class="flex items-center space-x-3 text-[11px] font-bold">
-          <span>PRESET: {{ themeService.isDarkMode() ? 'HACKER TERMINAL' : 'IBM CREAM 1984' }}</span>
+          <app-cv-preset-badge themeId="retro-computer" />
           <span class="px-2 py-0.5 uppercase tracking-widest animate-pulse" [class.bg-white]="!themeService.isDarkMode()" [class.text-[#003399]]="!themeService.isDarkMode()" [class.bg-[#00ff66]]="themeService.isDarkMode()" [class.text-black]="themeService.isDarkMode()">ONLINE</span>
         </div>
       </div>

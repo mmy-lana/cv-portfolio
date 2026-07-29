@@ -11,12 +11,10 @@
   [class.text-[#0f172a]]="!themeService.isDarkMode()"
 >
   <div class="space-y-6">
-    <!-- DASHBOARD AVATAR HEADER -->
+<!-- DASHBOARD AVATAR HEADER -->
     <div class="flex items-center justify-between pb-4 border-b" [class.border-[#1e293b]]="themeService.isDarkMode()" [class.border-[#e2e8f0]]="!themeService.isDarkMode()">
       <div class="flex items-center space-x-3 overflow-hidden">
-        <div class="w-10 h-10 rounded-xl bg-blue-600 text-white font-black flex items-center justify-center text-sm shrink-0 shadow-md">
-          MY
-        </div>
+        <app-cv-logo size="w-10 h-10 shadow-md shrink-0" />
         @if (!isCollapsed()) {
           <div class="overflow-hidden">
             <p class="font-bold text-sm truncate leading-tight">{{ 'about.name' | translate }}</p>
@@ -67,9 +65,9 @@
     @if (!isCollapsed()) {
       <div class="space-y-3">
         <div class="flex items-center justify-between gap-1 text-xs font-bold px-1">
-          <button (click)="goBack()" class="flex items-center gap-1.5 hover:opacity-100 transition-opacity cursor-pointer py-1" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()">
+          <button (click)="goBack()" class="h-9 px-3.5 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 border-slate-800 bg-slate-900 text-slate-300 hover:text-white hover:border-slate-700 select-none" aria-label="Back to Themes">
             <app-cv-icon name="back" size="w-3.5 h-3.5" />
-            <span>Themes</span>
+            <!-- <span>Themes</span> -->
           </button>
           
           <div class="flex items-center gap-1.5">

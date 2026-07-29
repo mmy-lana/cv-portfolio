@@ -48,9 +48,7 @@
     <section id="about" class="max-w-4xl mx-auto dashboard-card p-8 md:p-10 rounded-2xl space-y-6">
       <div class="flex flex-wrap items-center justify-between gap-4 border-b pb-4" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-100]="!themeService.isDarkMode()">
         <div>
-          <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded border uppercase" [class.bg-sky-950]="themeService.isDarkMode()" [class.text-sky-300]="themeService.isDarkMode()" [class.border-sky-800/50]="themeService.isDarkMode()" [class.bg-blue-50]="!themeService.isDarkMode()" [class.text-blue-700]="!themeService.isDarkMode()" [class.border-blue-200]="!themeService.isDarkMode()">
-            [ PRESET: {{ themeService.isDarkMode() ? 'EXECUTIVE DARK' : 'ENTERPRISE LIGHT' }} ]
-          </span>
+          <app-cv-preset-badge themeId="sidebar-navigation" />
 
           <h1 class="text-3xl md:text-4xl font-black tracking-tight mt-2" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
             {{ 'about.name' | translate }}

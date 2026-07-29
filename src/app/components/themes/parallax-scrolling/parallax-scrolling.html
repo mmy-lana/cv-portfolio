@@ -22,9 +22,7 @@
       <div class="absolute inset-0 backdrop-blur-xs" [class.bg-slate-950/80]="themeService.isDarkMode()" [class.bg-slate-900/60]="!themeService.isDarkMode()"></div>
       
       <section id="about" class="relative max-w-4xl mx-auto text-center space-y-6 z-10 animate-fade-in-up">
-        <span class="text-xs font-bold tracking-widest uppercase font-mono px-3 py-1 rounded-full border border-white/20 bg-black/30 text-purple-300">
-          [ PRESET: {{ themeService.isDarkMode() ? 'DEEP SPACE' : 'HORIZON LIGHT' }} ]
-        </span>
+        <app-cv-preset-badge themeId="parallax-scrolling" />
 
         <h1 class="text-4xl md:text-6xl font-black text-white uppercase tracking-tight leading-none drop-shadow-lg">
           {{ 'about.name' | translate }}

@@ -11,13 +11,7 @@
     <!-- ABOUT -->
     <section id="about" class="max-w-4xl mx-auto space-y-6 gradient-flow-card p-8 md:p-10 rounded-3xl animate-fade-in-up">
       <div class="space-y-3">
-        <span 
-          class="text-xs font-bold tracking-widest uppercase font-mono"
-          [class.text-rose-600]="!themeService.isDarkMode()"
-          [class.text-rose-400]="themeService.isDarkMode()"
-        >
-          [ PRESET: {{ themeService.isDarkMode() ? 'AURORA BOREALIS' : 'SUNRISE MESH' }} ]
-        </span>
+        <app-cv-preset-badge themeId="gradient-flow" />
 
         <h1 
           class="text-4xl md:text-5xl font-black tracking-tight leading-none drop-shadow-md"

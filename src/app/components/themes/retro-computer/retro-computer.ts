@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ThemeNav } from '../../shared/theme-nav/theme-nav';
 import { ThemeService } from '../../../services/theme.service';
+import { CvPresetBadgeComponent } from '../../shared/atoms/cv-preset-badge/cv-preset-badge';
 
 export interface TerminalEntry {
   command: string;
@@ -19,6 +20,7 @@ export interface TerminalEntry {
     TranslateModule,
     RouterModule,
     FormsModule,
+    CvPresetBadgeComponent
   ],
   templateUrl: './retro-computer.html'
 })

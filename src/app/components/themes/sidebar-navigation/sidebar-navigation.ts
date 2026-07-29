@@ -7,6 +7,7 @@ import { DownloadCvBtnComponent } from '../../shared/atoms/download-cv-btn/downl
 import { CvExperienceCard } from '../../shared/cv-experience-card/cv-experience-card';
 import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
 import { DashboardSidebar, DashboardSection } from './components/dashboard-sidebar/dashboard-sidebar';
+import { CvPresetBadgeComponent } from '../../shared/atoms/cv-preset-badge/cv-preset-badge';
 
 @Component({
   selector: 'app-sidebar-navigation',
@@ -17,7 +18,8 @@ import { DashboardSidebar, DashboardSection } from './components/dashboard-sideb
     DownloadCvBtnComponent,
     CvExperienceCard,
     CvIcon,
-    DashboardSidebar
+    DashboardSidebar,
+    CvPresetBadgeComponent
   ],
   templateUrl: './sidebar-navigation.html'
 })

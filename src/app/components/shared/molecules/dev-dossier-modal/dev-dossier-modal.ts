@@ -14,6 +14,7 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from '../../../../services/theme.service';
 import { CvIcon } from '../../atoms/cv-icon/cv-icon';
+import { CvLogoComponent } from '../../atoms/cv-logo/cv-logo';
 
 interface Particle {
   x: number;
@@ -28,7 +29,7 @@ interface Particle {
 @Component({
   selector: 'app-dev-dossier-modal',
   standalone: true,
-  imports: [TranslateModule, CvIcon],
+  imports: [TranslateModule, CvIcon, CvLogoComponent],
   templateUrl: './dev-dossier-modal.html'
 })
 export class DevDossierModalComponent implements OnDestroy {

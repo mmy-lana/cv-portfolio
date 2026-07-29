@@ -25,9 +25,7 @@
       [class.cyber-border-glow]="themeService.isDarkMode()"
     >
       <div class="flex justify-between items-center border-b pb-3" [class.border-[#008b8b]/30]="!themeService.isDarkMode()" [class.border-[#00f0ff]/30]="themeService.isDarkMode()">
-        <span class="text-xs font-bold tracking-widest uppercase" [class.text-[#008b8b]]="!themeService.isDarkMode()" [class.text-[#00f0ff]]="themeService.isDarkMode()">
-          // PRESET: {{ themeService.isDarkMode() ? 'NEON NIGHT' : 'MATRIX DAY' }}
-        </span>
+        <app-cv-preset-badge themeId="cyberpunk" />
         <span class="text-[10px] font-bold px-2 py-0.5 uppercase tracking-widest animate-pulse" [class.bg-[#008b8b]]="!themeService.isDarkMode()" [class.text-white]="!themeService.isDarkMode()" [class.bg-[#00f0ff]]="themeService.isDarkMode()" [class.text-black]="themeService.isDarkMode()">
           SYS_{{ sysStatus() }}
         </span>

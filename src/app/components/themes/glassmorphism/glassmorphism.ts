@@ -6,6 +6,7 @@ import { ThemeService } from '../../../services/theme.service';
 import { DownloadCvBtnComponent } from '../../shared/atoms/download-cv-btn/download-cv-btn';
 import { CvExperienceCard } from '../../shared/cv-experience-card/cv-experience-card';
 import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
+import { CvPresetBadgeComponent } from '../../shared/atoms/cv-preset-badge/cv-preset-badge';
 
 @Component({
   selector: 'app-glassmorphism',
@@ -16,7 +17,8 @@ import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
     RouterModule,
     DownloadCvBtnComponent,
     CvExperienceCard,
-    CvIcon
+    CvIcon,
+    CvPresetBadgeComponent
   ],
   templateUrl: './glassmorphism.html'
 })

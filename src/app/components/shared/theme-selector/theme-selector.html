@@ -14,7 +14,7 @@
   >
     <app-cv-icon name="arrow-right" size="w-3.5 h-3.5" class="transition-transform" [class.rotate-90]="position === 'down'" [class.-rotate-90]="position === 'up'" />
     <span>{{ 'home.explore' | translate }}</span>
-    <span>{{ themeService.themes.find(t => t.id === themeService.currentTheme())?.icon || '🎨' }}</span>
+    <app-cv-icon [name]="getThemeIcon(themeService.currentTheme())" size="w-4 h-4" />
   </button>
 
 @if (isOpen()) {
@@ -55,9 +55,7 @@
             role="menuitem"
           >
             <div class="flex items-center space-x-3">
-              <span class="text-xl transform group-hover:scale-115 transition-transform duration-200">
-                {{ theme.icon }}
-              </span>
+              <app-cv-icon [name]="getThemeIcon(theme.id)" size="w-4 h-4" class="group-hover:scale-110 transition-transform text-cyan-400" />
               <div>
                 <p class="font-semibold text-white group-hover:text-cv-accent transition-colors">
                   {{ 'themes_data.' + theme.id + '.title' | translate }}

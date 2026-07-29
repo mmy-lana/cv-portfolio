@@ -7,6 +7,7 @@ import { DownloadCvBtnComponent } from '../../shared/atoms/download-cv-btn/downl
 import { CvExperienceCard } from '../../shared/cv-experience-card/cv-experience-card';
 import { CvBadge } from '../../shared/atoms/cv-badge/cv-badge';
 import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
+import { CvPresetBadgeComponent } from '../../shared/atoms/cv-preset-badge/cv-preset-badge';
 
 @Component({
   selector: 'app-timeline-style',
@@ -18,7 +19,8 @@ import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
     DownloadCvBtnComponent,
     CvExperienceCard,
     CvBadge,
-    CvIcon
+    CvIcon,
+    CvPresetBadgeComponent
   ],
   templateUrl: './timeline-style.html'
 })

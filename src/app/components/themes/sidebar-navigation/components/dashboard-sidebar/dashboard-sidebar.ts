@@ -7,6 +7,7 @@ import { ThemeSelector } from '../../../../shared/theme-selector/theme-selector'
 import { LanguageToggleComponent } from '../../../../shared/atoms/language-toggle/language-toggle';
 import { ThemeModeToggleComponent } from '../../../../shared/atoms/theme-mode-toggle/theme-mode-toggle';
 import { CvIcon } from '../../../../shared/atoms/cv-icon/cv-icon';
+import { CvLogoComponent } from '../../../../shared/atoms/cv-logo/cv-logo';
 
 export type DashboardSection = 'about' | 'experience' | 'skills' | 'education' | 'certificates' | 'contact';
 
@@ -25,7 +26,8 @@ export interface NavItem {
     ThemeSelector,
     LanguageToggleComponent,
     ThemeModeToggleComponent,
-    CvIcon
+    CvIcon,
+    CvLogoComponent
   ],
   templateUrl: './dashboard-sidebar.html'
 })

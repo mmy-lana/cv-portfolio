@@ -6,6 +6,7 @@ import { DownloadCvBtnComponent } from '../../shared/atoms/download-cv-btn/downl
 import { CvExperienceCard } from '../../shared/cv-experience-card/cv-experience-card';
 import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';
 import { CyberMatrixCanvas } from '../../shared/cyber-matrix-canvas/cyber-matrix-canvas';
+import { CvPresetBadgeComponent } from '../../shared/atoms/cv-preset-badge/cv-preset-badge';
 
 @Component({
   selector: 'app-cyberpunk',
@@ -16,7 +17,8 @@ import { CyberMatrixCanvas } from '../../shared/cyber-matrix-canvas/cyber-matrix
     DownloadCvBtnComponent,
     CvExperienceCard,
     CvIcon,
-    CyberMatrixCanvas
+    CyberMatrixCanvas,
+    CvPresetBadgeComponent
   ],
   templateUrl: './cyberpunk.html',
 })
