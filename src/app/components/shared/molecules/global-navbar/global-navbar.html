@@ -1,10 +1,17 @@
 <header class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 pb-8 border-b" [class.border-slate-800/80]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
-  <div class="flex items-center space-x-3 cursor-pointer" (click)="goHome()">
-    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 font-black text-white flex items-center justify-center text-xs shadow-md">
+  <div 
+    (click)="openDevModal()"
+    title="Click to view Developer Dossier"
+    class="flex items-center space-x-3 cursor-pointer group p-1.5 -ml-1.5 rounded-2xl transition-all duration-200 hover:bg-white/5 active:scale-95"
+  >
+    <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-purple-600 to-cyan-400 font-black text-white flex items-center justify-center text-xs shadow-md group-hover:scale-110 group-hover:shadow-cyan-500/25 transition-all">
       MY
     </div>
     <div>
-      <span class="font-black tracking-tight text-base block leading-none transition-colors" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">mmylana</span>
+      <div class="flex items-center gap-1.5">
+        <span class="font-black tracking-tight text-base block leading-none transition-colors group-hover:text-cyan-400" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">mmylana</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+      </div>
       <span class="text-[10px] font-medium transition-colors" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()">Muhammad Maulana Yusuf</span>
     </div>
   </div>
@@ -31,3 +38,5 @@
     <app-download-cv-btn variant="primary" size="md" />
   </div>
 </header>
+
+<app-dev-dossier-modal [isOpen]="isDossierOpen()" (closeModal)="isDossierOpen.set(false)" />
