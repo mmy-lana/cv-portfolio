@@ -26,6 +26,7 @@
   <meta name="twitter:image" content="https://mmylana.my.id/assets/images/og-preview.jpg">
 
   <link id="app-favicon" rel="icon" type="image/svg+xml" href="assets/favicons/minimalist.svg">
+  <link rel="canonical" href="https://www.mmylana.my.id/">
   <link rel="preload" as="image" href="assets/images/img3.webp" fetchpriority="high">
 
   <!-- Google Fonts Optimization (font-display: swap) -->
@@ -33,19 +34,38 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Person JSON-LD Structured Data -->
+  <!-- Person JSON-LD Structured Data with Ecosystem Cross-Linking -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Muhammad Maulana Yusuf",
     "alternateName": "mmylana",
-    "jobTitle": "Frontend Developer",
-    "url": "https://mmylana.my.id",
-    "image": "https://mmylana.my.id/assets/images/og-preview.jpg",
+    "jobTitle": "Frontend Developer & Open Source Author",
+    "url": "https://www.mmylana.my.id",
+    "image": "https://www.mmylana.my.id/assets/images/og-preview.jpg",
     "sameAs": [
       "https://github.com/mmy-lana",
-      "https://linkedin.com/in/muhammad-maulana-yusuf"
+      "https://linkedin.com/in/muhammad-maulana-yusuf",
+      "https://dev.to/mmy-lana",
+      "https://www.npmjs.com/~mmy-lana"
+    ],
+    "owns": [
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "leak-doctor",
+        "codeRepository": "https://github.com/mmy-lana/leak-doctor"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "fetch-doctor",
+        "codeRepository": "https://github.com/mmy-lana/fetch-doctor"
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "mmy-css",
+        "codeRepository": "https://github.com/mmy-lana/mmy-css"
+      }
     ],
     "worksFor": {
       "@type": "Organization",
@@ -62,7 +82,7 @@
       "JavaScript",
       "Tailwind CSS",
       "Microfrontends",
-      "Enterprise Web Development"
+      "Web Performance Auditing"
     ],
     "address": {
       "@type": "PostalAddress",
