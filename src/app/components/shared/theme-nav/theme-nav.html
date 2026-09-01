@@ -39,7 +39,7 @@
     <div class="md:hidden flex items-center space-x-2">
       <app-theme-mode-toggle />
       <button (click)="toggleMenu()"
-        class="p-2 rounded-xl border min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
+        class="p-2 rounded-xl border min-h-11 min-w-11 flex items-center justify-center cursor-pointer"
         [class.border-slate-800]="themeService.isDarkMode()" [class.bg-slate-900]="themeService.isDarkMode()"
         [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-slate-100]="!themeService.isDarkMode()"
         [attr.aria-label]="menuOpen() ? 'Close menu' : 'Open menu'"
@@ -64,7 +64,7 @@
     <div class="grid grid-cols-1 gap-2">
       @for (sec of sections; track sec.id) {
       <button (click)="scrollTo(sec.id)"
-        class="w-full text-left p-3 rounded-xl font-bold text-sm border transition-colors cursor-pointer min-h-[44px]"
+        class="w-full text-left p-3 rounded-xl font-bold text-sm border transition-colors cursor-pointer min-h-11"
         [class.border-slate-800]="themeService.isDarkMode()" [class.bg-slate-900/60]="themeService.isDarkMode()"
         [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-slate-50]="!themeService.isDarkMode()">
         {{ sec.label | translate }}
@@ -81,7 +81,7 @@
       </div>
       <div class="grid grid-cols-1 gap-2">
         <a href="https://portfolio.mmylana.my.id" target="_blank" rel="noopener noreferrer"
-          class="flex items-center justify-between p-3 rounded-xl border text-xs font-bold transition-all min-h-[44px]"
+          class="flex items-center justify-between p-3 rounded-xl border text-xs font-bold transition-all min-h-11"
           [class.bg-amber-950/30]="themeService.isDarkMode()"
           [class.border-amber-800/40]="themeService.isDarkMode()"
           [class.text-amber-300]="themeService.isDarkMode()"
@@ -97,7 +97,7 @@
         </a>
 
         <a href="https://underthehood.mmylana.my.id" target="_blank" rel="noopener noreferrer"
-          class="flex items-center justify-between p-3 rounded-xl border text-xs font-bold transition-all min-h-[44px]"
+          class="flex items-center justify-between p-3 rounded-xl border text-xs font-bold transition-all min-h-11"
           [class.bg-emerald-950/30]="themeService.isDarkMode()"
           [class.border-emerald-800/40]="themeService.isDarkMode()"
           [class.text-emerald-300]="themeService.isDarkMode()"

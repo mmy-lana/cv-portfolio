@@ -12,7 +12,7 @@ import { CvIcon } from '../cv-icon/cv-icon';
       role="switch"
       [attr.aria-checked]="themeService.isDarkMode()"
       (click)="themeService.toggleGlobalDarkMode()"
-      class="h-9 w-[68px] p-1 rounded-full border transition-all duration-300 cursor-pointer flex items-center relative select-none shadow-inner group outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+      class="h-9 w-17 p-1 rounded-full border transition-all duration-300 cursor-pointer flex items-center relative select-none shadow-inner group outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
       [class.bg-slate-800]="themeService.isDarkMode()"
       [class.border-slate-700]="themeService.isDarkMode()"
       [class.bg-slate-200]="!themeService.isDarkMode()"
