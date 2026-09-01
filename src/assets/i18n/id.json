@@ -5,6 +5,16 @@
     "badge": "Daftar Riwayat Hidup (Curriculum Vitae) Yang Sama",
     "explore": "Jelajahi"
   },
+  "ecosystem": {
+    "title": "Ekosistem & Platform Terbuka",
+    "subtitle": "Platform produksi, perkakas diagnostik, dan pusat dokumentasi teknis mendalam",
+    "projects_title": "Katalog 110+ Proyek Web",
+    "projects_badge": "Aplikasi Interaktif",
+    "projects_desc": "Koleksi 110+ aplikasi interaktif, devtools, serta suite diagnostik flagship (leak-doctor, fetch-doctor).",
+    "uth_title": "Under The Hood",
+    "uth_badge": "Pusat Arsitektur",
+    "uth_desc": "Bedah arsitektur teknis mendalam mencakup 285+ topik konsep dan rekayasa perangkat lunak."
+  },
   "themes_data": {
     "minimalist": {
       "title": "Minimalis Bersih (Clean Minimalist)",

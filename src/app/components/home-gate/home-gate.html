@@ -7,8 +7,123 @@
 >
   <app-global-navbar />
 
+  <!-- ECOSYSTEM SPOTLIGHT STRIP (MOBILE OPTIMIZED) -->
+  <section class="max-w-6xl mx-auto pt-8 pb-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- 110+ PROJECTS CATALOG BANNER -->
+      <a
+        href="https://portfolio.mmylana.my.id"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group p-4 sm:p-5 rounded-2xl border transition-all duration-300 flex items-center justify-between gap-4 select-none relative overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5"
+        [class.bg-gradient-to-r]="true"
+        [class.from-[#120e0a]]="themeService.isDarkMode()"
+        [class.to-[#18110c]]="themeService.isDarkMode()"
+        [class.border-amber-800/40]="themeService.isDarkMode()"
+        [class.hover:border-amber-500/80]="themeService.isDarkMode()"
+        [class.from-amber-50/90]="!themeService.isDarkMode()"
+        [class.to-orange-50/70]="!themeService.isDarkMode()"
+        [class.border-amber-200]="!themeService.isDarkMode()"
+        [class.hover:border-amber-400]="!themeService.isDarkMode()"
+      >
+        <div class="flex items-center space-x-3.5 min-w-0">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border"
+            [class.bg-amber-950/80]="themeService.isDarkMode()"
+            [class.border-amber-700/60]="themeService.isDarkMode()"
+            [class.text-amber-400]="themeService.isDarkMode()"
+            [class.bg-white]="!themeService.isDarkMode()"
+            [class.border-amber-200]="!themeService.isDarkMode()"
+            [class.text-amber-600]="!themeService.isDarkMode()"
+          >
+            <app-cv-icon name="rocket" size="w-5 h-5" class="group-hover:scale-110 transition-transform" />
+          </div>
+
+          <div class="overflow-hidden">
+            <div class="flex items-center gap-2">
+              <h2 class="text-sm font-black truncate tracking-tight" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
+                {{ 'ecosystem.projects_title' | translate }}
+              </h2>
+              <span class="px-1.5 py-0.2 text-[9px] font-mono font-bold rounded uppercase tracking-wider shrink-0"
+                [class.bg-amber-900/60]="themeService.isDarkMode()"
+                [class.text-amber-300]="themeService.isDarkMode()"
+                [class.bg-amber-100]="!themeService.isDarkMode()"
+                [class.text-amber-800]="!themeService.isDarkMode()"
+              >110+ APPS</span>
+            </div>
+            <p class="text-xs truncate mt-0.5" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()">
+              {{ 'ecosystem.projects_desc' | translate }}
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center text-xs font-bold shrink-0 font-mono gap-1 group-hover:translate-x-0.5 transition-transform"
+          [class.text-amber-400]="themeService.isDarkMode()"
+          [class.text-amber-700]="!themeService.isDarkMode()"
+        >
+          <span class="hidden sm:inline">EXPLORE</span>
+          <app-cv-icon name="external-link" size="w-4 h-4" />
+        </div>
+      </a>
+
+      <!-- UNDER THE HOOD ARCHITECTURAL HUB BANNER -->
+      <a
+        href="https://underthehood.mmylana.my.id"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group p-4 sm:p-5 rounded-2xl border transition-all duration-300 flex items-center justify-between gap-4 select-none relative overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5"
+        [class.bg-gradient-to-r]="true"
+        [class.from-[#09140f]]="themeService.isDarkMode()"
+        [class.to-[#0d1c15]]="themeService.isDarkMode()"
+        [class.border-emerald-800/40]="themeService.isDarkMode()"
+        [class.hover:border-emerald-500/80]="themeService.isDarkMode()"
+        [class.from-emerald-50/90]="!themeService.isDarkMode()"
+        [class.to-teal-50/70]="!themeService.isDarkMode()"
+        [class.border-emerald-200]="!themeService.isDarkMode()"
+        [class.hover:border-emerald-400]="!themeService.isDarkMode()"
+      >
+        <div class="flex items-center space-x-3.5 min-w-0">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border"
+            [class.bg-emerald-950/80]="themeService.isDarkMode()"
+            [class.border-emerald-700/60]="themeService.isDarkMode()"
+            [class.text-emerald-400]="themeService.isDarkMode()"
+            [class.bg-white]="!themeService.isDarkMode()"
+            [class.border-emerald-200]="!themeService.isDarkMode()"
+            [class.text-emerald-600]="!themeService.isDarkMode()"
+          >
+            <app-cv-icon name="book-open" size="w-5 h-5" class="group-hover:scale-110 transition-transform" />
+          </div>
+
+          <div class="overflow-hidden">
+            <div class="flex items-center gap-2">
+              <h2 class="text-sm font-black truncate tracking-tight" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
+                {{ 'ecosystem.uth_title' | translate }}
+              </h2>
+              <span class="px-1.5 py-0.2 text-[9px] font-mono font-bold rounded uppercase tracking-wider shrink-0"
+                [class.bg-emerald-900/60]="themeService.isDarkMode()"
+                [class.text-emerald-300]="themeService.isDarkMode()"
+                [class.bg-emerald-100]="!themeService.isDarkMode()"
+                [class.text-emerald-800]="!themeService.isDarkMode()"
+              >285+ TOPICS</span>
+            </div>
+            <p class="text-xs truncate mt-0.5" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()">
+              {{ 'ecosystem.uth_desc' | translate }}
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center text-xs font-bold shrink-0 font-mono gap-1 group-hover:translate-x-0.5 transition-transform"
+          [class.text-emerald-400]="themeService.isDarkMode()"
+          [class.text-emerald-700]="!themeService.isDarkMode()"
+        >
+          <span class="hidden sm:inline">EXPLORE</span>
+          <app-cv-icon name="external-link" size="w-4 h-4" />
+        </div>
+      </a>
+    </div>
+  </section>
+
   <!-- DASHBOARD GRID CONTENT -->
-  <main class="max-w-6xl mx-auto pt-10">
+  <main class="max-w-6xl mx-auto pt-4">
     <div class="mb-8 flex items-center justify-between">
       <p 
         class="text-xs font-bold uppercase tracking-widest transition-colors"

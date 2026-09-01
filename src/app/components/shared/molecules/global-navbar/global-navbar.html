@@ -18,7 +18,7 @@
     @if (showHomeButton()) {
       <button 
         (click)="goHome()" 
-        class="px-3 py-1.5 rounded-xl border text-xs font-bold transition-colors cursor-pointer"
+        class="h-9 px-3.5 rounded-xl border text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 select-none"
         [class.bg-slate-900]="themeService.isDarkMode()"
         [class.border-slate-800]="themeService.isDarkMode()"
         [class.text-slate-300]="themeService.isDarkMode()"

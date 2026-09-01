@@ -16,8 +16,8 @@ import { CvLogoComponent } from '../../atoms/cv-logo/cv-logo';
     ThemeModeToggleComponent,
     DownloadCvBtnComponent,
     DevDossierModalComponent,
-    CvLogoComponent
-  ],
+    CvLogoComponent,
+],
   templateUrl: './global-navbar.html'
 })
 export class GlobalNavbarComponent {

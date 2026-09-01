@@ -19,7 +19,10 @@ export type CvIconName =
   | 'palette'
   | 'sidebar'
   | 'image'
-  | 'clock';
+  | 'clock'
+  | 'external-link'
+  | 'rocket'
+  | 'book-open';
 
 @Component({
   selector: 'app-cv-icon',

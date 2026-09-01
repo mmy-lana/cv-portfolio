@@ -71,19 +71,59 @@
     </div>
   </div>
 
-<div class="space-y-3 pt-4 border-t" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-slate-400">LANGUAGE</span>
-            <app-language-toggle />
+<div class="space-y-4 pt-4 border-t" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
+    <!-- MOBILE DRAWER ECOSYSTEM LINKS -->
+    <div class="space-y-2">
+      <div class="text-xs font-bold uppercase tracking-wider text-slate-400">
+        {{ 'ecosystem.title' | translate }}
+      </div>
+      <div class="grid grid-cols-1 gap-2">
+        <a href="https://portfolio.mmylana.my.id" target="_blank" rel="noopener noreferrer"
+          class="flex items-center justify-between p-3 rounded-xl border text-xs font-bold transition-all min-h-[44px]"
+          [class.bg-amber-950/30]="themeService.isDarkMode()"
+          [class.border-amber-800/40]="themeService.isDarkMode()"
+          [class.text-amber-300]="themeService.isDarkMode()"
+          [class.bg-amber-50]="!themeService.isDarkMode()"
+          [class.border-amber-200]="!themeService.isDarkMode()"
+          [class.text-amber-800]="!themeService.isDarkMode()"
+        >
+          <div class="flex items-center space-x-2.5">
+            <app-cv-icon name="rocket" size="w-4 h-4" />
+            <span>110+ Interactive Projects Catalog</span>
           </div>
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-bold text-slate-400">THEME PRESET</span>
-            <app-theme-selector position="up" align="right" />
+          <app-cv-icon name="external-link" size="w-3.5 h-3.5" />
+        </a>
+
+        <a href="https://underthehood.mmylana.my.id" target="_blank" rel="noopener noreferrer"
+          class="flex items-center justify-between p-3 rounded-xl border text-xs font-bold transition-all min-h-[44px]"
+          [class.bg-emerald-950/30]="themeService.isDarkMode()"
+          [class.border-emerald-800/40]="themeService.isDarkMode()"
+          [class.text-emerald-300]="themeService.isDarkMode()"
+          [class.bg-emerald-50]="!themeService.isDarkMode()"
+          [class.border-emerald-200]="!themeService.isDarkMode()"
+          [class.text-emerald-800]="!themeService.isDarkMode()"
+        >
+          <div class="flex items-center space-x-2.5">
+            <app-cv-icon name="book-open" size="w-4 h-4" />
+            <span>Under The Hood (285+ Topics)</span>
           </div>
-          <div class="pt-2">
-            <app-download-cv-btn variant="primary" size="lg" class="w-full" />
-          </div>
-        </div>
+          <app-cv-icon name="external-link" size="w-3.5 h-3.5" />
+        </a>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between">
+      <span class="text-xs font-bold text-slate-400">LANGUAGE</span>
+      <app-language-toggle />
+    </div>
+    <div class="flex items-center justify-between">
+      <span class="text-xs font-bold text-slate-400">THEME PRESET</span>
+      <app-theme-selector position="up" align="right" />
+    </div>
+    <div class="pt-2">
+      <app-download-cv-btn variant="primary" size="lg" class="w-full" />
+    </div>
+  </div>
 </div>
 }
 

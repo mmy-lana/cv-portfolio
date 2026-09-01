@@ -5,6 +5,16 @@
     "badge": "Same CV",
     "explore": "Explore"
   },
+  "ecosystem": {
+    "title": "Developer Ecosystem & Live Platforms",
+    "subtitle": "Production platforms, diagnostics, and technical knowledge hubs",
+    "projects_title": "110+ Projects Catalog",
+    "projects_badge": "Live Apps & Tools",
+    "projects_desc": "Interactive catalog with 110+ applications, devtools, and flagship diagnostic suites (leak-doctor, fetch-doctor).",
+    "uth_title": "Under The Hood",
+    "uth_badge": "Engineering Hub",
+    "uth_desc": "Deep architectural breakdowns across 285+ technical topics with 4-depth conceptual breakdowns."
+  },
   "themes_data": {
     "minimalist": {
       "title": "Minimalist Clean",
