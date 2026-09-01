@@ -1,62 +1,62 @@
 {
   "home": {
-    "title": "Satu Daftar Riwayat Hidup (Curriculum Vitae), Beragam Tema",
-    "subtitle": "Kandungan informasi yang sama, gaya visual yang berbeda. Silakan pilih preferensi Anda.",
-    "badge": "Daftar Riwayat Hidup (Curriculum Vitae) Yang Sama",
-    "explore": "Jelajahi"
+    "title": "Satu Portofolio CV, Beragam Tema",
+    "subtitle": "Konten yang sama dengan beragam gaya visual. Pilih tema sesuai preferensi Anda.",
+    "badge": "Konten CV Seragam",
+    "explore": "Eksplorasi"
   },
   "ecosystem": {
-    "title": "Ekosistem & Platform Terbuka",
-    "subtitle": "Platform produksi, perkakas diagnostik, dan pusat dokumentasi teknis mendalam",
-    "projects_title": "Katalog 110+ Proyek Web",
-    "projects_badge": "Aplikasi Interaktif",
-    "projects_desc": "Koleksi 110+ aplikasi interaktif, devtools, serta suite diagnostik flagship (leak-doctor, fetch-doctor).",
+    "title": "Ekosistem & Platform Live",
+    "subtitle": "Platform produksi, perkakas diagnostik, dan pusat dokumentasi arsitektur",
+    "projects_title": "Katalog 110+ Proyek",
+    "projects_badge": "Aplikasi & Tools",
+    "projects_desc": "Katalog interaktif berisi 110+ aplikasi web, devtools, dan platform diagnostik unggulan (leak-doctor, fetch-doctor).",
     "uth_title": "Under The Hood",
-    "uth_badge": "Pusat Arsitektur",
-    "uth_desc": "Bedah arsitektur teknis mendalam mencakup 285+ topik konsep dan rekayasa perangkat lunak."
+    "uth_badge": "Engineering Hub",
+    "uth_desc": "Bedah arsitektur teknis mendalam mencakup 285+ konsep rekayasa perangkat lunak dengan penjelasan komprehensif."
   },
   "themes_data": {
     "minimalist": {
-      "title": "Minimalis Bersih (Clean Minimalist)",
-      "description": "Tata letak ringkas yang berfokus pada keterbacaan (readability)."
+      "title": "Minimalis Bersih",
+      "description": "Tata letak ringkas dengan fokus utama pada keterbacaan."
     },
     "cyberpunk": {
-      "title": "Neon Sibernetik (Cyberpunk Neon)",
-      "description": "Tampilan futuristik bernuansa lampu neon."
+      "title": "Cyberpunk Neon",
+      "description": "Tampilan futuristik dengan estetika neon dan efek visual matriks."
     },
     "glassmorphism": {
-      "title": "Efek Kaca Transparan (Glassmorphism)",
-      "description": "Antarmuka pengguna (User Interface) bertekstur kaca lembut dengan efek buram (blur)."
+      "title": "Glassmorphism",
+      "description": "Antarmuka kaca lembut dengan efek blur dan kedalaman visual."
     },
     "dark": {
-      "title": "Gelap Minimalis (Dark Minimal)",
-      "description": "Tema gelap yang elegan."
+      "title": "Dark Minimal",
+      "description": "Tema gelap elegan dengan aksen pencahayaan dinamis."
     },
     "retro-computer": {
-      "title": "Komputer Klasik (Retro Computer)",
-      "description": "Antarmuka bergaya terminal perintah (command line interface)."
+      "title": "Komputer Retro",
+      "description": "Antarmuka terminal klasik dengan prompt baris perintah (CLI)."
     },
     "gradient-flow": {
-      "title": "Alur Gradasi (Gradient Flow)",
-      "description": "Perpaduan warna gradasi yang dinamis."
+      "title": "Gradient Flow",
+      "description": "Perpaduan warna gradasi dinamis dengan WebGL mesh shader."
     },
     "sidebar-navigation": {
-      "title": "Navigasi Bilah Samping (Sidebar Navigation)",
-      "description": "Tata letak berorientasi pada bilah samping (sidebar)."
+      "title": "Navigasi Sidebar",
+      "description": "Tata letak berbasis panel samping dengan pintasan navigasi cepat."
     },
     "parallax-scrolling": {
-      "title": "Gulir Paralaks (Parallax Scrolling)",
-      "description": "Animasi visual berbasis interaksi pengguliran layar (scrolling)."
+      "title": "Parallax Scrolling",
+      "description": "Animasi visual interaktif berbasis kedalaman layer saat pengguliran."
     },
     "timeline-style": {
-      "title": "Gaya Lini Masa (Timeline Style)",
-      "description": "Penyajian Daftar Riwayat Hidup (Curriculum Vitae) berbasis kronologi waktu."
+      "title": "Gaya Garis Waktu",
+      "description": "Penyajian rekam jejak karier berbasis kronologi waktu terstruktur."
     }
   },
   "about": {
     "name": "Muhammad Maulana Yusuf",
-    "title": "Pengembang Antarmuka Depan (Frontend Developer)",
-    "summary": "Pengembang Antarmuka Depan (Frontend Developer) berpengalaman dengan latar belakang pendidikan yang solid di bidang Teknik Informatika (Indeks Prestasi Kumulatif / IPK: 3,54). Memiliki rekam jejak teruji dalam mentransformasikan rancangan Figma yang kompleks menjadi aplikasi skala perusahaan (enterprise application) yang responsif. Berpengalaman dalam membangun serta memelihara modul-modul web pada sistem keuangan (Bank Mandiri) dan platform layanan pemerintah (Direktorat Jenderal Bea dan Cukai) menggunakan Angular, React.js, dan TypeScript.",
+    "title": "Frontend Developer",
+    "summary": "Frontend Developer berpengalaman dengan latar belakang pendidikan Teknik Informatika (IPK: 3.54). Memiliki rekam jejak teruji dalam mentransformasikan rancangan desain Figma kompleks menjadi aplikasi web enterprise yang responsif dan berkinerja tinggi. Berpengalaman membangun dan memelihara modul perbankan korporasi (Bank Mandiri) dan platform layanan kepabeanan nasional (Bea Cukai) menggunakan Angular, React.js, dan TypeScript.",
     "location": "Bogor Selatan, Jawa Barat",
     "email": "mmaulanayusuf777@gmail.com",
     "phone": "+6281292316096",
@@ -67,44 +67,44 @@
     "title": "Pengalaman Kerja",
     "items": [
       {
-        "company": "Direktorat Jenderal Bea dan Cukai (Tenaga Alih Daya dari PT Altros Teknologi)",
-        "role": "Pengembang Antarmuka Depan (Frontend Developer)",
+        "company": "Direktorat Jenderal Bea dan Cukai (Outsourced via PT Altros Teknologi)",
+        "role": "Frontend Developer",
         "period": "Februari 2025 – Sekarang",
         "location": "Jakarta, Indonesia",
         "desc": [
-          "Mengembangkan dan memelihara modul inti mikro-antarmuka depan (microfrontend modules) pada sistem CEISA 4.0 serta Portal Pengguna Jasa menggunakan React.js dan Ant Design.",
-          "Bekerja sama secara erat dengan tim pengembang belakang (backend team) untuk mengintegrasikan antarmuka pemrograman aplikasi (RESTful API), guna memastikan pengelolaan data yang aman dan tata letak yang responsif.",
-          "Menganalisis, melakukan penelusuran kesalahan (debugging), dan menyelesaikan kendala teknis (bugs) tingkat krusial pada antarmuka depan, guna meningkatkan stabilitas portal bagi pengguna eksternal."
+          "Mengembangkan dan memelihara modul microfrontend inti pada sistem CEISA 4.0 serta Portal Pengguna Jasa menggunakan React.js dan Ant Design.",
+          "Berkolaborasi erat dengan tim backend dalam integrasi RESTful API guna menjamin keamanan data dan responsivitas antarmuka.",
+          "Menganalisis, melakukan debugging, dan menyelesaikan kendala teknis kritis guna meningkatkan stabilitas platform bagi pengguna eksternal."
         ]
       },
       {
-        "company": "PT Bank Mandiri (Persero) Tbk (Tenaga Alih Daya dari PT Lawencon International)",
-        "role": "Insinyur Perangkat Lunak (Software Engineer)",
+        "company": "PT Bank Mandiri (Persero) Tbk (Outsourced via PT Lawencon International)",
+        "role": "Software Engineer",
         "period": "April 2024 – Desember 2024",
         "location": "Jakarta, Indonesia",
         "desc": [
-          "Mengembangkan modul antarmuka depan utama untuk layanan perbankan korporasi (Export Letter of Credit, Document Tracker, Auto-Debit, EIPP, dan VA Collection) menggunakan Angular dan TypeScript.",
-          "Membangun elemen antarmuka pengguna (User Interface) yang responsif dan mengutamakan kegunaan (utility-first) menggunakan Tailwind CSS berdasarkan spesifikasi desain Figma.",
-          "Berpartisipasi dalam peninjauan kode sumber (code review) tim, mengoptimalkan modularitas komponen, serta menyusun dan memelihara dokumentasi teknis pada platform Confluence."
+          "Mengembangkan modul frontend perbankan korporasi (Export Letter of Credit, Document Tracker, Auto-Debit, EIPP, dan VA Collection) menggunakan Angular dan TypeScript.",
+          "Membangun komponen antarmuka yang responsif dan modular berbasis Tailwind CSS sesuai spesifikasi desain Figma.",
+          "Berpartisipasi dalam code review tim, mengoptimalkan arsitektur modular komponen, serta menyusun dokumentasi teknis di Confluence."
         ]
       },
       {
         "company": "PT Lawencon Internasional",
-        "role": "Pengembang Antarmuka Depan (Frontend Developer)",
+        "role": "Frontend Developer",
         "period": "Februari 2024 – Maret 2024",
         "location": "Jakarta, Indonesia",
         "desc": [
-          "Mengembangkan fitur antarmuka depan pada Sistem Informasi Sumber Daya Manusia / HRIS (Linov) untuk modul penggajian (payroll), presensi (attendance), dan pengelolaan karyawan menggunakan Angular dan PrimeNG.",
-          "Menerjemahkan kerangka rancangan (wireframes) menjadi antarmuka pengguna modular yang responsif, guna meningkatkan kebersihan serta keterpeliharaan basis kode (codebase)."
+          "Mengembangkan fitur frontend HRIS (Linov) untuk modul payroll, absensi, dan manajemen karyawan menggunakan Angular dan PrimeNG.",
+          "Menerjemahkan wireframe menjadi antarmuka modular yang responsif guna meningkatkan keterpeliharaan dan efisiensi basis kode."
         ]
       },
       {
         "company": "PT Dyandra Promosindo",
-        "role": "Petugas Pelaksana Proyek (Project Officer)",
+        "role": "Project Officer",
         "period": "Juni 2021 – November 2022",
         "location": "Jakarta, Indonesia",
         "desc": [
-          "Mengelola infrastruktur teknis virtual (integrasi VMIX/Zoom) serta logistik penyiaran langsung (live streaming) untuk kegiatan seminar web (webinar) berskala nasional."
+          "Mengelola infrastruktur teknis virtual (integrasi VMIX/Zoom) dan operasional siaran langsung (live streaming) untuk webinar berskala nasional."
         ]
       }
     ]
@@ -143,26 +143,26 @@
     "items": [
       {
         "school": "PT Lawencon Internasional",
-        "degree": "Pelatihan Intensif Pengembang Aplikasi Menyeluruh (Bootcamp Full Stack Developer)",
+        "degree": "Bootcamp Full Stack Developer",
         "year": "November 2023 – Januari 2024",
         "location": "Jakarta, Indonesia",
-        "desc": "Program rekayasa perangkat lunak (software engineering) intensif purna-waktu yang berfokus pada pengembangan aplikasi web tingkat perusahaan (enterprise web development) berbasis .NET dan Angular."
+        "desc": "Program pelatihan rekayasa perangkat lunak intensif yang berfokus pada pengembangan aplikasi web skala enterprise berbasis .NET dan Angular."
       },
       {
         "school": "Universitas Gunadarma",
-        "degree": "Sarjana Komputer (Bachelor of Engineering) - Sarjana Teknik Informatika",
+        "degree": "Sarjana Teknik Informatika (S.T.)",
         "year": "Juli 2016 – November 2020",
         "location": "Kota Depok, Indonesia",
-        "gpa": "3,54/4,00"
+        "gpa": "3.54/4.00"
       }
     ]
   },
   "certificates": {
     "title": "Sertifikat",
     "items": [
-      "Kursus Lengkap JavaScript 2023 / The Complete JavaScript Course 2023 (Udemy)",
-      "Sertifikat Kelas Belajar Reactjs (CodePolitan)",
-      "Pelatihan Intensif SQL Lengkap / The Complete SQL Bootcamp (Udemy)"
+      "The Complete JavaScript Course 2023 (Udemy)",
+      "Sertifikat Kelas Belajar React.js (CodePolitan)",
+      "The Complete SQL Bootcamp (Udemy)"
     ]
   },
   "contact": {
