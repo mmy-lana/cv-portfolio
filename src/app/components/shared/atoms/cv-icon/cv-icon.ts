@@ -32,7 +32,9 @@ export type CvIconName =
   | 'clock'
   | 'external-link'
   | 'rocket'
-  | 'book-open';
+  | 'book-open'
+  | 'globe'
+  | 'check';
 
 @Component({
   selector: 'app-cv-icon',
