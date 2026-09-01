@@ -13,7 +13,7 @@
         [class.hover:bg-slate-800]="themeService.isDarkMode()" [class.text-slate-200]="themeService.isDarkMode()"
         [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-slate-100]="!themeService.isDarkMode()"
         [class.hover:bg-slate-200]="!themeService.isDarkMode()" [class.text-slate-800]="!themeService.isDarkMode()">
-        <app-cv-icon name="back" size="w-3.5 h-3.5" />
+        <app-cv-icon name="arrow-left" size="w-3.5 h-3.5" />
         <span>All Themes</span>
       </button>
 
@@ -39,10 +39,12 @@
     <div class="md:hidden flex items-center space-x-2">
       <app-theme-mode-toggle />
       <button (click)="toggleMenu()"
-        class="p-2 rounded-xl border text-lg min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
+        class="p-2 rounded-xl border min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
         [class.border-slate-800]="themeService.isDarkMode()" [class.bg-slate-900]="themeService.isDarkMode()"
-        [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-slate-100]="!themeService.isDarkMode()">
-        {{ menuOpen() ? '✕' : '☰' }}
+        [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-slate-100]="!themeService.isDarkMode()"
+        [attr.aria-label]="menuOpen() ? 'Close menu' : 'Open menu'"
+        [attr.aria-expanded]="menuOpen()">
+        <app-cv-icon [name]="menuOpen() ? 'close' : 'menu'" size="w-5 h-5" />
       </button>
     </div>
   </div>
@@ -132,6 +134,6 @@
 <button (click)="scrollToTop()"
   class="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-black shadow-2xl flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 z-50 cursor-pointer"
   aria-label="Scroll to top">
-  ↑
+  <app-cv-icon name="arrow-up" size="w-5 h-5" />
 </button>
 }

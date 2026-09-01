@@ -75,3 +75,9 @@ __screenshots__/
 Thumbs.db
 .continue
 repomix-output.xml
+
+# ==========================================
+# 8. Ephemeral Working Documents
+# ==========================================
+PLAN.md
+AUDIT.md

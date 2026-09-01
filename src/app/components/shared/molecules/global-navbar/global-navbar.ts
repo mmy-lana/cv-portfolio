@@ -6,6 +6,7 @@ import { ThemeModeToggleComponent } from '../../atoms/theme-mode-toggle/theme-mo
 import { DownloadCvBtnComponent } from '../../atoms/download-cv-btn/download-cv-btn';
 import { DevDossierModalComponent } from '../dev-dossier-modal/dev-dossier-modal';
 import { CvLogoComponent } from '../../atoms/cv-logo/cv-logo';
+import { CvIcon } from '../../atoms/cv-icon/cv-icon';
 
 @Component({
   selector: 'app-global-navbar',
@@ -17,7 +18,8 @@ import { CvLogoComponent } from '../../atoms/cv-logo/cv-logo';
     DownloadCvBtnComponent,
     DevDossierModalComponent,
     CvLogoComponent,
-],
+    CvIcon,
+  ],
   templateUrl: './global-navbar.html'
 })
 export class GlobalNavbarComponent {

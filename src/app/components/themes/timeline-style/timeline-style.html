@@ -66,9 +66,10 @@
           [class.bg-cyan-950/60]="themeService.isDarkMode()"
           [class.border-cyan-800]="themeService.isDarkMode()"
           [class.text-[#00f3ff]]="themeService.isDarkMode()"
+          aria-label="Toggle sort order"
         >
           <span>ORDER: {{ sortOrder() === 'recent' ? 'NEWEST FIRST' : 'OLDEST FIRST' }}</span>
-          <span>⇅</span>
+          <app-cv-icon name="sort-asc-desc" size="w-3.5 h-3.5" />
         </button>
       </div>
 
@@ -136,9 +137,10 @@
                           class="inline-flex items-center gap-1.5 text-xs font-bold transition-colors cursor-pointer"
                           [class.text-blue-600]="!themeService.isDarkMode()"
                           [class.text-[#00f3ff]]="themeService.isDarkMode()"
+                          [attr.aria-expanded]="isExpanded('exp_' + idx)"
                         >
                           <span>{{ isExpanded('exp_' + idx) ? 'Collapse Details' : 'View Details' }}</span>
-                          <span class="text-sm">{{ isExpanded('exp_' + idx) ? '▲' : '▼' }}</span>
+                          <app-cv-icon [name]="isExpanded('exp_' + idx) ? 'chevron-up' : 'chevron-down'" size="w-3.5 h-3.5" />
                         </button>
 
                         @if (isExpanded('exp_' + idx)) {

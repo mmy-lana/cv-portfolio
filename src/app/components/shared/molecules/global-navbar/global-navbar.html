@@ -28,7 +28,8 @@
         [class.text-slate-700]="!themeService.isDarkMode()"
         [class.hover:text-slate-900]="!themeService.isDarkMode()"
       >
-        ← All Themes
+        <app-cv-icon name="arrow-left" size="w-3.5 h-3.5" />
+        <span>All Themes</span>
       </button>
     }
     <app-theme-mode-toggle />

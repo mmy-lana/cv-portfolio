@@ -9,7 +9,7 @@
 
 > **Live Demo:** [https://www.mmylana.my.id](https://www.mmylana.my.id)
 
-An enterprise-grade, multi-themed developer portfolio built with **Modern Angular v21**, **Zoneless Signals**, **Tailwind CSS v4**, **WebGL Shaders**, and **Atomic Component Architecture**. Single CV content engine rendered across **9 distinct UI/UX theme presets** (18 sub-modes total).
+An enterprise-grade, multi-themed developer portfolio built with **Modern Angular v21**, **Zoneless Signals**, **Tailwind CSS v4**, **WebGL Shaders**, and **Atomic Component Architecture**. Single CV content engine rendered across **9 distinct UI/UX theme presets** (18 sub-modes total), cross-linked into a fully interlinked production ecosystem of live project catalogs and engineering deep-dives.
 
 ---
 
@@ -29,6 +29,20 @@ An enterprise-grade, multi-themed developer portfolio built with **Modern Angula
 
 ---
 
+## 🌐 Production Ecosystem & Platforms
+
+This CV hub is the **control plane** of a fully interlinked, cross-navigable ecosystem of live platforms:
+
+| Platform | URL | Content |
+| :--- | :--- | :--- |
+| **CV Portfolio Hub** (Active Domain) | [https://www.mmylana.my.id](https://www.mmylana.my.id) | 9 Architecture Theme Presets — this repository |
+| **Flagship Project Catalog** | [https://portfolio.mmylana.my.id](https://portfolio.mmylana.my.id) | 110+ Web Applications & Diagnostics |
+| **Under The Hood Hub** | [https://underthehood.mmylana.my.id](https://underthehood.mmylana.my.id) | 285+ Deep-Dive Architectural Concepts |
+
+Every theme preset exposes cross-linked navigation to the **Flagship Project Catalog** and the **Under The Hood Hub** — via the global navbar, the mobile slide-out drawer, and the sidebar navigation ecosystem section — forming a single navigable mesh of portfolios, diagnostics, and engineering deep-dives. The live ecosystem badges (project catalog / under-the-hood) are also surfaced inside the **Holographic Developer Dossier** modal on the home gate.
+
+---
+
 ## 🚀 Key Technical Features
 
 - **Angular 21 Primitives:** Built with Standalone Components, reactive `signal()`, `input()`, `output()`, and `@defer (on viewport)` lazy-loading blocks with linear shimmer loading skeletons.
@@ -36,6 +50,8 @@ An enterprise-grade, multi-themed developer portfolio built with **Modern Angula
 - **Interactive CLI Terminal:** Fully functional retro command parser (`cat experience`, `cat skills`, `help`, `clear`, `download-cv`).
 - **Internationalization (i18n):** Instant translation switching between English (`EN`) and Bahasa Indonesia (`ID`) powered by `@ngx-translate`.
 - **Accessibility (WCAG 2.1 AA) & SEO:** Complete keyboard navigation (`Tab` / `focus-visible` rings), `prefers-reduced-motion` settings support, Open-Graph social cards, `sitemap.xml`, and `schema.org/Person` JSON-LD structured data.
+- **Unified Vector Icon System:** Every glyph — theme mode, navigation, sort toggles, and live ecosystem badges — is rendered by a single `app-cv-icon` atom with standardized Lucide-grade SVG paths (`viewBox 24x24`, `stroke="currentColor"`), inheriting color across all 9 theme presets and 18 sub-modes with zero emoji artifacts.
+- **Ecosystem Interlinking:** Native cross-navigation to the Flagship Project Catalog (110+ apps & diagnostics) and the Under The Hood engineering hub (285+ deep-dive topics) from every theme preset, mobile drawer, and dossier modal.
 - **Automated Testing Pipelines:** Comprehensive Playwright E2E accessibility suite (`@axe-core/playwright`) and Lighthouse CI performance monitoring integrated with GitHub Actions.
 
 ---
