@@ -1,0 +1,175 @@
+{
+  "home": {
+    "title": "Hiji Portofolio CV, Rupa-rupa Téma",
+    "subtitle": "Eusi informasi anu sami kalayan rupa-rupa gaya visual. Mangga pilih saluyu karesep anjeun.",
+    "badge": "Eusi CV Sami",
+    "explore": "Kotéktak"
+  },
+  "ecosystem": {
+    "title": "Ékosistem & Platform Live",
+    "subtitle": "Platform produksi, pakakas diagnostik, sareng puseur dokumentasi arsitektur",
+    "projects_title": "Katalog 110+ Proyék",
+    "projects_badge": "Aplikasi & Tools",
+    "projects_desc": "Katalog interaktif ngawengku 110+ aplikasi wéb, devtools, sareng pakakas diagnostik utami (leak-doctor, fetch-doctor).",
+    "uth_title": "Under The Hood",
+    "uth_badge": "Engineering Hub",
+    "uth_desc": "Pedaran jero arsitektur téknis ngawengku 285+ konsép rékayasa parangkat lunak kalawan pedaran lengkep."
+  },
+  "themes_data": {
+    "minimalist": {
+      "title": "Minimalis Beresih",
+      "description": "Tata perenah ringkes kalayan fokus utama kana kabacaan."
+    },
+    "cyberpunk": {
+      "title": "Cyberpunk Néon",
+      "description": "Tampilan futuristik kalayan cahaya néon sareng éfék visual matriks."
+    },
+    "glassmorphism": {
+      "title": "Glassmorphism",
+      "description": "Antarbeungeut kaca lemes kalayan éfék blur sareng jerona visual."
+    },
+    "dark": {
+      "title": "Poék Minimalis",
+      "description": "Téma poék élegan kalayan aksén cahaya dinamis."
+    },
+    "retro-computer": {
+      "title": "Komputer Klasik",
+      "description": "Antarbeungeut terminal klasik kalayan paréntah baris (CLI)."
+    },
+    "gradient-flow": {
+      "title": "Alur Gradasi",
+      "description": "Campuran warna gradasi dinamis nganggo WebGL mesh shader."
+    },
+    "sidebar-navigation": {
+      "title": "Navigasi Panel Gigir",
+      "description": "Tata perenah dumasar kana panel gigir kalayan jalan pintas gancang."
+    },
+    "parallax-scrolling": {
+      "title": "Gulung Paralaks",
+      "description": "Pangalaman visual interaktif dumasar kana jerona lapisan nalika ngagulung."
+    },
+    "timeline-style": {
+      "title": "Gaya Garis Wanci",
+      "description": "Penyajian rekam jejak karir dumasar kana runtuyan waktu terstruktur."
+    }
+  },
+  "about": {
+    "name": "Muhammad Maulana Yusuf",
+    "title": "Frontend Developer",
+    "summary": "Frontend Developer pangalaman kalayan kasang tukang atikan Téknik Informatika (IPK: 3.54). Gaduh rékam jejak anu kabuktosan dina ngarobih desain Figma kompléks janten aplikasi wéb enterprise anu responsif sareng kinerja saé. Pangalaman ngawangun sareng ngarawat modul perbankan korporasi (Bank Mandiri) sareng platform layanan pamaréntah (Bea Cukai) ngagunakeun Angular, React.js, sareng TypeScript.",
+    "location": "Bogor Kidul, Jawa Barat",
+    "email": "mmaulanayusuf777@gmail.com",
+    "phone": "+6281292316096",
+    "linkedin": "linkedin.com/in/muhammad-maulana-yusuf",
+    "github": "github.com/mmy-lana"
+  },
+  "experience": {
+    "title": "Pangalaman Gawé",
+    "items": [
+      {
+        "company": "Direktorat Jenderal Bea dan Cukai (Outsourced via PT Altros Teknologi)",
+        "role": "Frontend Developer",
+        "period": "Pébruari 2025 – Ayeuna",
+        "location": "Jakarta, Indonésia",
+        "desc": [
+          "Ngamekarkeun sareng ngarawat modul microfrontend inti dina sistem CEISA 4.0 sareng Portal Pengguna Jasa ngagunakeun React.js sareng Ant Design.",
+          "Gawé bareng raket sareng tim backend dina integrasi RESTful API pikeun mastikeun kaamanan data sareng responsivitas antarbeungeut.",
+          "Nganalisis, ngalakukeun debugging, sareng ngabereskeun masalah téknis kritis pikeun ningkatkeun stabilitas platform pikeun pamaké éksternal."
+        ]
+      },
+      {
+        "company": "PT Bank Mandiri (Persero) Tbk (Outsourced via PT Lawencon International)",
+        "role": "Software Engineer",
+        "period": "April 2024 – Désémber 2024",
+        "location": "Jakarta, Indonésia",
+        "desc": [
+          "Ngamekarkeun modul frontend perbankan korporasi (Export Letter of Credit, Document Tracker, Auto-Debit, EIPP, sareng VA Collection) ngagunakeun Angular sareng TypeScript.",
+          "Ngawangun komponén antarbeungeut anu responsif sareng modular dumasar kana Tailwind CSS saluyu sareng spésifikasi desain Figma.",
+          "Ilubiung dina code review tim, ngaoptimalkeun arsitektur modular komponén, sareng nyusun dokuméntasi téknis dina Confluence."
+        ]
+      },
+      {
+        "company": "PT Lawencon Internasional",
+        "role": "Frontend Developer",
+        "period": "Pébruari 2024 – Maret 2024",
+        "location": "Jakarta, Indonésia",
+        "desc": [
+          "Ngamekarkeun fitur frontend HRIS (Linov) pikeun modul payroll, presénsi, sareng manajemén karyawan ngagunakeun Angular sareng PrimeNG.",
+          "Ngarobih wireframe janten antarbeungeut modular anu responsif pikeun ningkatkeun kapulihan sareng éfisiénsi basis kode."
+        ]
+      },
+      {
+        "company": "PT Dyandra Promosindo",
+        "role": "Project Officer",
+        "period": "Juni 2021 – Nopémber 2022",
+        "location": "Jakarta, Indonésia",
+        "desc": [
+          "Ngalarapkeun infrastruktur téknis virtual (integrasi VMIX/Zoom) sareng operasional siaran langsung (live streaming) pikeun webinar skala nasional."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Kaahlian",
+    "languages": [
+      "C#",
+      "CSS3",
+      "HTML5",
+      "JavaScript",
+      "SQL",
+      "TypeScript"
+    ],
+    "frameworks": [
+      "Angular",
+      "Ant Design",
+      "Next.js",
+      "PrimeNG",
+      "React.js",
+      "Svelte",
+      "Tailwind CSS",
+      "Vue"
+    ],
+    "tools": [
+      "Bitbucket",
+      "Confluence",
+      "Git",
+      "GitHub",
+      "GitLab",
+      "Jira"
+    ]
+  },
+  "education": {
+    "title": "Atikan",
+    "items": [
+      {
+        "school": "PT Lawencon Internasional",
+        "degree": "Bootcamp Full Stack Developer",
+        "year": "Nopémber 2023 – Januari 2024",
+        "location": "Jakarta, Indonésia",
+        "desc": "Program latihan rékayasa parangkat lunak intensif anu museur kana pamekaran aplikasi wéb skala enterprise dumasar .NET sareng Angular."
+      },
+      {
+        "school": "Universitas Gunadarma",
+        "degree": "Sarjana Téknik Informatika (S.T.)",
+        "year": "Juli 2016 – Nopémber 2020",
+        "location": "Kota Dépok, Indonésia",
+        "gpa": "3.54/4.00"
+      }
+    ]
+  },
+  "certificates": {
+    "title": "Sertipikat",
+    "items": [
+      "The Complete JavaScript Course 2023 (Udemy)",
+      "Sertifikat Kelas Belajar React.js (CodePolitan)",
+      "The Complete SQL Bootcamp (Udemy)"
+    ]
+  },
+  "contact": {
+    "title": "Kontak",
+    "email": "mmaulanayusuf777@gmail.com",
+    "phone": "+6281292316096",
+    "linkedin": "linkedin.com/in/muhammad-maulana-yusuf",
+    "github": "github.com/mmy-lana"
+  }
+}
