@@ -6,21 +6,21 @@
   [class.text-white]="themeService.isDarkMode()"
   style="--nav-bg: rgba(15, 23, 42, 0.45); --nav-text: #f8fafc; --nav-border: rgba(255, 255, 255, 0.12); --cv-primary: #06b6d4; --cv-accent: #ec4899"
 >
-  <!-- Floating Ambient Gradient Spheres -->
+<!-- Floating Ambient Gradient Spheres -->
   <div 
-    class="fixed top-[-10%] left-[-10%] w-[55vw] h-[55vw] rounded-full blur-[130px] pointer-events-none animate-ambient-1 z-0 transition-colors"
-    [class.bg-cyan-400/30]="!themeService.isDarkMode()"
-    [class.bg-cyan-500/20]="themeService.isDarkMode()"
+    class="fixed top-[-5%] left-[-10%] w-[85vw] h-[85vw] sm:w-[55vw] sm:h-[55vw] rounded-full blur-[70px] sm:blur-[130px] pointer-events-none animate-ambient-1 z-0 transition-colors"
+    [class.bg-cyan-400/50]="!themeService.isDarkMode()"
+    [class.bg-cyan-500/35]="themeService.isDarkMode()"
   ></div>
   <div 
-    class="fixed bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full blur-[140px] pointer-events-none animate-ambient-2 z-0 transition-colors"
-    [class.bg-pink-400/25]="!themeService.isDarkMode()"
-    [class.bg-pink-500/15]="themeService.isDarkMode()"
+    class="fixed bottom-[-5%] right-[-10%] w-[80vw] h-[80vw] sm:w-[50vw] sm:h-[50vw] rounded-full blur-[80px] sm:blur-[140px] pointer-events-none animate-ambient-2 z-0 transition-colors"
+    [class.bg-pink-400/40]="!themeService.isDarkMode()"
+    [class.bg-pink-500/30]="themeService.isDarkMode()"
   ></div>
   <div 
-    class="fixed top-[35%] right-[10%] w-[35vw] h-[35vw] rounded-full blur-[110px] pointer-events-none animate-ambient-3 z-0 transition-colors"
-    [class.bg-purple-400/25]="!themeService.isDarkMode()"
-    [class.bg-purple-600/15]="themeService.isDarkMode()"
+    class="fixed top-[30%] right-[-5%] w-[65vw] h-[65vw] sm:w-[35vw] sm:h-[35vw] rounded-full blur-[65px] sm:blur-[110px] pointer-events-none animate-ambient-3 z-0 transition-colors"
+    [class.bg-purple-400/40]="!themeService.isDarkMode()"
+    [class.bg-purple-600/30]="themeService.isDarkMode()"
   ></div>
 
   <app-theme-nav class="print:hidden z-30 relative" />
@@ -31,8 +31,8 @@
       id="about" 
       (mousemove)="onMouseMove($event)"
       class="max-w-4xl mx-auto space-y-6 glass-card glass-spotlight p-8 md:p-10 rounded-3xl animate-fade-in-up"
-      [class.bg-white/70]="!themeService.isDarkMode()"
-      [class.border-white/80]="!themeService.isDarkMode()"
+      [class.bg-white/40]="!themeService.isDarkMode()"
+      [class.border-white/60]="!themeService.isDarkMode()"
       [class.shadow-xl]="!themeService.isDarkMode()"
     >
       <div class="space-y-3">
