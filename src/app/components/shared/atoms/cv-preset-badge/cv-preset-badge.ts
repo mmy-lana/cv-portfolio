@@ -47,7 +47,7 @@ export class CvPresetBadgeComponent {
 
     const themeStyles: Record<string, { light: string; dark: string }> = {
       cyberpunk: {
-        light: 'bg-teal-50 text-[#008b8b] border-[#008b8b]/40',
+        light: 'bg-teal-50 text-[#006666] border-[#006666]/40',
         dark: 'bg-black/80 text-[#00ff41] border-[#00ff41]/50 shadow-[0_0_8px_rgba(0,255,65,0.3)]'
       },
       glassmorphism: {
