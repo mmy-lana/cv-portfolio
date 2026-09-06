@@ -84,7 +84,16 @@ export class RetroComputer implements OnInit {
   }
 
   focusInput(): void {
-    this.commandInput()?.nativeElement.focus();
+    const input = this.commandInput()?.nativeElement;
+    if (input) {
+      input.focus();
+    }
+  }
+
+  onInputFocus(): void {
+    setTimeout(() => {
+      this.scrollToBottom();
+    }, 150);
   }
 
   private triggerDownload(): void {

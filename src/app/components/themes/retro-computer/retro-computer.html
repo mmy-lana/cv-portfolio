@@ -10,10 +10,10 @@
 >
   <app-theme-nav (sectionSelect)="executeCommand($event)" class="print:hidden z-30 relative shrink-0" />
 
-  <main class="flex-1 min-h-0 w-full max-w-5xl mx-auto px-4 md:px-8 py-4 md:py-6 flex flex-col relative z-10" (click)="focusInput()">
+  <main class="flex-1 min-h-0 w-full max-w-5xl mx-auto px-2 sm:px-4 md:px-8 py-2 sm:py-4 md:py-6 flex flex-col relative z-10">
     <!-- RETRO DESKTOP WINDOW FRAME -->
     <div 
-      class="w-full flex-1 min-h-0 flex flex-col rounded-none shadow-2xl transition-all duration-300 overflow-hidden border-4"
+      class="w-full flex-1 min-h-0 flex flex-col rounded-none shadow-2xl transition-all duration-300 overflow-hidden border-2 sm:border-4"
       [class.border-outset-ibm]="!themeService.isDarkMode()"
       [class.bg-[#eae5d9]]="!themeService.isDarkMode()"
       [class.border-[#00ff66]/40]="themeService.isDarkMode()"
@@ -22,7 +22,7 @@
     >
       <!-- WINDOW TITLE BAR HUD HEADER -->
       <div 
-        class="shrink-0 px-4 py-2 flex flex-wrap items-center justify-between gap-2 select-none"
+        class="shrink-0 px-3 sm:px-4 py-2 flex items-center justify-between gap-2 select-none overflow-hidden"
         [class.bg-[#003399]]="!themeService.isDarkMode()"
         [class.text-white]="!themeService.isDarkMode()"
         [class.bg-[#1a1a1a]]="themeService.isDarkMode()"
@@ -30,35 +30,40 @@
         [class.border-[#00ff66]/40]="themeService.isDarkMode()"
         [class.text-[#00ff66]]="themeService.isDarkMode()"
       >
-        <div class="flex items-center space-x-2">
-          <span class="inline-block w-3 h-3 rounded-none bg-red-500 border border-black/40"></span>
-          <span class="inline-block w-3 h-3 rounded-none bg-yellow-500 border border-black/40"></span>
-          <span class="inline-block w-3 h-3 rounded-none bg-green-500 border border-black/40"></span>
-          <span class="text-xs font-bold uppercase tracking-widest ml-2">
-            {{ themeService.isDarkMode() ? 'HACKER TERMINAL v21.0 // VT100' : 'IBM PC DOS v3.30 — [C:\\PORTFOLIO\\CV.EXE]' }}
+        <div class="flex items-center space-x-2 min-w-0 overflow-hidden">
+          <div class="flex items-center space-x-1 shrink-0">
+            <span class="inline-block w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-none bg-red-500 border border-black/40"></span>
+            <span class="inline-block w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-none bg-yellow-500 border border-black/40"></span>
+            <span class="inline-block w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-none bg-green-500 border border-black/40"></span>
+          </div>
+          <span class="text-[11px] sm:text-xs font-bold uppercase tracking-widest truncate">
+            {{ themeService.isDarkMode() ? 'HACKER TERMINAL v21.0' : 'IBM PC DOS v3.30' }}
           </span>
         </div>
-        <div class="flex items-center space-x-3 text-[11px] font-bold">
-          <app-cv-preset-badge themeId="retro-computer" />
+        <div class="flex items-center space-x-2 shrink-0 text-[10px] sm:text-[11px] font-bold">
+          <div class="hidden sm:block">
+            <app-cv-preset-badge themeId="retro-computer" />
+          </div>
           <span class="px-2 py-0.5 uppercase tracking-widest animate-pulse" [class.bg-white]="!themeService.isDarkMode()" [class.text-[#003399]]="!themeService.isDarkMode()" [class.bg-[#00ff66]]="themeService.isDarkMode()" [class.text-black]="themeService.isDarkMode()">ONLINE</span>
         </div>
       </div>
 
-      <!-- QUICK COMMAND PILLS -->
+      <!-- HORIZONTALLY SCROLLABLE QUICK COMMAND STRIP -->
       <div 
-        class="shrink-0 p-3 flex flex-wrap gap-2 text-xs font-bold border-b"
+        class="shrink-0 p-2 sm:p-2.5 flex items-center gap-2 overflow-x-auto border-b select-none scrollbar-none"
         [class.bg-[#e2ddcf]]="!themeService.isDarkMode()"
         [class.border-[#d6d1c4]]="!themeService.isDarkMode()"
         [class.bg-[#161616]]="themeService.isDarkMode()"
         [class.border-[#00ff66]/20]="themeService.isDarkMode()"
       >
-        <span [class.text-[#2c221e]/70]="!themeService.isDarkMode()" [class.text-[#00ff66]/70]="themeService.isDarkMode()" class="self-center text-[11px]">
-          SUGGESTIONS:
+        <span [class.text-[#2c221e]/70]="!themeService.isDarkMode()" [class.text-[#00ff66]/70]="themeService.isDarkMode()" class="text-[10px] sm:text-[11px] font-bold shrink-0 hidden sm:inline">
+          PROMPT:
         </span>
         @for (cmd of quickCommands; track cmd) {
           <button
+            type="button"
             (click)="executeCommand(cmd)"
-            class="px-2.5 py-1 text-xs font-bold border-2 transition-all duration-150 cursor-pointer select-none"
+            class="min-h-11 sm:min-h-9 px-3 py-1.5 text-xs font-bold border-2 transition-all duration-150 cursor-pointer shrink-0 flex items-center whitespace-nowrap active:scale-95"
             [class.bg-[#f5f2eb]]="!themeService.isDarkMode()"
             [class.text-[#2c221e]]="!themeService.isDarkMode()"
             [class.border-outset-btn]="!themeService.isDarkMode()"
@@ -212,22 +217,26 @@
           </div>
         }
 
-        <!-- CLI ACTIVE INPUT PROMPT LINE -->
-        <form (submit)="$event.preventDefault(); executeCommand()" class="flex items-center gap-2 pt-2">
-          <span class="font-bold text-xs" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()">C:\GUEST></span>
+        <!-- CLI ACTIVE INPUT PROMPT LINE (TAP TARGET OPTIMIZED) -->
+        <form (submit)="$event.preventDefault(); executeCommand()" (click)="focusInput()" class="flex items-center gap-2 pt-3 pb-2 min-h-11 cursor-text">
+          <span class="font-bold text-xs shrink-0" [class.text-[#003399]]="!themeService.isDarkMode()" [class.text-[#00ff66]]="themeService.isDarkMode()">C:\GUEST></span>
           <input
             #commandInput
             type="text"
+            inputmode="text"
+            (focus)="onInputFocus()"
             [ngModel]="inputQuery()"
             (ngModelChange)="inputQuery.set($event)"
             name="cliInput"
-            class="flex-1 bg-transparent border-none outline-none font-mono text-sm caret-transparent"
+            class="flex-1 min-w-0 bg-transparent border-none outline-none font-mono text-xs sm:text-sm caret-transparent"
             [class.text-[#2c221e]]="!themeService.isDarkMode()"
             [class.text-[#00ff66]]="themeService.isDarkMode()"
             autocomplete="off"
-            autofocus
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
           />
-          <span class="w-2.5 h-4 cursor-blink inline-block -ml-2" [class.bg-[#003399]]="!themeService.isDarkMode()" [class.bg-[#00ff66]]="themeService.isDarkMode()"></span>
+          <span class="w-2 sm:w-2.5 h-3.5 sm:h-4 cursor-blink inline-block shrink-0 -ml-2" [class.bg-[#003399]]="!themeService.isDarkMode()" [class.bg-[#00ff66]]="themeService.isDarkMode()"></span>
         </form>
       </div>
     </div>
