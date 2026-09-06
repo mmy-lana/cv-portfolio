@@ -30,6 +30,9 @@ html:not(.dark), html:not(.dark) body {
 }
 
 @theme {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
   --color-cv-primary: var(--cv-primary);
   --color-cv-bg: var(--cv-bg);
   --color-cv-accent: var(--cv-accent);

@@ -18,7 +18,7 @@
         @if (!isCollapsed()) {
           <div class="overflow-hidden">
             <p class="font-bold text-sm truncate leading-tight">{{ 'about.name' | translate }}</p>
-            <p class="text-[11px] font-semibold truncate" [class.text-sky-400]="themeService.isDarkMode()" [class.text-blue-600]="!themeService.isDarkMode()">{{ 'about.title' | translate }}</p>
+            <p class="text-xs font-semibold truncate" [class.text-sky-400]="themeService.isDarkMode()" [class.text-blue-600]="!themeService.isDarkMode()">{{ 'about.title' | translate }}</p>
           </div>
         }
       </div>
