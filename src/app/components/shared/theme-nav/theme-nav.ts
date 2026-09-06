@@ -41,12 +41,12 @@ export class ThemeNav {
   }
 
   sections = [
-    { id: 'about', label: 'about.name' },
-    { id: 'experience', label: 'experience.title' },
-    { id: 'skills', label: 'skills.title' },
-    { id: 'education', label: 'education.title' },
-    { id: 'certificates', label: 'certificates.title' },
-    { id: 'contact', label: 'contact.title' }
+    { id: 'about', label: 'nav.about' },
+    { id: 'experience', label: 'nav.experience' },
+    { id: 'skills', label: 'nav.skills' },
+    { id: 'education', label: 'nav.education' },
+    { id: 'certificates', label: 'nav.certificates' },
+    { id: 'contact', label: 'nav.contact' }
   ];
 
   goHome(): void {

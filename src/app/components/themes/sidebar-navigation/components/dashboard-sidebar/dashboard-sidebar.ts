@@ -48,12 +48,12 @@ export class DashboardSidebar {
   private router = inject(Router);
 
   navItems: NavItem[] = [
-    { id: 'about', labelKey: 'about.name', icon: 'gpa', shortcut: '1' },
-    { id: 'experience', labelKey: 'experience.title', icon: 'calendar', shortcut: '2' },
-    { id: 'skills', labelKey: 'skills.title', icon: 'arrow-right', shortcut: '3' },
-    { id: 'education', labelKey: 'education.title', icon: 'gpa', shortcut: '4' },
-    { id: 'certificates', labelKey: 'certificates.title', icon: 'gpa', shortcut: '5' },
-    { id: 'contact', labelKey: 'contact.title', icon: 'email', shortcut: '6' }
+    { id: 'about', labelKey: 'nav.about', icon: 'gpa', shortcut: '1' },
+    { id: 'experience', labelKey: 'nav.experience', icon: 'calendar', shortcut: '2' },
+    { id: 'skills', labelKey: 'nav.skills', icon: 'arrow-right', shortcut: '3' },
+    { id: 'education', labelKey: 'nav.education', icon: 'gpa', shortcut: '4' },
+    { id: 'certificates', labelKey: 'nav.certificates', icon: 'gpa', shortcut: '5' },
+    { id: 'contact', labelKey: 'nav.contact', icon: 'email', shortcut: '6' }
   ];
 
   goBack(): void {

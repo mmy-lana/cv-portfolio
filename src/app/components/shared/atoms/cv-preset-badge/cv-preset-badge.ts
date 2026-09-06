@@ -55,7 +55,7 @@ export class CvPresetBadgeComponent {
         dark: 'bg-white/10 text-cyan-300 border-white/20 backdrop-blur-md shadow-sm'
       },
       dark: {
-        light: 'bg-indigo-50 text-indigo-700 border-indigo-200',
+        light: 'bg-indigo-50 text-indigo-800 border-indigo-200',
         dark: 'bg-indigo-950/80 text-indigo-300 border-indigo-800/60'
       },
       'retro-computer': {

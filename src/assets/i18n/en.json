@@ -29,8 +29,8 @@
       "description": "Soft glass UI with blur."
     },
     "dark": {
-      "title": "Dark Minimal",
-      "description": "Elegant dark theme."
+      "title": "Eclipse Minimal",
+      "description": "High-contrast theme with dynamic radial cursor luminescence."
     },
     "retro-computer": {
       "title": "Retro Computer",
@@ -112,6 +112,14 @@
   "actions": {
     "download_cv": "Download CV",
     "all_themes": "All Themes"
+  },
+  "nav": {
+    "about": "About Me",
+    "experience": "Experience",
+    "skills": "Skills",
+    "education": "Education",
+    "certificates": "Certificates",
+    "contact": "Contact"
   },
   "skills": {
     "title": "Skills",

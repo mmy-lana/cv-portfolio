@@ -1,4 +1,4 @@
-import { Component, signal, HostListener, ElementRef, inject } from '@angular/core';
+import { Component, signal, HostListener, ElementRef, inject, Input } from '@angular/core';
 import { LanguageService, LanguageOption } from '../../../../services/language.service';
 import { ThemeService } from '../../../../services/theme.service';
 import { CvIcon } from '../cv-icon/cv-icon';
@@ -31,7 +31,13 @@ import { CvIcon } from '../cv-icon/cv-icon';
 
       @if (isOpen()) {
         <div
-          class="absolute right-0 mt-2 w-48 rounded-2xl border p-2 shadow-2xl backdrop-blur-xl z-50 animate-fade-in-up duration-200"
+          class="absolute w-48 rounded-2xl border p-2 shadow-2xl backdrop-blur-xl z-50 animate-fade-in-up duration-200"
+          [class.top-full]="position === 'down'"
+          [class.mt-2]="position === 'down'"
+          [class.bottom-full]="position === 'up'"
+          [class.mb-2]="position === 'up'"
+          [class.right-0]="align === 'right'"
+          [class.left-0]="align === 'left'"
           [class.bg-slate-950/95]="themeService.isDarkMode()"
           [class.border-slate-800]="themeService.isDarkMode()"
           [class.text-white]="themeService.isDarkMode()"
@@ -75,6 +81,9 @@ export class LanguageToggleComponent {
   public lang = inject(LanguageService);
   public themeService = inject(ThemeService);
   private elementRef = inject(ElementRef);
+
+  @Input() position: 'down' | 'up' = 'down';
+  @Input() align: 'left' | 'right' = 'right';
 
   isOpen = signal<boolean>(false);
 

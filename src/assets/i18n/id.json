@@ -29,8 +29,8 @@
       "description": "Antarmuka kaca lembut dengan efek blur dan kedalaman visual."
     },
     "dark": {
-      "title": "Dark Minimal",
-      "description": "Tema gelap elegan dengan aksen pencahayaan dinamis."
+      "title": "Eclipse Minimal",
+      "description": "Tema kontras tinggi dengan aksen pencahayaan kursor dinamis."
     },
     "retro-computer": {
       "title": "Komputer Retro",
@@ -112,6 +112,14 @@
   "actions": {
     "download_cv": "Unduh CV",
     "all_themes": "Semua Tema"
+  },
+  "nav": {
+    "about": "Tentang Saya",
+    "experience": "Pengalaman",
+    "skills": "Keahlian",
+    "education": "Pendidikan",
+    "certificates": "Sertifikat",
+    "contact": "Kontak"
   },
   "skills": {
     "title": "Keahlian",

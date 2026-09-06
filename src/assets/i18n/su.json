@@ -29,8 +29,8 @@
       "description": "Antarbeungeut kaca lemes kalayan éfék blur sareng jerona visual."
     },
     "dark": {
-      "title": "Poék Minimalis",
-      "description": "Téma poék élegan kalayan aksén cahaya dinamis."
+      "title": "Eclipse Minimalis",
+      "description": "Téma kontras luhur kalayan aksén cahaya kursor dinamis."
     },
     "retro-computer": {
       "title": "Komputer Klasik",
@@ -112,6 +112,14 @@
   "actions": {
     "download_cv": "Unduh CV",
     "all_themes": "Sadaya Téma"
+  },
+  "nav": {
+    "about": "Ngeunaan Simkuring",
+    "experience": "Pangalaman",
+    "skills": "Kaahlian",
+    "education": "Atikan",
+    "certificates": "Sertipikat",
+    "contact": "Kontak"
   },
   "skills": {
     "title": "Kaahlian",
