@@ -25,7 +25,7 @@
   >
     <!-- STICKY TOP BREADCRUMB BAR -->
     <div 
-      class="sticky top-0 z-30 flex items-center justify-between py-3 px-4 -mx-4 md:-mx-12 mb-8 border-b backdrop-blur-md transition-colors duration-200 text-xs font-medium"
+      class="sticky top-[53px] md:top-0 z-30 flex items-center justify-between py-3 px-4 -mx-4 md:-mx-12 mb-8 border-b backdrop-blur-md transition-colors duration-200 text-xs font-medium"
       [class.bg-[#0f172a]/90]="themeService.isDarkMode()"
       [class.border-[#1e293b]]="themeService.isDarkMode()"
       [class.text-slate-400]="themeService.isDarkMode()"
@@ -215,27 +215,27 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a [href]="'mailto:' + ('contact.email' | translate)" class="dashboard-card p-4 md:p-5 rounded-2xl flex items-center space-x-2.5">
-          <app-cv-icon name="email" class="text-blue-500 shrink-0" size="w-5 h-5" />
-          <div class="overflow-hidden min-w-0">
+        <a [href]="'mailto:' + ('contact.email' | translate)" class="dashboard-card p-6 rounded-2xl flex items-center space-x-4 min-h-[88px]">
+          <app-cv-icon name="email" class="text-blue-500 shrink-0" size="w-6 h-6" />
+          <div class="overflow-hidden min-w-0 flex-1">
             <p class="text-[10px] font-bold uppercase" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">Email</p>
-            <p class="text-[10px] sm:text-xs lg:text-[11px] xl:text-xs font-bold tracking-tight whitespace-nowrap" [class.text-white]="themeService.isDarkMode()" [class.text-slate-800]="!themeService.isDarkMode()">{{ 'contact.email' | translate }}</p>
+            <p class="text-sm font-bold truncate" [class.text-white]="themeService.isDarkMode()" [class.text-slate-800]="!themeService.isDarkMode()" [attr.title]="'contact.email' | translate">{{ 'contact.email' | translate }}</p>
           </div>
         </a>
 
-        <a [href]="'tel:' + ('contact.phone' | translate)" class="dashboard-card p-6 rounded-2xl flex items-center space-x-4">
-          <app-cv-icon name="phone" class="text-blue-500" size="w-6 h-6" />
-          <div>
+        <a [href]="'tel:' + ('contact.phone' | translate)" class="dashboard-card p-6 rounded-2xl flex items-center space-x-4 min-h-[88px]">
+          <app-cv-icon name="phone" class="text-blue-500 shrink-0" size="w-6 h-6" />
+          <div class="overflow-hidden min-w-0 flex-1">
             <p class="text-[10px] font-bold uppercase" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">Phone</p>
-            <p class="text-xs font-bold" [class.text-white]="themeService.isDarkMode()" [class.text-slate-800]="!themeService.isDarkMode()">{{ 'contact.phone' | translate }}</p>
+            <p class="text-sm font-bold truncate" [class.text-white]="themeService.isDarkMode()" [class.text-slate-800]="!themeService.isDarkMode()">{{ 'contact.phone' | translate }}</p>
           </div>
         </a>
 
-        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="dashboard-card p-6 rounded-2xl flex items-center space-x-4">
-          <app-cv-icon name="linkedin" class="text-blue-500" size="w-6 h-6" />
-          <div>
+        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="dashboard-card p-6 rounded-2xl flex items-center space-x-4 min-h-[88px]">
+          <app-cv-icon name="linkedin" class="text-blue-500 shrink-0" size="w-6 h-6" />
+          <div class="overflow-hidden min-w-0 flex-1">
             <p class="text-[10px] font-bold uppercase" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">LinkedIn</p>
-            <p class="text-xs font-bold" [class.text-white]="themeService.isDarkMode()" [class.text-slate-800]="!themeService.isDarkMode()">Connect</p>
+            <p class="text-sm font-bold truncate" [class.text-white]="themeService.isDarkMode()" [class.text-slate-800]="!themeService.isDarkMode()">Connect</p>
           </div>
         </a>
       </div>

@@ -61,23 +61,41 @@
       <!-- EXTERNAL ECOSYSTEM PLATFORMS -->
       @if (!isCollapsed()) {
         <div class="pt-4 space-y-1">
-          <p class="px-3 text-[10px] font-bold font-mono text-slate-400 uppercase tracking-wider">ECOSYSTEM</p>
+          <p class="px-3 text-[10px] font-bold font-mono uppercase tracking-wider transition-colors" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">ECOSYSTEM</p>
           <a href="https://portfolio.mmylana.my.id" target="_blank" rel="noopener noreferrer"
-            class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-colors hover:bg-amber-950/30 text-amber-300">
+            class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-colors border"
+            [class.bg-amber-950/20]="themeService.isDarkMode()"
+            [class.border-amber-500/20]="themeService.isDarkMode()"
+            [class.text-amber-300]="themeService.isDarkMode()"
+            [class.hover:bg-amber-950/40]="themeService.isDarkMode()"
+            [class.bg-amber-50]="!themeService.isDarkMode()"
+            [class.border-amber-200]="!themeService.isDarkMode()"
+            [class.text-amber-900]="!themeService.isDarkMode()"
+            [class.hover:bg-amber-100]="!themeService.isDarkMode()"
+          >
             <div class="flex items-center space-x-3">
-              <app-cv-icon name="rocket" size="w-4 h-4" class="text-amber-400" />
+              <app-cv-icon name="rocket" size="w-4 h-4" [class.text-amber-400]="themeService.isDarkMode()" [class.text-amber-700]="!themeService.isDarkMode()" />
               <span class="truncate">110+ Projects</span>
             </div>
-            <app-cv-icon name="external-link" size="w-3 h-3" class="opacity-60" />
+            <app-cv-icon name="external-link" size="w-3 h-3" [class.text-amber-400]="themeService.isDarkMode()" [class.text-amber-700]="!themeService.isDarkMode()" class="opacity-70" />
           </a>
 
           <a href="https://underthehood.mmylana.my.id" target="_blank" rel="noopener noreferrer"
-            class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-colors hover:bg-emerald-950/30 text-emerald-300">
+            class="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-colors border"
+            [class.bg-emerald-950/20]="themeService.isDarkMode()"
+            [class.border-emerald-500/20]="themeService.isDarkMode()"
+            [class.text-emerald-300]="themeService.isDarkMode()"
+            [class.hover:bg-emerald-950/40]="themeService.isDarkMode()"
+            [class.bg-emerald-50]="!themeService.isDarkMode()"
+            [class.border-emerald-200]="!themeService.isDarkMode()"
+            [class.text-emerald-900]="!themeService.isDarkMode()"
+            [class.hover:bg-emerald-100]="!themeService.isDarkMode()"
+          >
             <div class="flex items-center space-x-3">
-              <app-cv-icon name="book-open" size="w-4 h-4" class="text-emerald-400" />
+              <app-cv-icon name="book-open" size="w-4 h-4" [class.text-emerald-400]="themeService.isDarkMode()" [class.text-emerald-700]="!themeService.isDarkMode()" />
               <span class="truncate">Under The Hood</span>
             </div>
-            <app-cv-icon name="external-link" size="w-3 h-3" class="opacity-60" />
+            <app-cv-icon name="external-link" size="w-3 h-3" [class.text-emerald-400]="themeService.isDarkMode()" [class.text-emerald-700]="!themeService.isDarkMode()" class="opacity-70" />
           </a>
         </div>
       }
@@ -89,7 +107,7 @@
     @if (!isCollapsed()) {
       <div class="space-y-3">
         <div class="flex items-center justify-between gap-1 text-xs font-bold px-1">
-          <button (click)="goBack()" class="h-9 px-3.5 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 border-slate-800 bg-slate-900 text-slate-300 hover:text-white hover:border-slate-700 select-none" aria-label="Back to Themes">
+          <button (click)="goBack()" class="h-9 px-3.5 rounded-xl border text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 select-none" [class.border-slate-800]="themeService.isDarkMode()" [class.bg-slate-900]="themeService.isDarkMode()" [class.text-slate-300]="themeService.isDarkMode()" [class.hover:border-slate-700]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-white]="!themeService.isDarkMode()" [class.text-slate-700]="!themeService.isDarkMode()" [class.hover:bg-slate-100]="!themeService.isDarkMode()" aria-label="Back to Themes">
             <app-cv-icon name="arrow-left" size="w-3.5 h-3.5" />
             <!-- <span>Themes</span> -->
           </button>
@@ -118,9 +136,9 @@
 </aside>
 
 <!-- MOBILE TOPBAR -->
-<div class="md:hidden fixed top-0 left-0 w-full flex items-center justify-between px-4 py-3 z-40 border-b shadow-sm" [class.bg-[#020617]]="themeService.isDarkMode()" [class.border-[#1e293b]]="themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()" [class.bg-[#f1f5f9]]="!themeService.isDarkMode()" [class.border-[#e2e8f0]]="!themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
+<div class="md:hidden fixed top-0 left-0 w-full flex items-center justify-between px-4 py-2.5 z-40 border-b shadow-sm" [class.bg-[#020617]]="themeService.isDarkMode()" [class.border-[#1e293b]]="themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()" [class.bg-[#f1f5f9]]="!themeService.isDarkMode()" [class.border-[#e2e8f0]]="!themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
   <div class="flex items-center space-x-2 overflow-hidden">
-    <button (click)="goBack()" class="flex items-center gap-1 text-xs font-bold px-2 py-1 rounded-lg cursor-pointer shrink-0" [class.bg-slate-800]="themeService.isDarkMode()" [class.text-slate-300]="themeService.isDarkMode()" [class.bg-slate-200]="!themeService.isDarkMode()" [class.text-slate-700]="!themeService.isDarkMode()">
+    <button (click)="goBack()" class="min-h-11 px-3 py-2 flex items-center gap-1.5 text-xs font-bold rounded-xl cursor-pointer shrink-0 select-none" [class.bg-slate-800]="themeService.isDarkMode()" [class.text-slate-200]="themeService.isDarkMode()" [class.bg-slate-200]="!themeService.isDarkMode()" [class.text-slate-800]="!themeService.isDarkMode()">
       <app-cv-icon name="arrow-left" size="w-3.5 h-3.5" />
       <span>Themes</span>
     </button>

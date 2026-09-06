@@ -55,6 +55,7 @@ export class ParallaxScrolling implements AfterViewInit, OnDestroy {
   }
 
   private async initGSAPParallax(): Promise<void> {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     try {
       const gsapModule = await import('gsap');
       const scrollTriggerModule = await import('gsap/ScrollTrigger');
@@ -62,6 +63,24 @@ export class ParallaxScrolling implements AfterViewInit, OnDestroy {
       const ScrollTrigger = scrollTriggerModule.ScrollTrigger || scrollTriggerModule.default;
 
       gsap.registerPlugin(ScrollTrigger);
+      
+      ScrollTrigger.config({ ignoreMobileResize: true });
+      
+      gsap.utils.toArray<HTMLElement>('.parallax-bg-img').forEach((el) => {
+        gsap.fromTo(el,
+          { yPercent: -12 },
+          {
+            yPercent: 12,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: el.parentElement,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true
+            }
+          }
+        );
+      });
 
       gsap.utils.toArray<HTMLElement>('.parallax-bg-text').forEach((el) => {
         gsap.to(el, {
@@ -111,6 +130,7 @@ export class ParallaxScrolling implements AfterViewInit, OnDestroy {
   }
 
   onTiltMove(event: MouseEvent): void {
+    if (typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches) return;
     const target = event.currentTarget as HTMLElement;
     if (!target) return;
     const rect = target.getBoundingClientRect();
@@ -130,5 +150,13 @@ export class ParallaxScrolling implements AfterViewInit, OnDestroy {
     const target = event.currentTarget as HTMLElement;
     if (!target) return;
     target.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+  }
+
+  heroImage(): string {
+  return this.themeService.isDarkMode() ? 'assets/images/hero-dark.webp' : 'assets/images/hero-light.webp';
+  }
+
+  skillsImage(): string {
+    return this.themeService.isDarkMode() ? 'assets/images/skills-dark.webp' : 'assets/images/skills-light.webp';
   }
 }
