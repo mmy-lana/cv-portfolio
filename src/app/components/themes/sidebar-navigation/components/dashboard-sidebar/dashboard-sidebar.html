@@ -151,10 +151,10 @@
 
 <!-- MOBILE DRAWER -->
 @if (isMobileOpen()) {
-  <div class="md:hidden fixed inset-0 z-50 p-6 flex flex-col justify-between overflow-y-auto backdrop-blur-xl" [class.bg-[#020617]/95]="themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()" [class.bg-white/95]="!themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
-    <div class="space-y-6">
-      <div class="flex items-center justify-between pb-4 border-b" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
-        <div class="flex items-center space-x-3">
+  <div class="md:hidden fixed inset-0 z-50 p-4 sm:p-6 flex flex-col justify-between overflow-y-auto overscroll-contain h-[100dvh] max-h-[100dvh] pb-[max(1.5rem,env(safe-area-inset-bottom))] backdrop-blur-xl scrollbar-none" [class.bg-[#020617]/95]="themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()" [class.bg-white/95]="!themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
+    <div class="space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b" [class.border-slate-800]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
+        <div class="flex items-center space-x-2.5">
           <div class="w-8 h-8 rounded-lg bg-blue-600 text-white font-black flex items-center justify-center text-xs">MY</div>
           <span class="font-bold text-xs uppercase tracking-wider">WORKSPACE NAV</span>
         </div>
@@ -163,11 +163,11 @@
         </button>
       </div>
 
-      <div class="space-y-2">
+      <div class="grid grid-cols-2 gap-2">
         @for (item of navItems; track item.id) {
           <button
             (click)="onSelect(item.id)"
-            class="w-full text-left py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider border cursor-pointer flex items-center justify-between"
+            class="w-full text-left py-2.5 px-3 rounded-xl font-bold text-xs uppercase tracking-wider border cursor-pointer flex items-center justify-between min-h-11"
             [class.bg-blue-600]="activeSection() === item.id"
             [class.text-white]="activeSection() === item.id"
             [class.border-transparent]="activeSection() === item.id"
@@ -176,11 +176,11 @@
             [class.border-slate-200]="activeSection() !== item.id && !themeService.isDarkMode()"
             [class.bg-slate-50]="activeSection() !== item.id && !themeService.isDarkMode()"
           >
-            <div class="flex items-center space-x-3">
-              <app-cv-icon [name]="item.icon" size="w-4 h-4" />
-              <span>{{ item.labelKey | translate }}</span>
+            <div class="flex items-center space-x-2 truncate">
+              <app-cv-icon [name]="item.icon" size="w-3.5 h-3.5" class="shrink-0" />
+              <span class="truncate">{{ item.labelKey | translate }}</span>
             </div>
-            <span class="text-[10px] opacity-60 font-mono">{{ item.shortcut }}</span>
+            <span class="text-[9px] opacity-60 font-mono ml-1 shrink-0">{{ item.shortcut }}</span>
           </button>
         }
       </div>
