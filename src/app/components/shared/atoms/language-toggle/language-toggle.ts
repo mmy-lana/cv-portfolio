@@ -26,7 +26,7 @@ import { CvIcon } from '../cv-icon/cv-icon';
       >
         <app-cv-icon name="globe" size="w-3.5 h-3.5" [class.text-blue-400]="themeService.isDarkMode()" [class.text-blue-600]="!themeService.isDarkMode()" />
         <span class="font-mono">{{ currentShortLabel() }}</span>
-        <app-cv-icon name="chevron-down" size="w-3 h-3" class="transition-transform duration-200" [class.rotate-180]="isOpen()" />
+        <app-cv-icon [name]="position === 'up' ? 'chevron-up' : 'chevron-down'" size="w-3 h-3" class="transition-transform duration-200" [class.rotate-180]="isOpen()" />
       </button>
 
       @if (isOpen()) {
