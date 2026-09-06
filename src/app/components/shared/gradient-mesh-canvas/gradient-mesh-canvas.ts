@@ -16,6 +16,9 @@ export class GradientMeshCanvas implements OnInit, OnDestroy {
   private canvasRef = viewChild.required<ElementRef<HTMLCanvasElement>>('meshCanvas');
   private ngZone = inject(NgZone);
   private animId: number | null = null;
+  private gl: WebGLRenderingContext | null = null;
+  private program: WebGLProgram | null = null;
+  private positionBuffer: WebGLBuffer | null = null;
   private mouseHandler = (_e: MouseEvent) => {};
   private resizeHandler = () => {};
 
@@ -31,6 +34,13 @@ export class GradientMeshCanvas implements OnInit, OnDestroy {
     }
     window.removeEventListener('mousemove', this.mouseHandler);
     window.removeEventListener('resize', this.resizeHandler);
+
+    if (this.gl) {
+      if (this.program) this.gl.deleteProgram(this.program);
+      if (this.positionBuffer) this.gl.deleteBuffer(this.positionBuffer);
+      this.gl.getExtension('WEBGL_lose_context')?.loseContext();
+      this.gl = null;
+    }
   }
 
   private initWebGL(): void {
@@ -123,13 +133,16 @@ export class GradientMeshCanvas implements OnInit, OnDestroy {
     const vertShader = createShader(gl, gl.VERTEX_SHADER, vertShaderSource);
     const fragShader = createShader(gl, gl.FRAGMENT_SHADER, fragShaderSource);
 
+    this.gl = gl;
     const program = gl.createProgram()!;
+    this.program = program;
     gl.attachShader(program, vertShader);
     gl.attachShader(program, fragShader);
     gl.linkProgram(program);
     gl.useProgram(program);
 
     const positionBuffer = gl.createBuffer();
+    this.positionBuffer = positionBuffer;
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
     gl.bufferData(
       gl.ARRAY_BUFFER,

@@ -16,7 +16,18 @@ export class CyberMatrixCanvas implements OnInit, OnDestroy {
   private animationFrameId: number | null = null;
   private resizeHandler = () => {};
 
+  private isVisible = true;
+  private visibilityHandler = () => {};
+
   ngOnInit(): void {
+    this.visibilityHandler = () => {
+      this.isVisible = !document.hidden;
+      if (this.isVisible && this.animationFrameId === null) {
+        this.ngZone.runOutsideAngular(() => this.initMatrixAnimation());
+      }
+    };
+    document.addEventListener('visibilitychange', this.visibilityHandler);
+
     this.ngZone.runOutsideAngular(() => {
       this.initMatrixAnimation();
     });
@@ -25,7 +36,9 @@ export class CyberMatrixCanvas implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.animationFrameId !== null) {
       cancelAnimationFrame(this.animationFrameId);
+      this.animationFrameId = null;
     }
+    document.removeEventListener('visibilitychange', this.visibilityHandler);
     window.removeEventListener('resize', this.resizeHandler);
   }
 
@@ -68,7 +81,11 @@ export class CyberMatrixCanvas implements OnInit, OnDestroy {
         drops[i]++;
       }
 
-      this.animationFrameId = requestAnimationFrame(draw);
+      if (this.isVisible) {
+        this.animationFrameId = requestAnimationFrame(draw);
+      } else {
+        this.animationFrameId = null;
+      }
     };
 
     draw();
