@@ -1,4 +1,4 @@
-# ⚡ One CV, 9 Themes — Interactive Developer Portfolio
+# One CV, 9 Themes — Interactive Developer Portfolio
 
 [![Portfolio Quality CI](https://github.com/mmy-lana/cv-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/mmy-lana/cv-portfolio/actions)
 ![Angular](https://img.shields.io/badge/Angular-v21.2-dd0031?style=for-the-badge&logo=angular)
@@ -13,7 +13,7 @@ An enterprise-grade, multi-themed developer portfolio built with **Modern Angula
 
 ---
 
-## 🎨 Theme Architecture & Presets
+## Theme Architecture & Presets
 
 | # | Theme Name | Light Mode Preset | Dark Mode Preset | Key Visual Feature |
 |:-:| :--- | :--- | :--- | :--- |
@@ -29,7 +29,7 @@ An enterprise-grade, multi-themed developer portfolio built with **Modern Angula
 
 ---
 
-## 🌐 Production Ecosystem & Platforms
+## Production Ecosystem & Platforms
 
 This CV hub is the **control plane** of a fully interlinked, cross-navigable ecosystem of live platforms:
 
@@ -43,7 +43,7 @@ Every theme preset exposes cross-linked navigation to the **Flagship Project Cat
 
 ---
 
-## 🚀 Key Technical Features
+## Key Technical Features
 
 - **Angular 21 Primitives:** Built with Standalone Components, reactive `signal()`, `input()`, `output()`, and `@defer (on viewport)` lazy-loading blocks with linear shimmer loading skeletons.
 - **Zoneless & High-FPS Canvas Execution:** 3D WebGL shaders and canvas particle loops run outside Angular change detection (`NgZone.runOutsideAngular`) for guaranteed 60 FPS animation performance.
@@ -67,7 +67,7 @@ Every theme preset exposes cross-linked navigation to the **Flagship Project Cat
 
 ---
 
-## 💻 Local Development Setup
+## Local Development Setup
 
 ### Prerequisites
 - **Node.js:** `>= 20.0.0`
@@ -109,7 +109,7 @@ Every theme preset exposes cross-linked navigation to the **Flagship Project Cat
 
 ---
 
-## 📄 Author & License
+## Author & License
 
 Developed by **Muhammad Maulana Yusuf**  
 - **Website:** [https://www.mmylana.my.id](https://www.mmylana.my.id)  
