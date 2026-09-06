@@ -7,14 +7,14 @@
   <app-gradient-mesh-canvas [isDark]="themeService.isDarkMode()" />
   <app-theme-nav class="print:hidden z-30 relative" />
 
-  <div class="px-6 md:px-16 py-20 space-y-24 min-h-screen relative z-10">
+  <div class="px-4 sm:px-6 md:px-16 py-12 sm:py-20 space-y-16 sm:space-y-24 min-h-screen relative z-10">
     <!-- ABOUT -->
-    <section id="about" class="max-w-4xl mx-auto space-y-6 gradient-flow-card p-8 md:p-10 rounded-3xl animate-fade-in-up">
+    <section id="about" class="max-w-4xl mx-auto space-y-6 gradient-flow-card p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl animate-fade-in-up">
       <div class="space-y-3">
         <app-cv-preset-badge themeId="gradient-flow" />
 
         <h1 
-          class="text-4xl md:text-5xl font-black tracking-tight leading-none drop-shadow-md"
+          class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-none drop-shadow-md"
           [class.text-slate-900]="!themeService.isDarkMode()"
           [class.text-white]="themeService.isDarkMode()"
         >
@@ -231,36 +231,37 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <a 
           [href]="'mailto:' + ('contact.email' | translate)" 
-          class="flex items-center space-x-2.5 p-4 md:p-5 gradient-flow-card rounded-2xl"
+          class="flex items-center space-x-4 p-6 gradient-flow-card rounded-2xl min-h-[88px]"
         >
-          <app-cv-icon name="email" class="text-rose-500 shrink-0" size="w-5 h-5" />
-          <div class="overflow-hidden min-w-0">
+          <app-cv-icon name="email" class="text-rose-500 shrink-0" size="w-6 h-6" />
+          <div class="overflow-hidden min-w-0 flex-1">
             <p 
               class="text-xs font-bold uppercase tracking-wider"
               [class.text-slate-600]="!themeService.isDarkMode()"
               [class.text-slate-400]="themeService.isDarkMode()"
             >Email</p>
             <p 
-              class="text-[10px] sm:text-xs lg:text-[11px] xl:text-xs font-bold tracking-tight whitespace-nowrap"
+              class="text-sm font-bold truncate"
               [class.text-slate-900]="!themeService.isDarkMode()"
               [class.text-white]="themeService.isDarkMode()"
+              [attr.title]="'contact.email' | translate"
             >{{ 'contact.email' | translate }}</p>
           </div>
         </a>
 
         <a 
           [href]="'tel:' + ('contact.phone' | translate)" 
-          class="flex items-center space-x-4 p-6 gradient-flow-card rounded-2xl"
+          class="flex items-center space-x-4 p-6 gradient-flow-card rounded-2xl min-h-[88px]"
         >
-          <app-cv-icon name="phone" class="text-purple-500" size="w-6 h-6" />
-          <div>
+          <app-cv-icon name="phone" class="text-purple-500 shrink-0" size="w-6 h-6" />
+          <div class="overflow-hidden min-w-0 flex-1">
             <p 
               class="text-xs font-bold uppercase tracking-wider"
               [class.text-slate-600]="!themeService.isDarkMode()"
               [class.text-slate-400]="themeService.isDarkMode()"
             >Phone</p>
             <p 
-              class="text-sm font-bold"
+              class="text-sm font-bold truncate"
               [class.text-slate-900]="!themeService.isDarkMode()"
               [class.text-white]="themeService.isDarkMode()"
             >{{ 'contact.phone' | translate }}</p>
@@ -271,17 +272,17 @@
           [href]="'https://' + ('contact.linkedin' | translate)" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="flex items-center space-x-4 p-6 gradient-flow-card rounded-2xl"
+          class="flex items-center space-x-4 p-6 gradient-flow-card rounded-2xl min-h-[88px]"
         >
-          <app-cv-icon name="linkedin" class="text-blue-500" size="w-6 h-6" />
-          <div>
+          <app-cv-icon name="linkedin" class="text-blue-500 shrink-0" size="w-6 h-6" />
+          <div class="overflow-hidden min-w-0 flex-1">
             <p 
               class="text-xs font-bold uppercase tracking-wider"
               [class.text-slate-600]="!themeService.isDarkMode()"
               [class.text-slate-400]="themeService.isDarkMode()"
             >LinkedIn</p>
             <p 
-              class="text-sm font-bold"
+              class="text-sm font-bold truncate"
               [class.text-slate-900]="!themeService.isDarkMode()"
               [class.text-white]="themeService.isDarkMode()"
             >Connect</p>
