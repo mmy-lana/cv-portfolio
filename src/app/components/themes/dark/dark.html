@@ -8,18 +8,18 @@
 >
   <app-theme-nav class="print:hidden z-30 relative" />
 
-  <div class="px-6 md:px-16 py-20 space-y-24 min-h-screen">
+  <div class="px-4 sm:px-6 md:px-16 py-12 sm:py-20 space-y-16 sm:space-y-24 min-h-screen">
     <!-- ABOUT -->
     <section 
       id="about" 
       (mousemove)="onMouseMove($event)"
-      class="max-w-4xl mx-auto space-y-6 dark-glow-card p-8 md:p-10 rounded-2xl animate-fade-in-up"
+      class="max-w-4xl mx-auto space-y-6 dark-glow-card p-6 sm:p-8 md:p-10 rounded-2xl animate-fade-in-up"
     >
       <div class="space-y-3">
         <app-cv-preset-badge themeId="dark" />
 
         <h1 
-          class="text-4xl md:text-5xl font-black tracking-tight leading-none"
+          class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-none"
           [class.text-[#09090b]]="!themeService.isDarkMode()"
           [class.text-[#fafafa]]="themeService.isDarkMode()"
         >
@@ -287,19 +287,20 @@
           (mousemove)="onMouseMove($event)" 
           (mouseenter)="onMagneticMove($event)" 
           (mouseleave)="onMagneticLeave($event)" 
-          class="magnetic-btn dark-glow-card flex items-center space-x-2.5 p-4 md:p-5"
+          class="magnetic-btn dark-glow-card flex items-center space-x-4 p-6 min-h-[88px]"
         >
-          <app-cv-icon name="email" class="text-indigo-500 shrink-0" size="w-5 h-5" />
-          <div class="overflow-hidden min-w-0">
+          <app-cv-icon name="email" class="text-indigo-500 shrink-0" size="w-6 h-6" />
+          <div class="overflow-hidden min-w-0 flex-1">
             <p 
               class="text-xs font-bold uppercase tracking-wider"
               [class.text-[#52525b]]="!themeService.isDarkMode()"
               [class.text-[#a1a1aa]]="themeService.isDarkMode()"
             >Email</p>
             <p 
-              class="text-[10px] sm:text-xs lg:text-[11px] xl:text-xs font-bold tracking-tight whitespace-nowrap"
+              class="text-sm font-bold truncate"
               [class.text-[#09090b]]="!themeService.isDarkMode()"
               [class.text-[#fafafa]]="themeService.isDarkMode()"
+              [attr.title]="'contact.email' | translate"
             >{{ 'contact.email' | translate }}</p>
           </div>
         </a>
@@ -309,17 +310,17 @@
           (mousemove)="onMouseMove($event)" 
           (mouseenter)="onMagneticMove($event)" 
           (mouseleave)="onMagneticLeave($event)" 
-          class="magnetic-btn dark-glow-card flex items-center space-x-4 p-6"
+          class="magnetic-btn dark-glow-card flex items-center space-x-4 p-6 min-h-[88px]"
         >
-          <app-cv-icon name="phone" class="text-indigo-500" size="w-6 h-6" />
-          <div>
+          <app-cv-icon name="phone" class="text-indigo-500 shrink-0" size="w-6 h-6" />
+          <div class="overflow-hidden min-w-0 flex-1">
             <p 
               class="text-xs font-bold uppercase tracking-wider"
               [class.text-[#52525b]]="!themeService.isDarkMode()"
               [class.text-[#a1a1aa]]="themeService.isDarkMode()"
             >Phone</p>
             <p 
-              class="text-sm font-bold"
+              class="text-sm font-bold truncate"
               [class.text-[#09090b]]="!themeService.isDarkMode()"
               [class.text-[#fafafa]]="themeService.isDarkMode()"
             >{{ 'contact.phone' | translate }}</p>
@@ -333,17 +334,17 @@
           (mousemove)="onMouseMove($event)" 
           (mouseenter)="onMagneticMove($event)" 
           (mouseleave)="onMagneticLeave($event)" 
-          class="magnetic-btn dark-glow-card flex items-center space-x-4 p-6"
+          class="magnetic-btn dark-glow-card flex items-center space-x-4 p-6 min-h-[88px]"
         >
-          <app-cv-icon name="linkedin" class="text-indigo-500" size="w-6 h-6" />
-          <div>
+          <app-cv-icon name="linkedin" class="text-indigo-500 shrink-0" size="w-6 h-6" />
+          <div class="overflow-hidden min-w-0 flex-1">
             <p 
               class="text-xs font-bold uppercase tracking-wider"
               [class.text-[#52525b]]="!themeService.isDarkMode()"
               [class.text-[#a1a1aa]]="themeService.isDarkMode()"
             >LinkedIn</p>
             <p 
-              class="text-sm font-bold"
+              class="text-sm font-bold truncate"
               [class.text-[#09090b]]="!themeService.isDarkMode()"
               [class.text-[#fafafa]]="themeService.isDarkMode()"
             >Connect</p>

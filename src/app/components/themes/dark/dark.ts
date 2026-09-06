@@ -38,6 +38,7 @@ export class Dark {
   }
 
   onMagneticMove(event: MouseEvent): void {
+    if (typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches) return;
     const target = event.currentTarget as HTMLElement;
     if (!target) return;
     const rect = target.getBoundingClientRect();
