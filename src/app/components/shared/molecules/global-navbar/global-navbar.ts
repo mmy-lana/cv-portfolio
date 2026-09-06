@@ -7,12 +7,14 @@ import { DownloadCvBtnComponent } from '../../atoms/download-cv-btn/download-cv-
 import { DevDossierModalComponent } from '../dev-dossier-modal/dev-dossier-modal';
 import { CvLogoComponent } from '../../atoms/cv-logo/cv-logo';
 import { CvIcon } from '../../atoms/cv-icon/cv-icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-global-navbar',
   standalone: true,
   imports: [
     RouterModule,
+    TranslateModule,
     LanguageToggleComponent,
     ThemeModeToggleComponent,
     DownloadCvBtnComponent,

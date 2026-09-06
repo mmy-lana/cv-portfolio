@@ -139,7 +139,7 @@
             [class.bg-white/70]="!themeService.isDarkMode()"
             [class.border-white/80]="!themeService.isDarkMode()"
           >
-            <h3 class="font-bold text-xs uppercase tracking-wider border-b pb-2" [class.text-slate-800]="!themeService.isDarkMode()" [class.border-slate-900/10]="!themeService.isDarkMode()" [class.text-slate-300]="themeService.isDarkMode()" [class.border-white/10]="themeService.isDarkMode()">Languages</h3>
+            <h3 class="font-bold text-xs uppercase tracking-wider border-b pb-2" [class.text-slate-800]="!themeService.isDarkMode()" [class.border-slate-900/10]="!themeService.isDarkMode()" [class.text-slate-300]="themeService.isDarkMode()" [class.border-white/10]="themeService.isDarkMode()">{{ 'skills.category_languages' | translate }}</h3>
             <div class="flex flex-wrap gap-2">
               @for (lang of ('skills.languages' | translate); track $index) {
                 <span 
@@ -163,7 +163,7 @@
             [class.bg-white/70]="!themeService.isDarkMode()"
             [class.border-white/80]="!themeService.isDarkMode()"
           >
-            <h3 class="font-bold text-xs uppercase tracking-wider border-b pb-2" [class.text-slate-800]="!themeService.isDarkMode()" [class.border-slate-900/10]="!themeService.isDarkMode()" [class.text-slate-300]="themeService.isDarkMode()" [class.border-white/10]="themeService.isDarkMode()">Frameworks & CSS</h3>
+            <h3 class="font-bold text-xs uppercase tracking-wider border-b pb-2" [class.text-slate-800]="!themeService.isDarkMode()" [class.border-slate-900/10]="!themeService.isDarkMode()" [class.text-slate-300]="themeService.isDarkMode()" [class.border-white/10]="themeService.isDarkMode()">{{ 'skills.category_frameworks' | translate }}</h3>
             <div class="flex flex-wrap gap-2">
               @for (fw of ('skills.frameworks' | translate); track $index) {
                 <span 
@@ -187,7 +187,7 @@
             [class.bg-white/70]="!themeService.isDarkMode()"
             [class.border-white/80]="!themeService.isDarkMode()"
           >
-            <h3 class="font-bold text-xs uppercase tracking-wider border-b pb-2" [class.text-slate-800]="!themeService.isDarkMode()" [class.border-slate-900/10]="!themeService.isDarkMode()" [class.text-slate-300]="themeService.isDarkMode()" [class.border-white/10]="themeService.isDarkMode()">Tools</h3>
+            <h3 class="font-bold text-xs uppercase tracking-wider border-b pb-2" [class.text-slate-800]="!themeService.isDarkMode()" [class.border-slate-900/10]="!themeService.isDarkMode()" [class.text-slate-300]="themeService.isDarkMode()" [class.border-white/10]="themeService.isDarkMode()">{{ 'skills.category_tools' | translate }}</h3>
             <div class="flex flex-wrap gap-2">
               @for (tool of ('skills.tools' | translate); track $index) {
                 <span 

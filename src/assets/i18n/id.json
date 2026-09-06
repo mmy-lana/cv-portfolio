@@ -109,8 +109,15 @@
       }
     ]
   },
+  "actions": {
+    "download_cv": "Unduh CV",
+    "all_themes": "Semua Tema"
+  },
   "skills": {
     "title": "Keahlian",
+    "category_languages": "Bahasa Pemrograman",
+    "category_frameworks": "Framework & CSS",
+    "category_tools": "Perangkat Kerja",
     "languages": [
       "C#",
       "CSS3",

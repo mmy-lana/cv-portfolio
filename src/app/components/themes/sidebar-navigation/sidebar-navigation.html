@@ -123,7 +123,7 @@
       @defer (on viewport) {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="dashboard-card p-6 rounded-2xl space-y-3">
-            <h3 class="font-bold text-xs uppercase tracking-wider" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">Languages</h3>
+            <h3 class="font-bold text-xs uppercase tracking-wider" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">{{ 'skills.category_languages' | translate }}</h3>
             <div class="flex flex-wrap gap-2">
               @for (lang of ('skills.languages' | translate); track $index) {
                 <span class="px-2.5 py-1 text-xs font-semibold rounded-lg border" [class.bg-slate-800]="themeService.isDarkMode()" [class.text-slate-200]="themeService.isDarkMode()" [class.border-slate-700]="themeService.isDarkMode()" [class.bg-slate-100]="!themeService.isDarkMode()" [class.text-slate-700]="!themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
@@ -134,7 +134,7 @@
           </div>
 
           <div class="dashboard-card p-6 rounded-2xl space-y-3">
-            <h3 class="font-bold text-xs uppercase tracking-wider" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">Frameworks & CSS</h3>
+            <h3 class="font-bold text-xs uppercase tracking-wider" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">{{ 'skills.category_frameworks' | translate }}</h3>
             <div class="flex flex-wrap gap-2">
               @for (fw of ('skills.frameworks' | translate); track $index) {
                 <span class="px-2.5 py-1 text-xs font-semibold rounded-lg border" [class.bg-sky-950]="themeService.isDarkMode()" [class.text-sky-300]="themeService.isDarkMode()" [class.border-sky-800]="themeService.isDarkMode()" [class.bg-blue-50]="!themeService.isDarkMode()" [class.text-blue-700]="!themeService.isDarkMode()" [class.border-blue-200]="!themeService.isDarkMode()">
@@ -145,7 +145,7 @@
           </div>
 
           <div class="dashboard-card p-6 rounded-2xl space-y-3">
-            <h3 class="font-bold text-xs uppercase tracking-wider" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">Tools</h3>
+            <h3 class="font-bold text-xs uppercase tracking-wider" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-500]="!themeService.isDarkMode()">{{ 'skills.category_tools' | translate }}</h3>
             <div class="flex flex-wrap gap-2">
               @for (tool of ('skills.tools' | translate); track $index) {
                 <span class="px-2.5 py-1 text-xs font-semibold rounded-lg border" [class.bg-slate-800]="themeService.isDarkMode()" [class.text-slate-200]="themeService.isDarkMode()" [class.border-slate-700]="themeService.isDarkMode()" [class.bg-slate-100]="!themeService.isDarkMode()" [class.text-slate-700]="!themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">

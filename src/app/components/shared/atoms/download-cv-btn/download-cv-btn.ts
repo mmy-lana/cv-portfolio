@@ -1,11 +1,12 @@
 import { Component, input, inject } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from '../../../../services/theme.service';
 import { CvIcon } from '../cv-icon/cv-icon';
 
 @Component({
   selector: 'app-download-cv-btn',
   standalone: true,
-  imports: [CvIcon],
+  imports: [TranslateModule, CvIcon],
   template: `
     <a
       href="assets/cv/CV_Muhammad_Maulana_Yusuf.pdf"
@@ -15,7 +16,7 @@ import { CvIcon } from '../cv-icon/cv-icon';
       [class]="btnClasses()"
     >
       <app-cv-icon name="download" [size]="iconSize()" />
-      <span>Download CV</span>
+      <span>{{ 'actions.download_cv' | translate }}</span>
     </a>
   `
 })

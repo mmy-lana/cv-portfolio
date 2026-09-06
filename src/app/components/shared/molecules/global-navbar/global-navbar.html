@@ -29,7 +29,7 @@
         [class.hover:text-slate-900]="!themeService.isDarkMode()"
       >
         <app-cv-icon name="arrow-left" size="w-3.5 h-3.5" />
-        <span>All Themes</span>
+        <span>{{ 'actions.all_themes' | translate }}</span>
       </button>
     }
     <app-theme-mode-toggle />

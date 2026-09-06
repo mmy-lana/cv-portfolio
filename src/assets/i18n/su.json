@@ -109,8 +109,15 @@
       }
     ]
   },
+  "actions": {
+    "download_cv": "Unduh CV",
+    "all_themes": "Sadaya Téma"
+  },
   "skills": {
     "title": "Kaahlian",
+    "category_languages": "Basa Pamrograman",
+    "category_frameworks": "Framework & CSS",
+    "category_tools": "Pakakas Gawé",
     "languages": [
       "C#",
       "CSS3",

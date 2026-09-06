@@ -109,8 +109,15 @@
       }
     ]
   },
+  "actions": {
+    "download_cv": "Download CV",
+    "all_themes": "All Themes"
+  },
   "skills": {
     "title": "Skills",
+    "category_languages": "Languages",
+    "category_frameworks": "Frameworks & CSS",
+    "category_tools": "Tools",
     "languages": [
       "C#",
       "CSS3",

@@ -120,7 +120,7 @@
               [class.border-zinc-200]="!themeService.isDarkMode()"
               [class.text-[#a1a1aa]]="themeService.isDarkMode()"
               [class.border-zinc-800]="themeService.isDarkMode()"
-            >Languages</h3>
+            >{{ 'skills.category_languages' | translate }}</h3>
             <div class="flex flex-wrap gap-2">
               @for (lang of ('skills.languages' | translate); track $index) {
                 <span 
@@ -151,7 +151,7 @@
               [class.border-zinc-200]="!themeService.isDarkMode()"
               [class.text-[#a1a1aa]]="themeService.isDarkMode()"
               [class.border-zinc-800]="themeService.isDarkMode()"
-            >Frameworks & CSS</h3>
+            >{{ 'skills.category_frameworks' | translate }}</h3>
             <div class="flex flex-wrap gap-2">
               @for (fw of ('skills.frameworks' | translate); track $index) {
                 <span 
@@ -182,7 +182,7 @@
               [class.border-zinc-200]="!themeService.isDarkMode()"
               [class.text-[#a1a1aa]]="themeService.isDarkMode()"
               [class.border-zinc-800]="themeService.isDarkMode()"
-            >Tools</h3>
+            >{{ 'skills.category_tools' | translate }}</h3>
             <div class="flex flex-wrap gap-2">
               @for (tool of ('skills.tools' | translate); track $index) {
                 <span 
