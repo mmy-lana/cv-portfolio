@@ -2,7 +2,6 @@ import { Component, OnInit, AfterViewInit, OnDestroy, inject, signal, HostListen
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from '../../../services/theme.service';
-import { FaviconService } from '../../../services/favicon.service';
 import { DownloadCvBtnComponent } from '../../shared/atoms/download-cv-btn/download-cv-btn';
 import { CvExperienceCard } from '../../shared/cv-experience-card/cv-experience-card';
 import { CvIcon } from '../../shared/atoms/cv-icon/cv-icon';

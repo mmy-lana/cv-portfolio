@@ -11,10 +11,12 @@ import { CvLogoComponent } from '../../../../shared/atoms/cv-logo/cv-logo';
 
 export type DashboardSection = 'about' | 'experience' | 'skills' | 'education' | 'certificates' | 'contact';
 
+import { CvIconName } from '../../../../shared/atoms/cv-icon/cv-icon';
+
 export interface NavItem {
   id: DashboardSection;
   labelKey: string;
-  icon: any;
+  icon: CvIconName;
   shortcut: string;
 }
 
