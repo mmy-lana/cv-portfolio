@@ -1,4 +1,12 @@
-<div 
+<!-- SKIP LINK (WCAG 2.4.1): first focusable element on the home page -->
+<a
+  href="#main-content"
+  class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-xl focus:text-sm focus:font-bold focus:bg-blue-600 focus:text-white"
+>
+  Skip to content
+</a>
+
+<div
   class="min-h-screen p-6 md:p-16 relative overflow-hidden font-sans transition-colors duration-300"
   [class.bg-[#070913]]="themeService.isDarkMode()"
   [class.text-slate-200]="themeService.isDarkMode()"
@@ -29,7 +37,8 @@
         [class.hover:border-amber-400]="!themeService.isDarkMode()"
       >
         <div class="flex items-center space-x-3.5 min-w-0">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border"
+          <div
+            class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border"
             [class.bg-amber-950/80]="themeService.isDarkMode()"
             [class.border-amber-700/60]="themeService.isDarkMode()"
             [class.text-amber-400]="themeService.isDarkMode()"
@@ -37,28 +46,43 @@
             [class.border-amber-200]="!themeService.isDarkMode()"
             [class.text-amber-600]="!themeService.isDarkMode()"
           >
-            <app-cv-icon name="rocket" size="w-5 h-5" class="group-hover:scale-110 transition-transform" />
+            <app-cv-icon
+              name="rocket"
+              size="w-5 h-5"
+              class="group-hover:scale-110 transition-transform"
+            />
           </div>
 
           <div class="overflow-hidden">
             <div class="flex items-center gap-2">
-              <h2 class="text-sm font-black truncate tracking-tight" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
+              <h2
+                class="text-sm font-black truncate tracking-tight"
+                [class.text-white]="themeService.isDarkMode()"
+                [class.text-slate-900]="!themeService.isDarkMode()"
+              >
                 {{ 'ecosystem.projects_title' | translate }}
               </h2>
-              <span class="px-1.5 py-0.2 text-[9px] font-mono font-bold rounded uppercase tracking-wider shrink-0"
+              <span
+                class="px-1.5 py-0.2 text-[9px] font-mono font-bold rounded uppercase tracking-wider shrink-0"
                 [class.bg-amber-900/60]="themeService.isDarkMode()"
                 [class.text-amber-300]="themeService.isDarkMode()"
                 [class.bg-amber-100]="!themeService.isDarkMode()"
                 [class.text-amber-800]="!themeService.isDarkMode()"
-              >110+ APPS</span>
+                >110+ APPS</span
+              >
             </div>
-            <p class="text-xs truncate mt-0.5" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()">
+            <p
+              class="text-xs truncate mt-0.5"
+              [class.text-slate-400]="themeService.isDarkMode()"
+              [class.text-slate-600]="!themeService.isDarkMode()"
+            >
               {{ 'ecosystem.projects_desc' | translate }}
             </p>
           </div>
         </div>
 
-        <div class="flex items-center text-xs font-bold shrink-0 font-mono gap-1 group-hover:translate-x-0.5 transition-transform"
+        <div
+          class="flex items-center text-xs font-bold shrink-0 font-mono gap-1 group-hover:translate-x-0.5 transition-transform"
           [class.text-amber-400]="themeService.isDarkMode()"
           [class.text-amber-700]="!themeService.isDarkMode()"
         >
@@ -84,7 +108,8 @@
         [class.hover:border-emerald-400]="!themeService.isDarkMode()"
       >
         <div class="flex items-center space-x-3.5 min-w-0">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border"
+          <div
+            class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border"
             [class.bg-emerald-950/80]="themeService.isDarkMode()"
             [class.border-emerald-700/60]="themeService.isDarkMode()"
             [class.text-emerald-400]="themeService.isDarkMode()"
@@ -92,28 +117,43 @@
             [class.border-emerald-200]="!themeService.isDarkMode()"
             [class.text-emerald-600]="!themeService.isDarkMode()"
           >
-            <app-cv-icon name="book-open" size="w-5 h-5" class="group-hover:scale-110 transition-transform" />
+            <app-cv-icon
+              name="book-open"
+              size="w-5 h-5"
+              class="group-hover:scale-110 transition-transform"
+            />
           </div>
 
           <div class="overflow-hidden">
             <div class="flex items-center gap-2">
-              <h2 class="text-sm font-black truncate tracking-tight" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">
+              <h2
+                class="text-sm font-black truncate tracking-tight"
+                [class.text-white]="themeService.isDarkMode()"
+                [class.text-slate-900]="!themeService.isDarkMode()"
+              >
                 {{ 'ecosystem.uth_title' | translate }}
               </h2>
-              <span class="px-1.5 py-0.2 text-[9px] font-mono font-bold rounded uppercase tracking-wider shrink-0"
+              <span
+                class="px-1.5 py-0.2 text-[9px] font-mono font-bold rounded uppercase tracking-wider shrink-0"
                 [class.bg-emerald-900/60]="themeService.isDarkMode()"
                 [class.text-emerald-300]="themeService.isDarkMode()"
                 [class.bg-emerald-100]="!themeService.isDarkMode()"
                 [class.text-emerald-800]="!themeService.isDarkMode()"
-              >285+ TOPICS</span>
+                >285+ TOPICS</span
+              >
             </div>
-            <p class="text-xs truncate mt-0.5" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()">
+            <p
+              class="text-xs truncate mt-0.5"
+              [class.text-slate-400]="themeService.isDarkMode()"
+              [class.text-slate-600]="!themeService.isDarkMode()"
+            >
               {{ 'ecosystem.uth_desc' | translate }}
             </p>
           </div>
         </div>
 
-        <div class="flex items-center text-xs font-bold shrink-0 font-mono gap-1 group-hover:translate-x-0.5 transition-transform"
+        <div
+          class="flex items-center text-xs font-bold shrink-0 font-mono gap-1 group-hover:translate-x-0.5 transition-transform"
           [class.text-emerald-400]="themeService.isDarkMode()"
           [class.text-emerald-700]="!themeService.isDarkMode()"
         >
@@ -125,9 +165,9 @@
   </section>
 
   <!-- DASHBOARD GRID CONTENT -->
-  <main class="max-w-6xl mx-auto pt-4">
+  <main id="main-content" tabindex="-1" class="max-w-6xl mx-auto pt-4">
     <div class="mb-8 flex items-center justify-between">
-      <p 
+      <p
         class="text-xs font-bold uppercase tracking-widest transition-colors"
         [class.text-slate-400]="themeService.isDarkMode()"
         [class.text-slate-500]="!themeService.isDarkMode()"
@@ -157,7 +197,7 @@
           [attr.data-theme-id]="theme.id"
         >
           <!-- WATERMARK BACKGROUND ICON -->
-          <div 
+          <div
             class="absolute -right-6 -bottom-6 opacity-5 group-hover:opacity-15 group-hover:scale-115 group-hover:-rotate-6 transition-all duration-500 pointer-events-none select-none"
             [class.text-white]="themeService.isDarkMode()"
             [class.text-slate-900]="!themeService.isDarkMode()"
@@ -168,7 +208,7 @@
           <div class="relative z-10 space-y-5">
             <!-- TOP ICON BADGE + FLOATING PRESET TAG -->
             <div class="flex items-center justify-between">
-              <div 
+              <div
                 class="w-11 h-11 rounded-2xl flex items-center justify-center border transition-all duration-300 ease-out group-hover:-translate-y-1.5 group-hover:scale-110 shadow-sm group-hover:shadow-lg"
                 [class.bg-slate-800/80]="themeService.isDarkMode()"
                 [class.border-slate-700/80]="themeService.isDarkMode()"
@@ -180,13 +220,15 @@
                 <app-cv-icon [name]="theme.iconName" size="w-5 h-5" />
               </div>
 
-              <div class="transform transition-all duration-300 ease-out group-hover:-translate-y-1">
+              <div
+                class="transform transition-all duration-300 ease-out group-hover:-translate-y-1"
+              >
                 <app-cv-preset-badge [themeId]="theme.id" [showPrefix]="false" />
               </div>
             </div>
 
             <div>
-              <h3 
+              <h3
                 class="text-xl font-bold transition-colors"
                 [class.text-white]="themeService.isDarkMode()"
                 [class.group-hover:text-blue-400]="themeService.isDarkMode()"
@@ -198,7 +240,7 @@
                 {{ 'themes_data.' + theme.id + '.title' | translate }}
               </h3>
 
-              <p 
+              <p
                 class="mt-2 text-xs leading-relaxed transition-colors"
                 [class.text-slate-400]="themeService.isDarkMode()"
                 [class.text-slate-600]="!themeService.isDarkMode()"
@@ -207,7 +249,7 @@
               </p>
             </div>
 
-            <div 
+            <div
               class="pt-2 flex items-center text-xs font-bold uppercase tracking-widest group-hover:translate-x-1 group-focus-visible:translate-x-1 transition-transform"
               [class.text-blue-400]="themeService.isDarkMode()"
               [class.text-blue-600]="!themeService.isDarkMode()"

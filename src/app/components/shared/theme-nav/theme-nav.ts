@@ -1,4 +1,5 @@
 import { Component, signal, inject, output, HostListener } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from '../../../services/theme.service';
@@ -19,21 +20,44 @@ import { CvIcon } from '../atoms/cv-icon/cv-icon';
     ThemeModeToggleComponent,
     DownloadCvBtnComponent,
     ThemeSelector,
-    CvIcon
+    CvIcon,
   ],
 })
 export class ThemeNav {
   public themeService = inject(ThemeService);
   public lang = inject(LanguageService);
   private router = inject(Router);
+  private document = inject(DOCUMENT);
 
   sectionSelect = output<string>();
   menuOpen = signal<boolean>(false);
   showScrollTop = signal<boolean>(false);
 
+  // Skip link target: move keyboard focus past the sticky navigation into the page
+  // content (WCAG 2.4.1 Bypass Blocks). Falls back to the first content section on
+  // theme pages that do not render a <main> landmark.
+  skipToContent(event: Event): void {
+    event.preventDefault();
+    const target =
+      this.document.querySelector<HTMLElement>('main') ??
+      this.document.querySelector<HTMLElement>('section');
+    if (target) {
+      target.setAttribute('tabindex', '-1');
+      target.focus();
+      target.scrollIntoView();
+    }
+  }
+
   @HostListener('window:scroll')
   onScroll(): void {
     this.showScrollTop.set(window.scrollY > 300);
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    if (this.menuOpen()) {
+      this.menuOpen.set(false);
+    }
   }
 
   scrollToTop(): void {
@@ -46,7 +70,7 @@ export class ThemeNav {
     { id: 'skills', label: 'nav.skills' },
     { id: 'education', label: 'nav.education' },
     { id: 'certificates', label: 'nav.certificates' },
-    { id: 'contact', label: 'nav.contact' }
+    { id: 'contact', label: 'nav.contact' },
   ];
 
   goHome(): void {
@@ -63,6 +87,6 @@ export class ThemeNav {
   }
 
   toggleMenu(): void {
-    this.menuOpen.update(v => !v);
+    this.menuOpen.update((v) => !v);
   }
 }

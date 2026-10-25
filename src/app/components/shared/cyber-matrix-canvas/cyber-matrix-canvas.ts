@@ -3,12 +3,17 @@ import { Component, ElementRef, OnInit, OnDestroy, viewChild, NgZone, inject } f
 @Component({
   selector: 'app-cyber-matrix-canvas',
   standalone: true,
-  template: `<canvas #matrixCanvas class="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-20"></canvas>`,
-  styles: [`
-    :host {
-      display: block;
-    }
-  `]
+  template: `<canvas
+    #matrixCanvas
+    class="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-20"
+  ></canvas>`,
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+    `,
+  ],
 })
 export class CyberMatrixCanvas implements OnInit, OnDestroy {
   private canvasRef = viewChild.required<ElementRef<HTMLCanvasElement>>('matrixCanvas');
@@ -50,6 +55,9 @@ export class CyberMatrixCanvas implements OnInit, OnDestroy {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
+    // Register at most one resize listener: re-initialization (tab visibility
+    // toggles) replaces the previous handler instead of accumulating listeners.
+    window.removeEventListener('resize', this.resizeHandler);
     this.resizeHandler = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
@@ -60,6 +68,8 @@ export class CyberMatrixCanvas implements OnInit, OnDestroy {
     const fontSize = 14;
     const columns = Math.floor(width / fontSize);
     const drops: number[] = Array(columns).fill(1);
+    // Reduced motion: render a single static frame instead of an endless rain loop.
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const draw = () => {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
@@ -81,7 +91,7 @@ export class CyberMatrixCanvas implements OnInit, OnDestroy {
         drops[i]++;
       }
 
-      if (this.isVisible) {
+      if (!reduceMotion && this.isVisible) {
         this.animationFrameId = requestAnimationFrame(draw);
       } else {
         this.animationFrameId = null;

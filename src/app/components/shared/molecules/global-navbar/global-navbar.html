@@ -1,23 +1,39 @@
-<header class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 pb-8 border-b" [class.border-slate-800/80]="themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()">
-  <div 
+<header
+  class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 pb-8 border-b"
+  [class.border-slate-800/80]="themeService.isDarkMode()"
+  [class.border-slate-200]="!themeService.isDarkMode()"
+>
+  <button
+    type="button"
     (click)="openDevModal()"
     title="Click to view Developer Dossier"
-    class="flex items-center space-x-3 cursor-pointer group p-1.5 -ml-1.5 rounded-2xl transition-all duration-200 hover:bg-white/5 active:scale-95"
+    aria-label="Open developer dossier"
+    class="flex items-center space-x-3 cursor-pointer group p-1.5 -ml-1.5 me-0 rounded-2xl transition-all duration-200 hover:bg-white/5 active:scale-95 text-left"
   >
     <app-cv-logo size="w-9 h-9 shadow-md group-hover:scale-110 transition-transform" />
     <div>
       <div class="flex items-center gap-1.5">
-        <span class="font-black tracking-tight text-base block leading-none transition-colors group-hover:text-cyan-400" [class.text-white]="themeService.isDarkMode()" [class.text-slate-900]="!themeService.isDarkMode()">mmylana</span>
+        <span
+          class="font-black tracking-tight text-base block leading-none transition-colors group-hover:text-cyan-400"
+          [class.text-white]="themeService.isDarkMode()"
+          [class.text-slate-900]="!themeService.isDarkMode()"
+          >mmylana</span
+        >
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
       </div>
-      <span class="text-[10px] font-medium transition-colors" [class.text-slate-400]="themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()">Muhammad Maulana Yusuf</span>
+      <span
+        class="text-[10px] font-medium transition-colors"
+        [class.text-slate-400]="themeService.isDarkMode()"
+        [class.text-slate-600]="!themeService.isDarkMode()"
+        >Muhammad Maulana Yusuf</span
+      >
     </div>
-  </div>
+  </button>
 
   <div class="flex flex-wrap items-center gap-3">
     @if (showHomeButton()) {
-      <button 
-        (click)="goHome()" 
+      <button
+        (click)="goHome()"
         class="h-9 px-3.5 rounded-xl border text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 select-none"
         [class.bg-slate-900]="themeService.isDarkMode()"
         [class.border-slate-800]="themeService.isDarkMode()"

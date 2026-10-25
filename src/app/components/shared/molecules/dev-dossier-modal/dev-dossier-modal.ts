@@ -9,7 +9,7 @@ import {
   viewChild,
   effect,
   signal,
-  HostListener
+  HostListener,
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from '../../../../services/theme.service';
@@ -30,7 +30,7 @@ interface Particle {
   selector: 'app-dev-dossier-modal',
   standalone: true,
   imports: [TranslateModule, CvIcon, CvLogoComponent],
-  templateUrl: './dev-dossier-modal.html'
+  templateUrl: './dev-dossier-modal.html',
 })
 export class DevDossierModalComponent implements OnDestroy {
   public themeService = inject(ThemeService);
@@ -47,15 +47,22 @@ export class DevDossierModalComponent implements OnDestroy {
   private animFrameId: number | null = null;
   private particles: Particle[] = [];
   private isTouch = false;
+  private previouslyFocused: HTMLElement | null = null;
 
   constructor() {
     effect(() => {
       if (this.isOpen()) {
         this.isClosing.set(false);
+        this.previouslyFocused = document.activeElement as HTMLElement | null;
         document.body.style.overflow = 'hidden';
         setTimeout(() => {
-          this.initParticleCanvas();
-          this.triggerBurstConfetti();
+          // WCAG 2.3.3 / 2.2.2: keep the ambient canvas static for reduced-motion users.
+          const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+          this.initParticleCanvas(reduceMotion);
+          if (!reduceMotion) {
+            this.triggerBurstConfetti();
+          }
+          this.modalCard()?.nativeElement.focus();
         }, 50);
       } else {
         this.stopParticleCanvas();
@@ -76,6 +83,38 @@ export class DevDossierModalComponent implements OnDestroy {
     }
   }
 
+  // Focus trap: while the modal is open, keep Tab cycling inside the dialog and
+  // return focus to the opener on close (WCAG 2.4.3 / dialog semantics).
+  @HostListener('document:keydown', ['$event'])
+  onTabKeydown(event: Event): void {
+    const keyEvent = event as KeyboardEvent;
+    if (keyEvent.key !== 'Tab') return;
+    if (!this.isOpen() || this.isClosing()) return;
+    const dialog = this.modalCard()?.nativeElement.closest('[role="dialog"]') as HTMLElement | null;
+    if (!dialog) return;
+
+    const focusables = Array.from(
+      dialog.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
+    ).filter((el) => el.getClientRects().length > 0);
+    if (focusables.length === 0) return;
+
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    const active = document.activeElement as HTMLElement | null;
+
+    if (keyEvent.shiftKey) {
+      if (!active || active === first || !dialog.contains(active)) {
+        keyEvent.preventDefault();
+        last.focus();
+      }
+    } else if (!active || active === last || !dialog.contains(active)) {
+      keyEvent.preventDefault();
+      first.focus();
+    }
+  }
+
   triggerClose(): void {
     if (this.isClosing()) return;
     this.isClosing.set(true);
@@ -84,6 +123,8 @@ export class DevDossierModalComponent implements OnDestroy {
       this.closeModal.emit();
       this.isClosing.set(false);
       document.body.style.overflow = '';
+      this.previouslyFocused?.focus();
+      this.previouslyFocused = null;
     }, 200);
   }
 
@@ -121,7 +162,7 @@ export class DevDossierModalComponent implements OnDestroy {
     card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
   }
 
-  private initParticleCanvas(): void {
+  private initParticleCanvas(staticOnly = false): void {
     const canvas = this.canvasRef()?.nativeElement;
     if (!canvas) return;
 
@@ -142,7 +183,7 @@ export class DevDossierModalComponent implements OnDestroy {
       vy: (Math.random() - 0.5) * 0.8,
       size: Math.random() * 2 + 1,
       color: colors[Math.floor(Math.random() * colors.length)],
-      alpha: Math.random() * 0.6 + 0.2
+      alpha: Math.random() * 0.6 + 0.2,
     }));
 
     this.ngZone.runOutsideAngular(() => {
@@ -165,7 +206,7 @@ export class DevDossierModalComponent implements OnDestroy {
           ctx.fill();
         }
 
-        this.animFrameId = requestAnimationFrame(render);
+        this.animFrameId = staticOnly ? null : requestAnimationFrame(render);
       };
       render();
     });
@@ -207,7 +248,7 @@ export class DevDossierModalComponent implements OnDestroy {
         vy: Math.sin(angle) * speed,
         alpha: 1,
         color: burstColors[Math.floor(Math.random() * burstColors.length)],
-        size: Math.random() * 4 + 2
+        size: Math.random() * 4 + 2,
       };
     });
 

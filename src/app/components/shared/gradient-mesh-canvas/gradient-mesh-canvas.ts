@@ -1,14 +1,28 @@
-import { Component, ElementRef, OnInit, OnDestroy, viewChild, NgZone, inject, input } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  OnDestroy,
+  viewChild,
+  NgZone,
+  inject,
+  input,
+} from '@angular/core';
 
 @Component({
   selector: 'app-gradient-mesh-canvas',
   standalone: true,
-  template: `<canvas #meshCanvas class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>`,
-  styles: [`
-    :host {
-      display: block;
-    }
-  `]
+  template: `<canvas
+    #meshCanvas
+    class="fixed inset-0 w-full h-full pointer-events-none z-0"
+  ></canvas>`,
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+    `,
+  ],
 })
 export class GradientMeshCanvas implements OnInit, OnDestroy {
   isDark = input<boolean>(true);
@@ -147,7 +161,7 @@ export class GradientMeshCanvas implements OnInit, OnDestroy {
     gl.bufferData(
       gl.ARRAY_BUFFER,
       new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]),
-      gl.STATIC_DRAW
+      gl.STATIC_DRAW,
     );
 
     const positionLocation = gl.getAttribLocation(program, 'position');
@@ -162,6 +176,8 @@ export class GradientMeshCanvas implements OnInit, OnDestroy {
     gl.viewport(0, 0, width, height);
 
     const startTime = performance.now();
+    // Reduced motion: draw one static frame (time frozen at 0) instead of animating.
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const render = () => {
       const currentTime = (performance.now() - startTime) * 0.001;
@@ -176,7 +192,7 @@ export class GradientMeshCanvas implements OnInit, OnDestroy {
 
       gl.drawArrays(gl.TRIANGLES, 0, 6);
 
-      this.animId = requestAnimationFrame(render);
+      this.animId = reduceMotion ? null : requestAnimationFrame(render);
     };
 
     render();
