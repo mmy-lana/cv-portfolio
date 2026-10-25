@@ -22,7 +22,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CvLogoComponent,
     CvIcon,
   ],
-  templateUrl: './global-navbar.html'
+  templateUrl: './global-navbar.html',
 })
 export class GlobalNavbarComponent {
   public themeService = inject(ThemeService);

@@ -12,12 +12,18 @@
     [class.hover:bg-slate-200]="!themeService.isDarkMode()"
     aria-label="Switch Theme Panel"
   >
-    <app-cv-icon name="arrow-right" size="w-3.5 h-3.5" class="transition-transform" [class.rotate-90]="position === 'down'" [class.-rotate-90]="position === 'up'" />
+    <app-cv-icon
+      name="arrow-right"
+      size="w-3.5 h-3.5"
+      class="transition-transform"
+      [class.rotate-90]="position === 'down'"
+      [class.-rotate-90]="position === 'up'"
+    />
     <span>{{ 'home.explore' | translate }}</span>
     <app-cv-icon [name]="getThemeIcon(themeService.currentTheme())" size="w-4 h-4" />
   </button>
 
-@if (isOpen()) {
+  @if (isOpen()) {
     <div
       class="absolute w-72 rounded-2xl border border-white/10 bg-slate-950/95 p-4 shadow-2xl backdrop-blur-xl ring-1 ring-black/20 focus:outline-none z-50 animate-fade-in-up duration-200"
       [class.top-full]="position === 'down'"
@@ -55,17 +61,23 @@
             role="menuitem"
           >
             <div class="flex items-center space-x-3">
-              <app-cv-icon [name]="getThemeIcon(theme.id)" size="w-4 h-4" class="group-hover:scale-110 transition-transform text-cyan-400" />
+              <app-cv-icon
+                [name]="getThemeIcon(theme.id)"
+                size="w-4 h-4"
+                class="group-hover:scale-110 transition-transform text-cyan-400"
+              />
               <div>
                 <p class="font-semibold text-white group-hover:text-cv-accent transition-colors">
                   {{ 'themes_data.' + theme.id + '.title' | translate }}
                 </p>
-                <p class="text-[11px] text-slate-400 group-hover:text-slate-300 truncate max-w-[180px]">
+                <p
+                  class="text-[11px] text-slate-400 group-hover:text-slate-300 truncate max-w-[180px]"
+                >
                   {{ 'themes_data.' + theme.id + '.description' | translate }}
                 </p>
               </div>
             </div>
-            
+
             @if (themeService.currentTheme() === theme.id) {
               <span class="text-xs font-bold text-cv-accent animate-pulse">●</span>
             }

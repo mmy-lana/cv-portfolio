@@ -126,14 +126,7 @@
     "category_languages": "Languages",
     "category_frameworks": "Frameworks & CSS",
     "category_tools": "Tools",
-    "languages": [
-      "C#",
-      "CSS3",
-      "HTML5",
-      "JavaScript",
-      "SQL",
-      "TypeScript"
-    ],
+    "languages": ["C#", "CSS3", "HTML5", "JavaScript", "SQL", "TypeScript"],
     "frameworks": [
       "Angular",
       "Ant Design",
@@ -144,14 +137,7 @@
       "Tailwind CSS",
       "Vue"
     ],
-    "tools": [
-      "Bitbucket",
-      "Confluence",
-      "Git",
-      "GitHub",
-      "GitLab",
-      "Jira"
-    ]
+    "tools": ["Bitbucket", "Confluence", "Git", "GitHub", "GitLab", "Jira"]
   },
   "education": {
     "title": "Education",

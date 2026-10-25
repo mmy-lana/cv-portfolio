@@ -22,8 +22,20 @@ import { CvIcon } from '../cv-icon/cv-icon';
     >
       <!-- BACKGROUND ICONS GUIDE -->
       <div class="w-full flex items-center justify-between px-1.5 text-xs pointer-events-none">
-        <app-cv-icon name="sun" size="w-3.5 h-3.5" class="text-amber-500 transition-opacity duration-200" [class.opacity-100]="!themeService.isDarkMode()" [class.opacity-40]="themeService.isDarkMode()" />
-        <app-cv-icon name="moon" size="w-3.5 h-3.5" class="text-indigo-400 transition-opacity duration-200" [class.opacity-100]="themeService.isDarkMode()" [class.opacity-40]="!themeService.isDarkMode()" />
+        <app-cv-icon
+          name="sun"
+          size="w-3.5 h-3.5"
+          class="text-amber-500 transition-opacity duration-200"
+          [class.opacity-100]="!themeService.isDarkMode()"
+          [class.opacity-40]="themeService.isDarkMode()"
+        />
+        <app-cv-icon
+          name="moon"
+          size="w-3.5 h-3.5"
+          class="text-indigo-400 transition-opacity duration-200"
+          [class.opacity-100]="themeService.isDarkMode()"
+          [class.opacity-40]="!themeService.isDarkMode()"
+        />
       </div>
 
       <!-- SMOOTH SLIDING THUMB -->
@@ -39,7 +51,7 @@ import { CvIcon } from '../cv-icon/cv-icon';
         <app-cv-icon [name]="themeService.isDarkMode() ? 'moon' : 'sun'" size="w-3.5 h-3.5" />
       </div>
     </button>
-  `
+  `,
 })
 export class ThemeModeToggleComponent {
   public themeService = inject(ThemeService);

@@ -6,10 +6,13 @@ import { ThemeService } from '../../../../services/theme.service';
   standalone: true,
   template: `
     <span [class]="badgeClasses">
-      <span class="w-1.5 h-1.5 rounded-full animate-pulse mr-1.5 shrink-0" [class]="dotClass"></span>
+      <span
+        class="w-1.5 h-1.5 rounded-full animate-pulse mr-1.5 shrink-0"
+        [class]="dotClass"
+      ></span>
       <span>{{ showPrefix ? 'PRESET: ' : '' }}{{ presetName }}</span>
     </span>
-  `
+  `,
 })
 export class CvPresetBadgeComponent {
   public themeService = inject(ThemeService);
@@ -35,7 +38,7 @@ export class CvPresetBadgeComponent {
       'gradient-flow': { light: 'SUNRISE MESH', dark: 'AURORA BOREALIS' },
       'sidebar-navigation': { light: 'ENTERPRISE LIGHT', dark: 'EXECUTIVE DARK' },
       'parallax-scrolling': { light: 'HORIZON LIGHT', dark: 'DEEP SPACE' },
-      'timeline-style': { light: 'BLUEPRINT WHITE', dark: 'CHARCOAL JOURNEY' }
+      'timeline-style': { light: 'BLUEPRINT WHITE', dark: 'CHARCOAL JOURNEY' },
     };
 
     const target = presetMap[this.currentThemeId] || presetMap['minimalist'];
@@ -43,45 +46,46 @@ export class CvPresetBadgeComponent {
   }
 
   get badgeClasses(): string {
-    const base = 'inline-flex items-center font-mono font-bold text-[10px] px-2.5 py-0.5 rounded-full border transition-all duration-300 select-none uppercase tracking-wider';
+    const base =
+      'inline-flex items-center font-mono font-bold text-[10px] px-2.5 py-0.5 rounded-full border transition-all duration-300 select-none uppercase tracking-wider';
 
     const themeStyles: Record<string, { light: string; dark: string }> = {
       cyberpunk: {
         light: 'bg-teal-50 text-[#006666] border-[#006666]/40',
-        dark: 'bg-black/80 text-[#00ff41] border-[#00ff41]/50 shadow-[0_0_8px_rgba(0,255,65,0.3)]'
+        dark: 'bg-black/80 text-[#00ff41] border-[#00ff41]/50 shadow-[0_0_8px_rgba(0,255,65,0.3)]',
       },
       glassmorphism: {
         light: 'bg-white/80 text-cyan-900 border-cyan-300 backdrop-blur-md shadow-xs',
-        dark: 'bg-white/10 text-cyan-300 border-white/20 backdrop-blur-md shadow-sm'
+        dark: 'bg-white/10 text-cyan-300 border-white/20 backdrop-blur-md shadow-sm',
       },
       dark: {
         light: 'bg-indigo-50 text-indigo-800 border-indigo-200',
-        dark: 'bg-indigo-950/80 text-indigo-300 border-indigo-800/60'
+        dark: 'bg-indigo-950/80 text-indigo-300 border-indigo-800/60',
       },
       'retro-computer': {
         light: 'bg-[#e2ddcf] text-[#003399] border-2 border-outset-btn',
-        dark: 'bg-black text-[#00ff66] border border-[#00ff66]/60 font-mono'
+        dark: 'bg-black text-[#00ff66] border border-[#00ff66]/60 font-mono',
       },
       'gradient-flow': {
         light: 'bg-white/80 text-rose-800 border-rose-200 backdrop-blur-md',
-        dark: 'bg-slate-900/80 text-rose-300 border-rose-500/40 backdrop-blur-md'
+        dark: 'bg-slate-900/80 text-rose-300 border-rose-500/40 backdrop-blur-md',
       },
       'sidebar-navigation': {
         light: 'bg-blue-50 text-blue-700 border-blue-200',
-        dark: 'bg-sky-950/80 text-sky-300 border-sky-800/60'
+        dark: 'bg-sky-950/80 text-sky-300 border-sky-800/60',
       },
       'parallax-scrolling': {
         light: 'bg-purple-50 text-purple-700 border-purple-200',
-        dark: 'bg-purple-950/80 text-purple-300 border-purple-800/60'
+        dark: 'bg-purple-950/80 text-purple-300 border-purple-800/60',
       },
       'timeline-style': {
         light: 'bg-blue-50 text-blue-700 border-blue-200',
-        dark: 'bg-cyan-950/80 text-[#00f3ff] border-cyan-800/60'
+        dark: 'bg-cyan-950/80 text-[#00f3ff] border-cyan-800/60',
       },
       minimalist: {
         light: 'bg-slate-100 text-blue-700 border-blue-200',
-        dark: 'bg-slate-900 text-blue-300 border-blue-800/50'
-      }
+        dark: 'bg-slate-900 text-blue-300 border-blue-800/50',
+      },
     };
 
     const active = themeStyles[this.currentThemeId] || themeStyles['minimalist'];

@@ -18,7 +18,7 @@ import { CvPresetBadgeComponent } from '../../shared/atoms/cv-preset-badge/cv-pr
     CvExperienceCard,
     CvIcon,
     CyberMatrixCanvas,
-    CvPresetBadgeComponent
+    CvPresetBadgeComponent,
   ],
   templateUrl: './cyberpunk.html',
 })

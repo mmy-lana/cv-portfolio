@@ -1,4 +1,12 @@
-import { Component, AfterViewInit, OnDestroy, signal, computed, NgZone, inject } from '@angular/core';
+import {
+  Component,
+  AfterViewInit,
+  OnDestroy,
+  signal,
+  computed,
+  NgZone,
+  inject,
+} from '@angular/core';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ThemeNav } from '../../shared/theme-nav/theme-nav';
@@ -20,9 +28,9 @@ import { CvPresetBadgeComponent } from '../../shared/atoms/cv-preset-badge/cv-pr
     CvExperienceCard,
     CvBadge,
     CvIcon,
-    CvPresetBadgeComponent
+    CvPresetBadgeComponent,
   ],
-  templateUrl: './timeline-style.html'
+  templateUrl: './timeline-style.html',
 })
 export class TimelineStyle implements AfterViewInit, OnDestroy {
   public themeService = inject(ThemeService);
@@ -45,7 +53,8 @@ export class TimelineStyle implements AfterViewInit, OnDestroy {
     this.ngZone.runOutsideAngular(() => {
       this.scrollListener = () => {
         const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const height =
+          document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
         this.scrollProgress.set(scrolled);
       };
@@ -60,13 +69,13 @@ export class TimelineStyle implements AfterViewInit, OnDestroy {
   }
 
   toggleSort(): void {
-    this.sortOrder.update(order => order === 'recent' ? 'chronological' : 'recent');
+    this.sortOrder.update((order) => (order === 'recent' ? 'chronological' : 'recent'));
   }
 
   toggleNode(key: string): void {
-    this.expandedNodes.update(state => ({
+    this.expandedNodes.update((state) => ({
       ...state,
-      [key]: !state[key]
+      [key]: !state[key],
     }));
   }
 

@@ -20,9 +20,9 @@ import { CvPresetBadgeComponent } from '../../shared/atoms/cv-preset-badge/cv-pr
     CvExperienceCard,
     CvBadge,
     CvIcon,
-    CvPresetBadgeComponent
+    CvPresetBadgeComponent,
   ],
-  templateUrl: './parallax-scrolling.html'
+  templateUrl: './parallax-scrolling.html',
 })
 export class ParallaxScrolling implements AfterViewInit, OnDestroy {
   public themeService = inject(ThemeService);
@@ -63,11 +63,12 @@ export class ParallaxScrolling implements AfterViewInit, OnDestroy {
       const ScrollTrigger = scrollTriggerModule.ScrollTrigger || scrollTriggerModule.default;
 
       gsap.registerPlugin(ScrollTrigger);
-      
+
       ScrollTrigger.config({ ignoreMobileResize: true });
-      
+
       gsap.utils.toArray<HTMLElement>('.parallax-bg-img').forEach((el) => {
-        gsap.fromTo(el,
+        gsap.fromTo(
+          el,
           { yPercent: -12 },
           {
             yPercent: 12,
@@ -76,9 +77,9 @@ export class ParallaxScrolling implements AfterViewInit, OnDestroy {
               trigger: el.parentElement,
               start: 'top bottom',
               end: 'bottom top',
-              scrub: true
-            }
-          }
+              scrub: true,
+            },
+          },
         );
       });
 
@@ -90,8 +91,8 @@ export class ParallaxScrolling implements AfterViewInit, OnDestroy {
             trigger: el.parentElement,
             start: 'top bottom',
             end: 'bottom top',
-            scrub: 1
-          }
+            scrub: 1,
+          },
         });
       });
 
@@ -103,13 +104,14 @@ export class ParallaxScrolling implements AfterViewInit, OnDestroy {
             trigger: el.parentElement,
             start: 'top bottom',
             end: 'bottom top',
-            scrub: 1.5
-          }
+            scrub: 1.5,
+          },
         });
       });
 
       gsap.utils.toArray<HTMLElement>('.parallax-card-reveal').forEach((el) => {
-        gsap.fromTo(el, 
+        gsap.fromTo(
+          el,
           { y: 80, opacity: 0 },
           {
             y: 0,
@@ -119,9 +121,9 @@ export class ParallaxScrolling implements AfterViewInit, OnDestroy {
             scrollTrigger: {
               trigger: el,
               start: 'top 85%',
-              toggleActions: 'play none none reverse'
-            }
-          }
+              toggleActions: 'play none none reverse',
+            },
+          },
         );
       });
     } catch {
@@ -136,10 +138,10 @@ export class ParallaxScrolling implements AfterViewInit, OnDestroy {
     const rect = target.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-    
+
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    
+
     const rotateX = ((y - centerY) / centerY) * -8;
     const rotateY = ((x - centerX) / centerX) * 8;
 
@@ -153,10 +155,14 @@ export class ParallaxScrolling implements AfterViewInit, OnDestroy {
   }
 
   heroImage(): string {
-  return this.themeService.isDarkMode() ? 'assets/images/hero-dark.webp' : 'assets/images/hero-light.webp';
+    return this.themeService.isDarkMode()
+      ? 'assets/images/hero-dark.webp'
+      : 'assets/images/hero-light.webp';
   }
 
   skillsImage(): string {
-    return this.themeService.isDarkMode() ? 'assets/images/skills-dark.webp' : 'assets/images/skills-light.webp';
+    return this.themeService.isDarkMode()
+      ? 'assets/images/skills-dark.webp'
+      : 'assets/images/skills-light.webp';
   }
 }

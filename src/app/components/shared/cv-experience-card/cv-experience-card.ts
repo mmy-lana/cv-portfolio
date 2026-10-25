@@ -20,7 +20,7 @@ export interface CVItem {
   selector: 'app-cv-experience-card',
   standalone: true,
   imports: [TranslateModule, CvBadge, CvIcon],
-  templateUrl: './cv-experience-card.html'
+  templateUrl: './cv-experience-card.html',
 })
 export class CvExperienceCard {
   public themeService = inject(ThemeService);

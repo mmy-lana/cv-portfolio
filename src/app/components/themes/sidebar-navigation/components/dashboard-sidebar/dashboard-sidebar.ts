@@ -9,7 +9,13 @@ import { ThemeModeToggleComponent } from '../../../../shared/atoms/theme-mode-to
 import { CvIcon } from '../../../../shared/atoms/cv-icon/cv-icon';
 import { CvLogoComponent } from '../../../../shared/atoms/cv-logo/cv-logo';
 
-export type DashboardSection = 'about' | 'experience' | 'skills' | 'education' | 'certificates' | 'contact';
+export type DashboardSection =
+  | 'about'
+  | 'experience'
+  | 'skills'
+  | 'education'
+  | 'certificates'
+  | 'contact';
 
 import { CvIconName } from '../../../../shared/atoms/cv-icon/cv-icon';
 
@@ -29,9 +35,9 @@ export interface NavItem {
     LanguageToggleComponent,
     ThemeModeToggleComponent,
     CvIcon,
-    CvLogoComponent
+    CvLogoComponent,
   ],
-  templateUrl: './dashboard-sidebar.html'
+  templateUrl: './dashboard-sidebar.html',
 })
 export class DashboardSidebar {
   activeSection = input.required<DashboardSection>();
@@ -53,7 +59,7 @@ export class DashboardSidebar {
     { id: 'skills', labelKey: 'nav.skills', icon: 'arrow-right', shortcut: '3' },
     { id: 'education', labelKey: 'nav.education', icon: 'gpa', shortcut: '4' },
     { id: 'certificates', labelKey: 'nav.certificates', icon: 'gpa', shortcut: '5' },
-    { id: 'contact', labelKey: 'nav.contact', icon: 'email', shortcut: '6' }
+    { id: 'contact', labelKey: 'nav.contact', icon: 'email', shortcut: '6' },
   ];
 
   goBack(): void {

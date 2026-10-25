@@ -4,9 +4,9 @@ import { Component, Input } from '@angular/core';
   selector: 'app-cv-logo',
   standalone: true,
   template: `
-    <svg 
+    <svg
       [class]="size"
-      viewBox="0 0 1024 1024" 
+      viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"
       aria-label="MMY Monogram Logo"
     >
@@ -21,21 +21,27 @@ import { Component, Input } from '@angular/core';
       <rect width="1024" height="1024" rx="192" fill="#090909" />
 
       <!-- Monogram MMY Structure -->
-      <g fill="none" stroke-width="56" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10">
+      <g
+        fill="none"
+        stroke-width="56"
+        stroke-linecap="square"
+        stroke-linejoin="miter"
+        stroke-miterlimit="10"
+      >
         <!-- White Section -->
         <path d="M 200 880 L 200 144 L 256 144 L 512 400 L 768 144 L 824 144" stroke="#F4F4F4" />
 
         <!-- Red Gradient Section: Right Outer Vertical -->
         <path d="M 824 144 L 824 880" stroke="url(#redGradLogo)" />
-        
+
         <!-- Lower Left Connecting Stroke -->
         <path d="M 200 368 L 428 596 L 428 880" stroke="url(#redGradLogo)" />
-        
+
         <!-- Lower Right Connecting Stroke -->
         <path d="M 824 368 L 596 596 L 596 880" stroke="url(#redGradLogo)" />
       </g>
     </svg>
-  `
+  `,
 })
 export class CvLogoComponent {
   @Input() size = 'w-9 h-9';

@@ -18,9 +18,9 @@ import { CvPresetBadgeComponent } from '../../shared/atoms/cv-preset-badge/cv-pr
     DownloadCvBtnComponent,
     CvExperienceCard,
     CvIcon,
-    CvPresetBadgeComponent
+    CvPresetBadgeComponent,
   ],
-  templateUrl: './dark.html'
+  templateUrl: './dark.html',
 })
 export class Dark {
   public themeService = inject(ThemeService);

@@ -10,12 +10,12 @@ export interface ThemeConfig {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ThemeService {
   private readonly THEME_KEY = 'preferred-theme';
   private readonly MODE_KEY = 'preferred-mode';
-  
+
   readonly themes: ThemeConfig[] = [
     { id: 'minimalist', iconName: 'file-text', isDark: false },
     { id: 'cyberpunk', iconName: 'zap', isDark: true },
@@ -25,7 +25,7 @@ export class ThemeService {
     { id: 'gradient-flow', iconName: 'palette', isDark: true },
     { id: 'sidebar-navigation', iconName: 'sidebar', isDark: false },
     { id: 'parallax-scrolling', iconName: 'image', isDark: true },
-    { id: 'timeline-style', iconName: 'clock', isDark: false }
+    { id: 'timeline-style', iconName: 'clock', isDark: false },
   ];
 
   currentTheme = signal<string>('minimalist');
@@ -38,7 +38,7 @@ export class ThemeService {
   }
 
   toggleGlobalDarkMode(): void {
-    this.isDarkMode.update(v => {
+    this.isDarkMode.update((v) => {
       const nextMode = !v;
       localStorage.setItem(this.MODE_KEY, nextMode ? 'dark' : 'light');
       this.applyModeToDOM(nextMode);
@@ -47,7 +47,7 @@ export class ThemeService {
   }
 
   setTheme(themeId: string): void {
-    const targetTheme = this.themes.find(t => t.id === themeId);
+    const targetTheme = this.themes.find((t) => t.id === themeId);
     if (!targetTheme) return;
 
     this.currentTheme.set(themeId);
@@ -64,9 +64,9 @@ export class ThemeService {
 
   private initializeTheme(): void {
     const savedTheme = localStorage.getItem(this.THEME_KEY);
-    const isValid = savedTheme && this.themes.some(t => t.id === savedTheme);
+    const isValid = savedTheme && this.themes.some((t) => t.id === savedTheme);
     const initialThemeId = isValid ? savedTheme! : 'minimalist';
-    
+
     this.setTheme(initialThemeId);
   }
 

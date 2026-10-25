@@ -18,9 +18,9 @@ import { CvPresetBadgeComponent } from '../../shared/atoms/cv-preset-badge/cv-pr
     DownloadCvBtnComponent,
     CvExperienceCard,
     CvIcon,
-    CvPresetBadgeComponent
+    CvPresetBadgeComponent,
   ],
-  templateUrl: './glassmorphism.html'
+  templateUrl: './glassmorphism.html',
 })
 export class Glassmorphism {
   public themeService = inject(ThemeService);

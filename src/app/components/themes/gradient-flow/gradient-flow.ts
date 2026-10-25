@@ -20,9 +20,9 @@ import { CvPresetBadgeComponent } from '../../shared/atoms/cv-preset-badge/cv-pr
     CvExperienceCard,
     CvIcon,
     GradientMeshCanvas,
-    CvPresetBadgeComponent
+    CvPresetBadgeComponent,
   ],
-  templateUrl: './gradient-flow.html'
+  templateUrl: './gradient-flow.html',
 })
 export class GradientFlow {
   public themeService = inject(ThemeService);

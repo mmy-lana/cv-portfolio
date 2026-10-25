@@ -20,7 +20,7 @@ import { CvPresetBadgeComponent } from '../../shared/atoms/cv-preset-badge/cv-pr
     CvExperienceCard,
     CvBadge,
     CvIcon,
-    CvPresetBadgeComponent
+    CvPresetBadgeComponent,
   ],
   templateUrl: './minimalist.html',
 })

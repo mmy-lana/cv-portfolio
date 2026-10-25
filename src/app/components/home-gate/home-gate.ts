@@ -17,34 +17,63 @@ export interface ThemePreset {
 @Component({
   selector: 'app-home-gate',
   standalone: true,
-  imports: [
-    TranslateModule,
-    RouterModule,
-    GlobalNavbarComponent,
-    CvPresetBadgeComponent,
-    CvIcon
-  ],
-  templateUrl: './home-gate.html'
+  imports: [TranslateModule, RouterModule, GlobalNavbarComponent, CvPresetBadgeComponent, CvIcon],
+  templateUrl: './home-gate.html',
 })
 export class HomeGate {
   hoveredTheme = signal<string | null>(null);
 
   themes: ThemePreset[] = [
-    { id: 'minimalist', iconName: 'file-text', lightPreset: 'Paper Light', darkPreset: 'Onyx Dark' },
+    {
+      id: 'minimalist',
+      iconName: 'file-text',
+      lightPreset: 'Paper Light',
+      darkPreset: 'Onyx Dark',
+    },
     { id: 'cyberpunk', iconName: 'zap', lightPreset: 'Matrix Day', darkPreset: 'Neon Night' },
-    { id: 'glassmorphism', iconName: 'layers', lightPreset: 'Frosted Crystal', darkPreset: 'Obsidian Glass' },
+    {
+      id: 'glassmorphism',
+      iconName: 'layers',
+      lightPreset: 'Frosted Crystal',
+      darkPreset: 'Obsidian Glass',
+    },
     { id: 'dark', iconName: 'moon', lightPreset: 'Solar Minimal', darkPreset: 'Lunar Pitch' },
-    { id: 'retro-computer', iconName: 'terminal', lightPreset: 'IBM Cream 1984', darkPreset: 'Hacker Terminal' },
-    { id: 'gradient-flow', iconName: 'palette', lightPreset: 'Sunrise Mesh', darkPreset: 'Aurora Borealis' },
-    { id: 'sidebar-navigation', iconName: 'sidebar', lightPreset: 'Enterprise Light', darkPreset: 'Executive Dark' },
-    { id: 'parallax-scrolling', iconName: 'image', lightPreset: 'Horizon Light', darkPreset: 'Deep Space' },
-    { id: 'timeline-style', iconName: 'clock', lightPreset: 'Blueprint White', darkPreset: 'Charcoal Journey' }
+    {
+      id: 'retro-computer',
+      iconName: 'terminal',
+      lightPreset: 'IBM Cream 1984',
+      darkPreset: 'Hacker Terminal',
+    },
+    {
+      id: 'gradient-flow',
+      iconName: 'palette',
+      lightPreset: 'Sunrise Mesh',
+      darkPreset: 'Aurora Borealis',
+    },
+    {
+      id: 'sidebar-navigation',
+      iconName: 'sidebar',
+      lightPreset: 'Enterprise Light',
+      darkPreset: 'Executive Dark',
+    },
+    {
+      id: 'parallax-scrolling',
+      iconName: 'image',
+      lightPreset: 'Horizon Light',
+      darkPreset: 'Deep Space',
+    },
+    {
+      id: 'timeline-style',
+      iconName: 'clock',
+      lightPreset: 'Blueprint White',
+      darkPreset: 'Charcoal Journey',
+    },
   ];
 
   constructor(
     private router: Router,
     private faviconService: FaviconService,
-    public themeService: ThemeService
+    public themeService: ThemeService,
   ) {}
 
   goToTheme(id: string): void {

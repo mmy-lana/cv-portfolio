@@ -8,21 +8,26 @@ import { CvPresetBadgeComponent } from '../../shared/atoms/cv-preset-badge/cv-pr
 
 export interface TerminalEntry {
   command: string;
-  type: 'help' | 'about' | 'experience' | 'skills' | 'education' | 'certificates' | 'contact' | 'download-cv' | 'error' | 'clear' | 'system';
+  type:
+    | 'help'
+    | 'about'
+    | 'experience'
+    | 'skills'
+    | 'education'
+    | 'certificates'
+    | 'contact'
+    | 'download-cv'
+    | 'error'
+    | 'clear'
+    | 'system';
   timestamp: string;
 }
 
 @Component({
   selector: 'app-retro-computer',
   standalone: true,
-  imports: [
-    ThemeNav,
-    TranslateModule,
-    RouterModule,
-    FormsModule,
-    CvPresetBadgeComponent
-  ],
-  templateUrl: './retro-computer.html'
+  imports: [ThemeNav, TranslateModule, RouterModule, FormsModule, CvPresetBadgeComponent],
+  templateUrl: './retro-computer.html',
 })
 export class RetroComputer implements OnInit {
   public themeService = inject(ThemeService);
@@ -34,8 +39,8 @@ export class RetroComputer implements OnInit {
     {
       command: 'system.init',
       type: 'system',
-      timestamp: new Date().toLocaleTimeString()
-    }
+      timestamp: new Date().toLocaleTimeString(),
+    },
   ]);
 
   quickCommands = [
@@ -47,7 +52,7 @@ export class RetroComputer implements OnInit {
     'certificates',
     'contact',
     'download-cv',
-    'clear'
+    'clear',
   ];
 
   ngOnInit(): void {
@@ -69,7 +74,14 @@ export class RetroComputer implements OnInit {
 
     const timestamp = new Date().toLocaleTimeString();
     const validCommands: TerminalEntry['type'][] = [
-      'help', 'about', 'experience', 'skills', 'education', 'certificates', 'contact', 'download-cv'
+      'help',
+      'about',
+      'experience',
+      'skills',
+      'education',
+      'certificates',
+      'contact',
+      'download-cv',
     ];
     const type: TerminalEntry['type'] = validCommands.includes(rawCmd as any)
       ? (rawCmd as TerminalEntry['type'])
@@ -79,7 +91,7 @@ export class RetroComputer implements OnInit {
       this.triggerDownload();
     }
 
-    this.history.update(h => [...h, { command: rawCmd, type, timestamp }]);
+    this.history.update((h) => [...h, { command: rawCmd, type, timestamp }]);
     this.scrollToBottom();
   }
 
