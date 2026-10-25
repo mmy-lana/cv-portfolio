@@ -1,13 +1,19 @@
-<div 
+<div
   class="theme-wrapper transition-colors duration-300 min-h-screen relative overflow-x-clip font-sans"
   [class.bg-[#f8fafc]]="!themeService.isDarkMode()"
   [class.text-[#0f172a]]="!themeService.isDarkMode()"
   [class.bg-[#090d16]]="themeService.isDarkMode()"
   [class.text-[#f8fafc]]="themeService.isDarkMode()"
-  style="--nav-bg: #090d16; --nav-text: #f8fafc; --nav-border: #1e293b; --cv-primary: #00f3ff; --cv-accent: #2563eb"
+  style="
+    --nav-bg: #090d16;
+    --nav-text: #f8fafc;
+    --nav-border: #1e293b;
+    --cv-primary: #00f3ff;
+    --cv-accent: #2563eb;
+  "
 >
   <!-- Top Scroll Progress Line Bar -->
-  <div 
+  <div
     class="fixed top-0 left-0 h-1 z-50 transition-all duration-75"
     [class.bg-[#2563eb]]="!themeService.isDarkMode()"
     [class.bg-[#00f3ff]]="themeService.isDarkMode()"
@@ -16,34 +22,64 @@
 
   <app-theme-nav class="print:hidden z-30 relative" />
 
-  <div class="px-4 sm:px-6 md:px-16 py-10 sm:py-16 space-y-14 sm:space-y-20 min-h-screen relative overflow-hidden">
-    
+  <div
+    class="px-4 sm:px-6 md:px-16 py-10 sm:py-16 space-y-14 sm:space-y-20 min-h-screen relative overflow-hidden"
+  >
     <!-- HERO ABOUT HEADER -->
-    <section id="about" class="max-w-4xl mx-auto space-y-6 pb-12 border-b animate-fade-in-up" [class.border-slate-200]="!themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()">
+    <section
+      id="about"
+      class="max-w-4xl mx-auto space-y-6 pb-12 border-b animate-fade-in-up"
+      [class.border-slate-200]="!themeService.isDarkMode()"
+      [class.border-slate-800]="themeService.isDarkMode()"
+    >
       <div class="space-y-2">
         <app-cv-preset-badge themeId="timeline-style" />
-        
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-none" [class.text-slate-900]="!themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()">
+
+        <h1
+          class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-none"
+          [class.text-slate-900]="!themeService.isDarkMode()"
+          [class.text-white]="themeService.isDarkMode()"
+        >
           {{ 'about.name' | translate }}
         </h1>
-        
-        <p class="text-xl md:text-2xl font-bold" [class.text-blue-700]="!themeService.isDarkMode()" [class.text-[#00f3ff]]="themeService.isDarkMode()">
+
+        <p
+          class="text-xl md:text-2xl font-bold"
+          [class.text-blue-700]="!themeService.isDarkMode()"
+          [class.text-[#00f3ff]]="themeService.isDarkMode()"
+        >
           {{ 'about.title' | translate }}
         </p>
       </div>
 
-      <p class="leading-relaxed text-base max-w-3xl" [class.text-slate-600]="!themeService.isDarkMode()" [class.text-slate-300]="themeService.isDarkMode()">
+      <p
+        class="leading-relaxed text-base max-w-3xl"
+        [class.text-slate-600]="!themeService.isDarkMode()"
+        [class.text-slate-300]="themeService.isDarkMode()"
+      >
         {{ 'about.summary' | translate }}
       </p>
 
       <div class="pt-2 flex flex-wrap items-center gap-4">
         <app-download-cv-btn variant="primary" size="lg" />
 
-        <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs font-semibold" [class.text-slate-600]="!themeService.isDarkMode()" [class.text-slate-400]="themeService.isDarkMode()">
-          <a [href]="'mailto:' + ('about.email' | translate)" class="hover:text-blue-500 transition-colors link-underline">
+        <div
+          class="flex flex-wrap gap-x-6 gap-y-2 text-xs font-semibold"
+          [class.text-slate-600]="!themeService.isDarkMode()"
+          [class.text-slate-400]="themeService.isDarkMode()"
+        >
+          <a
+            [href]="'mailto:' + ('about.email' | translate)"
+            class="hover:text-blue-500 transition-colors link-underline"
+          >
             {{ 'about.email' | translate }}
           </a>
-          <a [href]="'https://' + ('about.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="hover:text-blue-500 transition-colors link-underline">
+          <a
+            [href]="'https://' + ('about.linkedin' | translate)"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-blue-500 transition-colors link-underline"
+          >
             {{ 'about.linkedin' | translate }}
           </a>
         </div>
@@ -52,11 +88,19 @@
 
     <!-- NARRATIVE VERTICAL CAREER TIMELINE -->
     <section id="experience" class="max-w-4xl mx-auto space-y-12 relative">
-      <div class="flex items-center justify-between border-b pb-3" [class.border-slate-200]="!themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()">
-        <h2 class="text-2xl font-black tracking-tight uppercase" [class.text-slate-900]="!themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()">
+      <div
+        class="flex items-center justify-between border-b pb-3"
+        [class.border-slate-200]="!themeService.isDarkMode()"
+        [class.border-slate-800]="themeService.isDarkMode()"
+      >
+        <h2
+          class="text-2xl font-black tracking-tight uppercase"
+          [class.text-slate-900]="!themeService.isDarkMode()"
+          [class.text-white]="themeService.isDarkMode()"
+        >
           {{ 'experience.title' | translate }}
         </h2>
-        
+
         <button
           (click)="toggleSort()"
           class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg border transition-colors cursor-pointer"
@@ -76,27 +120,40 @@
       <!-- Central Animated SVG Line & Nodes Wrapper -->
       <div class="relative py-4">
         <!-- SVG Central Drawing Line -->
-        <svg class="absolute top-0 bottom-0 left-4 sm:left-6 md:left-1/2 -translate-x-1/2 w-1 h-full pointer-events-none z-0 overflow-visible" preserveAspectRatio="none">
-          <line x1="0" y1="0" x2="0" y2="100%" [attr.stroke]="themeService.isDarkMode() ? '#1e293b' : '#e2e8f0'" stroke-width="3" />
-          <line 
-            x1="0" y1="0" x2="0" y2="100%" 
-            [attr.stroke]="themeService.isDarkMode() ? '#00f3ff' : '#2563eb'" 
-            stroke-width="3" 
+        <svg
+          class="absolute top-0 bottom-0 left-4 sm:left-6 md:left-1/2 -translate-x-1/2 w-1 h-full pointer-events-none z-0 overflow-visible"
+          preserveAspectRatio="none"
+        >
+          <line
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="100%"
+            [attr.stroke]="themeService.isDarkMode() ? '#1e293b' : '#e2e8f0'"
+            stroke-width="3"
+          />
+          <line
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="100%"
+            [attr.stroke]="themeService.isDarkMode() ? '#00f3ff' : '#2563eb'"
+            stroke-width="3"
             class="timeline-svg-line"
             stroke-dasharray="2000"
-            [style.stroke-dashoffset]="2000 - (2000 * scrollProgress() / 100)"
+            [style.stroke-dashoffset]="2000 - (2000 * scrollProgress()) / 100"
           />
         </svg>
 
         @defer (on viewport) {
           <div class="space-y-12 relative z-10">
             @for (job of sortedExperience(); track job.company; let idx = $index) {
-              <div 
+              <div
                 class="relative flex flex-col md:flex-row items-start"
                 [class.md:flex-row-reverse]="idx % 2 === 1"
               >
                 <!-- Central Node Indicator Circle -->
-                <div 
+                <div
                   class="absolute left-4 sm:left-6 md:left-1/2 -translate-x-1/2 top-4 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-4 shadow-md timeline-node-ripple z-20"
                   [class.bg-[#2563eb]]="!themeService.isDarkMode()"
                   [class.border-white]="!themeService.isDarkMode()"
@@ -107,47 +164,89 @@
                 ></div>
 
                 <!-- Milestone Card Item Container -->
-                <div 
+                <div
                   class="ml-10 sm:ml-14 md:ml-0 md:w-1/2"
                   [class.md:pr-12]="idx % 2 === 0"
                   [class.md:pl-12]="idx % 2 === 1"
                 >
-                  <div 
+                  <div
                     class="p-6 border rounded-2xl shadow-sm transition-all duration-200 space-y-3"
                     [class.bg-white]="!themeService.isDarkMode()"
                     [class.border-slate-200]="!themeService.isDarkMode()"
                     [class.bg-[#111827]]="themeService.isDarkMode()"
                     [class.border-slate-800]="themeService.isDarkMode()"
                   >
-                    <div class="flex flex-wrap items-center justify-between gap-2 border-b pb-2" [class.border-slate-100]="!themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()">
-                      <span class="text-xs font-bold font-mono" [class.text-blue-600]="!themeService.isDarkMode()" [class.text-[#00f3ff]]="themeService.isDarkMode()">{{ job.period }}</span>
-                      <span class="text-[11px] font-medium" [class.text-slate-400]="!themeService.isDarkMode()" [class.text-slate-500]="themeService.isDarkMode()">{{ job.location }}</span>
+                    <div
+                      class="flex flex-wrap items-center justify-between gap-2 border-b pb-2"
+                      [class.border-slate-100]="!themeService.isDarkMode()"
+                      [class.border-slate-800]="themeService.isDarkMode()"
+                    >
+                      <span
+                        class="text-xs font-bold font-mono"
+                        [class.text-blue-600]="!themeService.isDarkMode()"
+                        [class.text-[#00f3ff]]="themeService.isDarkMode()"
+                        >{{ job.period }}</span
+                      >
+                      <span
+                        class="text-[11px] font-medium"
+                        [class.text-slate-500]="!themeService.isDarkMode()"
+                        [class.text-slate-400]="themeService.isDarkMode()"
+                        >{{ job.location }}</span
+                      >
                     </div>
 
                     <div>
-                      <h3 class="text-lg font-black leading-snug" [class.text-slate-900]="!themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()">{{ job.role }}</h3>
-                      <p class="text-sm font-bold" [class.text-blue-700]="!themeService.isDarkMode()" [class.text-cyan-300]="themeService.isDarkMode()">{{ job.company }}</p>
+                      <h3
+                        class="text-lg font-black leading-snug"
+                        [class.text-slate-900]="!themeService.isDarkMode()"
+                        [class.text-white]="themeService.isDarkMode()"
+                      >
+                        {{ job.role }}
+                      </h3>
+                      <p
+                        class="text-sm font-bold"
+                        [class.text-blue-700]="!themeService.isDarkMode()"
+                        [class.text-cyan-300]="themeService.isDarkMode()"
+                      >
+                        {{ job.company }}
+                      </p>
                     </div>
 
                     <!-- Expandable Description Content Trigger -->
                     @if (job.desc) {
                       <div class="pt-2">
-                        <button 
+                        <button
                           (click)="toggleNode('exp_' + idx)"
                           class="inline-flex items-center gap-1.5 text-xs font-bold transition-colors cursor-pointer"
                           [class.text-blue-600]="!themeService.isDarkMode()"
                           [class.text-[#00f3ff]]="themeService.isDarkMode()"
                           [attr.aria-expanded]="isExpanded('exp_' + idx)"
                         >
-                          <span>{{ isExpanded('exp_' + idx) ? 'Collapse Details' : 'View Details' }}</span>
-                          <app-cv-icon [name]="isExpanded('exp_' + idx) ? 'chevron-up' : 'chevron-down'" size="w-3.5 h-3.5" />
+                          <span>{{
+                            isExpanded('exp_' + idx) ? 'Collapse Details' : 'View Details'
+                          }}</span>
+                          <app-cv-icon
+                            [name]="isExpanded('exp_' + idx) ? 'chevron-up' : 'chevron-down'"
+                            size="w-3.5 h-3.5"
+                          />
                         </button>
 
                         @if (isExpanded('exp_' + idx)) {
-                          <ul class="mt-3 space-y-2 text-xs border-t pt-3 animate-fade-in-up" [class.border-slate-100]="!themeService.isDarkMode()" [class.text-slate-600]="!themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()" [class.text-slate-300]="themeService.isDarkMode()">
+                          <ul
+                            class="mt-3 space-y-2 text-xs border-t pt-3 animate-fade-in-up"
+                            [class.border-slate-100]="!themeService.isDarkMode()"
+                            [class.text-slate-600]="!themeService.isDarkMode()"
+                            [class.border-slate-800]="themeService.isDarkMode()"
+                            [class.text-slate-300]="themeService.isDarkMode()"
+                          >
                             @for (bullet of job.desc; track bullet) {
                               <li class="flex items-start gap-2">
-                                <span class="font-bold" [class.text-blue-500]="!themeService.isDarkMode()" [class.text-[#00f3ff]]="themeService.isDarkMode()">•</span>
+                                <span
+                                  class="font-bold"
+                                  [class.text-blue-500]="!themeService.isDarkMode()"
+                                  [class.text-[#00f3ff]]="themeService.isDarkMode()"
+                                  >•</span
+                                >
                                 <span class="leading-relaxed">{{ bullet }}</span>
                               </li>
                             }
@@ -161,9 +260,17 @@
             }
           </div>
         } @placeholder {
-          <div class="space-y-8">
-            <div class="h-32 rounded-2xl border animate-shimmer" [class.bg-white]="!themeService.isDarkMode()" [class.bg-[#111827]]="themeService.isDarkMode()"></div>
-            <div class="h-32 rounded-2xl border animate-shimmer" [class.bg-white]="!themeService.isDarkMode()" [class.bg-[#111827]]="themeService.isDarkMode()"></div>
+          <div class="space-y-8 min-h-[1117px] md:min-h-[921px]">
+            <div
+              class="h-32 rounded-2xl border animate-shimmer"
+              [class.bg-white]="!themeService.isDarkMode()"
+              [class.bg-[#111827]]="themeService.isDarkMode()"
+            ></div>
+            <div
+              class="h-32 rounded-2xl border animate-shimmer"
+              [class.bg-white]="!themeService.isDarkMode()"
+              [class.bg-[#111827]]="themeService.isDarkMode()"
+            ></div>
           </div>
         }
       </div>
@@ -171,84 +278,183 @@
 
     <!-- SKILLS SECTION -->
     <section id="skills" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center justify-between border-b pb-3" [class.border-slate-200]="!themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()">
-        <h2 class="text-2xl font-black tracking-tight uppercase" [class.text-slate-900]="!themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()">
+      <div
+        class="flex items-center justify-between border-b pb-3"
+        [class.border-slate-200]="!themeService.isDarkMode()"
+        [class.border-slate-800]="themeService.isDarkMode()"
+      >
+        <h2
+          class="text-2xl font-black tracking-tight uppercase"
+          [class.text-slate-900]="!themeService.isDarkMode()"
+          [class.text-white]="themeService.isDarkMode()"
+        >
           {{ 'skills.title' | translate }}
         </h2>
       </div>
 
       @defer (on viewport) {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-6 border rounded-2xl space-y-3 shadow-sm" [class.bg-white]="!themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-[#111827]]="themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()">
-            <h3 class="font-bold text-xs uppercase tracking-wider" [class.text-slate-500]="!themeService.isDarkMode()" [class.text-slate-400]="themeService.isDarkMode()">{{ 'skills.category_languages' | translate }}</h3>
+          <div
+            class="p-6 border rounded-2xl space-y-3 shadow-sm"
+            [class.bg-white]="!themeService.isDarkMode()"
+            [class.border-slate-200]="!themeService.isDarkMode()"
+            [class.bg-[#111827]]="themeService.isDarkMode()"
+            [class.border-slate-800]="themeService.isDarkMode()"
+          >
+            <h3
+              class="font-bold text-xs uppercase tracking-wider"
+              [class.text-slate-500]="!themeService.isDarkMode()"
+              [class.text-slate-400]="themeService.isDarkMode()"
+            >
+              {{ 'skills.category_languages' | translate }}
+            </h3>
             <div class="flex flex-wrap gap-2">
-              @for (lang of ('skills.languages' | translate); track $index) {
+              @for (lang of 'skills.languages' | translate; track $index) {
                 <app-cv-badge [labelKey]="lang" variant="outline" size="sm" />
               }
             </div>
           </div>
 
-          <div class="p-6 border rounded-2xl space-y-3 shadow-sm" [class.bg-white]="!themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-[#111827]]="themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()">
-            <h3 class="font-bold text-xs uppercase tracking-wider" [class.text-slate-500]="!themeService.isDarkMode()" [class.text-slate-400]="themeService.isDarkMode()">{{ 'skills.category_frameworks' | translate }}</h3>
+          <div
+            class="p-6 border rounded-2xl space-y-3 shadow-sm"
+            [class.bg-white]="!themeService.isDarkMode()"
+            [class.border-slate-200]="!themeService.isDarkMode()"
+            [class.bg-[#111827]]="themeService.isDarkMode()"
+            [class.border-slate-800]="themeService.isDarkMode()"
+          >
+            <h3
+              class="font-bold text-xs uppercase tracking-wider"
+              [class.text-slate-500]="!themeService.isDarkMode()"
+              [class.text-slate-400]="themeService.isDarkMode()"
+            >
+              {{ 'skills.category_frameworks' | translate }}
+            </h3>
             <div class="flex flex-wrap gap-2">
-              @for (fw of ('skills.frameworks' | translate); track $index) {
+              @for (fw of 'skills.frameworks' | translate; track $index) {
                 <app-cv-badge [labelKey]="fw" variant="solid" size="sm" />
               }
             </div>
           </div>
 
-          <div class="p-6 border rounded-2xl space-y-3 shadow-sm" [class.bg-white]="!themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-[#111827]]="themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()">
-            <h3 class="font-bold text-xs uppercase tracking-wider" [class.text-slate-500]="!themeService.isDarkMode()" [class.text-slate-400]="themeService.isDarkMode()">{{ 'skills.category_tools' | translate }}</h3>
+          <div
+            class="p-6 border rounded-2xl space-y-3 shadow-sm"
+            [class.bg-white]="!themeService.isDarkMode()"
+            [class.border-slate-200]="!themeService.isDarkMode()"
+            [class.bg-[#111827]]="themeService.isDarkMode()"
+            [class.border-slate-800]="themeService.isDarkMode()"
+          >
+            <h3
+              class="font-bold text-xs uppercase tracking-wider"
+              [class.text-slate-500]="!themeService.isDarkMode()"
+              [class.text-slate-400]="themeService.isDarkMode()"
+            >
+              {{ 'skills.category_tools' | translate }}
+            </h3>
             <div class="flex flex-wrap gap-2">
-              @for (tool of ('skills.tools' | translate); track $index) {
+              @for (tool of 'skills.tools' | translate; track $index) {
                 <app-cv-badge [labelKey]="tool" variant="glass" size="sm" />
               }
             </div>
           </div>
         </div>
       } @placeholder {
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 animate-pulse">
-          <div class="h-32 rounded-2xl border" [class.bg-white]="!themeService.isDarkMode()" [class.bg-[#111827]]="themeService.isDarkMode()"></div>
-          <div class="h-32 rounded-2xl border" [class.bg-white]="!themeService.isDarkMode()" [class.bg-[#111827]]="themeService.isDarkMode()"></div>
-          <div class="h-32 rounded-2xl border" [class.bg-white]="!themeService.isDarkMode()" [class.bg-[#111827]]="themeService.isDarkMode()"></div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-6 animate-pulse min-h-[489px] md:min-h-[169px]"
+        >
+          <div
+            class="h-32 rounded-2xl border"
+            [class.bg-white]="!themeService.isDarkMode()"
+            [class.bg-[#111827]]="themeService.isDarkMode()"
+          ></div>
+          <div
+            class="h-32 rounded-2xl border"
+            [class.bg-white]="!themeService.isDarkMode()"
+            [class.bg-[#111827]]="themeService.isDarkMode()"
+          ></div>
+          <div
+            class="h-32 rounded-2xl border"
+            [class.bg-white]="!themeService.isDarkMode()"
+            [class.bg-[#111827]]="themeService.isDarkMode()"
+          ></div>
         </div>
       }
     </section>
 
     <!-- EDUCATION SECTION -->
     <section id="education" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center justify-between border-b pb-3" [class.border-slate-200]="!themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()">
-        <h2 class="text-2xl font-black tracking-tight uppercase" [class.text-slate-900]="!themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()">
+      <div
+        class="flex items-center justify-between border-b pb-3"
+        [class.border-slate-200]="!themeService.isDarkMode()"
+        [class.border-slate-800]="themeService.isDarkMode()"
+      >
+        <h2
+          class="text-2xl font-black tracking-tight uppercase"
+          [class.text-slate-900]="!themeService.isDarkMode()"
+          [class.text-white]="themeService.isDarkMode()"
+        >
           {{ 'education.title' | translate }}
         </h2>
       </div>
 
       @defer (on viewport) {
         <div class="space-y-6">
-          @for (edu of ('education.items' | translate); track $index) {
-            <div class="p-6 border rounded-2xl shadow-sm" [class.bg-white]="!themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-[#111827]]="themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()">
+          @for (edu of 'education.items' | translate; track $index) {
+            <div
+              class="p-6 border rounded-2xl shadow-sm"
+              [class.bg-white]="!themeService.isDarkMode()"
+              [class.border-slate-200]="!themeService.isDarkMode()"
+              [class.bg-[#111827]]="themeService.isDarkMode()"
+              [class.border-slate-800]="themeService.isDarkMode()"
+            >
               <app-cv-experience-card [data]="edu" layoutVariant="clean" />
             </div>
           }
         </div>
       } @placeholder {
-        <div class="h-28 rounded-2xl border animate-pulse" [class.bg-white]="!themeService.isDarkMode()" [class.bg-[#111827]]="themeService.isDarkMode()"></div>
+        <div
+          class="h-28 rounded-2xl border animate-pulse min-h-[647px] md:min-h-[381px]"
+          [class.bg-white]="!themeService.isDarkMode()"
+          [class.bg-[#111827]]="themeService.isDarkMode()"
+        ></div>
       }
     </section>
 
     <!-- CERTIFICATES -->
     <section id="certificates" class="max-w-4xl mx-auto space-y-8">
-      <div class="flex items-center justify-between border-b pb-3" [class.border-slate-200]="!themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()">
-        <h2 class="text-2xl font-black tracking-tight uppercase" [class.text-slate-900]="!themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()">
+      <div
+        class="flex items-center justify-between border-b pb-3"
+        [class.border-slate-200]="!themeService.isDarkMode()"
+        [class.border-slate-800]="themeService.isDarkMode()"
+      >
+        <h2
+          class="text-2xl font-black tracking-tight uppercase"
+          [class.text-slate-900]="!themeService.isDarkMode()"
+          [class.text-white]="themeService.isDarkMode()"
+        >
           {{ 'certificates.title' | translate }}
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        @for (cert of ('certificates.items' | translate); track $index) {
-          <div class="p-5 border rounded-xl flex items-center space-x-3 shadow-sm" [class.bg-white]="!themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-[#111827]]="themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()">
-            <app-cv-icon name="gpa" [class]="themeService.isDarkMode() ? 'text-[#00f3ff]' : 'text-blue-600'" size="w-5 h-5" />
-            <span class="text-xs font-bold" [class.text-slate-800]="!themeService.isDarkMode()" [class.text-slate-200]="themeService.isDarkMode()">{{ cert }}</span>
+        @for (cert of 'certificates.items' | translate; track $index) {
+          <div
+            class="p-5 border rounded-xl flex items-center space-x-3 shadow-sm"
+            [class.bg-white]="!themeService.isDarkMode()"
+            [class.border-slate-200]="!themeService.isDarkMode()"
+            [class.bg-[#111827]]="themeService.isDarkMode()"
+            [class.border-slate-800]="themeService.isDarkMode()"
+          >
+            <app-cv-icon
+              name="gpa"
+              [class]="themeService.isDarkMode() ? 'text-[#00f3ff]' : 'text-blue-600'"
+              size="w-5 h-5"
+            />
+            <span
+              class="text-xs font-bold"
+              [class.text-slate-800]="!themeService.isDarkMode()"
+              [class.text-slate-200]="themeService.isDarkMode()"
+              >{{ cert }}</span
+            >
           </div>
         }
       </div>
@@ -256,34 +462,114 @@
 
     <!-- CONTACT -->
     <section id="contact" class="max-w-4xl mx-auto space-y-8 pb-16">
-      <div class="flex items-center justify-between border-b pb-3" [class.border-slate-200]="!themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()">
-        <h2 class="text-2xl font-black tracking-tight uppercase" [class.text-slate-900]="!themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()">
+      <div
+        class="flex items-center justify-between border-b pb-3"
+        [class.border-slate-200]="!themeService.isDarkMode()"
+        [class.border-slate-800]="themeService.isDarkMode()"
+      >
+        <h2
+          class="text-2xl font-black tracking-tight uppercase"
+          [class.text-slate-900]="!themeService.isDarkMode()"
+          [class.text-white]="themeService.isDarkMode()"
+        >
           {{ 'contact.title' | translate }}
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a [href]="'mailto:' + ('contact.email' | translate)" class="p-6 border rounded-2xl flex items-center space-x-4 min-h-[88px] transition-all" [class.bg-white]="!themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-[#111827]]="themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()">
-          <app-cv-icon name="email" class="text-blue-600 dark:text-[#00f3ff] shrink-0" size="w-6 h-6" />
+        <a
+          [href]="'mailto:' + ('contact.email' | translate)"
+          class="p-6 border rounded-2xl flex items-center space-x-4 min-h-[88px] transition-all"
+          [class.bg-white]="!themeService.isDarkMode()"
+          [class.border-slate-200]="!themeService.isDarkMode()"
+          [class.bg-[#111827]]="themeService.isDarkMode()"
+          [class.border-slate-800]="themeService.isDarkMode()"
+        >
+          <app-cv-icon
+            name="email"
+            class="text-blue-600 dark:text-[#00f3ff] shrink-0"
+            size="w-6 h-6"
+          />
           <div class="overflow-hidden min-w-0 flex-1">
-            <p class="text-xs font-bold uppercase tracking-wider" [class.text-slate-500]="!themeService.isDarkMode()" [class.text-slate-400]="themeService.isDarkMode()">Email</p>
-            <p class="text-sm font-bold truncate" [class.text-slate-900]="!themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()" [attr.title]="'contact.email' | translate">{{ 'contact.email' | translate }}</p>
+            <p
+              class="text-xs font-bold uppercase tracking-wider"
+              [class.text-slate-500]="!themeService.isDarkMode()"
+              [class.text-slate-400]="themeService.isDarkMode()"
+            >
+              Email
+            </p>
+            <p
+              class="text-sm font-bold truncate"
+              [class.text-slate-900]="!themeService.isDarkMode()"
+              [class.text-white]="themeService.isDarkMode()"
+              [attr.title]="'contact.email' | translate"
+            >
+              {{ 'contact.email' | translate }}
+            </p>
           </div>
         </a>
 
-        <a [href]="'tel:' + ('contact.phone' | translate)" class="p-6 border rounded-2xl flex items-center space-x-4 min-h-[88px] transition-all" [class.bg-white]="!themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-[#111827]]="themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()">
-          <app-cv-icon name="phone" class="text-blue-600 dark:text-[#00f3ff] shrink-0" size="w-6 h-6" />
+        <a
+          [href]="'tel:' + ('contact.phone' | translate)"
+          class="p-6 border rounded-2xl flex items-center space-x-4 min-h-[88px] transition-all"
+          [class.bg-white]="!themeService.isDarkMode()"
+          [class.border-slate-200]="!themeService.isDarkMode()"
+          [class.bg-[#111827]]="themeService.isDarkMode()"
+          [class.border-slate-800]="themeService.isDarkMode()"
+        >
+          <app-cv-icon
+            name="phone"
+            class="text-blue-600 dark:text-[#00f3ff] shrink-0"
+            size="w-6 h-6"
+          />
           <div class="overflow-hidden min-w-0 flex-1">
-            <p class="text-xs font-bold uppercase tracking-wider" [class.text-slate-500]="!themeService.isDarkMode()" [class.text-slate-400]="themeService.isDarkMode()">Phone</p>
-            <p class="text-sm font-bold truncate" [class.text-slate-900]="!themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()">{{ 'contact.phone' | translate }}</p>
+            <p
+              class="text-xs font-bold uppercase tracking-wider"
+              [class.text-slate-500]="!themeService.isDarkMode()"
+              [class.text-slate-400]="themeService.isDarkMode()"
+            >
+              Phone
+            </p>
+            <p
+              class="text-sm font-bold truncate"
+              [class.text-slate-900]="!themeService.isDarkMode()"
+              [class.text-white]="themeService.isDarkMode()"
+            >
+              {{ 'contact.phone' | translate }}
+            </p>
           </div>
         </a>
 
-        <a [href]="'https://' + ('contact.linkedin' | translate)" target="_blank" rel="noopener noreferrer" class="p-6 border rounded-2xl flex items-center space-x-4 min-h-[88px] transition-all" [class.bg-white]="!themeService.isDarkMode()" [class.border-slate-200]="!themeService.isDarkMode()" [class.bg-[#111827]]="themeService.isDarkMode()" [class.border-slate-800]="themeService.isDarkMode()">
-          <app-cv-icon name="linkedin" class="text-blue-600 dark:text-[#00f3ff] shrink-0" size="w-6 h-6" />
+        <a
+          [href]="'https://' + ('contact.linkedin' | translate)"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="p-6 border rounded-2xl flex items-center space-x-4 min-h-[88px] transition-all"
+          [class.bg-white]="!themeService.isDarkMode()"
+          [class.border-slate-200]="!themeService.isDarkMode()"
+          [class.bg-[#111827]]="themeService.isDarkMode()"
+          [class.border-slate-800]="themeService.isDarkMode()"
+        >
+          <app-cv-icon
+            name="linkedin"
+            class="text-blue-600 dark:text-[#00f3ff] shrink-0"
+            size="w-6 h-6"
+          />
           <div class="overflow-hidden min-w-0 flex-1">
-            <p class="text-xs font-bold uppercase tracking-wider" [class.text-slate-500]="!themeService.isDarkMode()" [class.text-slate-400]="themeService.isDarkMode()">LinkedIn</p>
-            <p class="text-sm font-bold truncate" [class.text-slate-900]="!themeService.isDarkMode()" [class.text-white]="themeService.isDarkMode()">Connect</p>
+            <p
+              class="text-xs font-bold uppercase tracking-wider"
+              [class.text-slate-500]="!themeService.isDarkMode()"
+              [class.text-slate-400]="themeService.isDarkMode()"
+            >
+              LinkedIn
+            </p>
+            <p
+              class="text-sm font-bold truncate"
+              [class.text-slate-900]="!themeService.isDarkMode()"
+              [class.text-white]="themeService.isDarkMode()"
+            >
+              Connect
+            </p>
           </div>
         </a>
       </div>

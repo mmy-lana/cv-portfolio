@@ -1,4 +1,9 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideAppInitializer, inject } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideAppInitializer,
+  inject,
+} from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { routes } from './app.routes';
@@ -11,10 +16,7 @@ import { firstValueFrom } from 'rxjs';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(
-      routes,
-      withInMemoryScrolling({ scrollPositionRestoration: 'top' })
-    ),
+    provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'top' })),
     provideHttpClient(),
 
     // Set the default language HERE to avoid the read-only/deprecation error
@@ -22,14 +24,16 @@ export const appConfig: ApplicationConfig = {
       fallbackLang: 'en',
       loader: provideTranslateHttpLoader({
         prefix: './assets/i18n/',
-        suffix: '.json'
-      })
+        suffix: '.json',
+      }),
     }),
 
-    // Block the UI until the 'en.json' file is actually fetched
+    // Block the UI until the 'en.json' file is actually fetched. If the i18n asset
+    // cannot be loaded (transient CDN/hosting failure), fall back gracefully so the
+    // application still renders instead of failing bootstrap to a blank page.
     provideAppInitializer(() => {
       const translate = inject(TranslateService);
-      return firstValueFrom(translate.use('en'));
-    })
-  ]
+      return firstValueFrom(translate.use('en')).catch(() => undefined);
+    }),
+  ],
 };
