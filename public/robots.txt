@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mmylana.my.id/sitemap.xml
+Sitemap: https://www.mmylana.my.id/sitemap.xml
