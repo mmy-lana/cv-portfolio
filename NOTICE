@@ -1,0 +1,54 @@
+Third-Party Notices
+===================
+
+This project ("my-cv-portfolio", MIT License — see LICENSE) uses the following
+third-party material. These notices satisfy the attribution/notice conditions of
+the respective licenses.
+
+--------------------------------------------------------------------------------
+1. Lucide Icons (icon path data in src/app/components/shared/atoms/cv-icon/)
+--------------------------------------------------------------------------------
+ISC License
+
+Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as part of
+Feather (MIT). All other copyright (c) for Lucide are held by Lucide Contributors
+2022.
+
+Permission to use, copy, modify, and/or distribute this software for any purpose
+with or without fee is hereby granted, provided that the above copyright notice
+and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS
+OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF
+THIS SOFTWARE.
+
+Source: https://github.com/lucide-icons/lucide
+
+--------------------------------------------------------------------------------
+2. GSAP + ScrollTrigger (bundled in the /parallax-scrolling lazy chunk)
+--------------------------------------------------------------------------------
+Copyright (c) GreenSock. Distributed under the GreenSock "Standard No-Charge
+License" — NOT the MIT License that covers this repository. Use of GSAP in this
+site is permitted by that license at no charge; see full terms at
+https://gsap.com/standard-license/
+
+Source: https://github.com/greensock/GSAP
+
+--------------------------------------------------------------------------------
+3. Inter and JetBrains Mono (web fonts, loaded from Google Fonts)
+--------------------------------------------------------------------------------
+SIL Open Font License 1.1 (https://openfontlicense.org). The font files are not
+redistributed in this repository; they are requested at runtime from
+fonts.googleapis.com / fonts.gstatic.com.
+
+--------------------------------------------------------------------------------
+4. Build- and test-time tooling (not distributed with the site)
+--------------------------------------------------------------------------------
+Development-only dependencies retain their own licenses (for example MPL-2.0 for
+axe-core/lightningcss, CC-BY-4.0 for caniuse-lite data, Apache-2.0/MIT for the
+Angular, Vite, Playwright, and Lighthouse toolchains). None of this code is
+shipped in the deployed production bundle.
