@@ -1,10 +1,9 @@
 {
   "ci": {
     "collect": {
-      "url": [
-        "https://www.mmylana.my.id/"
-      ],
-      "numberOfRuns": 1,
+      "staticDistDir": "dist/my-cv-portfolio/browser",
+      "url": ["/"],
+      "numberOfRuns": 3,
       "settings": {
         "preset": "desktop",
         "chromeFlags": "--no-sandbox --headless"
